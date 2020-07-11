@@ -79,7 +79,7 @@
                   </button>
                 </div!-->
                 <div class="text-center mt-4 font-weight-light">
-                  ¿No tienes cuenta? <a href="register-2.html" class="text-primary">Crear cuenta</a>
+                  ¿No tienes cuenta? <a href="Registro.aspx" class="text-primary">Crear cuenta</a>
                 </div>
               </form>
             </div>
