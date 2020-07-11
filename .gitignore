@@ -3,3 +3,12 @@
 
 VictoriaApp/bin/
 VictoriaApp/obj/
+
+BLL/bin/
+BLL/obj/
+
+EL/bin/
+EL/obj/
+
+DAL/bin/
+DAL/obj/
