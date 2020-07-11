@@ -110,6 +110,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="css\estilos.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -129,6 +130,7 @@
     <Content Include="images\auth\login-bg.jpg" />
     <Content Include="images\auth\register-bg.jpg" />
     <Content Include="images\favicon.png" />
+    <Content Include="images\logo_victoria.png" />
     <Content Include="images\sprites\jsgrid-icons.png" />
     <Content Include="Login.aspx" />
     <Content Include="Registro.aspx" />
@@ -224,6 +226,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\logo_victoria.ai" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Web.Debug.config">
