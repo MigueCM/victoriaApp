@@ -129,6 +129,7 @@
     <Content Include="images\auth\lockscreen-bg.jpg" />
     <Content Include="images\auth\login-bg.jpg" />
     <Content Include="images\auth\register-bg.jpg" />
+    <Content Include="images\banner-bg.jpg" />
     <Content Include="images\favicon.png" />
     <Content Include="images\logo_victoria.png" />
     <Content Include="images\sprites\jsgrid-icons.png" />

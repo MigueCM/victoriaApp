@@ -12,8 +12,12 @@ namespace EL
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
         public string Correo { get; set; }
-        public string Password { get; set; }
+        public string Sexo { get; set; }
+        public string Pais { get; set; }
+        public string Ciudad { get; set; }
+        public string Enterar { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public string Celular { get; set; }
+        public string FechaRegistro { get; set; }
     }
 }

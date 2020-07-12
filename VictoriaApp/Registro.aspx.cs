@@ -20,13 +20,16 @@ namespace VictoriaApp
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
             Persona oPersona = new Persona();
-            oPersona.Nombre = txtNombre.Value;
-            oPersona.Apellidos = txtApellidos.Value;
-            oPersona.FechaNacimiento = Convert.ToDateTime(deFechaNacimiento.Value);
-            oPersona.Correo = txtCorreo.Value;
-            oPersona.Password = CifrarClave(txtPassword.Value.Trim());
-            oPersona.Celular = txtCelular.Value;
-
+            oPersona.Nombre = txtNombre.Value.Trim();
+            oPersona.Apellidos = txtApellidos.Value.Trim();
+            oPersona.FechaNacimiento = Convert.ToDateTime(deFechaNacimiento.Value.Trim());
+            oPersona.Correo = txtCorreo.Value.Trim();
+            oPersona.Celular = txtCelular.Value.Trim();
+            oPersona.Sexo = cbSexo.Value.Trim();
+            oPersona.Pais = cbPais.Value.Trim();
+            oPersona.Ciudad = cbCiudad.Value.Trim();
+            string usuario = txtUsuario.Value.Trim();
+            string password = CifrarClave(txtPassword.Value.Trim());
         }
 
         public static string CifrarClave(string clave)
