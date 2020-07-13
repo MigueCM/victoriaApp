@@ -34,8 +34,8 @@
                 <img src="images/logo_victoria.png" alt="logo">
               </div>
               <h4>!Hola de nuevo!</h4>
-              <h6 class="font-weight-light">Felices que vuelvan</h6>
-              <form class="pt-3">
+              <h6 class="font-weight-light">¡Felices de que vuelvas!</h6>
+              <form class="pt-3" runat="server">
                 <div class="form-group">
                   <label for="exampleInputEmail">Usuario</label>
                   <div class="input-group border-input">
@@ -44,7 +44,9 @@
                         <i class="fas fa-user text-primary"></i>
                       </span>
                     </div>
-                    <input type="text" class="form-control form-control-sm " id="exampleInputEmail" placeholder="Usuario">
+                    <%--<input type="text" class="form-control form-control-sm " id="txtUsuario" placeholder="Usuario"" >--%>
+
+                    <asp:TextBox ID="txtUsuario" runat="server" class="form-control form-control-sm" placeholder="Usuario"></asp:TextBox>
                   </div>
                 </div>
                 <div class="form-group">
@@ -55,7 +57,9 @@
                         <i class="fas fa-lock text-primary"></i>
                       </span>
                     </div>
-                    <input type="password" class="form-control form-control-sm border-input" id="exampleInputPassword" placeholder="Contraseña">                        
+
+                    <asp:TextBox ID="txtPassword" runat="server" class="form-control form-control-sm" placeholder="Contraseña"></asp:TextBox>
+                    <%--<input type="password" class="form-control form-control-sm border-input" id="exampleInputPassword" placeholder="Contraseña">--%>                        
                   </div>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
@@ -68,7 +72,10 @@
                   <a href="#" class="auth-link text-principal">¿Olvidaste tu contraseña?</a>
                 </div>
                 <div class="my-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="http://www.urbanui.com/wagondash/template/demo/horizontal-default-light/index.html">INGRESAR</a>
+
+                    <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" OnClick="Ingresar_Click" />
+
+                  <%--<a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="http://www.urbanui.com/wagondash/template/demo/horizontal-default-light/index.html">INGRESAR</a>--%>
                 </div>
                 <!--div class="mb-2 d-flex">
                   <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">
@@ -85,7 +92,7 @@
             </div>
           </div>
           <div class="col-lg-6 login-half-bg d-flex flex-row banner-none">
-            <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2020  All rights reserved.</p>
+            <p class="text-black font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2020  All rights reserved.</p>
           </div>
         </div>
       </div>

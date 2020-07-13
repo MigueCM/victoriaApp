@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
-
+using EL;
 
 namespace BLL
 {
@@ -31,5 +31,12 @@ namespace BLL
         #endregion
 
         private static UsuarioDAL oUsuarioDAL = new UsuarioDAL();
+
+        public Usuario ObtenerUsuario(string usuario, string password)
+        {
+            return null;
+        }
+
+
     }
 }
