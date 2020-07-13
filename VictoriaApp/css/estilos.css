@@ -11,6 +11,20 @@
     padding-left: 1.5rem;
 }
 
+.form-group .border-input select.form-control {
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    border-left: 0;
+    padding-left: 1.5rem;
+}
+
+.form-group .select-css {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
 .text-principal {
     color: #a1a8c3;
 }
