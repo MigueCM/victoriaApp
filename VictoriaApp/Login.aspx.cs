@@ -18,7 +18,7 @@ namespace VictoriaApp
 
         protected void Ingresar_Click(object sender, EventArgs e)
         {
-
+            lblError.Visible = false;
 
             string usuario = txtUsuario.Text;
             string password = Globales.CifrarClave(txtPassword.Text);
@@ -28,13 +28,11 @@ namespace VictoriaApp
             if (objUsuario != null)
             {
                 Session["IdUsuario"] = objUsuario.IdUsuario;
-
-
             }
             else
             {
 
-
+                lblError.Visible = true;
 
             }
 

@@ -24,12 +24,12 @@
 </head>
 
 <body>
-  <div class="container-scroller">
+  <div class="">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
         <div class="row flex-grow">
           <div class="col-lg-6 d-flex align-items-center justify-content-center">
-            <div class="auth-form-transparent text-left p-3">
+            <div class="auth-form-transparent text-left p-login animated fadeIn">
               <div class="brand-logo text-center">
                 <img src="images/logo_victoria.png" alt="logo">
               </div>
@@ -62,6 +62,12 @@
                     <%--<input type="password" class="form-control form-control-sm border-input" id="exampleInputPassword" placeholder="Contraseña">--%>                        
                   </div>
                 </div>
+
+               
+                <div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="lblError">
+                  Usuario y/o contraseña incorrectas
+                </div>
+
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   <!--div class="form-check">
                     <label class="form-check-label text-muted">
@@ -73,7 +79,7 @@
                 </div>
                 <div class="my-3">
 
-                    <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" OnClick="Ingresar_Click" />
+                    <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn border-button" OnClick="Ingresar_Click" />
 
                   <%--<a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="http://www.urbanui.com/wagondash/template/demo/horizontal-default-light/index.html">INGRESAR</a>--%>
                 </div>
@@ -91,7 +97,7 @@
               </form>
             </div>
           </div>
-          <div class="col-lg-6 login-half-bg d-flex flex-row banner-none">
+          <div class="col-lg-6 login-half-bg d-flex flex-row banner-none animated fadeIn">
             <p class="text-black font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2020  All rights reserved.</p>
           </div>
         </div>
@@ -118,6 +124,19 @@
   <!-- End plugin js for this page -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+
+  <script type="text/javascript">
+
+      
+
+      if ($(".p-login form").children("#lblError").length > 0){
+          $(".p-login").addClass("p-login-alert");
+      } else{
+          $(".p-login").removeClass("p-login-alert");
+      }
+
+  </script>
+
 </body>
 
 
