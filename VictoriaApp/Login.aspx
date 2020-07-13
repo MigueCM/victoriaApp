@@ -28,8 +28,8 @@
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
         <div class="row flex-grow">
-          <div class="col-lg-6 d-flex align-items-center justify-content-center">
-            <div class="auth-form-transparent text-left p-login animated fadeIn">
+          <div class="col-lg-6 d-flex align-items-center justify-content-center animated fadeIn">
+            <div class="auth-form-transparent text-left p-login ">
               <div class="brand-logo text-center">
                 <img src="images/logo_victoria.png" alt="logo">
               </div>
@@ -98,7 +98,7 @@
             </div>
           </div>
           <div class="col-lg-6 login-half-bg d-flex flex-row banner-none animated fadeIn">
-            <p class="text-black font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2020  All rights reserved.</p>
+            <p class="text-black font-weight-medium text-center flex-grow align-self-end">Copyright &copy; <%=DateTime.Now.Year.ToString()%>  Todos los derechos registrados.</p>
           </div>
         </div>
       </div>
