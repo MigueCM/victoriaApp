@@ -19,18 +19,18 @@
   <link rel="shortcut icon" href="images/favicon.png" />
 </head>
 <body>
-    <div class="container-scroller">
+    <div class="<%--container-scroller--%>">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
         <div class="row flex-grow">
           <div class="col-lg-6 d-flex align-items-center justify-content-center">
-            <div class="auth-form-transparent text-left p-3">
+            <div class="auth-form-transparent text-left p-3 animated fadeIn">
               <div class="brand-logo">
                 <img src="images/logo_victoria.png" alt="logo"/>
               </div>
               <h4>Eres nuevo?</h4>
               <h6 class="font-weight-light">Únete, bríndandonos tu información</h6>
-              <form class="pt-0" runat="server">
+              <form class="pt-0" runat="server" id="signupForm">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label>Nombre/s</label>
@@ -141,7 +141,7 @@
                     <div class="form-group col-md-6">
                       <label>Como te enteraste de Victoria?</label>
 
-                            <select class="form-control form-control-lg border-left-0 border-input select-css" id="cbEnterar" runat="server">
+                            <select class="form-control form-control-lg select-css" id="cbEnterar" runat="server">
                                 <option selected="selected">Como te enteraste?</option>
                                 <option>Facebook</option>
                                 <option>Instagram</option>
@@ -160,6 +160,10 @@
                     </label>
                   </div>
                 </div>
+                  <div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="divErrores">
+                      <asp:ListBox ID="lbErrores" runat="server" BackColor="Transparent" Width="100%" Enabled="false" CssClass="border-0 accordion text-danger overflow-hidden" Visible="false"></asp:ListBox>
+                  </div>
+                  
                 <div class="mt-3">
                     <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" Text="REGISTRAR" OnClick="btnRegistrar_Click" />
                 </div>
@@ -169,7 +173,7 @@
               </form>
             </div>
           </div>
-          <div class="col-lg-6 register-half-bg d-flex flex-row banner-none">
+          <div class="col-lg-6 register-half-bg d-flex flex-row banner-none animated fadeIn">
             <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2020  All rights reserved.</p>
           </div>
         </div>
@@ -257,5 +261,7 @@
     <script src="Scripts/js/template.js"></script>
     <script src="Scripts/js/todolist.js"></script>
     <script src="https://kit.fontawesome.com/81717efc38.js" crossorigin="anonymous"></script>
+    <%--<script src="vendors/jquery-validation/jquery.validate.min.js"></script>
+    <script src="Scripts/form-validation.js"></script>--%>
 </body>
 </html>

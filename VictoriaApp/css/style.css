@@ -5,7 +5,7 @@
   Version:	1.0.0
 -------------------------------------------------------------------*/
 
-
+/*31472, 24767*/
 /*-------------------------------------------------------------------
   ===== Table of Contents =====
 
@@ -24763,8 +24763,8 @@ select.typeahead,
 select.tt-query,
 select.tt-hint {
     padding: .4375rem .75rem;
-    border: 0;
-    outline: 1px solid #dde4e9;
+    /*border: 0;
+    outline: 1px solid #dde4e9;*/
     color: #a7afb7;
 }
 
@@ -31471,7 +31471,7 @@ div.tagsinput span.tag a {
 .auth form .form-group .tt-query,
 .auth form .form-group .tt-hint {
     background: transparent;
-    border-radius: 0;
+    /*border-radius: 0;*/
     font-size: .9375rem;
 }
 

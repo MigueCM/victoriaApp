@@ -21,8 +21,7 @@
 .form-group .select-css {
     padding-top: 15px;
     padding-bottom: 15px;
-    border-top-right-radius: .5rem;
-    border-bottom-right-radius: .5rem;
+    border-radius:.5rem;
 }
 
 .text-principal {

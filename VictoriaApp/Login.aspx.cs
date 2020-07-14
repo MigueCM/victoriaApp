@@ -21,7 +21,7 @@ namespace VictoriaApp
             lblError.Visible = false;
 
             string usuario = txtUsuario.Text;
-            string password = Globales.CifrarClave(txtPassword.Text);
+            string password = txtPassword.Text;
 
             Usuario objUsuario = UsuarioBLL.Instancia.ObtenerUsuario(usuario, password);
 
