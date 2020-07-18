@@ -36,7 +36,7 @@ namespace VictoriaApp
 
             }
 
-
+            Response.Redirect("Dashboard.aspx");
 
         }
     }

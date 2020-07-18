@@ -33,7 +33,7 @@
               <div class="brand-logo text-center">
                 <img src="images/logo_victoria.png" alt="logo">
               </div>
-              <h4>!Hola de nuevo!</h4>
+              <h4 class="font-weight-bold">!Hola de nuevo!</h4>
               <h6 class="font-weight-light">¡Felices de que vuelvas!</h6>
               <form class="pt-3" runat="server">
                 <div class="form-group">
@@ -75,7 +75,7 @@
                       Keep me signed in
                     </label>
                   </div!-->
-                  <a href="#" class="auth-link text-principal">¿Olvidaste tu contraseña?</a>
+                  <a href="#" class="auth-link text-principal" data-toggle="modal" data-target="#modalRecover">¿Olvidaste tu contraseña?</a>
                 </div>
                 <div class="my-3">
 
@@ -94,6 +94,10 @@
                 <div class="text-center mt-4 font-weight-light">
                   ¿No tienes cuenta? <a href="Registro.aspx" class="text-primary">Crear cuenta</a>
                 </div>
+
+
+                
+
               </form>
             </div>
           </div>
@@ -106,6 +110,43 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+    <!-- Begin modal -->
+
+                <div class="modal fade" id="modalRecover" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel-2">Recuperación de contraseña</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="txtEmailRecover">Email</label>
+                                    <div class="input-group border-input">
+                                        <div class="input-group-prepend bg-transparent ">
+                                            <span class="input-group-text bg-transparent border-right-0 border-color-principal">
+                                                <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
+                                            </span>
+                                         </div>                  
+
+                                        <input name="txtUsuario" type="text" id="txtEmailRecover" class="form-control form-control-sm border-color-principal" placeholder="Usuario">
+                                    </div>
+                                     
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btnEnviar" type="button" class="btn btn-primary font-weight-medium">Enviar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                <!-- End modal -->
+
   <!-- container-scroller -->
   <!-- base:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>
@@ -127,6 +168,7 @@
 
   <script type="text/javascript">
 
+
       
 
       if ($(".p-login form").children("#lblError").length > 0){
@@ -134,6 +176,9 @@
       } else{
           $(".p-login").removeClass("p-login-alert");
       }
+
+      //$("#btnEnviar").click(location.href="RecuperarContraseña.aspx");
+
 
   </script>
 
