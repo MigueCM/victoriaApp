@@ -57,14 +57,14 @@
                   </div>
                   <div class="row">
                     <div class="form-group col-md-6">
-                        <label>Usuario</label>
+                        <label>Email</label>
                         <div class="input-group border-input">
                         <div class="input-group-prepend bg-transparent">
                             <span class="input-group-text bg-transparent border-right-0">
                                 <i class="fas fa-user text-primary"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Usuario" runat="server" id="txtUsuario"/>
+                        <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Email" runat="server" id="txtUsuario"/>
                     </div>
                     </div>
                     <div class="form-group col-md-6">
@@ -75,7 +75,7 @@
                             <i class="fas fa-lock text-primary"></i>
                           </span>
                         </div>
-                        <input type="password" class="form-control form-control-lg border-left-0 border-input" id="txtPassword" runat="server" placeholder="Password"/>
+                        <input type="password" class="form-control form-control-lg border-left-0 border-input" id="txtPassword" runat="server" placeholder="Contraseña"/>
                       </div>
                     </div>
                   </div>
@@ -94,70 +94,58 @@
                     <div class="form-group col-md-6">
                       <label>Sexo</label>
                         <select class="form-control form-control-lg select-css" id="cbSexo" runat="server">
-                        <option selected="selected">Sexo</option>
-                        <option>Femenino</option>
-                        <option>Masculino</option>
+                            <option selected="selected">Sexo</option>
+                            <option>Femenino</option>
+                            <option>Masculino</option>
+                            <option>No especificado</option>
                         </select>
                     </div>
                 </div>
-                  <div class="row">
-                <div class="form-group col-md-6">
-                  <label>Email</label>
-                  <div class="input-group border-input">
-                    <div class="input-group-prepend bg-transparent">
-                      <span class="input-group-text bg-transparent border-right-0">
-                          <i class="fas fa-envelope text-primary"></i>
-                      </span>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                      <label>Celular</label>
+                      <div class="input-group border-input">
+                        <div class="input-group-prepend bg-transparent">
+                          <span class="input-group-text bg-transparent border-right-0" id="spanCel">
+                            <i class="fas fa-mobile-alt text-primary"></i>
+                          </span>
+                        </div>
+                        <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Celular" runat="server" id="txtCelular"/>
+                      </div>
                     </div>
-                    <input type="email" class="form-control form-control-lg border-left-0 border-input" placeholder="Email" runat="server" id="txtCorreo"/>
-                  </div>
-                </div>
-                  <div class="form-group col-md-6">
-                  <label>Celular</label>
-                  <div class="input-group border-input">
-                    <div class="input-group-prepend bg-transparent">
-                      <span class="input-group-text bg-transparent border-right-0" id="spanCel">
-                        <i class="fas fa-mobile-alt text-primary"></i>
-                      </span>
-                    </div>
-                    <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Celular" runat="server" id="txtCelular"/>
-                  </div>
-                </div>
-                </div>
-                  <div class="row">
-                      <div class="form-group col-md-3">
-                      <label>Pais</label>
+                    <div class="form-group col-md-6">
+                      <label>País</label>
                         <select class="form-control form-control-lg select-css" id="cbPais" runat="server">
-                        <option selected="selected">Pais</option>
+                            <option selected="selected">País</option>
+                            <option >Perú</option>
                         </select>
                     </div>
-                      <div class="form-group col-md-3">
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
                       <label>Ciudad</label>
-
                         <select class="form-control form-control-lg select-css" id="cbCiudad" runat="server">
-                        <option selected="selected">Ciudad</option>
+                            <option selected="selected">Ciudad</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
-                      <label>Como te enteraste de Victoria?</label>
-
-                            <select class="form-control form-control-lg select-css" id="cbEnterar" runat="server">
-                                <option selected="selected">Como te enteraste?</option>
-                                <option>Facebook</option>
-                                <option>Instagram</option>
-                                <option>LinkedIn</option>
-                                <option>Recomendacion de un amigo</option>
-                                <option>Otros</option>
-                            </select>
-
+                        <label>¿Cómo te enteraste de Victoria?</label>
+                        <select class="form-control form-control-lg select-css" id="cbEnterar" runat="server">
+                            <option selected="selected">¿Cómo te enteraste?</option>
+                            <option>Facebook</option>
+                            <option>Instagram</option>
+                            <option>LinkedIn</option>
+                            <option>Recomendacion de un amigo</option>
+                            <option>Otros</option>
+                        </select>
                     </div>
-                  </div>
+                </div>
                 <div class="mb-4 offset-2">
-                  <div class="form-check">
+                  <div class="form-check"><a href="#" id="show">
                     <label class="form-check-label text-muted">
                       <input type="checkbox" class="form-check-input" runat="server" id="chkTerminos"/>
                       Acepto los terminos, condiciones y politicas de privacidad
-                    </label>
+                    </label></a>
                   </div>
                 </div>
                   <div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="divErrores">
@@ -165,10 +153,10 @@
                   </div>
                   
                 <div class="mt-3">
-                    <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" Text="REGISTRAR" OnClick="btnRegistrar_Click" />
+                    <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" Text="UNIRSE A VICTORIA" OnClick="btnRegistrar_Click" />
                 </div>
                 <div class="text-center mt-4 font-weight-light">
-                  Ya tienes una cuenta? <a href="Login.aspx" class="text-primary">Iniciar Sesion</a>
+                 <h6> Ya tienes una cuenta? <a href="Login.aspx" class="text-primary">Inicia Sesión</a></h6>
                 </div>
               </form>
             </div>
@@ -182,28 +170,31 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>--%>
+    <script src="vendors/jquery.avgrund/jquery.avgrund.min.js"></script>
+    <script src="Scripts/avgrund.js"></script>
     <script>
         $("#cbEnterar").blur(function () {
-            if ($('#cbEnterar').selectedIndex != 0) {
+            if (document.getElementById("cbEnterar").selectedIndex != 0) {
                 $(this).css({ "background": "#A8A8F2" })
                 $(this).css({ "color": "#ffff" })
             }
         });
         $("#cbPais").blur(function () {
-            if ($('#cbPais').selectedIndex != 0) {
+            if (document.getElementById("cbPais").selectedIndex != 0) {
                 $(this).css({ "background": "#A8A8F2" })
                 $(this).css({ "color": "#ffff" })
             }
         });
         $("#cbCiudad").blur(function () {
-            if ($('#cbCiudad').selectedIndex != 0) {
+            if (document.getElementById("cbCiudad").selectedIndex != 0) {
                 $(this).css({ "background": "#A8A8F2" })
                 $(this).css({ "color": "#ffff" })
             }
         });
         $("#cbSexo").blur(function () {
-            if ($('#cbSexo').selectedIndex != 0) {
+            if (document.getElementById("cbSexo").selectedIndex != 0) {
                 $(this).css({ "background": "#A8A8F2" })
                 $(this).css({ "color": "#ffff" })
             }

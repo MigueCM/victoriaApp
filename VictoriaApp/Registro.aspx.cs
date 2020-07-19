@@ -36,10 +36,6 @@ namespace VictoriaApp
                 oPersona.FechaNacimiento = Convert.ToDateTime(deFechaNacimiento.Value.Trim());
             else
                 errores.Add("Ingrese fecha de nacimiento");
-            if (!string.IsNullOrEmpty(txtCorreo.Value.Trim()))
-                oPersona.Correo = txtCorreo.Value.Trim();
-            else
-                errores.Add("Ingrese correo");
             if (!string.IsNullOrEmpty(txtCelular.Value.Trim()))
                 oPersona.Celular = txtCelular.Value.Trim();
             else
