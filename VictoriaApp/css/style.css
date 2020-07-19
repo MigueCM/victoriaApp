@@ -31432,7 +31432,7 @@ div.tagsinput span.tag a {
 
 @media (min-width: 768px) {
     .auth.auth-img-bg .auth-form-transparent {
-        width: 70%;
+        width: 90%;
         margin: auto;
     }
 }
@@ -31507,7 +31507,8 @@ div.tagsinput span.tag a {
 }
 
 .main-panel {
-    background: #ffffff;
+    /*background: #ffffff;*/
+    background-image: url('../images/FONDO PARED.jpg');
     width: 100%;
 }
 

@@ -39,7 +39,7 @@ namespace VictoriaApp
             {
                 Session["IdUsuario"] = objUsuario.IdUsuario;
                 Session["IdPerfil"] = objUsuario.IdPerfil;
-                Response.Redirect("Dashboard.aspx");
+                Response.Redirect("Principal.aspx");
             }
             else
             {

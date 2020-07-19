@@ -59,9 +59,11 @@ namespace VictoriaApp
             if (!string.IsNullOrEmpty(txtUsuario.Value.Trim()))
                 usuario = txtUsuario.Value.Trim();
             else
-                errores.Add("Ingrese usuario");
+                errores.Add("Ingrese Email");
+            if(!Globales.ValidarEmail(txtUsuario.Value.Trim()))
+                errores.Add("Ingrese un Email valido");
             if (!string.IsNullOrEmpty(txtPassword.Value.Trim()))
-                password = CifrarClave(txtPassword.Value.Trim());
+                password = Globales.CifrarClave(txtPassword.Value.Trim());
             else
                 errores.Add("Ingrese password");
             if (errores.Count > 0)
@@ -81,15 +83,6 @@ namespace VictoriaApp
                 lbErrores.Visible = false;
                 lbErrores.Items.Clear();
             }
-        }
-
-        public static string CifrarClave(string clave)
-        {
-            SHA512Managed password = new SHA512Managed();
-            byte[] texto = Encoding.ASCII.GetBytes(clave);
-            byte[] textocifrado = password.ComputeHash(texto);
-            string contrasena = Convert.ToBase64String(textocifrado);
-            return contrasena;
         }
     }
 }
