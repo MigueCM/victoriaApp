@@ -58,7 +58,7 @@
                       </span>
                     </div>
 
-                    <asp:TextBox ID="txtPassword" runat="server" class="form-control form-control-sm" placeholder="Contraseña"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" runat="server" class="form-control form-control-sm" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
                     <%--<input type="password" class="form-control form-control-sm border-input" id="exampleInputPassword" placeholder="Contraseña">--%>                        
                   </div>
                 </div>
@@ -132,13 +132,16 @@
                                             </span>
                                          </div>                  
 
-                                        <input name="txtUsuario" type="text" id="txtEmailRecover" class="form-control form-control-sm border-color-principal" placeholder="Usuario">
+                                        <input name="txtEmailRecover" type="email" id="txtEmailRecover" class="form-control form-control-sm border-color-principal" placeholder="Email" required>
                                     </div>
                                      
                                 </div>
+                            <div class="alert alert-danger text-center d-none" role="alert" id="errorEmail">
+                              Correo Invalido
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <button id="btnEnviar" type="button" class="btn btn-primary font-weight-medium">Enviar</button>
+                            <button id="btnEnviar" type="button" class="btn btn-primary font-weight-medium" onclick="validarEmail()">Enviar</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         </div>
                         </div>
@@ -178,6 +181,67 @@
       }
 
       //$("#btnEnviar").click(location.href="RecuperarContraseña.aspx");
+
+      function validarEmail(valor) {
+          if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(valor)) {
+              
+          } else {
+              
+          }
+      }
+
+
+      function validarEmail() {
+          //location.href = 'RecuperarContraseña.aspx';
+          var email = $("#txtEmailRecover").val();
+
+          var parametros = "{'email': '" + email + "'}";
+
+          $.ajax({
+              data: parametros,
+              url: 'Login.aspx/EnviarEmail',
+              dataType: "json",
+              type: 'POST',
+              contentType: "application/json; charset=utf-8",
+              beforeSend: function () {
+                  
+              },
+              success: function (response) {
+
+                  var data = JSON.parse(response.d);
+
+                  $("#errorEmail").html(data["mensaje"]);
+                  $("#errorEmail").removeClass("d-none");
+                  if (data["correoValido"] === true) {
+                      $("#errorEmail").append(data["token"]);
+                      $("#errorEmail").addClass("alert-success");
+                      $("#errorEmail").removeClass("alert-danger");
+                  } else {
+                      
+                      $("#errorEmail").removeClass("alert-success");
+                      $("#errorEmail").addClass("alert-danger");
+                      
+                  }
+
+              },
+              error: function (e) {
+                  console.log(e)
+              }
+          });
+          /*
+          if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(email)) {
+
+              
+
+          } else {
+              alert("La dirección de email es incorrecta!.");
+          }
+          */
+
+          
+
+      }
+
 
 
   </script>

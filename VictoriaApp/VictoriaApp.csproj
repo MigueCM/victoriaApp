@@ -131,16 +131,18 @@
     <Content Include="images\auth\lockscreen-bg.jpg" />
     <Content Include="images\auth\login-bg.jpg" />
     <Content Include="images\auth\register-bg.jpg" />
+    <Content Include="images\b4a55d313011fee55492f3d5d0008458.jpg" />
     <Content Include="images\banner-bg.jpg" />
     <Content Include="images\faces\face13.jpg" />
     <Content Include="images\faces\face28.png" />
     <Content Include="images\favicon.png" />
-    <Content Include="images\lock.jpg" />
+    <Content Include="images\lock.png" />
     <Content Include="images\logo-dark.svg" />
     <Content Include="images\logo-mini.svg" />
     <Content Include="images\logo_victoria.png" />
     <Content Include="images\sprites\jsgrid-icons.png" />
     <Content Include="images\video.png" />
+    <Content Include="images\webinar.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="RecuperarContraseña.aspx" />
     <Content Include="Registro.aspx" />
@@ -202,6 +204,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Globales.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

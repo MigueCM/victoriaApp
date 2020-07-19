@@ -10,16 +10,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Wagondash Premium Bootstrap Admin Dashboard Template</title>
   <!-- base:css -->
-  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="css/horizontal-layout-light/style.css">
-  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="../css/horizontal-layout-light/style.css">
+  <link rel="stylesheet" href="../css/estilos.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="../images/favicon.png" />
 </head>
 
 <body>
@@ -29,18 +29,32 @@
         <div class="row w-100">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-transparent text-left p-5 text-center">
-              <img src="../../../../images/faces/face13.jpg" class="lock-profile-img" alt="img">
+              <img src="../images/faces/face13.jpg" class="lock-profile-img" alt="img">
               <form class="pt-5" runat="server">
                 <div class="form-group">
-                  <label for="examplePassword1">Password to unlock</label>
-                  <input type="password" class="form-control text-center" id="examplePassword1" placeholder="Password">
+                  <label for="examplePassword1">Contraseña nueva</label>
+                  <%--<input type="password" class="form-control text-center" id="password1" placeholder="Password">--%>
+                   <asp:TextBox ID="password1" runat="server" class="form-control text-center"  placeholder="Password" TextMode="Password"></asp:TextBox>
+                </div>
+                  <div class="form-group">
+                  <label for="examplePassword1">Repetir Contraseña</label>
+                  <asp:TextBox ID="password2" runat="server" class="form-control text-center"  placeholder="Password" TextMode="Password"></asp:TextBox>
                 </div>
                 <div class="mt-5">
-                  <a class="btn btn-block btn-success btn-lg font-weight-medium" href="../../index.html">Unlock</a>
+                  <%--<a class="btn btn-block btn-success btn-lg font-weight-medium" href="../../index.html">Modificar Contraseña</a>--%>
+                    <asp:Button ID="btnModificar" runat="server" Text="Modificar Contraseña" class="btn btn-block btn-success btn-lg font-weight-medium" OnClick="btnModificar_Click"/>
                 </div>
+
+                  <div class="alert alert-danger text-center mt-2" role="alert" runat="server" visible="false" id="lblError">
+                  Usuario y/o contraseña incorrectas
+                </div>
+                 
                 <div class="mt-3 text-center">
-                  <a href="#" class="auth-link text-white">Sign in using a different account</a>
+                  <a href="#" class="auth-link text-white" onclick="location.href='/Login.aspx'">Regresar al login</a>
                 </div>
+
+                
+
               </form>
             </div>
           </div>
@@ -52,14 +66,14 @@
   </div>
   <!-- container-scroller -->
   <!-- base:js -->
-  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <script src="../vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- inject:js -->
-  <script src="Scripts/js/off-canvas.js"></script>
-  <script src="Scripts/js/hoverable-collapse.js"></script>
-  <script src="Scripts/js/template.js"></script>
-  <script src="Scripts/js/settings.js"></script>
-  <script src="Scripts/js/todolist.js"></script>
+  <script src="../Scripts/js/off-canvas.js"></script>
+  <script src="../Scripts/js/hoverable-collapse.js"></script>
+  <script src="../Scripts/js/template.js"></script>
+  <script src="../Scripts/js/settings.js"></script>
+  <script src="../Scripts/js/todolist.js"></script>
   <!-- endinject -->
 </body>
 

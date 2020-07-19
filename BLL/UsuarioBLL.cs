@@ -34,9 +34,38 @@ namespace BLL
 
         public Usuario ObtenerUsuario(string usuario, string password)
         {
-            return null;
+            if ( usuario.Trim().Length > 0 && password.Trim().Length > 0)
+            {
+                return oUsuarioDAL.ObtenerUsuario(usuario, password);
+            }
+            else
+            {
+
+                return null;
+
+            }
         }
 
+        public Usuario ValidarPorUsuario(string usuario)
+        {
 
+            return oUsuarioDAL.ValidarPorUsuario(usuario);
+
+        }
+
+        public Boolean ActualizarToken(String token, Int32 idUsuario)
+        {
+            return oUsuarioDAL.ActualizarToken(token, idUsuario);
+        }
+
+        public Boolean ActualizarPassword(String password, Int32 idUsuario)
+        {
+            return oUsuarioDAL.ActualizarPassword(password, idUsuario);
+        }
+
+        public Usuario ValidarPorToken(string token)
+        {
+            return oUsuarioDAL.ValidarPorToken(token);
+        }
     }
 }
