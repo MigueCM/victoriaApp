@@ -46,7 +46,7 @@
                     </div>
                     <%--<input type="text" class="form-control form-control-sm " id="txtUsuario" placeholder="Usuario"" >--%>
 
-                    <asp:TextBox ID="txtUsuario" runat="server" class="form-control form-control-sm" placeholder="Usuario"></asp:TextBox>
+                    <asp:TextBox ID="txtUsuario" runat="server" class="form-control form-control-sm" placeholder="Email"></asp:TextBox>
                   </div>
                 </div>
                 <div class="form-group">
@@ -92,7 +92,10 @@
                   </button>
                 </div!-->
                 <div class="text-center mt-4 font-weight-light">
-                  ¿No tienes cuenta? <a href="Registro.aspx" class="text-primary">Crear cuenta</a>
+                    <h6>
+                        ¿No tienes cuenta? <a href="Registro.aspx" class="text-primary">Crear cuenta</a>
+                    </h6>
+                  
                 </div>
 
 
@@ -180,15 +183,7 @@
           $(".p-login").removeClass("p-login-alert");
       }
 
-      //$("#btnEnviar").click(location.href="RecuperarContraseña.aspx");
-
-      function validarEmail(valor) {
-          if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(valor)) {
-              
-          } else {
-              
-          }
-      }
+      //$("#btnEnviar").click(location.href="RecuperarContraseña.aspx")
 
 
       function validarEmail() {
@@ -242,6 +237,23 @@
 
       }
 
+
+      $("#txtUsuario , #txtPassword").blur(function () {
+          if ($(this).val().length != 0) {
+              $(this).css({ "background": "#A8A8F2" })
+              $(this).css({ "color": "#ffff" })
+          } else {
+              $(this).css({ "background": "transparent" })
+              $(this).css({ "color": "#495057" })
+          }
+      });
+
+     /* $("#txtPassword").blur(function () {
+          if ($(this).val().length != 0) {
+              $(this).css({ "background": "#A8A8F2" })
+              $(this).css({ "color": "#ffff" })
+          }
+      });*/
 
 
   </script>

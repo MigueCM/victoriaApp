@@ -146,6 +146,7 @@
     <Content Include="images\webinar.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Modulos.aspx" />
+    <Content Include="Panel.aspx" />
     <Content Include="Principal.aspx" />
     <Content Include="RecuperarContraseña.aspx" />
     <Content Include="Registro.aspx" />
@@ -222,6 +223,13 @@
     </Compile>
     <Compile Include="Modulos.aspx.designer.cs">
       <DependentUpon>Modulos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Panel.aspx.cs">
+      <DependentUpon>Panel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Panel.aspx.designer.cs">
+      <DependentUpon>Panel.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>

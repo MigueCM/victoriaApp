@@ -5,7 +5,10 @@
   Version:	1.0.0
 -------------------------------------------------------------------*/
 
+
 /*31472, 24767*/
+
+
 /*-------------------------------------------------------------------
   ===== Table of Contents =====
 
@@ -8769,7 +8772,8 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #a1a8c3;
+    /*color: #a1a8c3;*/
+    color: #64516b;
     text-align: left;
     background-color: #fff;
 }
@@ -15581,7 +15585,7 @@ a.badge-dark.focus {
     height: 1rem;
     overflow: hidden;
     font-size: 0.75rem;
-    background-color: #e9ecef;
+    background-color: #989898;
     border-radius: 0.25rem;
 }
 
@@ -20678,7 +20682,7 @@ input:focus {
 @font-face {
     font-family: 'Poppins';
     src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Bold.eot");
-    src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Bold.eot?#iefix") format("embedded-opentype"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Bold.woff2") format("woff2"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Bold.woff") format("woff"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+    src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Bold.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Bold.woff") format("woff"), url("../../fonts/Poppins/Poppins-Bold.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
 }
@@ -31508,7 +31512,8 @@ div.tagsinput span.tag a {
 
 .main-panel {
     /*background: #ffffff;*/
-    background-image: url('../images/FONDO PARED.jpg');
+    background-image: url('../images/background.jpg');
+    background-size: cover;
     width: 100%;
 }
 

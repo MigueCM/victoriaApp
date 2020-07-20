@@ -25,7 +25,11 @@
 }
 
 .text-principal {
-    color: #a1a8c3;
+    color: #64516b;
+}
+
+.brand-logo img {
+    width: 150px;
 }
 
 .border-button, .border-input {
@@ -79,15 +83,27 @@ span.h3 {
     display: block;
 }
 
-.webinar-autor{
+.webinar-autor {
     font-size: .8rem !important;
+    color: #7E6A8A;
+}
+
+
+.text-progressbar{
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.btn-cursor-default{
+    cursor: default;
 }
 
 .accordion.accordion-solid-header .card .card-header a[aria-expanded="true"] span.h3 {
     color: #ffffff !important;
 }
 
-.accordion .card .collapse.show {
+.accordion .card .collapse, .accordion .card .collapsing {
     background: #410060;
 }
 
@@ -132,6 +148,10 @@ span.h3 {
 .card.card-shadow {
     
     margin-bottom: 1.8rem;
+}
+
+.panel-image span {
+   color: #3a3b3e;
 }
 
 .panel-right {
