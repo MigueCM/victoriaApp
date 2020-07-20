@@ -201,3 +201,17 @@ span.h3 {
         display:none !important;
     }
 }
+
+.btn-completado {
+    background: #ffff;
+    color: #5B127A;
+    width: 60%;
+    margin-left:4rem;
+}
+
+.btn-pendiente {
+    background: #9E9997;
+    color: #ffff;
+    width: 60%;
+    margin-left: 4rem;
+}

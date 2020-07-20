@@ -126,6 +126,7 @@
                       <label>Ciudad</label>
                         <select class="form-control form-control-lg select-css" id="cbCiudad" runat="server">
                             <option selected="selected">Ciudad</option>
+                            <option >Trujillo</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">

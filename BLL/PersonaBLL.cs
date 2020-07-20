@@ -1,4 +1,5 @@
 ﻿using DAL;
+using EL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,5 +31,10 @@ namespace BLL
         #endregion
 
         private static PersonaDAL oPersonaDAL = new PersonaDAL();
+
+        public bool RegistrarPersona(Persona persona, string usuario, string password)
+        {
+            return oPersonaDAL.RegistrarPersona(persona, usuario, password);
+        }
     }
 }

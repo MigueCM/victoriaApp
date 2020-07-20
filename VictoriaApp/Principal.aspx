@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Principal.aspx.cs" Inherits="VictoriaApp.Principal" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Principal.aspx.cs" Inherits="VictoriaApp.Principal" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -9,36 +9,36 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th class="text-white"><h4>Modulo</h4></th>
-                          <th class="text-white"><h4>Fecha</h4></th>
-                          <th class="text-white"><h4>Estado</h4></th>
+                          <th class="text-white text-center"><h4>Modulo</h4></th>
+                          <th class="text-white text-center"><h4>Fecha</h4></th>
+                          <th class="text-white text-center"><h4>Estado</h4></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Jacob</td>
-                          <td>12 May 2017</td>
-                          <td><label class="badge badge-danger">Pending</label></td>
+                          <td class="text-white">1. Lorem Ipsum is simply dummy text of the</td>
+                          <td class="text-white text-center">09 de Julio 2020</td>
+                          <td><button class="btn btn-block btn-completado">Completado</button></td>
                         </tr>
                         <tr>
-                          <td>Messsy</td>
-                          <td>15 May 2017</td>
-                          <td><label class="badge badge-warning">In progress</label></td>
+                          <td class="text-white">2. Lorem Ipsum is simply dummy text of the</td>
+                          <td class="text-white text-center"></td>
+                          <td><button class="btn btn-block btn-pendiente">Pendiente</button></td>
                         </tr>
                         <tr>
-                          <td>John</td>
-                          <td>14 May 2017</td>
-                          <td><label class="badge badge-info">Fixed</label></td>
+                          <td class="text-white">3. Lorem Ipsum is simply dummy text of the</td>
+                          <td class="text-white text-center"></td>
+                          <td><button class="btn btn-block btn-pendiente">Pendiente</button></td>
                         </tr>
                         <tr>
-                          <td>Peter</td>
-                          <td>16 May 2017</td>
-                          <td><label class="badge badge-success">Completed</label></td>
+                          <td class="text-white">4. Lorem Ipsum is simply dummy text of the</td>
+                          <td class="text-white text-center"></td>
+                          <td><button class="btn btn-block btn-pendiente">Pendiente</button></td>
                         </tr>
                         <tr>
-                          <td>Dave</td>
-                          <td>20 May 2017</td>
-                          <td><label class="badge badge-warning">In progress</label></td>
+                          <td class="text-white">5. Lorem Ipsum is simply dummy text of the</td>
+                          <td class="text-white text-center"></td>
+                          <td><button class="btn btn-block btn-pendiente">Pendiente</button></td>
                         </tr>
                       </tbody>
                     </table>

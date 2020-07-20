@@ -1,4 +1,5 @@
-﻿using EL;
+﻿using BLL;
+using EL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace VictoriaApp
             lbErrores.Items.Clear();
             List<string> errores = new List<string>();
             errores.Add("SOLUCIONE LOS SIGUIENTES ERRORES:");
-            string usuario, password;
+            string usuario = null, password = null;
             Persona oPersona = new Persona();
             if (!string.IsNullOrEmpty(txtNombre.Value.Trim()))
                 oPersona.Nombre = txtNombre.Value.Trim();
@@ -66,7 +67,7 @@ namespace VictoriaApp
                 password = Globales.CifrarClave(txtPassword.Value.Trim());
             else
                 errores.Add("Ingrese password");
-            if (errores.Count > 0)
+            if (errores.Count > 1)
             {
                 lbErrores.Rows = errores.Count;
                 
@@ -79,6 +80,7 @@ namespace VictoriaApp
             }
             else
             {
+                PersonaBLL.Instancia.RegistrarPersona(oPersona, usuario, password);
                 divErrores.Visible = false;
                 lbErrores.Visible = false;
                 lbErrores.Items.Clear();

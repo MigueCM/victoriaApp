@@ -132,6 +132,7 @@
     <Content Include="images\auth\login-bg.jpg" />
     <Content Include="images\auth\register-bg.jpg" />
     <Content Include="images\b4a55d313011fee55492f3d5d0008458.jpg" />
+    <Content Include="images\background.jpg" />
     <Content Include="images\banner-bg.jpg" />
     <Content Include="images\faces\face13.jpg" />
     <Content Include="images\faces\face28.png" />

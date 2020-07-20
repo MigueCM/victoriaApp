@@ -11,6 +11,34 @@ namespace DAL
 {
     public class UsuarioDAL
     {
+        public bool InsertarUsuario(int id, string usuario, string password)
+        {
+
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@user", SqlDbType.VarChar).Value = usuario;
+            _comando.Parameters.AddWithValue("@password", SqlDbType.VarChar).Value = password;
+            _comando.Parameters.AddWithValue("@idUsuarioRegistro", SqlDbType.VarChar).Value = id;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 1;
+            bool valor = false;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                if (_comando.ExecuteNonQuery() > 0)
+                    valor = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return valor;
+        }
 
         public Usuario ObtenerUsuario(string usuario, string password) 
         {
