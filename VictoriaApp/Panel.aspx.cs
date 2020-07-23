@@ -11,7 +11,13 @@ namespace VictoriaApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                if (Session["IdUsuario"] == null)
+                {
+                    Response.Redirect("Login.aspx");
+                }
+            }
         }
     }
 }

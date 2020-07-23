@@ -134,7 +134,7 @@
                             </div>
 
                             <div class="col-6">
-                                <button class="btn btn-block btn-primary btn-options" onclick="location.href='Modulos.aspx'"> MODULOS</button>
+                                <button class="btn btn-block btn-primary btn-options" onclick="location.href='Principal.aspx'"> MODULOS</button>
                             </div>
 
                             <div class="col-12">

@@ -15,12 +15,11 @@ namespace VictoriaApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!Page.IsPostBack)
             {
                 if (Session["IdUsuario"] != null)
                 {
-                    Response.Redirect("Dashboard.aspx");
+                    Response.Redirect("Principal.aspx");
                 }
             }
 
@@ -37,6 +36,8 @@ namespace VictoriaApp
 
             if (objUsuario != null)
             {
+                UsuarioHistorialBLL.Instancia.InsertarHistorial(objUsuario.IdUsuario);
+
                 Session["IdUsuario"] = objUsuario.IdUsuario;
                 Session["IdPerfil"] = objUsuario.IdPerfil;
                 Response.Redirect("Principal.aspx");
