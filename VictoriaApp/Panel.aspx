@@ -17,7 +17,7 @@
                         <i class="fas fa-play text-primary"></i> 8,365
                     </p>
                     <div class="text-center">
-                        <a href="#" class="btn btn-primary">Empezar</a>
+                        <a href="Video.aspx" class="btn btn-primary">Empezar</a>
                     </div>
                               
   
@@ -38,7 +38,7 @@
                         <i class="fas fa-play text-primary"></i> 8,365
                     </p>
                     <div class="text-center">
-                        <a href="#" class="btn btn-primary">Empezar</a>
+                        <a href="Video.aspx" class="btn btn-primary">Empezar</a>
                     </div>
                               
   
@@ -59,7 +59,7 @@
                         <i class="fas fa-play text-primary"></i> 8,365
                     </p>
                     <div class="text-center">
-                        <a href="#" class="btn btn-primary">Empezar</a>
+                        <a href="Video.aspx" class="btn btn-primary">Empezar</a>
                     </div>
                               
   
