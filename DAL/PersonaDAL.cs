@@ -24,7 +24,7 @@ namespace DAL
             _comando.Parameters.AddWithValue("@Pais", SqlDbType.VarChar).Value = persona.Pais;
             _comando.Parameters.AddWithValue("@Ciudad", SqlDbType.VarChar).Value = persona.Ciudad;
             _comando.Parameters.AddWithValue("@Avatar", SqlDbType.VarChar).Value = persona.Avatar;
-            _comando.Parameters.AddWithValue("@Enteraste", SqlDbType.VarChar).Value = persona.Nombre;
+            _comando.Parameters.AddWithValue("@Enteraste", SqlDbType.VarChar).Value = persona.Enterar;
             _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 1;
             bool valor = false;
             int id = 0;
