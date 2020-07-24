@@ -1,5 +1,16 @@
+USE [db_victoria]
+GO
 
-CREATE OR ALTER PROCEDURE PA_Usuario
+/****** Object:  StoredProcedure [dbo].[PA_Usuario]    Script Date: 24/07/2020 12:22:21 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+ALTER   PROCEDURE [dbo].[PA_Usuario]
 @idUsuario int = null,
 @user varchar(50) = null,
 @password varchar(100) = null,
@@ -11,6 +22,9 @@ CREATE OR ALTER PROCEDURE PA_Usuario
 @tipo int
 as
 begin
+if @tipo = 1
+		insert into [dbo].[usuario]([user], [password],[idUsuarioRegistro], [fechaRegistro])
+		values(@user, @password, @idUsuarioRegistro, GETDATE())
 
 	if @tipo = 4
 
@@ -62,3 +76,6 @@ begin
 
 
 end
+GO
+
+
