@@ -60,7 +60,8 @@ namespace DAL
                     oUsuario = new Usuario();
                     oUsuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
                     oUsuario.User = dr["user"].ToString();
-                    oUsuario.IdPerfil = Convert.ToInt32(dr["idPerfil"]);
+                    if(dr["idPerfil"] != DBNull.Value)
+                        oUsuario.IdPerfil = Convert.ToInt32(dr["idPerfil"]);
 
 
                 }

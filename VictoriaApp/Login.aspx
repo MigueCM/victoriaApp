@@ -33,11 +33,11 @@
               <div class="brand-logo text-center">
                 <img src="images/logo_victoria.png" alt="logo">
               </div>
-              <h4 class="font-weight-bold">!Hola de nuevo!</h4>
+              <h4 class="font-weight-bold">¡Hola de nuevo!</h4>
               <h6 class="font-weight-light">¡Felices de que vuelvas!</h6>
               <form class="pt-3" runat="server">
                 <div class="form-group">
-                  <label for="exampleInputEmail">Usuario</label>
+                  <label for="exampleInputEmail">Email</label>
                   <div class="input-group border-input">
                     <div class="input-group-prepend bg-transparent">
                       <span class="input-group-text bg-transparent border-right-0">
