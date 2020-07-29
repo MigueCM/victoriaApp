@@ -1,5 +1,5 @@
 ﻿(function ($) {
-    showSwal = function (type) {
+    showSwal = function (type, titulo,mensaje, url) {
         'use strict';
         if (type === 'basic') {
             swal({
@@ -26,16 +26,16 @@
 
         } else if (type === 'success-message') {
             swal({
-                title: 'Congratulations!',
-                text: 'You entered the correct answer',
+                title: titulo,
+                text: mensaje,
                 icon: 'success',
                 button: {
-                    text: "Continue",
+                    text: "Aceptar",
                     value: true,
                     visible: true,
                     className: "btn btn-primary"
                 }
-            })
+            }).then(function () { window.location.href = url;})
 
         } else if (type === 'auto-close') {
             swal({

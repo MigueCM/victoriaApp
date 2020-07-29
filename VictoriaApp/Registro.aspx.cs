@@ -15,11 +15,17 @@ namespace VictoriaApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                
+            }
+               
+            //ClientScript.RegisterStartupScript(this.GetType(), "Loader", "<script> $(document).ready(function() {$('#<%=UpdateProgress1.ClientID %>').show('slow', 'linear', function() {$('#<%=UpdateProgress1.ClientID %>').hide();});});</script>");
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
+            System.Threading.Thread.Sleep(2000);
             lbErrores.Items.Clear();
             List<string> errores = new List<string>();
             errores.Add("SOLUCIONE LOS SIGUIENTES ERRORES:");
@@ -80,7 +86,10 @@ namespace VictoriaApp
             }
             else
             {
-                PersonaBLL.Instancia.RegistrarPersona(oPersona, usuario, password);
+                if (PersonaBLL.Instancia.RegistrarPersona(oPersona, usuario, password))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "showSwal('success-message', 'Registro exitoso!', 'Bienvenido a Victoria', 'Login.aspx')", true);
+                }
                 divErrores.Visible = false;
                 lbErrores.Visible = false;
                 lbErrores.Items.Clear();

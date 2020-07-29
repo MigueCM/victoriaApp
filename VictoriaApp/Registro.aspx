@@ -16,9 +16,17 @@
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="stylesheet" href="css/estilos.css"/>
   <!-- endinject -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>--%>
+<script src="vendors/jquery.avgrund/jquery.avgrund.min.js"></script>
+<script src="Scripts/avgrund.js"></script>
   <link rel="shortcut icon" href="images/favicon.png" />
 </head>
 <body>
+    <form runat="server" id="form1">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
     <div class="<%--container-scroller--%>">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
@@ -30,32 +38,32 @@
               </div>
               <h4>Eres nuevo?</h4>
               <h6 class="font-weight-light">Únete, bríndandonos tu información</h6>
-              <form class="pt-0" runat="server" id="signupForm">
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label>Nombre/s</label>
-                        <div class="input-group border-input">
-                        <div class="input-group-prepend bg-transparent">
-                            <span class="input-group-text bg-transparent border-right-0">
+              <div class="pt-0" runat="server" id="signupForm">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Nombre/s</label>
+                            <div class="input-group border-input">
+                            <div class="input-group-prepend bg-transparent">
+                                <span class="input-group-text bg-transparent border-right-0">
+                                    <i class="fas fa-edit text-primary"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Nombre" runat="server" id="txtNombre"/>
+                        </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Apellidos</label>
+                          <div class="input-group border-input">
+                            <div class="input-group-prepend bg-transparent">
+                              <span class="input-group-text bg-transparent border-right-0">
                                 <i class="fas fa-edit text-primary"></i>
-                            </span>
+                              </span>
+                            </div>
+                            <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Apellidos" runat="server" id="txtApellidos"/>
+                          </div>
                         </div>
-                        <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Nombre" runat="server" id="txtNombre"/>
-                    </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label>Apellidos</label>
-                      <div class="input-group border-input">
-                        <div class="input-group-prepend bg-transparent">
-                          <span class="input-group-text bg-transparent border-right-0">
-                            <i class="fas fa-edit text-primary"></i>
-                          </span>
-                        </div>
-                        <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Apellidos" runat="server" id="txtApellidos"/>
                       </div>
-                    </div>
-                  </div>
-                  <div class="row">
+                    <div class="row">
                     <div class="form-group col-md-6">
                         <label>Email</label>
                         <div class="input-group border-input">
@@ -79,7 +87,7 @@
                       </div>
                     </div>
                   </div>
-                <div class="row">
+                    <div class="row">
                   <div class="form-group col-md-6">
                       <label>Fecha de Nacimiento</label>
                       <div class="input-group border-input">
@@ -88,7 +96,7 @@
                             <i class="fas fa-calendar-alt text-primary"></i>
                           </span>
                         </div>
-                        <input type="date" class="form-control form-control-lg border-left-0 border-input" runat="server" id="deFechaNacimiento"/>
+                        <input type="date"  min="01-01-1900" class="form-control form-control-lg border-left-0 border-input" runat="server" id="deFechaNacimiento" placeholder="dd/mm/aaaa"/>
                       </div>
                     </div>
                     <div class="form-group col-md-6">
@@ -101,7 +109,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
+                    <div class="row">
                     <div class="form-group col-md-6">
                       <label>Celular</label>
                       <div class="input-group border-input">
@@ -121,7 +129,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
+                    <div class="row">
                     <div class="form-group col-md-6">
                       <label>Ciudad</label>
                         <select class="form-control form-control-lg select-css" id="cbCiudad" runat="server">
@@ -141,15 +149,17 @@
                         </select>
                     </div>
                 </div>
-                <div class="mb-4 offset-2">
-                  <div class="form-check"><a href="#" id="show">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input" runat="server" id="chkTerminos"/>
-                      Acepto los terminos, condiciones y politicas de privacidad
-                    </label></a>
+                    <div class="mb-4 offset-2">
+                  <div class="form-check">
+                      <div class="row">
+                        <label class="form-check-label text-muted">
+                         <input type="checkbox" class="form-check-input" runat="server" id="chkTerminos"/>
+                        </label>
+                           <a class="form-check-label text-muted" id="show">Acepto los terminos, condiciones y politicas de privacidad.</a>
+                          </div>
                   </div>
                 </div>
-                  <div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="divErrores">
+                    <div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="divErrores">
                       <asp:ListBox ID="lbErrores" runat="server" BackColor="Transparent" Width="100%" Enabled="false" CssClass="border-0 accordion text-danger overflow-hidden" Visible="false"></asp:ListBox>
                   </div>
                   
@@ -157,9 +167,10 @@
                     <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" Text="UNIRSE A VICTORIA" OnClick="btnRegistrar_Click" />
                 </div>
                 <div class="text-center mt-4 font-weight-light">
-                 <h6> Ya tienes una cuenta? <a href="Login.aspx" class="text-primary">Inicia Sesión</a></h6>
+                 <h6> Ya tienes una cuenta? <a class="text-primary" runat="server" href="Login.aspx">Inicia Sesión</a></h6>
                 </div>
-              </form>
+                      
+              </div>
             </div>
           </div>
           <div class="col-lg-6 register-half-bg d-flex flex-row banner-none animated fadeIn">
@@ -171,81 +182,33 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>--%>
-    <script src="vendors/jquery.avgrund/jquery.avgrund.min.js"></script>
-    <script src="Scripts/avgrund.js"></script>
+        </ContentTemplate>
+                  </asp:UpdatePanel>
+                  <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+                      <ProgressTemplate>
+                          <div id="Background">
+                              <div id="Progress">
+                          <div class="col-md-4 col-sm-6 grid-margin stretch-card">
+                              <%--<div class="loader-demo-box">--%>
+                                <div class="square-box-loader">
+                                  <div class="square-box-loader-container">
+                                    <div class="square-box-loader-corner-top"></div>
+                                    <div class="square-box-loader-corner-bottom"></div>
+                                  </div>
+                                  <div class="square-box-loader-square"></div>
+                                </div>
+                              <%--</div>--%>
+                            </div></div></div>
+                      </ProgressTemplate>
+                  </asp:UpdateProgress>
+    </form>
     <script>
-        $("#cbEnterar").blur(function () {
-            if (document.getElementById("cbEnterar").selectedIndex != 0) {
-                $(this).css({ "background": "#A8A8F2" })
-                $(this).css({ "color": "#ffff" })
-            }
-        });
-        $("#cbPais").blur(function () {
-            if (document.getElementById("cbPais").selectedIndex != 0) {
-                $(this).css({ "background": "#A8A8F2" })
-                $(this).css({ "color": "#ffff" })
-            }
-        });
-        $("#cbCiudad").blur(function () {
-            if (document.getElementById("cbCiudad").selectedIndex != 0) {
-                $(this).css({ "background": "#A8A8F2" })
-                $(this).css({ "color": "#ffff" })
-            }
-        });
-        $("#cbSexo").blur(function () {
-            if (document.getElementById("cbSexo").selectedIndex != 0) {
-                $(this).css({ "background": "#A8A8F2" })
-                $(this).css({ "color": "#ffff" })
-            }
-        });
-        $("#txtNombre").blur(function () {
-            if ($('#txtNombre').val().length != 0) {
-                $(this).css({ "background": "#A8A8F2" })
-                $(this).css({ "color": "#ffff" })
-            }
-        });
-        $("#txtApellidos").blur(function () {
-            if ($('#txtApellidos').val().length != 0) {
-                $(this).css({ "background": "#A8A8F2" })
-                $(this).css({ "color": "#ffff" })
-            }
-        });
-        $("#txtUsuario").blur(function () {
-            if ($('#txtUsuario').val().length != 0) {
-                $(this).css({ "background": "#A8A8F2" })
-                $(this).css({ "color": "#ffff" })
-            }
-        });
-        $("#txtPassword").blur(function () {
-            if ($('#txtPassword').val().length != 0) {
-                $(this).css({ "background": "#A8A8F2" })
-                $(this).css({ "color": "#ffff" })
-            }
-        });
-        $("#deFechaNacimiento").blur(function () {
-            if ($('#deFechaNacimiento').val().length != 0) {
-                $(this).css({ "background": "#A8A8F2" })
-                $(this).css({ "color": "#ffff" })
-            }
-        });
-        $("#txtCorreo").blur(function () {
-            if ($('#txtCorreo').val().length != 0) {
-                $(this).css({ "background": "#A8A8F2" })
-                $(this).css({ "color": "#ffff" })
-            }
-        });
-        $("#txtCelular").blur(function () {
-            if ($('#txtCelular').val().length != 0) {
-                $(this).css({ "background": "#A8A8F2" })
-                $(this).css({ "color": "#ffff" })
-            }
-         });
-//$(".input").focus(function(){
-//  $(this).css({"background":"rgb(82, 179, 126)"})
-//})
-    </script>
+deFechaNacimiento.max = new Date().toISOString().split("T")[0];
+$(document).ready(function () {
+ $('#<%=UpdateProgress1.ClientID %>').show(1000, 'linear', function () { $('#<%=UpdateProgress1.ClientID %>').hide(); });});</script>
+    <script src="Scripts/sweetalert.min.js"></script>
+    <script src="Scripts/alerts.js"></script>
+    <script src="Scripts/funciones.js"></script>
     <script src="vendors/js/vendor.bundle.base.js"></script>
     <script src="Scripts/js/hoverable-collapse.js"></script>
     <script src="Scripts/js/off-canvas.js"></script>
