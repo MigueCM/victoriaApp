@@ -15,7 +15,7 @@ namespace VictoriaApp
 
             }
 
-            //ClientScript.RegisterStartupScript(this.GetType(), "Loader", "<script> $(document).ready(function() {$('#<%=UpdateProgress1.ClientID %>').show('slow', 'linear', function() {$('#<%=UpdateProgress1.ClientID %>').hide();});});</script>");
+            ClientScript.RegisterStartupScript(this.GetType(), "Loader", "<script> $(document).ready(function() {$('#<%=UpdateProgress1.ClientID %>').show('slow', 'linear', function() {$('#<%=UpdateProgress1.ClientID %>').hide();});});</script>");
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
@@ -60,11 +60,6 @@ namespace VictoriaApp
                 oPersona.Departamento = cbDepartamento.Value.Trim();
             else
                 errores.Add("Escoge tu pais");
-
-            if (cbCiudad.SelectedIndex != 0)
-                oPersona.Ciudad = cbCiudad.Value.Trim();
-            else
-                errores.Add("Escoge tu ciudad");
 
             if (cbEnterar.SelectedIndex != 0)
                 oPersona.Enterar = cbEnterar.Value.Trim();
