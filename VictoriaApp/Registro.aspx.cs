@@ -75,7 +75,6 @@ namespace VictoriaApp
                 usuario = txtUsuario.Value.Trim();
             else
                 errores.Add("Ingrese Email");
-
             if(!Globales.ValidarEmail(txtUsuario.Value.Trim()))
                 errores.Add("Ingrese un Email valido");
 
