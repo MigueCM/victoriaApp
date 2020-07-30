@@ -2,11 +2,8 @@
 using EL;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace VictoriaApp
 {
@@ -14,7 +11,7 @@ namespace VictoriaApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if( !Page.IsPostBack )
+            if (!Page.IsPostBack)
             {
                 CargarModulos();
             }
@@ -25,7 +22,7 @@ namespace VictoriaApp
         {
 
 
-            List<ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulos(Convert.ToInt32( Session["idUsuario"]));
+            List<ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulos(Convert.ToInt32(Session["idUsuario"]));
 
             StringBuilder innerHtml = new StringBuilder();
 
@@ -34,10 +31,10 @@ namespace VictoriaApp
             foreach (var item in lista)
             {
                 string fila = "<tr>";
-                fila +=  $"<td class=\"text-white\">{numero++}. {item.Nombre}</td>";
+                fila += $"<td class=\"text-white\">{numero++}. {item.Nombre}</td>";
 
-                if(item.FechaActualizacion != null && Convert.ToInt32(item.FechaActualizacion.ToString("yyyy")) >= 2020)
-                    fila +=  $"<td class=\"text-white text-center\">{item.FechaActualizacion.ToString("M")} {item.FechaActualizacion.ToString("yyyy")}</td>";
+                if (item.FechaActualizacion != null && Convert.ToInt32(item.FechaActualizacion.ToString("yyyy")) >= 2020)
+                    fila += $"<td class=\"text-white text-center\">{item.FechaActualizacion.ToString("M")} {item.FechaActualizacion.ToString("yyyy")}</td>";
                 else
                     fila += "<td class=\"text-white text-center\"></td>";
 

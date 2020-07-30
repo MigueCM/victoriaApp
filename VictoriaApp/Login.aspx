@@ -45,8 +45,7 @@
                       </span>
                     </div>
                     <%--<input type="text" class="form-control form-control-sm " id="txtUsuario" placeholder="Usuario"" >--%>
-
-                    <asp:TextBox ID="txtUsuario" runat="server" class="form-control form-control-sm" placeholder="Email" TextMode="Email"></asp:TextBox>
+                    <asp:TextBox ID="txtUsuario" runat="server" class="form-control form-control-sm" placeholder="Email"></asp:TextBox>
                   </div>
                 </div>
                 <div class="form-group">

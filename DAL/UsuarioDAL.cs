@@ -18,7 +18,8 @@ namespace DAL
             SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
             _comando.Parameters.AddWithValue("@user", SqlDbType.VarChar).Value = usuario;
             _comando.Parameters.AddWithValue("@password", SqlDbType.VarChar).Value = password;
-            _comando.Parameters.AddWithValue("@idPersona", SqlDbType.VarChar).Value = id;
+            _comando.Parameters.AddWithValue("@idUsuarioRegistro", SqlDbType.VarChar).Value = id;
+            _comando.Parameters.AddWithValue("@idPersona", SqlDbType.Int).Value = id;
             _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 1;
             bool valor = false;
             try

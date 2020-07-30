@@ -132,13 +132,13 @@ namespace VictoriaApp
         protected global::System.Web.UI.HtmlControls.HtmlSelect cbDepartamento;
 
         /// <summary>
-        /// Control cbCiudad.
+        /// Control cbPais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect cbCiudad;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cbPais;
 
         /// <summary>
         /// Control cbEnterar.

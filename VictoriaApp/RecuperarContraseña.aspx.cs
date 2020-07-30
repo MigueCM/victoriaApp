@@ -1,11 +1,6 @@
 ﻿using BLL;
 using EL;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace VictoriaApp
 {
@@ -20,10 +15,11 @@ namespace VictoriaApp
                 string localPath = url.LocalPath;
 
 
-                if (localPath.ToLower().Equals("/recuperarcontraseña") )
+                if (localPath.ToLower().Equals("/recuperarcontraseña"))
                 {
                     Response.Redirect("Login.aspx");
-                }else if (localPath.ToLower().Equals("/recuperarcontraseña/"))
+                }
+                else if (localPath.ToLower().Equals("/recuperarcontraseña/"))
                 {
                     Response.Redirect("/Login.aspx");
                 }
@@ -36,7 +32,7 @@ namespace VictoriaApp
 
             Uri url = Request.Url;
 
-            string token = url.LocalPath.Substring(url.LocalPath.Length - Globales.longitudToken , Globales.longitudToken);
+            string token = url.LocalPath.Substring(url.LocalPath.Length - Globales.longitudToken, Globales.longitudToken);
 
             Usuario objUsuario = UsuarioBLL.Instancia.ValidarPorToken(token);
             lblError.Visible = true;
@@ -44,15 +40,15 @@ namespace VictoriaApp
             if (objUsuario != null)
             {
 
-                if ( password1.Text.Trim().Length > 0 && password2.Text.Trim().Length > 0)
+                if (password1.Text.Trim().Length > 0 && password2.Text.Trim().Length > 0)
                 {
 
-                    if(password1.Text == password2.Text)
+                    if (password1.Text == password2.Text)
                     {
 
                         string password = Globales.CifrarClave(password1.Text);
 
-                        if( UsuarioBLL.Instancia.ActualizarPassword(password , objUsuario.IdUsuario))
+                        if (UsuarioBLL.Instancia.ActualizarPassword(password, objUsuario.IdUsuario))
                         {
                             lblError.InnerText = "Modificado correctamente";
 

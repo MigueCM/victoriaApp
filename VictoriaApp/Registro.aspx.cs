@@ -2,12 +2,7 @@
 using EL;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace VictoriaApp
 {
@@ -17,9 +12,9 @@ namespace VictoriaApp
         {
             if (!IsPostBack)
             {
-                
+
             }
-               
+
             //ClientScript.RegisterStartupScript(this.GetType(), "Loader", "<script> $(document).ready(function() {$('#<%=UpdateProgress1.ClientID %>').show('slow', 'linear', function() {$('#<%=UpdateProgress1.ClientID %>').hide();});});</script>");
         }
 
@@ -111,7 +106,7 @@ namespace VictoriaApp
             if (errores.Count > 1)
             {
                 lbErrores.Rows = errores.Count;
-                
+
                 divErrores.Visible = true;
                 lbErrores.Visible = true;
                 foreach (var item in errores)

@@ -2,12 +2,8 @@
 using EL;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace VictoriaApp
 {
@@ -30,7 +26,7 @@ namespace VictoriaApp
             lblError.Visible = false;
 
             string usuario = txtUsuario.Text;
-            string password = Globales.CifrarClave(txtPassword.Text); 
+            string password = Globales.CifrarClave(txtPassword.Text);
 
             Usuario objUsuario = UsuarioBLL.Instancia.ObtenerUsuario(usuario, password);
 
@@ -47,7 +43,7 @@ namespace VictoriaApp
                 Session["prog_value"] = $"width: {porcentaje}%";
                 Session["prog_text"] = $"{porcentaje}% Avance";
 
-                if ( objUsuario.Persona != null )
+                if (objUsuario.Persona != null)
                 {
                     Session["nombre"] = objUsuario.Persona.Nombre;
                     Session["apellidos"] = objUsuario.Persona.Apellidos;
@@ -66,7 +62,7 @@ namespace VictoriaApp
 
             }
 
-            
+
 
         }
 
@@ -80,20 +76,21 @@ namespace VictoriaApp
             string token = "";
             bool correoValido = false;
 
-            
 
-            if (Globales.ValidarEmail(email)){
+
+            if (Globales.ValidarEmail(email))
+            {
 
                 mensaje = "Email enviado. Revise su correo";
                 Usuario objUsuario = UsuarioBLL.Instancia.ValidarPorUsuario(email);
                 correoValido = objUsuario != null;
-                
+
 
                 if (correoValido)
                 {
                     token = Globales.GenerarToken();
 
-                    if ( !UsuarioBLL.Instancia.ActualizarToken(token , objUsuario.IdUsuario ))
+                    if (!UsuarioBLL.Instancia.ActualizarToken(token, objUsuario.IdUsuario))
                     {
                         mensaje = "Error al enviar correo intente de nuevo";
                         correoValido = false;
@@ -104,7 +101,7 @@ namespace VictoriaApp
                 {
                     mensaje = "El correo no se encuentra registrado";
                 }
-                    
+
 
                 //admin@hotmail.com
 
@@ -113,9 +110,9 @@ namespace VictoriaApp
 
 
             return JsonConvert.SerializeObject(
-                new 
+                new
                 {
-                    correoValido ,
+                    correoValido,
                     mensaje,
                     token
 

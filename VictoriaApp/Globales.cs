@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -43,8 +40,8 @@ namespace VictoriaApp
                 return false;
             }*/
 
-            return Regex.IsMatch(email, expresion) ? 
-                        Regex.Replace(email, expresion, String.Empty).Length == 0 : 
+            return Regex.IsMatch(email, expresion) ?
+                        Regex.Replace(email, expresion, String.Empty).Length == 0 :
                         false;
 
         }
