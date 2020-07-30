@@ -1,4 +1,9 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="VictoriaApp.SiteMaster" %>
+
+<%
+    
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,15 +34,15 @@
       <nav class="navbar top-navbar col-lg-12 col-12 p-0">
         <div class="container">
           <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo-dark.svg" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+            <!--a class="navbar-brand brand-logo" href="index.html"><img src="images/logo_victoria.png" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo_victoria.png" alt="logo"/></a -->
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item count-indicator nav-profile dropdown">
                 <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                  <span class="nav-profile-name">Hi, Lucille Wilkins</span>
+                  <span class="nav-profile-name text-capitalize">Hola, <%=Session["nombre"] %> <%=Session["apellidos"] %></span>
                   <img src="images/faces/face28.png" alt="profile"/>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -124,7 +129,7 @@
 
                                 <div class="progress progress-xl mt-2">
                                     
-                                  <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><span class="text-progressbar" >50% de Avance</span></div>
+                                  <div class="progress-bar bg-primary" role="progressbar" style="<%=Session["prog_value"] %>" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><span class="text-progressbar"><%=Session["prog_text"] %></span></div>
                                 </div>
 
                             </div>

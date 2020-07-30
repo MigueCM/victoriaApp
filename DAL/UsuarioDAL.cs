@@ -62,6 +62,16 @@ namespace DAL
                     oUsuario.User = dr["user"].ToString();
                     if(dr["idPerfil"] != DBNull.Value)
                         oUsuario.IdPerfil = Convert.ToInt32(dr["idPerfil"]);
+                    if (dr["idPersona"] != DBNull.Value)
+                    {
+                        oUsuario.IdPersona = Convert.ToInt32(dr["idPersona"]);
+                        oUsuario.Persona = new Persona();
+                        oUsuario.Persona.Id = Convert.ToInt32(dr["idPersona"]);
+                        oUsuario.Persona.Nombre = dr["Nombre"].ToString();
+                        oUsuario.Persona.Apellidos = dr["Apellidos"].ToString();
+                    }
+
+                        
 
 
                 }

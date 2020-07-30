@@ -40,6 +40,23 @@ namespace VictoriaApp
 
                 Session["IdUsuario"] = objUsuario.IdUsuario;
                 Session["IdPerfil"] = objUsuario.IdPerfil;
+                Session["IdPersona"] = objUsuario.IdPersona;
+
+                int porcentaje = UsuarioCapacitacionBLL.Instancia.ObtenerPorcentajeModulos(objUsuario.IdUsuario);
+
+                Session["prog_value"] = $"width: {porcentaje}%";
+                Session["prog_text"] = $"{porcentaje}% Avance";
+
+                if ( objUsuario.Persona != null )
+                {
+                    Session["nombre"] = objUsuario.Persona.Nombre;
+                    Session["apellidos"] = objUsuario.Persona.Apellidos;
+                }
+                else
+                {
+                    Session["nombre"] = "";
+                    Session["apellidos"] = "";
+                }
                 Response.Redirect("Principal.aspx");
             }
             else

@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="ModuloCapacitacionDAL.cs" />
     <Compile Include="PersonaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioCapacitacionDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
     <Compile Include="UsuarioHistorialDAL.cs" />
   </ItemGroup>

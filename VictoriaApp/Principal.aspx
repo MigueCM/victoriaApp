@@ -1,4 +1,6 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Principal.aspx.cs" Inherits="VictoriaApp.Principal" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -15,7 +17,7 @@
                           <th class="text-white text-center"><h4>Estado</h4></th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="tableModulos" runat="server">
                         <tr>
                           <td class="text-white">1. Lorem Ipsum is simply dummy text of the</td>
                           <td class="text-white text-center">09 de Julio 2020</td>

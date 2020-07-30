@@ -8,6 +8,8 @@ namespace EL
 {
     public class Usuario
     {
+        Persona persona;
+        int idPersona;
         private int idUsuario;
         private int idPerfil;
         private string user;
@@ -21,5 +23,7 @@ namespace EL
         public string Password { get => password; set => password = value; }
         public int IdUsuarioRegistro { get => idUsuarioRegistro; set => idUsuarioRegistro = value; }
         public DateTime FechaRegistro { get => fechaRegistro; set => fechaRegistro = value; }
+        public Persona Persona { get => persona; set => persona = value; }
+        public int IdPersona { get => idPersona; set => idPersona = value; }
     }
 }

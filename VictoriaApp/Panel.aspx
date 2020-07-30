@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="row">
+    <div class="row" id="div_modulos" runat="server">
 
         <div class="col-md-4">
 
@@ -18,8 +18,7 @@
                     </p>
                     <div class="text-center">
                         <a href="Video.aspx" class="btn btn-primary">Empezar</a>
-                    </div>
-                              
+                    </div>                             
   
                 </div>
                 </div>
