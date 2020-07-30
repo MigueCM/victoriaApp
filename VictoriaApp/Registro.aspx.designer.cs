@@ -33,15 +33,6 @@ namespace VictoriaApp
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// Control UpdatePanel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-
-        /// <summary>
         /// Control signupForm.
         /// </summary>
         /// <remarks>
@@ -69,6 +60,15 @@ namespace VictoriaApp
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtApellidos;
 
         /// <summary>
+        /// Control txtDni.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDni;
+
+        /// <summary>
         /// Control txtUsuario.
         /// </summary>
         /// <remarks>
@@ -85,6 +85,15 @@ namespace VictoriaApp
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtPassword;
+
+        /// <summary>
+        /// Control txtVerificarPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtVerificarPassword;
 
         /// <summary>
         /// Control deFechaNacimiento.
@@ -114,13 +123,13 @@ namespace VictoriaApp
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtCelular;
 
         /// <summary>
-        /// Control cbPais.
+        /// Control cbDepartamento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect cbPais;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cbDepartamento;
 
         /// <summary>
         /// Control cbCiudad.
@@ -175,14 +184,5 @@ namespace VictoriaApp
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
-
-        /// <summary>
-        /// Control UpdateProgress1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress UpdateProgress1;
     }
 }

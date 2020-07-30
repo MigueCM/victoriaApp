@@ -1,4 +1,22 @@
-﻿
+﻿$(window).on('load', function () {
+    /*loader hide */
+    setTimeout(function () {
+        $('.loader').fadeOut();
+    }, 500);
+    /* fixed header specific style */
+    if ($('.header').hasClass('fixed-top') === true) {
+        $('main').css('padding-top', $('.fixed-top').outerHeight());
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() >= 100) {
+                $('.header').addClass('fill-header shadow-sm')
+            } else {
+                $('.header').removeClass('fill-header shadow-sm')
+            }
+        });
+    }
+});
+
+deFechaNacimiento.max = new Date().toISOString().split("T")[0];
 $("#cbEnterar").blur(function () {
     if (document.getElementById("cbEnterar").selectedIndex != 0) {
         $(this).css({ "background": "#A8A8F2" })
@@ -8,8 +26,8 @@ $("#cbEnterar").blur(function () {
         $(this).css({ "color": "#495057" })
     }
 });
-$("#cbPais").blur(function () {
-    if (document.getElementById("cbPais").selectedIndex != 0) {
+$("#cbDepartamento").blur(function () {
+    if (document.getElementById("cbDepartamento").selectedIndex != 0) {
         $(this).css({ "background": "#A8A8F2" })
         $(this).css({ "color": "#ffff" })
     } else {
@@ -28,6 +46,15 @@ $("#cbCiudad").blur(function () {
 });
 $("#cbSexo").blur(function () {
     if (document.getElementById("cbSexo").selectedIndex != 0) {
+        $(this).css({ "background": "#A8A8F2" })
+        $(this).css({ "color": "#ffff" })
+    } else {
+        $(this).css({ "background": "transparent" })
+        $(this).css({ "color": "#495057" })
+    }
+});
+$("#txtDni").blur(function () {
+    if ($('#txtDni').val().length != 0) {
         $(this).css({ "background": "#A8A8F2" })
         $(this).css({ "color": "#ffff" })
     } else {

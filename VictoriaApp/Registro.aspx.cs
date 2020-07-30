@@ -35,44 +35,79 @@ namespace VictoriaApp
                 oPersona.Nombre = txtNombre.Value.Trim();
             else
                 errores.Add("Ingrese nombre");
+
             if (!string.IsNullOrEmpty(txtApellidos.Value.Trim()))
                 oPersona.Apellidos = txtApellidos.Value.Trim();
             else
                 errores.Add("Ingrese apellidos");
+
+            if (!string.IsNullOrEmpty(txtDni.Value.Trim()))
+                oPersona.Dni = txtDni.Value.Trim();
+            else
+                errores.Add("Ingrese apellidos");
+
             if (!string.IsNullOrEmpty(deFechaNacimiento.Value.Trim()))
                 oPersona.FechaNacimiento = Convert.ToDateTime(deFechaNacimiento.Value.Trim());
             else
                 errores.Add("Ingrese fecha de nacimiento");
+
             if (!string.IsNullOrEmpty(txtCelular.Value.Trim()))
                 oPersona.Celular = txtCelular.Value.Trim();
             else
                 errores.Add("Ingrese celular");
+
             if (cbSexo.SelectedIndex != 0)
                 oPersona.Sexo = cbSexo.Value.Trim();
             else
                 errores.Add("Escoge tu sexo");
-            if (cbPais.SelectedIndex != 0)
-                oPersona.Pais = cbPais.Value.Trim();
+
+            if (cbDepartamento.SelectedIndex != 0)
+                oPersona.Departamento = cbDepartamento.Value.Trim();
             else
                 errores.Add("Escoge tu pais");
+
             if (cbCiudad.SelectedIndex != 0)
                 oPersona.Ciudad = cbCiudad.Value.Trim();
             else
                 errores.Add("Escoge tu ciudad");
+
             if (cbEnterar.SelectedIndex != 0)
                 oPersona.Enterar = cbEnterar.Value.Trim();
             else
                 errores.Add("Escoge como te enteraste");
+
             if (!string.IsNullOrEmpty(txtUsuario.Value.Trim()))
                 usuario = txtUsuario.Value.Trim();
             else
                 errores.Add("Ingrese Email");
+
             if(!Globales.ValidarEmail(txtUsuario.Value.Trim()))
                 errores.Add("Ingrese un Email valido");
+
+            if (!txtVerificarPassword.Value.Trim().Equals(txtPassword.Value.Trim()))
+                errores.Add("Las contraseñas no son iguales");
+
+            if (string.IsNullOrEmpty(txtVerificarPassword.Value.Trim()))
+            {
+                errores.Add("Verifique contraseña");
+                if (txtVerificarPassword.Value.Trim().Length < 6)
+                    errores.Add("Verificar contraseña debe tener minimo 6 caracteres");
+            }
+
             if (!string.IsNullOrEmpty(txtPassword.Value.Trim()))
+            {
                 password = Globales.CifrarClave(txtPassword.Value.Trim());
+                if (txtPassword.Value.Trim().Length < 6)
+                    errores.Add("La contraseña debe tener minimo 6 caracteres");
+            }
             else
-                errores.Add("Ingrese password");
+                errores.Add("Ingrese contraseña");
+
+            if (!chkTerminos.Checked)
+            {
+                errores.Add("Acepte los terminos, condiciones y politicas de privacidad");
+            }
+
             if (errores.Count > 1)
             {
                 lbErrores.Rows = errores.Count;

@@ -18,6 +18,8 @@
   <!-- endinject -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>--%>
+    <script src="Scripts/sweetalert.min.js"></script>
+    <script src="Scripts/alerts.js"></script>
 <script src="vendors/jquery.avgrund/jquery.avgrund.min.js"></script>
 <script src="Scripts/avgrund.js"></script>
   <link rel="shortcut icon" href="images/favicon.png" />
@@ -25,8 +27,37 @@
 <body>
     <form runat="server" id="form1">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
+        <%--<div class="col-md-4 col-sm-6 grid-margin stretch-card">
+                             
+                                <div class="square-box-loader">
+                                  <div class="square-box-loader-container">
+                                    <div class="square-box-loader-corner-top"></div>
+                                    <div class="square-box-loader-corner-bottom"></div>
+                                  </div>
+                                  <div class="square-box-loader-square"></div>
+                                </div>
+                              
+                            </div>--%>
+          <div class="loader">
+            <div>
+                <div class="loader-animation">
+                </div>
+                <br/>
+                <div class="square-box-loader">
+                                  <div class="square-box-loader-container">
+                                    <div class="square-box-loader-corner-top"></div>
+                                    <div class="square-box-loader-corner-bottom"></div>
+                                  </div>
+                                  <div class="square-box-loader-square"></div>
+                                </div>
+                <p class="text-mute">
+                    <br/>
+                    cargando...
+                </p>
+            </div>
+        </div>
+    <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>--%>
     <div class="<%--container-scroller--%>">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
@@ -65,16 +96,29 @@
                       </div>
                     <div class="row">
                     <div class="form-group col-md-6">
+                        <label>Dni</label>
+                        <div class="input-group border-input">
+                            <div class="input-group-prepend bg-transparent">
+                                <span class="input-group-text bg-transparent border-right-0">
+                                    <i class="fas fa-address-card text-primary"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="DNI" runat="server" id="txtDni"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
                         <label>Email</label>
                         <div class="input-group border-input">
-                        <div class="input-group-prepend bg-transparent">
-                            <span class="input-group-text bg-transparent border-right-0">
-                                <i class="fas fa-user text-primary"></i>
-                            </span>
+                            <div class="input-group-prepend bg-transparent">
+                                <span class="input-group-text bg-transparent border-right-0">
+                                    <i class="fas fa-user text-primary"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Email" runat="server" id="txtUsuario"/>
                         </div>
-                        <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Email" runat="server" id="txtUsuario"/>
                     </div>
-                    </div>
+                  </div>
+                  <div class="row">
                     <div class="form-group col-md-6">
                       <label>Contraseña</label>
                       <div class="input-group border-input">
@@ -84,6 +128,17 @@
                           </span>
                         </div>
                         <input type="password" class="form-control form-control-lg border-left-0 border-input" id="txtPassword" runat="server" placeholder="Contraseña"/>
+                      </div>
+                    </div>
+                      <div class="form-group col-md-6">
+                      <label>Verificar Contraseña</label>
+                      <div class="input-group border-input">
+                        <div class="input-group-prepend bg-transparent">
+                          <span class="input-group-text bg-transparent border-right-0">
+                            <i class="fas fa-lock text-primary"></i>
+                          </span>
+                        </div>
+                        <input type="password" class="form-control form-control-lg border-left-0 border-input" id="txtVerificarPassword" runat="server" placeholder="Contraseña"/>
                       </div>
                     </div>
                   </div>
@@ -122,10 +177,10 @@
                       </div>
                     </div>
                     <div class="form-group col-md-6">
-                      <label>País</label>
-                        <select class="form-control form-control-lg select-css" id="cbPais" runat="server">
-                            <option selected="selected">País</option>
-                            <option >Perú</option>
+                      <label>Departamento</label>
+                        <select class="form-control form-control-lg select-css" id="cbDepartamento" runat="server">
+                            <option selected="selected">Departamento</option>
+                            <option >La Libertad</option>
                         </select>
                     </div>
                 </div>
@@ -150,21 +205,21 @@
                     </div>
                 </div>
                     <div class="mb-4 offset-2">
+                        <%--<a href="#" id="show">--%>
                   <div class="form-check">
-                      <div class="row">
-                        <label class="form-check-label text-muted">
+                        <label class="form-check-label text-muted" id="show">
                          <input type="checkbox" class="form-check-input" runat="server" id="chkTerminos"/>
+                            Acepto los terminos, condiciones y politicas de privacidad.
                         </label>
-                           <a class="form-check-label text-muted" id="show">Acepto los terminos, condiciones y politicas de privacidad.</a>
-                          </div>
                   </div>
+                            <%--</a>--%>
                 </div>
                     <div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="divErrores">
                       <asp:ListBox ID="lbErrores" runat="server" BackColor="Transparent" Width="100%" Enabled="false" CssClass="border-0 accordion text-danger overflow-hidden" Visible="false"></asp:ListBox>
                   </div>
                   
                 <div class="mt-3">
-                    <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" Text="UNIRSE A VICTORIA" OnClick="btnRegistrar_Click" />
+                    <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" Text="UNIRSE A VICTORIA" OnClick="btnRegistrar_Click"/>
                 </div>
                 <div class="text-center mt-4 font-weight-light">
                  <h6> Ya tienes una cuenta? <a class="text-primary" runat="server" href="Login.aspx">Inicia Sesión</a></h6>
@@ -182,14 +237,14 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-        </ContentTemplate>
-                  </asp:UpdatePanel>
-                  <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+        <%--</ContentTemplate>
+                  </asp:UpdatePanel>--%>
+                  <%--<asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                       <ProgressTemplate>
                           <div id="Background">
                               <div id="Progress">
                           <div class="col-md-4 col-sm-6 grid-margin stretch-card">
-                              <%--<div class="loader-demo-box">--%>
+                             
                                 <div class="square-box-loader">
                                   <div class="square-box-loader-container">
                                     <div class="square-box-loader-corner-top"></div>
@@ -197,17 +252,18 @@
                                   </div>
                                   <div class="square-box-loader-square"></div>
                                 </div>
-                              <%--</div>--%>
+                              
                             </div></div></div>
                       </ProgressTemplate>
-                  </asp:UpdateProgress>
+                  </asp:UpdateProgress>--%>
     </form>
     <script>
-deFechaNacimiento.max = new Date().toISOString().split("T")[0];
-$(document).ready(function () {
- $('#<%=UpdateProgress1.ClientID %>').show(1000, 'linear', function () { $('#<%=UpdateProgress1.ClientID %>').hide(); });});</script>
-    <script src="Scripts/sweetalert.min.js"></script>
-    <script src="Scripts/alerts.js"></script>
+       
+        //$(document).ready(function () {
+        <%--$('#<%=UpdateProgress1.ClientID %>').show(1000, 'linear', function () { $('#<%=UpdateProgress1.ClientID %>').hide(); });});--%>
+    </script>
+    
+    
     <script src="Scripts/funciones.js"></script>
     <script src="vendors/js/vendor.bundle.base.js"></script>
     <script src="Scripts/js/hoverable-collapse.js"></script>

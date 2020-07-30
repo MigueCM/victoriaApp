@@ -18,10 +18,11 @@ namespace DAL
             SqlCommand _comando = new SqlCommand("PA_Persona", _conexion) { CommandType = CommandType.StoredProcedure };
             _comando.Parameters.AddWithValue("@Nombre", SqlDbType.VarChar).Value = persona.Nombre;
             _comando.Parameters.AddWithValue("@Apellidos", SqlDbType.VarChar).Value = persona.Apellidos;
+            _comando.Parameters.AddWithValue("@Dni", SqlDbType.VarChar).Value = persona.Dni;
             _comando.Parameters.AddWithValue("@FechaNacimiento", SqlDbType.DateTime).Value = persona.FechaNacimiento;
             _comando.Parameters.AddWithValue("@Sexo", SqlDbType.VarChar).Value = persona.Sexo;
             _comando.Parameters.AddWithValue("@Celular", SqlDbType.VarChar).Value = persona.Celular;
-            _comando.Parameters.AddWithValue("@Pais", SqlDbType.VarChar).Value = persona.Pais;
+            _comando.Parameters.AddWithValue("@Departamento", SqlDbType.VarChar).Value = persona.Departamento;
             _comando.Parameters.AddWithValue("@Ciudad", SqlDbType.VarChar).Value = persona.Ciudad;
             _comando.Parameters.AddWithValue("@Avatar", SqlDbType.VarChar).Value = persona.Avatar;
             _comando.Parameters.AddWithValue("@Enteraste", SqlDbType.VarChar).Value = persona.Enterar;
