@@ -132,7 +132,7 @@
                       </div>
                     </div>
                       <div class="form-group col-md-6">
-                      <label>Verificar Contraseña</label>
+                      <label>Confirmar Contraseña</label>
                       <div class="input-group border-input">
                         <div class="input-group-prepend bg-transparent">
                           <span class="input-group-text bg-transparent border-right-0">

@@ -98,6 +98,15 @@ $("#txtPassword").blur(function () {
         $(this).css({ "color": "#495057" })
     }
 });
+$("#txtVerificarPassword").blur(function () {
+    if ($('#txtPassword').val().length != 0) {
+        $(this).css({ "background": "#A8A8F2" })
+        $(this).css({ "color": "#ffff" })
+    } else {
+        $(this).css({ "background": "transparent" })
+        $(this).css({ "color": "#495057" })
+    }
+});
 $("#deFechaNacimiento").blur(function () {
     if ($('#deFechaNacimiento').val().length != 0) {
         $(this).css({ "background": "#A8A8F2" })

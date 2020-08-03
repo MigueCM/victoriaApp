@@ -138,6 +138,9 @@
     <Content Include="images\banner-bg2.jpg" />
     <Content Include="images\banner-menu.png" />
     <Content Include="images\banner-menu2.png" />
+    <Content Include="images\correoCabecera.jpg" />
+    <Content Include="images\correoFooter.jpg" />
+    <Content Include="images\correoMedio.jpg" />
     <Content Include="images\faces\face13.jpg" />
     <Content Include="images\faces\face28.png" />
     <Content Include="images\favicon.png" />

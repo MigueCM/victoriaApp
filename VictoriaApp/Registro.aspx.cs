@@ -2,6 +2,9 @@ using BLL;
 using EL;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Web.UI;
 
 namespace VictoriaApp
@@ -12,10 +15,13 @@ namespace VictoriaApp
         {
             if (!IsPostBack)
             {
-
+                //List<string> data = new List<string>();
+                //data.Add("La Libertad - Trujillo - Victor Larco Herrera");
+                //cbDepartamento.DataSource = data;
+                //cbDepartamento.DataBind();
             }
 
-            ClientScript.RegisterStartupScript(this.GetType(), "Loader", "<script> $(document).ready(function() {$('#<%=UpdateProgress1.ClientID %>').show('slow', 'linear', function() {$('#<%=UpdateProgress1.ClientID %>').hide();});});</script>");
+            //ClientScript.RegisterStartupScript(this.GetType(), "Loader", "<script> $(document).ready(function() {$('#<%=UpdateProgress1.ClientID %>').show('slow', 'linear', function() {$('#<%=UpdateProgress1.ClientID %>').hide();});});</script>");
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
@@ -59,7 +65,7 @@ namespace VictoriaApp
             if (cbDepartamento.SelectedIndex != 0)
                 oPersona.Departamento = cbDepartamento.Value.Trim();
             else
-                errores.Add("Escoge tu pais");
+                errores.Add("Escoge tu departamento");
 
             if (cbEnterar.SelectedIndex != 0)
                 oPersona.Enterar = cbEnterar.Value.Trim();
@@ -112,12 +118,41 @@ namespace VictoriaApp
             {
                 if (PersonaBLL.Instancia.RegistrarPersona(oPersona, usuario, password))
                 {
+                    enviaremail(usuario, oPersona.Nombre, oPersona.Apellidos);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "showSwal('success-message', 'Registro exitoso!', 'Bienvenido a Victoria', 'Login.aspx')", true);
                 }
                 divErrores.Visible = false;
                 lbErrores.Visible = false;
                 lbErrores.Items.Clear();
             }
+        }
+
+        protected void enviaremail(string correo, string nombre, string apellidos)
+        {
+            SmtpClient sc = new SmtpClient("smtp.gmail.com");
+            sc.UseDefaultCredentials = false;
+            sc.Credentials = new System.Net.NetworkCredential("aulavirtualeducacccion@gmail.com", "Danper20203%");
+            sc.EnableSsl = true;
+            sc.Port = 587;
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("inscripciones@aulavirtual-juntoscrecemos.pe", "Victoria");
+            mail.To.Add(new MailAddress(correo));
+            mail.Subject = "Solicitud registrada.";
+            mail.To.Add(correo);
+            string mailbody = "<br/><html><body><div style='text-align:center'><img src=\"cid:Email\"><div style='position: absolute; text-align:center; font-size:30px; font-weight:bold; color:#5B127D;'><p>" + nombre +" "+ apellidos +"</p><p> "+correo+ " </p></div><div><img src=\"cid:EmailMid\"></div><div><a style ='position: absolute; font-size:large; background-color:#5B127D; color:white; padding:10px; font-size:20px; border-radius:20px; text-decoration:none;' href='#'>Comienza el camino de la igualdad</a></div><br /><br /><div><img src=\"cid:EmailFooter\" ></div></div></body></html>";
+            AlternateView AlternateView_Html = AlternateView.CreateAlternateViewFromString(mailbody, null, MediaTypeNames.Text.Html);
+            LinkedResource Picture1 = new LinkedResource(Server.MapPath(@"~/images/correoCabecera.jpg"), MediaTypeNames.Image.Jpeg);
+            LinkedResource Picture2 = new LinkedResource(Server.MapPath(@"~/images/correoMedio.jpg"), MediaTypeNames.Image.Jpeg);
+            LinkedResource Picture3 = new LinkedResource(Server.MapPath(@"~/images/correoFooter.jpg"), MediaTypeNames.Image.Jpeg);
+            Picture1.ContentId = "Email";
+            Picture2.ContentId = "EmailMid";
+            Picture3.ContentId = "EmailFooter";
+            AlternateView_Html.LinkedResources.Add(Picture1);
+            AlternateView_Html.LinkedResources.Add(Picture2);
+            AlternateView_Html.LinkedResources.Add(Picture3);
+            mail.AlternateViews.Add(AlternateView_Html);
+            mail.Body = mailbody;
+            sc.Send(mail);
         }
     }
 }
