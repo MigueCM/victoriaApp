@@ -57,5 +57,10 @@ namespace BLL
             return oModuloDAL.EditarModulo(moduloCapacitacion);
         }
 
+        public bool EliminarModulo(int idModuloCapacitacion)
+        {
+            return oModuloDAL.EliminarModulo(idModuloCapacitacion);
+        }
+
     }
 }

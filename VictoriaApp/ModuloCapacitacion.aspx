@@ -269,6 +269,31 @@
             });
         }
 
+        function eliminar(id) {
+            if (confirm("Desea Eliminar este módulo")) {
+                var parametros = "{'id': '" + id + "'}";
+
+                $.ajax({
+                    data: parametros,
+                    url: 'ModuloCapacitacion.aspx/EliminarData',
+                    dataType: "json",
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    beforeSend: function () {
+
+                    },
+                    success: function (response) {
+                        console.log(response)
+                        location.href = "ModuloCapacitacion.aspx";
+                    },
+                    error: function (e) {
+                        console.log(e)
+                    }
+                });
+            }
+
+        }
+
         function redireccionPreguntas(id) {
             var parametros = "{'id': '" + id + "'}";
 
@@ -288,6 +313,18 @@
                     console.log(e)
                 }
             });
+        }
+
+        function limpiar() {
+            $(".txtId").val("");
+            $(".txtNombre").val("");
+            $(".txtDescripcion").val("");
+            $(".txtEnlace").val("");
+            $(".txtImagen").val("");
+            $(".title").html("Registro de Módulo")
+            $(".btnEnviar").html("Agregar")
+            $(".txtTipo").val(1)
+            $(".txtFile").prop("required", true)
         }
 
     </script>

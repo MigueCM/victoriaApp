@@ -73,7 +73,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/widgets/widgets.html">
+                                <a class="nav-link" href="ModuloCapacitacion.aspx">
                                     <i class="mdi mdi-airplay menu-icon"></i>
                                     <span class="menu-title">MODULOS</span>
                                 </a>
