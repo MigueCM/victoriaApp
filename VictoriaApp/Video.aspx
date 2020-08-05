@@ -65,7 +65,7 @@
                     <div class="modal-body">
                         <h2 class="text-primary text-center">Lorem Ipsum</h2>
 
-                        <div class="mt-4">                           
+                        <div class="mt-4 div_cuestionario" runat="server" id="div_cuestionario">                           
                             
                             <div class="form-group">
                                 <label class="mb-0">1. Lorem Ipsum asd asd asd asd asd asd</label>
@@ -218,7 +218,7 @@
                                 <label for="radio5">★</label>
                               </p>
 
-                            <button class="btn btn-primary" style="float:right">Enviar</button>
+                            <button class="btn btn-primary" style="float:right" onclick="ValidarCampos()">Enviar</button>
 
                         </div>
                     </div>
@@ -284,7 +284,84 @@
         function playVideo() {
             player.playVideo();
         }
-        
+
+        function ValidarCampos() {
+
+            var num_preguntas = $(".div_cuestionario").data("num");
+
+            var flag = true;
+            var arreglo = [];
+            for (var i = 1; i <= num_preguntas; i++) {
+                var value = $(".div_cuestionario input[name=rb-" + i + "]:checked").val();
+                arreglo.push(value);
+                if ($(".div_cuestionario input[name=rb-"+i+"]:checked").length == 0)
+                    flag = false;
+
+            }
+
+
+            if (flag == true) {
+               
+                if ($(".clasificacion input[type=radio]:checked").length == 0) {
+                    alert("Debe calificar este módulo");
+                } else {
+                    var parametros = "{'respuestas': '" + arreglo + "', 'calificacion':" + $(".clasificacion input[type=radio]:checked").val() + "}";
+
+                    console.log(arreglo);
+                    $.ajax({
+                        data: parametros,
+                        url: 'Video.aspx/ValidarData',
+                        dataType: "json",
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function () {
+
+                        },
+                        success: function (response) {
+                            console.log(response)
+
+                        },
+                        error: function (e) {
+                            console.log(e)
+                        }
+                    });
+                }
+            }                
+            else
+                alert("Debe responder todas las preguntas");
+/*
+            $.ajax({
+                data: parametros,
+                url: 'PreguntaCapacitacion.aspx/CargarDataPreguntas',
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+
+                },
+                success: function (response) {
+                    var data = JSON.parse(response.d)["objPreguntas"];
+
+                    $(".txtId").val(id);
+                    $(".cboOrden").val(data["Orden"]);
+                    $(".txtDescripcion").val(data["Descripcion"]);
+                    $(".txtAlternativa1").val(data["Alternativa1"]);
+                    $(".txtAlternativa2").val(data["Alternativa2"]);
+                    $(".txtAlternativa3").val(data["Alternativa3"]);
+                    $(".txtAlternativa4").val(data["Alternativa4"]);
+                    $(".txtAlternativa5").val(data["Alternativa5"]);
+                    $(".cboAlternativa").val(data["Respuesta"]);
+                    $(".title").html("Actualización de Pregunta")
+                    $(".btnEnviar").html("Actualizar")
+                    $(".txtTipo").val(2)
+
+                    $("#modalCreate").modal("show")
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            });*/
+        }
 
     </script>
 </asp:Content>
