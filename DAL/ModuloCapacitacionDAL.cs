@@ -207,5 +207,31 @@ namespace DAL
             return valor;
         }
 
+        public bool EliminarModulo(int idModuloCapacitacion)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_ModuloCapacitacion", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@idModuloCapacitacion", SqlDbType.Int).Value = idModuloCapacitacion;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 7;
+            bool valor = false;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+                _comando.ExecuteNonQuery();
+                valor = true;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return valor;
+        }
+
     }
 }

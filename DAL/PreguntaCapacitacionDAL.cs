@@ -29,7 +29,7 @@ namespace DAL
                 {
                     PreguntaCapacitacion modulo = new PreguntaCapacitacion();
 
-                    modulo.IdPreguntaCapacitacion = Convert.ToInt32(dr["idModuloCapacitacion"]);
+                    modulo.IdPreguntaCapacitacion = Convert.ToInt32(dr["idPreguntaCapacitacion"]);
                     modulo.IdModuloCapacitacion = Convert.ToInt32(dr["idModuloCapacitacion"]);
                     modulo.Descripcion = dr["Descripcion"].ToString();
                     modulo.Orden = Convert.ToInt32(dr["Nro"]);
@@ -131,9 +131,9 @@ namespace DAL
         public bool RegistrarPregunta(PreguntaCapacitacion preguntaCapacitacion)
         {
             SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
-            SqlCommand _comando = new SqlCommand("PA_ModuloCapacitacion", _conexion) { CommandType = CommandType.StoredProcedure };
+            SqlCommand _comando = new SqlCommand("PA_PreguntaCapacitacion", _conexion) { CommandType = CommandType.StoredProcedure };
             _comando.Parameters.AddWithValue("@idModuloCapacitacion", SqlDbType.Int).Value = preguntaCapacitacion.IdModuloCapacitacion;
-            _comando.Parameters.AddWithValue("@Descripcion", SqlDbType.VarChar).Value = preguntaCapacitacion.Descripcion;
+            _comando.Parameters.AddWithValue("@descripcion", SqlDbType.VarChar).Value = preguntaCapacitacion.Descripcion;
             _comando.Parameters.AddWithValue("@nro", SqlDbType.Int).Value = preguntaCapacitacion.Orden;
             _comando.Parameters.AddWithValue("@alternativa1", SqlDbType.VarChar).Value = preguntaCapacitacion.Alternativa1;
             _comando.Parameters.AddWithValue("@alternativa2", SqlDbType.VarChar).Value = preguntaCapacitacion.Alternativa2;
@@ -165,7 +165,7 @@ namespace DAL
         public bool EditarPregunta(PreguntaCapacitacion preguntaCapacitacion)
         {
             SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
-            SqlCommand _comando = new SqlCommand("PA_ModuloCapacitacion", _conexion) { CommandType = CommandType.StoredProcedure };
+            SqlCommand _comando = new SqlCommand("PA_PreguntaCapacitacion", _conexion) { CommandType = CommandType.StoredProcedure };
             _comando.Parameters.AddWithValue("@idPreguntaCapacitacion", SqlDbType.Int).Value = preguntaCapacitacion.IdPreguntaCapacitacion;
             _comando.Parameters.AddWithValue("@idModuloCapacitacion", SqlDbType.Int).Value = preguntaCapacitacion.IdModuloCapacitacion;
             _comando.Parameters.AddWithValue("@Descripcion", SqlDbType.VarChar).Value = preguntaCapacitacion.Descripcion;
@@ -177,6 +177,32 @@ namespace DAL
             _comando.Parameters.AddWithValue("@alternativa5", SqlDbType.VarChar).Value = preguntaCapacitacion.Alternativa5;
             _comando.Parameters.AddWithValue("@respuesta", SqlDbType.VarChar).Value = preguntaCapacitacion.Respuesta;
             _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 2;
+            bool valor = false;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+                _comando.ExecuteNonQuery();
+                valor = true;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return valor;
+        }
+
+        public bool EliminarPregunta(int idPreguntaCapacitacion)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_PreguntaCapacitacion", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@idPreguntaCapacitacion", SqlDbType.Int).Value = idPreguntaCapacitacion;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 3;
             bool valor = false;
             try
             {

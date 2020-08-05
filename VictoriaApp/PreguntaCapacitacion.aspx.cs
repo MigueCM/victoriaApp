@@ -99,7 +99,7 @@ namespace VictoriaApp
             string alternativa4 = txtAlternativa4.Value;
             string alternativa5 = txtAlternativa5.Value;
             string respuesta = cboAlternativa.Value;
-            int id = Convert.ToInt32(txtId.Value);
+            
             string tipo = txtTipo.Value;
             int idModulo = Convert.ToInt32(Session["idModuloCapacitacion"]);
 
@@ -122,7 +122,7 @@ namespace VictoriaApp
             }
             else if(tipo == "2")
             {
-                objPreguntas.IdPreguntaCapacitacion = id;
+                objPreguntas.IdPreguntaCapacitacion = Convert.ToInt32(txtId.Value);
                 exito = PreguntaCapacitacionBLL.Instancia.EditarPregunta(objPreguntas);
             }
 
@@ -152,5 +152,12 @@ namespace VictoriaApp
                 );
 
         }
+        
+        [WebMethod]
+        public static bool EliminarData(int id)
+        {
+            return PreguntaCapacitacionBLL.Instancia.EliminarPregunta(id);
+        }
+
     }
 }

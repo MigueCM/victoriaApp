@@ -14,7 +14,7 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group ">
                             
-                                    <button id="btnNuevo" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate" >
+                                    <button id="btnNuevo" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate" onClick="limpiar()">
                                         Registrar Preguntas
                                     </button>
 
@@ -214,6 +214,45 @@
             });
         }
 
+        function eliminar(id) {
+            if (confirm("Desea Eliminar esta pregunta")) {
+                var parametros = "{'id': '" + id + "'}";
+
+                $.ajax({
+                    data: parametros,
+                    url: 'PreguntaCapacitacion.aspx/EliminarData',
+                    dataType: "json",
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    beforeSend: function () {
+
+                    },
+                    success: function (response) {
+                        console.log(response)
+                        location.href = "PreguntaCapacitacion.aspx";
+                    },
+                    error: function (e) {
+                        console.log(e)
+                    }
+                });
+            }
+            
+        }
+
+        function limpiar() {
+            $(".txtId").val("");
+            $(".cboOrden").val($(".cboOrden option:last").val());
+            $(".txtDescripcion").val("");
+            $(".txtAlternativa1").val("");
+            $(".txtAlternativa2").val("");
+            $(".txtAlternativa3").val("");
+            $(".txtAlternativa4").val("");
+            $(".txtAlternativa5").val("");
+            $(".cboAlternativa").val("");
+            $(".title").html("Registro de Pregunta")
+            $(".btnEnviar").html("Agregar")
+            $(".txtTipo").val(1)
+        }
 
     </script>
 

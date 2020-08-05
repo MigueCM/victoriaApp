@@ -38,8 +38,9 @@ namespace VictoriaApp
                 fila += $"<td>{item.Descripcion}</td>";
                 fila += $"<td>{item.Enlace}</td>";
                 fila += $"<td>5 <i class=\"fa fa-star\"></i></td>";
-                fila += $"<td><button class=\"btn btn-outline-primary\" onClick=\"cargarData({item.IdModuloCapacitacion});\">Editar</button>";
-                fila += $"<button class=\"btn btn-outline-success\" onClick=\"redireccionPreguntas({item.IdModuloCapacitacion});\">Agregar Preguntas</button></td>";
+                fila += $"<td><button class=\"btn btn-outline-primary mb-1\" onClick=\"cargarData({item.IdModuloCapacitacion});\">Editar</button>";
+                fila += $"<button class=\"btn btn-outline-success mb-1\" onClick=\"redireccionPreguntas({item.IdModuloCapacitacion});\">Agregar Preguntas</button>";
+                fila += $"<button class=\"btn btn-outline-danger \" onClick=\"eliminar({item.IdModuloCapacitacion});\">Eliminar</button></td>";
                 fila += "</tr>";
 
                 innerHtml.AppendLine(fila);
@@ -96,6 +97,12 @@ namespace VictoriaApp
             HttpContext.Current.Session["idModuloCapacitacion"] = id;
         }
 
+        [WebMethod]
+        public static bool EliminarData(int id)
+        {
+            return ModuloCapacitacionBLL.Instancia.EliminarModulo(id);
+        }
+
         public void RegistrarModulo()
         {
             string nombre = txtNombre.Value;
@@ -143,7 +150,6 @@ namespace VictoriaApp
             }
 
         }
-
 
         public void ActualizarModulo()
         {
@@ -200,6 +206,9 @@ namespace VictoriaApp
 
 
         }
+
+        
+        
 
     }
 }
