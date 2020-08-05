@@ -27,7 +27,7 @@
     </asp:ContentPlaceHolder>
 </head>
 
-<body>
+<body class="main-panel">
   <div class="container-scroller">
     <!-- partial:partials/_horizontal-navbar.html -->
     <div class="horizontal-menu">
@@ -97,7 +97,7 @@
     </div>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <div class="main-panel">
+      <div >
         <div class="content-wrapper p-0 pt-4 mx-auto">
             <div class="row">
                 <div class="col-md-8">
