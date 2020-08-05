@@ -32,9 +32,29 @@ namespace BLL
 
         private static ModuloCapacitacionDAL oModuloDAL = new ModuloCapacitacionDAL();
 
-        public List<ModuloCapacitacion> ObtenerModulos(int idUsuario)
+        public List<ModuloCapacitacion> ObtenerModulosPorUsuario(int idUsuario)
         {
-            return oModuloDAL.ObtenerModulos(idUsuario);
+            return oModuloDAL.ObtenerModulosPorUsuario(idUsuario);
+        }
+
+        public List<ModuloCapacitacion> ObtenerModulos()
+        {
+            return oModuloDAL.ObtenerModulos();
+        }
+
+        public ModuloCapacitacion ObtenerModulosPorId(int idModulo)
+        {
+            return oModuloDAL.ObtenerModulosPorId(idModulo);
+        }
+
+        public bool RegistrarModulo(ModuloCapacitacion moduloCapacitacion)
+        {
+            return oModuloDAL.RegistrarModulo(moduloCapacitacion);
+        }
+
+        public bool EditarModulo(ModuloCapacitacion moduloCapacitacion)
+        {
+            return oModuloDAL.EditarModulo(moduloCapacitacion);
         }
 
     }

@@ -21,7 +21,7 @@ namespace VictoriaApp
         {
 
 
-            List<ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulos(Convert.ToInt32(Session["idUsuario"]));
+            List<EL.ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulosPorUsuario(Convert.ToInt32(Session["idUsuario"]));
             int num_modulo = UsuarioCapacitacionBLL.Instancia.ObtenerModuloDesbloqueado(Convert.ToInt32(Session["idUsuario"]));
 
             StringBuilder innerHtml = new StringBuilder();
@@ -43,8 +43,15 @@ namespace VictoriaApp
                     fila += "</div>";
                 }
 
+                string imagen = "Data/"+item.Imagen;
+
+                if(item.Imagen == "")
+                {
+                    imagen = "images/video.png";
+                }
+
                 fila += "<div class=\"card card-shadow\">";
-                fila += $"<img src=\"{item.Imagen}\" class=\"card-img-top\" alt=\"Imagen de {item.Nombre}\">";
+                fila += $"<img src=\"{imagen}\" class=\"card-img-top\" alt=\"Imagen de {item.Nombre}\">";
                 fila += $"<div class=\"card-body card-body-panel {color} \">";
                 fila += $"<h5 class=\"card-title text-primary card-title-panel\">{numero++}. {item.Nombre}</h5>";
                 fila += $"<p class=\"card-text pl-3\"> Por<span class=\"text-primary\"> {item.Autor}</span></p>";
