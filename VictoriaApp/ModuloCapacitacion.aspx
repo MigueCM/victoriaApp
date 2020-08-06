@@ -270,28 +270,69 @@
         }
 
         function eliminar(id) {
-            if (confirm("Desea Eliminar este módulo")) {
-                var parametros = "{'id': '" + id + "'}";
-
-                $.ajax({
-                    data: parametros,
-                    url: 'ModuloCapacitacion.aspx/EliminarData',
-                    dataType: "json",
-                    type: 'POST',
-                    contentType: "application/json; charset=utf-8",
-                    beforeSend: function () {
-
+  
+            //if (confirm("Desea Eliminar este módulo")) {
+            //if (showSwal("delete-module","¿Desea Eliminar este módulo?", "Esta acción no se podrá revertir", "")) {
+                
+            //}
+            swal({
+                title: "¿Desea Eliminar este módulo?",
+                text: "Esta acción no se podrá revertir",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3f51b5',
+                cancelButtonColor: '#ff4081',
+                confirmButtonText: 'Great ',
+                buttons: {
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
                     },
-                    success: function (response) {
-                        console.log(response)
-                        location.href = "ModuloCapacitacion.aspx";
-                    },
-                    error: function (e) {
-                        console.log(e)
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
                     }
-                });
-            }
+                }
+            }).then((willDelete) => {
+                if (willDelete) {
+                    var parametros = "{'id': '" + id + "'}";
 
+                    $.ajax({
+                        data: parametros,
+                        url: 'ModuloCapacitacion.aspx/EliminarData',
+                        dataType: "json",
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function () {
+
+                        },
+                        //success: function (response) {
+                        //    swal("El módulo ha sido eliminado correctamente", {
+                        //        icon: "success",
+                        //    });
+                        //    location.href = "ModuloCapacitacion.aspx";
+                        //},
+                        //error: function (e) {
+                        //    console.log(e)
+                        //}
+                    }).done(function (html) {
+                        swal("El módulo ha sido eliminado correctamente", {
+                            icon: "success",
+                            timer: 2000
+                        });
+                        location.href = "ModuloCapacitacion.aspx";
+                    });
+
+                } else {
+                    swal("Operación cancelada");
+                }
+            });
         }
 
         function redireccionPreguntas(id) {
