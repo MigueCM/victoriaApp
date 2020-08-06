@@ -1,8 +1,10 @@
 ﻿using BLL;
 using EL;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web.Services;
 using System.Web.UI;
 
 namespace VictoriaApp
@@ -15,6 +17,18 @@ namespace VictoriaApp
             {
                 CargarModulos();
             }
+        }
+
+        [WebMethod]
+        public static string SubirAvatar(string filePath)
+        {
+            return JsonConvert.SerializeObject(
+                new
+                {
+                    
+
+                }
+                );
         }
 
 

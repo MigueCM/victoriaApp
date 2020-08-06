@@ -35,9 +35,88 @@
     <script src="Scripts/js/template.js"></script>
     <script src="Scripts/js/settings.js"></script>
     <script src="Scripts/js/todolist.js"></script>
-    
     <script src="https://kit.fontawesome.com/81717efc38.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        //function validarEmail() {
+        //    //location.href = 'RecuperarContraseña.aspx';
+        //    var filePath = document.getElementById("#archivo").
 
+        //    var parametros = "{'filePath': '" + filePath + "'}";
+
+        //    $.ajax({
+        //        data: parametros,
+        //        url: 'Login.aspx/EnviarEmail',
+        //        dataType: "json",
+        //        type: 'POST',
+        //        contentType: "application/json; charset=utf-8",
+        //        beforeSend: function () {
+
+        //        },
+        //        success: function (response) {
+
+        //            var data = JSON.parse(response.d);
+
+        //            $("#errorEmail").html(data["mensaje"]);
+        //            $("#errorEmail").removeClass("d-none");
+        //            if (data["correoValido"] === true) {
+        //                $("#errorEmail").append(data["token"]);
+        //                $("#errorEmail").addClass("alert-success");
+        //                $("#errorEmail").removeClass("alert-danger");
+        //            } else {
+
+        //                $("#errorEmail").removeClass("alert-success");
+        //                $("#errorEmail").addClass("alert-danger");
+
+        //            }
+
+        //        },
+        //        error: function (e) {
+        //            console.log(e)
+        //        }
+        //    });
+        //}
+        $(function ($) {
+            $('#archivo').on('change', function (e) {
+                e.preventDefault();
+                var filePath = $(this).val();
+                console.log(filePath);
+                var parametros = "{'filePath': '" + filePath + "'}";
+                $.ajax({
+                    data: parametros,
+                    url: 'Site.Master/SubirAvatar',
+                    dataType: "json",
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    beforeSend: function () {
+
+                    },
+                    success: function (response) {
+
+                        var data = JSON.parse(response.d);
+                        console.log(data);
+                        //$("#errorEmail").html(data["mensaje"]);
+                        //$("#errorEmail").removeClass("d-none");
+                        //if (data["correoValido"] === true) {
+                        //    $("#errorEmail").append(data["token"]);
+                        //    $("#errorEmail").addClass("alert-success");
+                        //    $("#errorEmail").removeClass("alert-danger");
+                        //} else {
+
+                        //    $("#errorEmail").removeClass("alert-success");
+                        //    $("#errorEmail").addClass("alert-danger");
+
+                        //}
+
+                    },
+                    error: function (e) {
+                        console.log(e)
+                    }
+                });
+               
+            });
+        });
+
+    </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -133,9 +212,10 @@
                             <div class="col-12">
 
                                 <div class="panel-image text-center">
-
-                                    <img src="images/banner-menu2.png" alt="Alternate Text" />
-
+                                    <div style="display: inline-block; position: relative;">
+                                    <img src="images/banner-menu2.png" alt="Alternate Text" style="border-radius: 50%;" />
+                                    <label style="right: 0.2em; position: absolute; bottom: 0.2em; border-radius: 50%; background-color:grey; border-color:white; width:30px; border-width:10px; border-color:white;"><input type="file" id="archivo" hidden/><i class="fas fa-edit" style="color:white;"></i></label>
+                                        </div>
                                     <h1 class="color-black ">Lorem Ipsus</h1>
 
                                     <span>Lima, Perú</span>
@@ -284,6 +364,8 @@
   <!-- Custom js for this page-->
   <%--<script src="../../js/dashboard.js"></script>--%>
   <!-- End custom js for this page-->
+    
+    
 </body>
 
 </html>

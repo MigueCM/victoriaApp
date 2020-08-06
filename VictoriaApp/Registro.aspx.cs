@@ -118,7 +118,7 @@ namespace VictoriaApp
             {
                 if (PersonaBLL.Instancia.RegistrarPersona(oPersona, usuario, password))
                 {
-                    enviaremail(usuario, oPersona.Nombre, oPersona.Apellidos);
+                    enviaremail(usuario, oPersona.Nombre, oPersona.Apellidos); 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "showSwal('success-message', 'Registro exitoso!', 'Bienvenido a Victoria', 'Login.aspx')", true);
                 }
                 divErrores.Visible = false;
