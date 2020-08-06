@@ -1,4 +1,5 @@
 ﻿using DAL;
+using EL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,11 @@ namespace BLL
         public int ObtenerModuloDesbloqueado(int idUsuario)
         {
             return oUsuarioDAL.ObtenerModuloDesbloqueado(idUsuario);
+        }
+
+        public bool RegistrarCapacitacion(UsuarioCapacitacion usuarioCapacitacion)
+        {
+            return oUsuarioDAL.RegistrarCapacitacion(usuarioCapacitacion);
         }
     }
 }

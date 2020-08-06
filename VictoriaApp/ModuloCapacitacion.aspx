@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Módulos</h4>
-                        <hr />
+                        <hr/>
 
                         <div class="row">
                             <div class="col-lg-12 col-md-12">
@@ -195,7 +195,7 @@
 
         </div>
     
-    <!-- plugin js for this page -->
+  <!-- plugin js for this page -->
   <script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 

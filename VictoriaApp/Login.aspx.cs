@@ -2,6 +2,9 @@
 using EL;
 using Newtonsoft.Json;
 using System;
+using System.Net.Mail;
+using System.Net.Mime;
+using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 
@@ -95,6 +98,13 @@ namespace VictoriaApp
                         mensaje = "Error al enviar correo intente de nuevo";
                         correoValido = false;
                     }
+                    else
+                    {
+                        string url = HttpContext.Current.Request.Url.AbsoluteUri;
+                        string pagina = HttpContext.Current.Request.Url.AbsolutePath;
+                        string page = url.Replace(pagina, "")+"/RecuperarContraseña/"+token;
+                        enviaremail(email,page);
+                    }
 
                 }
                 else
@@ -121,5 +131,32 @@ namespace VictoriaApp
 
         }
 
+        private static void enviaremail(string correo,string page)
+        {
+            SmtpClient sc = new SmtpClient("smtp.gmail.com");
+            sc.UseDefaultCredentials = false;
+            sc.Credentials = new System.Net.NetworkCredential("aulavirtualeducacccion@gmail.com", "Danper20203%");
+            sc.EnableSsl = true;
+            sc.Port = 587;
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("inscripciones@aulavirtual-juntoscrecemos.pe", "Victoria");
+            mail.To.Add(new MailAddress(correo));
+            mail.Subject = "Recuperación de Contraseña.";
+            mail.To.Add(correo);
+            string mailbody = "<br/><html><body><div style='text-align:center'><img src=\"cid:Email\"><div style='position: absolute; text-align:center; font-size:30px; font-weight:bold; color:#5B127D;'><p> " + correo + " </p></div><div><a style ='position: absolute; font-size:large; background-color:#5B127D; color:white; padding:10px; font-size:20px; border-radius:20px; text-decoration:none;' href='"+page+"'>Recuperar Contraseña</a></div><br /><br /><div><img src=\"cid:EmailFooter\" ></div></div></body></html>";
+            AlternateView AlternateView_Html = AlternateView.CreateAlternateViewFromString(mailbody, null, MediaTypeNames.Text.Html);
+            LinkedResource Picture1 = new LinkedResource(HttpContext.Current.Server.MapPath(@"~/images/correoLogo.jpg"), MediaTypeNames.Image.Jpeg);
+            
+            LinkedResource Picture3 = new LinkedResource(HttpContext.Current.Server.MapPath(@"~/images/correoFooter.jpg"), MediaTypeNames.Image.Jpeg);
+            Picture1.ContentId = "Email";
+            //Picture2.ContentId = "EmailMid";
+            Picture3.ContentId = "EmailFooter";
+            AlternateView_Html.LinkedResources.Add(Picture1);
+            //AlternateView_Html.LinkedResources.Add(Picture2);
+            AlternateView_Html.LinkedResources.Add(Picture3);
+            mail.AlternateViews.Add(AlternateView_Html);
+            mail.Body = mailbody;
+            sc.Send(mail);
+        }
     }
 }

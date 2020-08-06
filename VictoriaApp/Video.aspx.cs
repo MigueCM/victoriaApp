@@ -92,21 +92,44 @@ namespace VictoriaApp
         [WebMethod(EnableSession = true)]
         public static bool ValidarData(string respuestas, string calificacion)
         {
-            string validar = calificacion;
             string[] arreglo = respuestas.Split(',');
 
             List<EL.PreguntaCapacitacion> listaPreguntas = (List<EL.PreguntaCapacitacion>)(HttpContext.Current.Session["lista_preguntas"]??new List<EL.PreguntaCapacitacion>());
 
             if(arreglo.Length == listaPreguntas.Count)
             {
+                int i = 0;
+                UsuarioCapacitacion objUsuario = new UsuarioCapacitacion();
+                objUsuario.IdUsuario = Convert.ToInt32(HttpContext.Current.Session["idUsuario"] ?? 0);
+                objUsuario.IdModuloCapacitacion = Convert.ToInt32(HttpContext.Current.Session["video_idModulo"] ?? 0);
+                objUsuario.Calificacion = Convert.ToInt32(calificacion);
+                objUsuario.ListaUsuarioPregunta = new List<UsuarioPregunta>();
+
                 foreach (EL.PreguntaCapacitacion item in listaPreguntas)
                 {
-                    
-                }
-                return true;
-            }
 
-            
+                    UsuarioPregunta obj = new UsuarioPregunta();
+                    obj.IdPreguntaCapacitacion = item.IdPreguntaCapacitacion;
+                    obj.Respuesta = arreglo[i];
+                    i++;
+                    objUsuario.ListaUsuarioPregunta.Add(obj);
+                }
+
+                if (UsuarioCapacitacionBLL.Instancia.RegistrarCapacitacion(objUsuario))
+                {
+                    int porcentaje = UsuarioCapacitacionBLL.Instancia.ObtenerPorcentajeModulos(objUsuario.IdUsuario);
+
+                    HttpContext.Current.Session["prog_value"] = $"width: {porcentaje}%";
+                    HttpContext.Current.Session["prog_text"] = $"{porcentaje}% Avance";
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+                
+            }
 
             return false;
         }

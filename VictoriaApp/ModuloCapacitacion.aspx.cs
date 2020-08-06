@@ -37,7 +37,7 @@ namespace VictoriaApp
                 fila += $"<td>{item.Nombre}</td>";
                 fila += $"<td>{item.Descripcion}</td>";
                 fila += $"<td>{item.Enlace}</td>";
-                fila += $"<td>5 <i class=\"fa fa-star\"></i></td>";
+                fila += $"<td>{item.Calificacion} <i class=\"fa fa-star\"></i></td>";
                 fila += $"<td><button class=\"btn btn-outline-primary mb-1\" onClick=\"cargarData({item.IdModuloCapacitacion});\">Editar</button>";
                 fila += $"<button class=\"btn btn-outline-success mb-1\" onClick=\"redireccionPreguntas({item.IdModuloCapacitacion});\">Agregar Preguntas</button>";
                 fila += $"<button class=\"btn btn-outline-danger \" onClick=\"eliminar({item.IdModuloCapacitacion});\">Eliminar</button></td>";

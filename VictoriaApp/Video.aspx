@@ -228,8 +228,14 @@
 
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
+
+        $("#modalCuestionario").on('hidden.bs.modal', () => $("html").css("overflow", "auto"));
+        $("#modalCuestionario").on('shown.bs.modal', () => $("html").css("overflow", "hidden"));
+
         $("#modalVideo").on('hidden.bs.modal', function () {
+            $("html").css("overflow", "auto");
             if (done == true) {
+                $("html").css("overflow", "hidden")
                 $("#modalCuestionario").modal('show');
                 done = false;
             } else {
@@ -237,6 +243,7 @@
             }
         });
         $("#modalVideo").on('shown.bs.modal	', function () {
+            $("html").css("overflow", "hidden");
             playVideo();
         });
         var player;
@@ -319,7 +326,8 @@
                         },
                         success: function (response) {
                             console.log(response)
-
+                            if (response["d"] == true)
+                                location.href = "Panel.aspx";
                         },
                         error: function (e) {
                             console.log(e)

@@ -49,6 +49,7 @@
     <Compile Include="UsuarioCapacitacionDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
     <Compile Include="UsuarioHistorialDAL.cs" />
+    <Compile Include="UsuarioPreguntaDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EL\EL.csproj">
