@@ -140,6 +140,7 @@
     <Content Include="images\banner-menu2.png" />
     <Content Include="images\correoCabecera.jpg" />
     <Content Include="images\correoFooter.jpg" />
+    <Content Include="images\correoLogo.jpg" />
     <Content Include="images\correoMedio.jpg" />
     <Content Include="images\faces\face13.jpg" />
     <Content Include="images\faces\face28.png" />
@@ -322,6 +323,9 @@
   <ItemGroup>
     <Content Include="images\logo_victoria.ai" />
     <Content Include="Admin.Master" />
+    <Content Include="fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="fonts\poppins\Poppins-Bold.woff" />
+    <Content Include="fonts\poppins\Poppins-Bold.woff2" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="vendors\jquery.avgrund\jquery.avgrund.min.js" />

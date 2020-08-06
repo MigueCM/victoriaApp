@@ -23,7 +23,7 @@ namespace VictoriaApp
         {
 
 
-            List<EL.ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulosPorUsuario(Convert.ToInt32(Session["idUsuario"]));
+            List<EL.ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulosPorUsuarioPanel(Convert.ToInt32(Session["idUsuario"]));
             int num_modulo = UsuarioCapacitacionBLL.Instancia.ObtenerModuloDesbloqueado(Convert.ToInt32(Session["idUsuario"]));
 
             StringBuilder innerHtml = new StringBuilder();
@@ -58,7 +58,7 @@ namespace VictoriaApp
                 fila += $"<h5 class=\"card-title text-primary card-title-panel\">{numero++}. {item.Nombre}</h5>";
                 fila += $"<p class=\"card-text pl-3\"> Por<span class=\"text-primary\"> {item.Autor}</span></p>";
                 fila += "<p class=\"card-text pl-3\">";
-                fila += "<i class=\"fas fa-star color-star\"></i> 5 &nbsp;&nbsp;&nbsp;";
+                fila += $"<i class=\"fas fa-star color-star\"></i> {item.Calificacion} &nbsp;&nbsp;&nbsp;";
                 fila += "<i class=\"fas fa-play text-primary\"></i> 8,365";
                 fila += "</p>";
                 fila += "<div class=\"text-center\">";

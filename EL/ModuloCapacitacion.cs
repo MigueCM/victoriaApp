@@ -21,6 +21,7 @@ namespace EL
 
         int completado;
         DateTime fechaActualizacion;
+        int calificacion;
 
         public int IdModuloCapacitacion { get => idModuloCapacitacion; set => idModuloCapacitacion = value; }
         public string Nombre { get => nombre; set => nombre = value; }
@@ -34,5 +35,6 @@ namespace EL
         public int Estado { get => estado; set => estado = value; }
         public int Completado { get => completado; set => completado = value; }
         public DateTime FechaActualizacion { get => fechaActualizacion; set => fechaActualizacion = value; }
+        public int Calificacion { get => calificacion; set => calificacion = value; }
     }
 }

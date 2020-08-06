@@ -50,6 +50,7 @@ namespace VictoriaApp
 
                         if (UsuarioBLL.Instancia.ActualizarPassword(password, objUsuario.IdUsuario))
                         {
+                            Response.Redirect("/Login.aspx");
                             lblError.InnerText = "Modificado correctamente";
 
                         }
