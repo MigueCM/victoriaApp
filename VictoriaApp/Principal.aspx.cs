@@ -22,7 +22,7 @@ namespace VictoriaApp
         {
 
 
-            List<ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulos(Convert.ToInt32(Session["idUsuario"]));
+            List<EL.ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulosPorUsuario(Convert.ToInt32(Session["idUsuario"]));
 
             StringBuilder innerHtml = new StringBuilder();
 

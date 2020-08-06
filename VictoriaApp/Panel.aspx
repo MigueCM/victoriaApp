@@ -148,4 +148,28 @@
 
     </div>
 
+    <script>
+        function llamarVideo(codigo) {
+            var parametros = "{'codigo': '" + codigo + "'}";
+
+            $.ajax({
+                data: parametros,
+                url: 'Panel.aspx/ValidarUsuario',
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+
+                },
+                success: function (response) {
+                    console.log(response)
+                    location.href = "Video.aspx";
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            });
+        }
+    </script>
+
 </asp:Content>

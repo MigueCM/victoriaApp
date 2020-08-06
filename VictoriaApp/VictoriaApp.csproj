@@ -153,7 +153,9 @@
     <Content Include="images\webinar.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
+    <Content Include="ModuloCapacitacion.aspx" />
     <Content Include="Panel.aspx" />
+    <Content Include="PreguntaCapacitacion.aspx" />
     <Content Include="Principal.aspx" />
     <Content Include="RecuperarContraseña.aspx" />
     <Content Include="Registro.aspx" />
@@ -208,6 +210,13 @@
     <Content Include="vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Dashboard.aspx.cs">
@@ -235,12 +244,26 @@
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCapacitacion.aspx.cs">
+      <DependentUpon>ModuloCapacitacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuloCapacitacion.aspx.designer.cs">
+      <DependentUpon>ModuloCapacitacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Panel.aspx.cs">
       <DependentUpon>Panel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Panel.aspx.designer.cs">
       <DependentUpon>Panel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PreguntaCapacitacion.aspx.cs">
+      <DependentUpon>PreguntaCapacitacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PreguntaCapacitacion.aspx.designer.cs">
+      <DependentUpon>PreguntaCapacitacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
@@ -298,6 +321,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\logo_victoria.ai" />
+    <Content Include="Admin.Master" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="vendors\jquery.avgrund\jquery.avgrund.min.js" />
