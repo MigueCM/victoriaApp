@@ -18,9 +18,11 @@
         <!-- inject:css -->
         <link href="css/style.css" rel="stylesheet" />
         <!-- endinject -->
+        <script src="Scripts/jquery-3.4.1.js"></script>
         <link rel="shortcut icon" href="images/favicon.png" />
         <link href="css/estilos.css" rel="stylesheet" />
-
+        <script src="Scripts/alerts.js"></script>
+        <script src="Scripts/sweetalert.min.js"></script>
         <script src="vendors/js/vendor.bundle.base.js"></script>
         <script src="Scripts/js/off-canvas.js"></script>
         <script src="Scripts/js/hoverable-collapse.js"></script>
