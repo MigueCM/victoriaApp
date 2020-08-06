@@ -23,11 +23,26 @@
     <!-- endinject -->
     <link rel="shortcut icon" href="images/favicon.png" />
     <link href="css/estilos.css" rel="stylesheet" />
+
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <%--<script src="vendors/chart.js/Chart.min.js"></script>--%>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+    <script src="Scripts/js/off-canvas.js"></script>
+    <script src="Scripts/js/hoverable-collapse.js"></script>
+    <script src="Scripts/js/template.js"></script>
+    <script src="Scripts/js/settings.js"></script>
+    <script src="Scripts/js/todolist.js"></script>
+    
+    <script src="https://kit.fontawesome.com/81717efc38.js" crossorigin="anonymous"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 
-<body>
+<body class="main-panel">
   <div class="container-scroller">
     <!-- partial:partials/_horizontal-navbar.html -->
     <div class="horizontal-menu">
@@ -97,8 +112,8 @@
     </div>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <div class="main-panel">
-        <div class="content-wrapper p-0 pt-4 mx-auto">
+      <div >
+        <div class="content-wrapper p-0 py-4 mx-auto">
             <div class="row">
                 <div class="col-md-8">
                     <div class="brand-logo text-center mb-4">
@@ -262,19 +277,7 @@
 
   <!-- base:js -->
     
-  <script src="vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <%--<script src="vendors/chart.js/Chart.min.js"></script>--%>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-    <script src="Scripts/js/off-canvas.js"></script>
-    <script src="Scripts/js/hoverable-collapse.js"></script>
-    <script src="Scripts/js/template.js"></script>
-    <script src="Scripts/js/settings.js"></script>
-    <script src="Scripts/js/todolist.js"></script>
-    
-    <script src="https://kit.fontawesome.com/81717efc38.js" crossorigin="anonymous"></script>
+  
   <!-- endinject -->
   <!-- plugin js for this page -->
   <!-- End plugin js for this page -->

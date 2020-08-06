@@ -1,0 +1,117 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="VictoriaApp.Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+    <head runat="server">
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Victoria</title>
+        <!-- base:css -->
+        <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+        <link href="vendors/css/vendor.bundle.base.css" rel="stylesheet" />
+        <!-- endinject -->
+        <link href="http://www.urbanui.com/wagondash/template/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" />
+        <!-- plugin css for this page -->
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <link href="css/style.css" rel="stylesheet" />
+        <!-- endinject -->
+        <link rel="shortcut icon" href="images/favicon.png" />
+        <link href="css/estilos.css" rel="stylesheet" />
+
+        <script src="vendors/js/vendor.bundle.base.js"></script>
+        <script src="Scripts/js/off-canvas.js"></script>
+        <script src="Scripts/js/hoverable-collapse.js"></script>
+        <script src="Scripts/js/template.js"></script>
+        <script src="Scripts/js/settings.js"></script>
+        <script src="Scripts/js/todolist.js"></script>
+    
+        <script src="https://kit.fontawesome.com/81717efc38.js" crossorigin="anonymous"></script>
+
+        <asp:ContentPlaceHolder ID="head" runat="server">
+        </asp:ContentPlaceHolder>
+    </head>
+    <body class="main-panel">
+        <div class="container-scroller">
+            <div class="horizontal-menu">
+                <nav class="navbar top-navbar col-lg-12 col-12 p-0">
+                    <div class="container">
+                        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                            <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo_victoria.png" alt="logo"/></a>
+                            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo_victoria.png" alt="logo"/></a>
+                        </div>
+                        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                            <ul class="navbar-nav navbar-nav-right">
+                                <li class="nav-item count-indicator nav-profile dropdown">
+                                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                                        <span class="nav-profile-name text-capitalize">Hola, <%=Session["nombre"] %> <%=Session["apellidos"] %></span>
+                                        <img src="images/faces/face28.png" alt="profile"/>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                                        <a class="dropdown-item text-primary" href="Logout.aspx">
+                                            <i class="mdi mdi-settings"></i>
+                                            Cerrar Sesion
+                                        </a>
+                                    </div>
+                                </li>             
+                            </ul>
+                            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="horizontal-menu-toggle">
+                                <span class="mdi mdi-menu"></span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+                <nav class="bottom-navbar">
+                    <div class="container">
+                        <ul class="nav page-navigation">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">
+                                    <i class="mdi mdi-view-dashboard-outline menu-icon"></i>
+                                    <span class="menu-title">PERFIL</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ModuloCapacitacion.aspx">
+                                    <i class="mdi mdi-airplay menu-icon"></i>
+                                    <span class="menu-title">MODULOS</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+
+                            </li>
+                            <li class="nav-item mega-menu">
+          
+                            </li>
+                            <li class="nav-item mega-menu">
+              
+                            </li>
+                            <li class="nav-item">
+             
+                            </li>
+                            <li class="nav-item">
+              
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="container-fluid page-body-wrapper">
+                <div class="">
+                    <div class="content-wrapper p-0 py-4 mx-auto">
+
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          
+        
+
+    </body>
+</html>

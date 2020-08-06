@@ -3,6 +3,8 @@ using EL;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 
 namespace VictoriaApp
@@ -21,7 +23,7 @@ namespace VictoriaApp
         {
 
 
-            List<ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulos(Convert.ToInt32(Session["idUsuario"]));
+            List<EL.ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulosPorUsuario(Convert.ToInt32(Session["idUsuario"]));
             int num_modulo = UsuarioCapacitacionBLL.Instancia.ObtenerModuloDesbloqueado(Convert.ToInt32(Session["idUsuario"]));
 
             StringBuilder innerHtml = new StringBuilder();
@@ -43,8 +45,15 @@ namespace VictoriaApp
                     fila += "</div>";
                 }
 
+                string imagen = "Data/"+item.Imagen;
+
+                if(item.Imagen == "")
+                {
+                    imagen = "images/video.png";
+                }
+
                 fila += "<div class=\"card card-shadow\">";
-                fila += $"<img src=\"{item.Imagen}\" class=\"card-img-top\" alt=\"Imagen de {item.Nombre}\">";
+                fila += $"<img src=\"{imagen}\" class=\"card-img-top\" alt=\"Imagen de {item.Nombre}\">";
                 fila += $"<div class=\"card-body card-body-panel {color} \">";
                 fila += $"<h5 class=\"card-title text-primary card-title-panel\">{numero++}. {item.Nombre}</h5>";
                 fila += $"<p class=\"card-text pl-3\"> Por<span class=\"text-primary\"> {item.Autor}</span></p>";
@@ -59,7 +68,7 @@ namespace VictoriaApp
                 }
                 else
                 {
-                    fila += "<a href=\"Video.aspx\" class=\"btn btn-primary\">Empezar</a>";
+                    fila += $"<a href=\"javascript: void(0)\" class=\"btn btn-primary cursor-pointer\" onClick=\"llamarVideo({item.IdModuloCapacitacion})\">Empezar</a>";
                 }
 
                 fila += "</div>";
@@ -79,5 +88,16 @@ namespace VictoriaApp
 
 
         }
+    
+        [WebMethod(EnableSession = true)]
+        public static bool ValidarUsuario(int codigo)
+        {
+
+            HttpContext.Current.Session["video_idModulo"] = codigo;
+
+            return true;
+        }
+
+
     }
 }

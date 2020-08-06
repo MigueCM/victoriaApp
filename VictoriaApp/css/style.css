@@ -31610,7 +31610,7 @@ div.tagsinput span.tag a {
 .main-panel {
     /*background: #ffffff;*/
     background-image: url('../images/background.jpg');
-    background-size: cover;
+   /* background-size: cover;*/
     width: 100%;
 }
 

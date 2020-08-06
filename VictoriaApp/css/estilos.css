@@ -18,6 +18,41 @@
     padding-left: 1.5rem;
 }
 
+.modal-border {
+    border-left: 10px solid #410060 ;
+    width: 600px;
+}
+
+/* clasificación */
+
+.clasificacion label {
+    color: grey;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.clasificacion input[type = "radio"] {
+    display: none;
+}
+
+.clasificacion {
+    display: inline-block;
+    direction: rtl; /* right to left */
+    unicode-bidi: bidi-override; /* bidi de bidireccional */
+}
+
+.clasificacion label:hover {
+    color: orange;
+}
+
+.clasificacion label:hover ~ label {
+    color: orange;
+}
+
+.clasificacion input[type = "radio"]:checked ~ label {
+    color: orange;
+}
+
 .form-group .select-css {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -167,13 +202,31 @@ span.h3 {
 .btn-options, .panel-right .progress {
     border-radius: 20px;
 }
-    /* ANIMATE */
-    .animated {
-        -webkit-animation-duration: 1s;
-        animation-duration: 1s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-    }
+
+.dataTables_wrapper div.row:first-child{
+    display: none;
+}
+
+.dataTables_wrapper input:focus {
+    border-color: black;
+    outline: auto;
+}
+
+#modalCreate.modal .modal-dialog {
+    margin-top: 30px;
+}
+
+.cursor-pointer{
+    cursor:pointer;
+}
+
+/* ANIMATE */
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
 
 .fast {
     -webkit-animation-duration: 0.4s;
