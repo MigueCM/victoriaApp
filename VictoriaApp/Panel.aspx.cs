@@ -30,12 +30,14 @@ namespace VictoriaApp
 
             int numero = 1;
 
+            List<EL.ModuloCapacitacion> listaAux = lista.FindAll(item => item.Completado == 1 || num_modulo == item.Nro);
+            bool mostrar = true;
             foreach (var item in lista)
             {
                 string fila = "<div class=\"col-md-4\">";
 
                 string color = "";
-                if (!(item.Completado == 1 || num_modulo == item.Nro))
+                if (!(item.Completado == 1 || num_modulo == item.Nro) && !(listaAux.Count == 0 && mostrar))
                 {
                     color = "b-white";
 
@@ -62,12 +64,14 @@ namespace VictoriaApp
                 fila += "<i class=\"fas fa-play text-primary\"></i> 8,365";
                 fila += "</p>";
                 fila += "<div class=\"text-center\">";
-                if (!(item.Completado == 1 || num_modulo == item.Nro))
+                if (!(item.Completado == 1 || num_modulo == item.Nro) && !(listaAux.Count == 0 && mostrar))
                 {
+                    
                     fila += "<a href=\"javascript: void(0)\" class=\"btn btn-primary btn-cursor-default\">Empezar</a>";
                 }
                 else
                 {
+                    
                     fila += $"<a href=\"javascript: void(0)\" class=\"btn btn-primary cursor-pointer\" onClick=\"llamarVideo({item.IdModuloCapacitacion})\">Empezar</a>";
                 }
 
@@ -75,9 +79,13 @@ namespace VictoriaApp
                 fila += "</div>";
                 fila += "</div>";
                 fila += "</div>";
-                if (!(item.Completado == 1 || num_modulo == item.Nro))
+                if (!(item.Completado == 1 || num_modulo == item.Nro) && !(listaAux.Count == 0 && mostrar))
                 {
                     fila += "</div>";
+                }
+                else
+                {
+                    mostrar = false;
                 }
 
                 innerHtml.AppendLine(fila);

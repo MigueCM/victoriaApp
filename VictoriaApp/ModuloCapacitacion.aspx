@@ -14,7 +14,7 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group ">
                             
-                                    <button id="btnNuevo" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate" >
+                                    <button id="btnNuevo" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate" OnClick="limpiar()">
                                         Registrar Modulo
                                     </button>
 
@@ -221,7 +221,6 @@
             }
             
         });
-
 
         var table = $('#tabla-modulos').DataTable({
             "aLengthMenu": [
