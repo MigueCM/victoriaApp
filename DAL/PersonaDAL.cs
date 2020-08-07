@@ -53,5 +53,61 @@ namespace DAL
             }
             return valor;
         }
+
+        public bool ActualizarAvatar(string archivo, int id)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Persona", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@Id", SqlDbType.Int).Value = id;
+            _comando.Parameters.AddWithValue("@Avatar", SqlDbType.VarChar).Value = archivo;
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 2;
+            bool valor = false;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                if (_comando.ExecuteNonQuery() > 0)
+                    valor = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return valor;
+        }
+
+        public string ObtenerAvatar(int id)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Persona", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@Id", SqlDbType.Int).Value = id;
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 3;
+            string nombreImagen = "";
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+
+                if (dr.Read())
+                    nombreImagen = dr["Imagen"].ToString();
+                    
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return nombreImagen;
+        }
     }
 }

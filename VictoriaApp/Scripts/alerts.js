@@ -1,5 +1,5 @@
 ﻿(function ($) {
-    showSwal = function (type, titulo,mensaje, url) {
+    showSwal = function (type, titulo,mensaje, url, id) {
         'use strict';
         if (type === 'basic') {
             swal({
@@ -39,8 +39,9 @@
 
         } else if (type === 'auto-close') {
             swal({
-                title: 'Auto close alert!',
-                text: 'I will close in 2 seconds.',
+                title: titulo,
+                text: mensaje,
+                icon: 'success',
                 timer: 2000,
                 button: false
             }).then(
@@ -92,8 +93,8 @@
                 content: {
                     element: "input",
                     attributes: {
-                        placeholder: "Type your password",
-                        type: "password",
+                        placeholder: "Seleccione un archivo",
+                        type: "file",
                         class: 'form-control'
                     },
                 },
@@ -101,14 +102,17 @@
                     text: "OK",
                     value: true,
                     visible: true,
-                    className: "btn btn-primary"
+                    className: "btn btn-primary",
+                    id: "btnImagen",
+                    onclick: "btnImagen_Click",
+                    runat: "server"
                 }
             })
         }
         else if (type === 'delete-module') {
             swal({
-                title: titulo,
-                text: mensaje,
+                title: "¿Desea Eliminar este módulo?",
+                text: "Esta acción no se podrá revertir",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3f51b5',
@@ -123,7 +127,7 @@
                         closeModal: true,
                     },
                     confirm: {
-                        text: "OK",
+                        text: "Eliminar",
                         value: true,
                         visible: true,
                         className: "btn btn-primary",
@@ -143,25 +147,127 @@
                         beforeSend: function () {
 
                         },
-                        success: function (response) {
-                            console.log(response)
+                         success: function (response) {
+                            swal("El módulo ha sido eliminado correctamente", {
+                                icon: "success",
+                            });
                             location.href = "ModuloCapacitacion.aspx";
                         },
                         error: function (e) {
                             console.log(e)
                         }
+                    }).done(function (html) {
+                        swal("El módulo ha sido eliminado correctamente", {
+                            icon: "success",
+                            timer: 2000
+                        });
+                        location.href = "ModuloCapacitacion.aspx";
                     });
-                    swal("El módulo ha sido eliminado correctamente", {
-                        icon: "success",
-                    });
+
                 } else {
                     swal("Operación cancelada");
                 }
-            })
-                .then(json => {
-                    console.log(json);
-                });
+            });
+        }
+        else if (type === 'success-message-terminos') {
+            swal({
+                title: titulo,
+                text: mensaje,
+                icon: 'success',
+                button: {
+                    text: "Aceptar",
+                    value: true,
+                    visible: true,
+                    className: "btn btn-primary"
+                }
+            }).then(function () { window.location.href = url; })
 
+        }
+        else if (type === 'update-module') {
+            swal({
+                title: "¿Desea Editar este módulo?",
+                text: "Esta acción no se podrá revertir",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3f51b5',
+                cancelButtonColor: '#ff4081',
+                confirmButtonText: 'Great ',
+                buttons: {
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Editar",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    }
+                }
+            }).then((willDelete) => {
+                if (willDelete) {
+                    var parametros = "{'id': '" + id + "'}";
+                    $.ajax({
+                        data: parametros,
+                        url: 'ModuloCapacitacion.aspx/CargarDataModulo',
+                        dataType: "json",
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function () {
+
+                        },
+                        success: function (response) {
+                            var data = JSON.parse(response.d)["objModulo"];
+
+                            $(".txtId").val(id);
+                            $(".txtNombre").val(data["Nombre"]);
+                            $(".txtDescripcion").val(data["Descripcion"]);
+                            $(".txtEnlace").val(data["Enlace"]);
+                            $(".txtImagen").val(data["Imagen"]);
+                            $(".title").html("Actualización de Módulo")
+                            $(".btnEnviar").html("Actualizar")
+                            $(".txtTipo").val(2)
+                            $(".txtFile").prop("required", false)
+                            $("#modalCreate").modal("show")
+                        },
+                        error: function (e) {
+                            console.log(e)
+                        }
+                    });
+                    //$.ajax({
+                    //    data: parametros,
+                    //    url: 'ModuloCapacitacion.aspx/EliminarData',
+                    //    dataType: "json",
+                    //    type: 'POST',
+                    //    contentType: "application/json; charset=utf-8",
+                    //    beforeSend: function () {
+
+                    //    },
+                    //    success: function (response) {
+                    //        swal("El módulo ha sido eliminado correctamente", {
+                    //            icon: "success",
+                    //        });
+                    //        location.href = "ModuloCapacitacion.aspx";
+                    //    },
+                    //    error: function (e) {
+                    //        console.log(e)
+                    //    }
+                    //}).done(function (html) {
+                    //    swal("El módulo ha sido eliminado correctamente", {
+                    //        icon: "success",
+                    //        timer: 2000
+                    //    });
+                    //    location.href = "ModuloCapacitacion.aspx";
+                    //});
+
+                } else {
+                    swal("Operación cancelada");
+                }
+            });
         }
     }
 
