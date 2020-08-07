@@ -40,23 +40,35 @@ namespace VictoriaApp
                 Session["IdUsuario"] = objUsuario.IdUsuario;
                 Session["IdPerfil"] = objUsuario.IdPerfil;
                 Session["IdPersona"] = objUsuario.IdPersona;
-
-                int porcentaje = UsuarioCapacitacionBLL.Instancia.ObtenerPorcentajeModulos(objUsuario.IdUsuario);
-
-                Session["prog_value"] = $"width: {porcentaje}%";
-                Session["prog_text"] = $"{porcentaje}% Avance";
-
                 if (objUsuario.Persona != null)
                 {
                     Session["nombre"] = objUsuario.Persona.Nombre;
                     Session["apellidos"] = objUsuario.Persona.Apellidos;
+                    Session["UsuarioDni"] = objUsuario.Persona.Dni;
+                    if (string.IsNullOrEmpty(objUsuario.Persona.Avatar) || objUsuario.Persona.Avatar == "")
+                        Session["AvatarPersona"] = "Data/Avatar/noImage.png";
+                    else
+                        Session["AvatarPersona"] = "Data/Avatar/" + objUsuario.Persona.Avatar;
                 }
                 else
                 {
                     Session["nombre"] = "";
                     Session["apellidos"] = "";
                 }
-                Response.Redirect("Principal.aspx");
+                if (Convert.ToInt32(Session["IdPerfil"].ToString()) == 1)
+                {
+                    Response.Redirect("ModuloCapacitacion.aspx");
+                }
+                else
+                {
+                    int porcentaje = UsuarioCapacitacionBLL.Instancia.ObtenerPorcentajeModulos(objUsuario.IdUsuario);
+
+                    Session["prog_value"] = $"width: {porcentaje}%";
+                    Session["prog_text"] = $"{porcentaje}% Avance";
+                    Response.Redirect("Principal.aspx");
+                }
+
+               
             }
             else
             {

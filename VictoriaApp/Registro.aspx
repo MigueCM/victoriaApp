@@ -23,7 +23,7 @@
     <script src="Scripts/alerts.js"></script>
 <script src="vendors/jquery.avgrund/jquery.avgrund.min.js"></script>
 <script src="Scripts/avgrund.js"></script>
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="images/Victoria.ico" />
 </head>
 <body>
     <form runat="server" id="form1">
@@ -66,7 +66,7 @@
           <div class="col-lg-6 d-flex align-items-center justify-content-center">
             <div class="auth-form-transparent text-left p-3 animated fadeIn">
               <div class="brand-logo text-center">
-                <img src="images/logo_victoria.png" alt="logo"/>
+                <img src="images/logo_victoria2.png" alt="logo"/>
               </div>
               <h4>Eres nuevo?</h4>
               <h6 class="font-weight-light">Únete, bríndandonos tu información</h6>

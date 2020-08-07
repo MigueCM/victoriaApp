@@ -2,9 +2,12 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="welcome-message">
+    
+
+        <div class="welcome-message" style="opacity:0.85; border-radius:20px;">
             <div id="divvoluntario" runat="server" visible="true">
                 <div class="row">
                     
@@ -49,10 +52,54 @@
                 </div>
             </div>
           </div>
+       
+<%--     <script type="text/javascript">
+         $(function ($) {
+             $('#archivo').on('change', function (e) {
+                 e.preventDefault();
+                 var filePath = document.getElementById("archivo").files[0].name;
+                 console.log(filePath);
+                 var parametros = "{'filePath': '" + filePath + "'}";
+                 $.ajax({
+                     data: parametros,
+                     url: 'Principal.aspx/Avatar',
+                     dataType: "json",
+                     type: 'POST',
+                     contentType: "application/json; charset=utf-8",
+                     beforeSend: function () {
 
+                     },
+                     success: function (response) {
+
+                         var data = JSON.parse(response.d);
+                         console.log(data);
+                         //$("#errorEmail").html(data["mensaje"]);
+                         //$("#errorEmail").removeClass("d-none");
+                         //if (data["correoValido"] === true) {
+                         //    $("#errorEmail").append(data["token"]);
+                         //    $("#errorEmail").addClass("alert-success");
+                         //    $("#errorEmail").removeClass("alert-danger");
+                         //} else {
+
+                         //    $("#errorEmail").removeClass("alert-success");
+                         //    $("#errorEmail").addClass("alert-danger");
+
+                         //}
+
+                     },
+                     error: function (e) {
+                         console.log(e)
+                     }
+                 });
+
+             });
+         });
+
+     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <script src="vendors/jquery.avgrund/jquery.avgrund.min.js"></script>
     <script src="Scripts/sweetalert.min.js"></script>
     <script src="Scripts/alerts.js"></script>
-    <script src="Scripts/avgrund.js"></script>
+    <script src="Scripts/avgrund.js"></script>--%>
+   
 </asp:Content>
