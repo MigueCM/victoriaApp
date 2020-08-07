@@ -160,35 +160,95 @@
 
         function cargarData(id) {
 
-            var parametros = "{'id': '" + id + "'}";
+            swal({
+                title: "¿Desea Editar este Webinars?",
+                text: "Los datos seran modificados",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3f51b5',
+                cancelButtonColor: '#ff4081',
+                confirmButtonText: 'Great ',
+                buttons: {
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Editar",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    }
+                }
+            }).then((willDelete) => {
+                if (willDelete) {
+                    var parametros = "{'id': '" + id + "'}";
+                    $.ajax({
+                        data: parametros,
+                        url: 'Webinars.aspx/CargarDataWebinars',
+                        dataType: "json",
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function () {
 
-            $.ajax({
-                data: parametros,
-                url: 'Webinars.aspx/CargarDataWebinars',
-                dataType: "json",
-                type: 'POST',
-                contentType: "application/json; charset=utf-8",
-                beforeSend: function () {
+                        },
+                        success: function (response) {
+                            var data = JSON.parse(response.d)["objWebinar"];
 
-                },
-                success: function (response) {
-                    var data = JSON.parse(response.d)["objWebinar"];
+                            $(".txtId").val(id);
+                            $(".txtNombre").val(data["Titulo"]);
+                            $(".txtDescripcion").val(data["Descripcion"]);
+                            $(".txtAutor").val(data["Autor"]);
+                            $(".txtImagen").val(data["Imagen"]);
+                            $(".title").html("Actualización de Webinar")
+                            $(".btnEnviar").html("Actualizar")
+                            $(".txtTipo").val(2)
+                            $(".txtFile").prop("required", false)
+                            $("#modalCreate").modal("show")
+                        },
+                        error: function (e) {
+                            console.log(e)
+                        }
+                    });
 
-                    $(".txtId").val(id);
-                    $(".txtNombre").val(data["Titulo"]);
-                    $(".txtDescripcion").val(data["Descripcion"]);
-                    $(".txtAutor").val(data["Autor"]);
-                    $(".txtImagen").val(data["Imagen"]);
-                    $(".title").html("Actualización de Webinar")
-                    $(".btnEnviar").html("Actualizar")
-                    $(".txtTipo").val(2)
-                    $(".txtFile").prop("required", false)
-                    $("#modalCreate").modal("show")
-                },
-                error: function (e) {
-                    console.log(e)
+                } else {
+                    swal("Operación cancelada");
                 }
             });
+
+            //var parametros = "{'id': '" + id + "'}";
+
+            //$.ajax({
+            //    data: parametros,
+            //    url: 'Webinars.aspx/CargarDataWebinars',
+            //    dataType: "json",
+            //    type: 'POST',
+            //    contentType: "application/json; charset=utf-8",
+            //    beforeSend: function () {
+
+            //    },
+            //    success: function (response) {
+            //        var data = JSON.parse(response.d)["objWebinar"];
+
+            //        $(".txtId").val(id);
+            //        $(".txtNombre").val(data["Titulo"]);
+            //        $(".txtDescripcion").val(data["Descripcion"]);
+            //        $(".txtAutor").val(data["Autor"]);
+            //        $(".txtImagen").val(data["Imagen"]);
+            //        $(".title").html("Actualización de Webinar")
+            //        $(".btnEnviar").html("Actualizar")
+            //        $(".txtTipo").val(2)
+            //        $(".txtFile").prop("required", false)
+            //        $("#modalCreate").modal("show")
+            //    },
+            //    error: function (e) {
+            //        console.log(e)
+            //    }
+            //});
         }
 
         function eliminar(id) {

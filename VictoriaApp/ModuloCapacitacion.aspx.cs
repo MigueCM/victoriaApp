@@ -54,11 +54,15 @@ namespace VictoriaApp
 
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
-            string nombre = txtNombre.Value;
-            string descripcion = txtDescripcion.Value;
-            string enlace = txtEnlace.Value;
-            string imagen = txtImagen.Value;
-            string id = txtId.Value;
+            divErrores.Visible = false;
+            lbErrores.Visible = false;
+            lbErrores.Items.Clear();
+
+            //string nombre = txtNombre.Value;
+            //string descripcion = txtDescripcion.Value;
+            //string enlace = txtEnlace.Value;
+            //string imagen = txtImagen.Value;
+            //string id = txtId.Value;
             string tipo = txtTipo.Value;
 
             if (tipo == "1")
@@ -66,16 +70,21 @@ namespace VictoriaApp
             else
                 ActualizarModulo();
 
-            txtTipo.Value = "1";
-            txtId.Value = "";
-            txtImagen.Value = "";
+            //txtTipo.Value = "1";
+            //txtId.Value = "";
+            //txtImagen.Value = "";
+
+            if (lbErrores.Items.Count > 0)
+            {
+                divErrores.Visible = true;
+                lbErrores.Visible = true;
+            }
 
         }
 
         [WebMethod]
         public static string CargarDataModulo(int id)
         {
-
             EL.ModuloCapacitacion objModulo = ModuloCapacitacionBLL.Instancia.ObtenerModulosPorId(id);
 
              
@@ -108,6 +117,21 @@ namespace VictoriaApp
             string nombre = txtNombre.Value;
             string descripcion = txtDescripcion.Value;
             string enlace = txtEnlace.Value;
+            
+            if (string.IsNullOrEmpty(nombre))
+            {
+                lbErrores.Items.Add("Debe ingresar el nombre del módulo ");
+            }
+
+            if (string.IsNullOrEmpty(descripcion))
+            {
+                lbErrores.Items.Add("Debe ingresar el enlace");
+            }
+
+            if (string.IsNullOrEmpty(enlace))
+            {
+                lbErrores.Items.Add("Debe ingresar la descripción");
+            }
 
             if ((txtFile.PostedFile != null) && (txtFile.PostedFile.ContentLength > 0))
             {
@@ -144,8 +168,10 @@ namespace VictoriaApp
             }
             else
             {
-                Response.Write("Please select a file to upload.");
+                lbErrores.Items.Add("Debe seleccionar una imagen");
             }
+
+            
 
         }
 
@@ -156,6 +182,22 @@ namespace VictoriaApp
             string enlace = txtEnlace.Value;
             string imagen = txtImagen.Value;
             int id = Convert.ToInt32(txtId.Value);
+
+            if (string.IsNullOrEmpty(nombre))
+            {
+                lbErrores.Items.Add("Debe ingresar el nombre del módulo ");
+            }
+
+            if (string.IsNullOrEmpty(descripcion))
+            {
+                lbErrores.Items.Add("Debe ingresar el enlace");
+            }
+
+            if (string.IsNullOrEmpty(enlace))
+            {
+                lbErrores.Items.Add("Debe ingresar la descripción");
+            }
+
 
             if ((txtFile.PostedFile != null) && (txtFile.PostedFile.ContentLength > 0))
             {
