@@ -125,68 +125,6 @@
                                 </div>
                             </div>
                         </div>
-                        <%-- <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalCreate-2" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Actualizar de Módulo</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <input type="hidden" class="txtId" name="txtId" id="txtId" value=""  runat="server" />
-                                        <div class="form-group">
-                                            <label for="txtNombreE">Nombre</label>
-                                            <div class="input-group border-input">
-                                                  <div class="input-group-prepend bg-transparent ">
-                                                    <span class="input-group-text bg-transparent border-right-0 border-color-principal">
-                                                        <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
-                                                    </span>
-                                                    </div>                  
-
-                                                <input name="txtNombreE" type="text" id="txtNombreE" class="form-control form-control-sm border-color-principal pl-1 txtNombreE" placeholder="Nombre" required runat="server"/>
-                                            </div>                                     
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="txtDescripcionE">Descripción</label>
-                                            <div class="input-group border-input">
-                                                <textarea class="form-control form-control-sm border-color-principal txtDescripcionE" id="txtDescripcionE" placeholder="Descripcion" runat="server"></textarea>
-                                            </div>                                     
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="txtEnlaceE">Enlace</label>
-                                            <div class="input-group border-input">
-                                                  <div class="input-group-prepend bg-transparent ">
-                                                    <span class="input-group-text bg-transparent border-right-0 border-color-principal">
-                                                        <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
-                                                    </span>
-                                                    </div>                  
-
-                                                <input name="txtEnlaceE" type="text" id="txtEnlaceE" class="form-control form-control-sm border-color-principal pl-1 txtEnlaceE" placeholder="Enlace" required runat="server"/>
-                                            </div>                                     
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="txtFileE">Enlace</label>
-                                            <div class="input-group border-input">        
-                                                <div class="input-group-prepend bg-transparent ">
-                                                    <span class="input-group-text bg-transparent border-right-0 border-color-principal">
-                                                        <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
-                                                    </span>
-                                                    </div>
-                                                <input name="txtFileE" type="file" id="txtFileE" class="form-control form-control-sm border-color-principal pl-1" runat="server" accept="image/*" />
-                                                <input type="hidden" name="txtImagen" id="txtImagen" class="txtImagen" runat="server" />
-                                            </div>                                     
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                         <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" class="btn btn-primary font-weight-medium" OnClick="btnActualizar_Click"/>
-                                        
-                                        <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>--%>
                     </form>
 
                 </div>
@@ -236,102 +174,40 @@
         });
 
         function cargarData(id) {
-                        
-            var parametros = "{'id': '" + id + "'}";
+            showSwal("update-module", "¿Desea Eliminar este módulo?", "Esta acción no se podrá revertir", "", id) 
+            //var parametros = "{'id': '" + id + "'}";
 
-            $.ajax({
-                data: parametros,
-                url: 'ModuloCapacitacion.aspx/CargarDataModulo',
-                dataType: "json",
-                type: 'POST',
-                contentType: "application/json; charset=utf-8",
-                beforeSend: function () {
+            //$.ajax({
+            //    data: parametros,
+            //    url: 'ModuloCapacitacion.aspx/CargarDataModulo',
+            //    dataType: "json",
+            //    type: 'POST',
+            //    contentType: "application/json; charset=utf-8",
+            //    beforeSend: function () {
 
-                },
-                success: function (response) {
-                    var data = JSON.parse(response.d)["objModulo"];
+            //    },
+            //    success: function (response) {
+            //        var data = JSON.parse(response.d)["objModulo"];
 
-                    $(".txtId").val(id);
-                    $(".txtNombre").val(data["Nombre"]);
-                    $(".txtDescripcion").val(data["Descripcion"]);
-                    $(".txtEnlace").val(data["Enlace"]);
-                    $(".txtImagen").val(data["Imagen"]);
-                    $(".title").html("Actualización de Módulo")
-                    $(".btnEnviar").html("Actualizar")
-                    $(".txtTipo").val(2)
-                    $(".txtFile").prop("required",false)
-                    $("#modalCreate").modal("show")
-                },
-                error: function (e) {
-                    console.log(e)
-                }
-            });
+            //        $(".txtId").val(id);
+            //        $(".txtNombre").val(data["Nombre"]);
+            //        $(".txtDescripcion").val(data["Descripcion"]);
+            //        $(".txtEnlace").val(data["Enlace"]);
+            //        $(".txtImagen").val(data["Imagen"]);
+            //        $(".title").html("Actualización de Módulo")
+            //        $(".btnEnviar").html("Actualizar")
+            //        $(".txtTipo").val(2)
+            //        $(".txtFile").prop("required",false)
+            //        $("#modalCreate").modal("show")
+            //    },
+            //    error: function (e) {
+            //        console.log(e)
+            //    }
+            //});
         }
 
         function eliminar(id) {
-  
-            //if (confirm("Desea Eliminar este módulo")) {
-            //if (showSwal("delete-module","¿Desea Eliminar este módulo?", "Esta acción no se podrá revertir", "")) {
-                
-            //}
-            swal({
-                title: "¿Desea Eliminar este módulo?",
-                text: "Esta acción no se podrá revertir",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3f51b5',
-                cancelButtonColor: '#ff4081',
-                confirmButtonText: 'Great ',
-                buttons: {
-                    cancel: {
-                        text: "Cancelar",
-                        value: null,
-                        visible: true,
-                        className: "btn btn-danger",
-                        closeModal: true,
-                    },
-                    confirm: {
-                        text: "OK",
-                        value: true,
-                        visible: true,
-                        className: "btn btn-primary",
-                        closeModal: true
-                    }
-                }
-            }).then((willDelete) => {
-                if (willDelete) {
-                    var parametros = "{'id': '" + id + "'}";
-
-                    $.ajax({
-                        data: parametros,
-                        url: 'ModuloCapacitacion.aspx/EliminarData',
-                        dataType: "json",
-                        type: 'POST',
-                        contentType: "application/json; charset=utf-8",
-                        beforeSend: function () {
-
-                        },
-                        //success: function (response) {
-                        //    swal("El módulo ha sido eliminado correctamente", {
-                        //        icon: "success",
-                        //    });
-                        //    location.href = "ModuloCapacitacion.aspx";
-                        //},
-                        //error: function (e) {
-                        //    console.log(e)
-                        //}
-                    }).done(function (html) {
-                        swal("El módulo ha sido eliminado correctamente", {
-                            icon: "success",
-                            timer: 2000
-                        });
-                        location.href = "ModuloCapacitacion.aspx";
-                    });
-
-                } else {
-                    swal("Operación cancelada");
-                }
-            });
+            showSwal("delete-module","¿Desea Eliminar este módulo?", "Esta acción no se podrá revertir", "", id)
         }
 
         function redireccionPreguntas(id) {

@@ -67,5 +67,10 @@ namespace BLL
         {
             return oUsuarioDAL.ValidarPorToken(token);
         }
+
+        public int ValidarExisteUsuario(string correo)
+        {
+            return oUsuarioDAL.ValidarExisteUsuario(correo);
+        }
     }
 }

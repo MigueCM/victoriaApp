@@ -13,6 +13,12 @@ namespace VictoriaApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            TerminosCondicionesEL terminos = new TerminosCondicionesEL();
+            terminos = TerminosCondicionesBLL.Instancia.ObtenerTerminos();
+            Session["TituloTerminos"] = terminos.Titulo;
+            Session["DescripcionTerminos"] = terminos.Descripcion;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Titulo", "var sessionTitulo = '" + Session["TituloTerminos"] + "';", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Descripcion", "var sessionDescripcion = '" + Session["DescripcionTerminos"] + "';", true);
             if (!IsPostBack)
             {
                 //List<string> data = new List<string>();
@@ -76,8 +82,12 @@ namespace VictoriaApp
                 usuario = txtUsuario.Value.Trim();
             else
                 errores.Add("Ingrese Email");
+
             if(!Globales.ValidarEmail(txtUsuario.Value.Trim()))
                 errores.Add("Ingrese un Email valido");
+
+            if(UsuarioBLL.Instancia.ValidarExisteUsuario(txtUsuario.Value.Trim()) == 1)
+                errores.Add("Este Email esta siendo usado");
 
             if (!txtVerificarPassword.Value.Trim().Equals(txtPassword.Value.Trim()))
                 errores.Add("Las contraseñas no son iguales");
@@ -119,7 +129,7 @@ namespace VictoriaApp
                 if (PersonaBLL.Instancia.RegistrarPersona(oPersona, usuario, password))
                 {
                     enviaremail(usuario, oPersona.Nombre, oPersona.Apellidos); 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "showSwal('success-message', 'Registro exitoso!', 'Bienvenido a Victoria', 'Login.aspx')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "showSwal('success-message', 'Registro exitoso!', 'Bienvenido a Victoria', 'Login.aspx', '')", true);
                 }
                 divErrores.Visible = false;
                 lbErrores.Visible = false;
