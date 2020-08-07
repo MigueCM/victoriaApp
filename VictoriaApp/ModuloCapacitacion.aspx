@@ -83,13 +83,13 @@
                                                     </span>
                                                     </div>                  
 
-                                                <input name="txtNombre" type="text" id="txtNombre" class="form-control form-control-sm border-color-principal pl-1 txtNombre" placeholder="Nombre" runat="server"/>
+                                                <input name="txtNombre" type="text" id="txtNombre" class="form-control form-control-sm border-color-principal pl-1 txtNombre" placeholder="Nombre" runat="server" required/>
                                             </div>                                     
                                         </div>
                                         <div class="form-group">
                                             <label for="txtDescripcion">Descripción</label>
                                             <div class="input-group border-input">
-                                                <textarea class="form-control form-control-sm border-color-principal txtDescripcion" id="txtDescripcion" placeholder="Descripcion" runat="server"></textarea>
+                                                <textarea class="form-control form-control-sm border-color-principal txtDescripcion" id="txtDescripcion" placeholder="Descripcion" runat="server" required></textarea>
                                             </div>                                     
                                         </div>
                                         <div class="form-group">
@@ -101,7 +101,7 @@
                                                     </span>
                                                     </div>                  
 
-                                                <input name="txtEnlace" type="text" id="txtEnlace" class="form-control form-control-sm border-color-principal pl-1 txtEnlace" placeholder="Enlace" runat="server"/>
+                                                <input name="txtEnlace" type="text" id="txtEnlace" class="form-control form-control-sm border-color-principal pl-1 txtEnlace" placeholder="Enlace" runat="server" required/>
                                             </div>                                     
                                         </div>
                                         <div class="form-group">
@@ -112,14 +112,20 @@
                                                         <i class="far fa-file-image text-primary" aria-hidden="true"></i>
                                                     </span>
                                                     </div>
-                                                <input name="txtFile" type="file" id="txtFile" class="form-control form-control-sm border-color-principal pl-1 txtFile" runat="server" accept="image/*" />
+                                                <input name="txtFile" type="file" id="txtFile" class="form-control form-control-sm border-color-principal pl-1 txtFile" runat="server" accept="image/*" required/>
                                                 <input type="hidden" name="txtImagen" id="txtImagen" class="txtImagen" runat="server" />
                                             </div>                                     
                                         </div>
+
+                                        <div class="form-group">
+                                            <div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="divErrores">
+                                              <asp:ListBox ID="lbErrores" runat="server" BackColor="Transparent" Width="100%" Enabled="false" CssClass="border-0 accordion text-danger overflow-hidden" Visible="false"></asp:ListBox>
+                                          </div>
+                                        </div>
+
                                     </div>
-                                    <div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="divErrores">
-                                          <asp:ListBox ID="lbErrores" runat="server" BackColor="Transparent" Width="100%" Enabled="false" CssClass="border-0 accordion text-danger overflow-hidden" Visible="false"></asp:ListBox>
-                                      </div>
+                                    
+                                    
                                     <div class="modal-footer">
                                          <asp:Button ID="btnEnviar" runat="server" Text="Agregar" class="btn btn-primary font-weight-medium btnEnviar" OnClick="btnEnviar_Click"/>
                                         
@@ -177,7 +183,12 @@
         });
 
         function cargarData(id) {
-            showSwal("update-module", "¿Desea Eliminar este módulo?", "Esta acción no se podrá revertir", "", id) 
+            <% 
+                divErrores.Visible = false;
+                lbErrores.Visible = false;
+                lbErrores.Items.Clear();
+            %>
+            showSwal("update-module", "¿Desea Editar este módulo?", "Se modificarán sus datos", "", id) 
             //var parametros = "{'id': '" + id + "'}";
 
             //$.ajax({

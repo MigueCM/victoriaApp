@@ -96,9 +96,12 @@ namespace VictoriaApp
                     {
                         txtFile.PostedFile.SaveAs(rutaImagen);
                         Response.Write("The file has been uploaded.");
+                        //string currentPage = this.Page.Request.AppRelativeCurrentExecutionFilePath;
+                        //Response.Redirect(currentPage);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "showSwal('success-message-terminos', 'Registro exitoso!', 'Se ha registrado correctamente', 'Webinars.aspx', '')", true);
 
-                        string currentPage = this.Page.Request.AppRelativeCurrentExecutionFilePath;
-                        Response.Redirect(currentPage);
+                        
+                        
 
                     }
                     catch (Exception ex)
@@ -163,8 +166,9 @@ namespace VictoriaApp
 
             if (WebinarBLL.Instancia.EditarWebinar(objWebinar))
             {
-                string currentPage = this.Page.Request.AppRelativeCurrentExecutionFilePath;
-                Response.Redirect(currentPage);
+                //string currentPage = this.Page.Request.AppRelativeCurrentExecutionFilePath;
+                //Response.Redirect(currentPage);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "showSwal('success-message-terminos', 'Actualización exitoso!', 'Se ha editado correctamente', 'Webinars.aspx', '')", true);
             }
 
 
