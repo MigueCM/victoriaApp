@@ -73,6 +73,8 @@ namespace DAL
                         oUsuario.Persona.Apellidos = dr["Apellidos"].ToString();
                         oUsuario.Persona.Avatar = dr["Avatar"].ToString();
                         oUsuario.Persona.Dni = dr["Dni"].ToString();
+                        oUsuario.Persona.Departamento = dr["Departamento"].ToString();
+                        oUsuario.Persona.Ciudad = dr["Distrito"].ToString();
                     }
 
                         

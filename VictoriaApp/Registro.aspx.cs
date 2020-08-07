@@ -21,10 +21,13 @@ namespace VictoriaApp
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Descripcion", "var sessionDescripcion = '" + Session["DescripcionTerminos"] + "';", true);
             if (!IsPostBack)
             {
-                //List<string> data = new List<string>();
-                //data.Add("La Libertad - Trujillo - Victor Larco Herrera");
-                //cbDepartamento.DataSource = data;
-                //cbDepartamento.DataBind();
+                List<Ubigeo> data = new List<Ubigeo>();
+                data = UbigeoBLL.Instancia.ObtenerUbigeo();
+                cbDepartamento.DataSource = data;
+                cbDepartamento.DataTextField = "Completo";
+                cbDepartamento.DataValueField = "IdDistrito";
+                cbDepartamento.DataBind();
+
             }
 
             //ClientScript.RegisterStartupScript(this.GetType(), "Loader", "<script> $(document).ready(function() {$('#<%=UpdateProgress1.ClientID %>').show('slow', 'linear', function() {$('#<%=UpdateProgress1.ClientID %>').hide();});});</script>");
@@ -69,7 +72,15 @@ namespace VictoriaApp
                 errores.Add("Escoge tu sexo");
 
             if (cbDepartamento.SelectedIndex != 0)
-                oPersona.Departamento = cbDepartamento.Value.Trim();
+            {
+
+                //for (int i = 0; i <= cbDepartamento.Items.Count - 1; i++)
+                //{
+                //    if (cbDepartamento.Items[i].Selected)
+                        oPersona.Departamento = cbDepartamento.Items[cbDepartamento.SelectedIndex].Value.ToString();
+                //}
+            }
+                //oPersona.Departamento = cbDepartamento.Items[i]..ToString();
             else
                 errores.Add("Escoge tu departamento");
 
