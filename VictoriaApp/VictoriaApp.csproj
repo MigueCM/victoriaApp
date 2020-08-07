@@ -209,6 +209,7 @@
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
     <Content Include="vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Webinars.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.Master.cs">
@@ -316,9 +317,17 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Webinars.aspx.cs">
+      <DependentUpon>Webinars.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webinars.aspx.designer.cs">
+      <DependentUpon>Webinars.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\webinars\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\logo_victoria.ai" />

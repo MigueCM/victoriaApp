@@ -77,7 +77,7 @@
                                         <div class="form-group">
                                             <label for="cboOrden">Orden</label>
                                             <div class="input-group border-input">
-                                                <select class="form-control form-control-sm cboOrden" id="cboOrden" runat="server" required>
+                                                <select class="form-control form-control-sm select-admin cboOrden" id="cboOrden" runat="server" required>
                                                     <%--<option value="">Seleccione Orden</option>
                                                     <option value="1">1</option>--%>
                                                 </select>
@@ -116,7 +116,7 @@
                                        <div class="form-group">
                                             <label for="cboAlternativa">Respuesta</label>
                                             <div class="input-group border-input">
-                                                <select class="form-control form-control-sm cboAlternativa" id="cboAlternativa" runat="server" required>
+                                                <select class="form-control form-control-sm select-admin cboAlternativa" id="cboAlternativa" runat="server" required>
                                                     <option value="">Seleccione Alternativa</option>
                                                     <option value="1">Alternativa 1</option>
                                                     <option value="2">Alternativa 2</option>

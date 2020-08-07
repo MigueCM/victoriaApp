@@ -18,8 +18,19 @@
     padding-left: 1.5rem;
 }
 
+.form-group .border-input select.form-control.select-admin {
+    border: 1px solid #8585f9;
+    border-radius: .5rem;
+}
+
+.table img.img-table {
+    width: 50px;
+    height: 50px;
+    border-radius: 0px;
+}
+
 .modal-border {
-    border-left: 10px solid #410060 ;
+    border-left: 10px solid #410060;
     width: 600px;
 }
 

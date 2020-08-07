@@ -103,6 +103,13 @@
                             </li>
 
                             <li class="nav-item">
+                                <a class="nav-link" href="Webinars.aspx">
+                                    <i class="mdi mdi-airplay menu-icon"></i>
+                                    <span class="menu-title">WEBINAR</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
 
                             </li>
                             <li class="nav-item mega-menu">
