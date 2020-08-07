@@ -47,6 +47,7 @@
     <Compile Include="PreguntaCapacitacionDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TerminosCondicionesDAL.cs" />
+    <Compile Include="UbigeoDAL.cs" />
     <Compile Include="UsuarioCapacitacionDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
     <Compile Include="UsuarioHistorialDAL.cs" />

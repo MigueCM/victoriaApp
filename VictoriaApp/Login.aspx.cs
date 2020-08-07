@@ -45,6 +45,7 @@ namespace VictoriaApp
                     Session["nombre"] = objUsuario.Persona.Nombre;
                     Session["apellidos"] = objUsuario.Persona.Apellidos;
                     Session["UsuarioDni"] = objUsuario.Persona.Dni;
+                    Session["UbicacionUsuario"] = objUsuario.Persona.Departamento + ", " + objUsuario.Persona.Ciudad;
                     if (string.IsNullOrEmpty(objUsuario.Persona.Avatar) || objUsuario.Persona.Avatar == "")
                         Session["AvatarPersona"] = "Data/Avatar/noImage.png";
                     else

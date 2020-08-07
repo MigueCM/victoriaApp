@@ -155,7 +155,7 @@
                                         </div>
                                     <h1 class="color-black "><%=Session["nombre"] %> <%=Session["apellidos"] %></h1>
 
-                                    <span>Lima, Perú</span>
+                                    <span><%=Session["UbicacionUsuario"]%></span>
 
                                 </div>
 
