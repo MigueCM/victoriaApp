@@ -20,6 +20,7 @@ namespace DAL
             _comando.Parameters.AddWithValue("@password", SqlDbType.VarChar).Value = password;
             _comando.Parameters.AddWithValue("@idUsuarioRegistro", SqlDbType.VarChar).Value = id;
             _comando.Parameters.AddWithValue("@idPersona", SqlDbType.Int).Value = id;
+            _comando.Parameters.AddWithValue("@idPerfil", SqlDbType.Int).Value = 2;
             _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 1;
             bool valor = false;
             try
@@ -70,6 +71,8 @@ namespace DAL
                         oUsuario.Persona.Id = Convert.ToInt32(dr["idPersona"]);
                         oUsuario.Persona.Nombre = dr["Nombre"].ToString();
                         oUsuario.Persona.Apellidos = dr["Apellidos"].ToString();
+                        oUsuario.Persona.Avatar = dr["Avatar"].ToString();
+                        oUsuario.Persona.Dni = dr["Dni"].ToString();
                     }
 
                         
@@ -190,7 +193,6 @@ namespace DAL
 
         public Usuario ValidarPorToken(string token)
         {
-
             SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
             SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
             _comando.Parameters.AddWithValue("@token", SqlDbType.VarChar).Value = token;
@@ -224,5 +226,36 @@ namespace DAL
 
         }
 
+        public int ValidarExisteUsuario(string correo)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@user", SqlDbType.VarChar).Value = correo;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 10;
+
+            int existe = 0;
+
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                if (dr.Read())
+                {
+                    existe = Convert.ToInt32(dr["Existe"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return existe;
+
+        }
     }
 }

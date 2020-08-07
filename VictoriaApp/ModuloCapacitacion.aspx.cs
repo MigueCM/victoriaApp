@@ -127,14 +127,12 @@ namespace VictoriaApp
 
                 if (ModuloCapacitacionBLL.Instancia.RegistrarModulo(objModulo))
                 {
+                    
                     try
                     {
                         txtFile.PostedFile.SaveAs(rutaImagen);
                         Response.Write("The file has been uploaded.");
-
-                        string currentPage = this.Page.Request.AppRelativeCurrentExecutionFilePath;
-                        Response.Redirect(currentPage);
-
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "registrarModulo", "showSwal('auto-close', 'Registro exitoso!', 'Módulo registrado correctamente', 'ModuloCapacitacion.aspx', '')", true);
                     }
                     catch (Exception ex)
                     {
@@ -177,8 +175,8 @@ namespace VictoriaApp
                 try
                 {
                     txtFile.PostedFile.SaveAs(rutaImagen);
-                    Response.Write("The file has been uploaded.");                   
-
+                    Response.Write("The file has been uploaded.");
+                    
                 }
                 catch (Exception ex)
                 {
@@ -200,7 +198,8 @@ namespace VictoriaApp
             if (ModuloCapacitacionBLL.Instancia.EditarModulo(objModulo))
             {
                 string currentPage = this.Page.Request.AppRelativeCurrentExecutionFilePath;
-                Response.Redirect(currentPage);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "editarModulo", "showSwal('auto-close', 'Edición exitosa!', 'Módulo editado correctamente', 'ModuloCapacitacion.aspx', '')", true);
+                //Response.Redirect(currentPage);
             }
 
 

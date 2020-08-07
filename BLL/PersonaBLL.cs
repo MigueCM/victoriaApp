@@ -36,5 +36,15 @@ namespace BLL
         {
             return oPersonaDAL.RegistrarPersona(persona, usuario, password);
         }
+
+        public bool ActualizarAvatar(string archivo, int id)
+        {
+            return oPersonaDAL.ActualizarAvatar(archivo, id);
+        }
+
+        public string ObtenerAvatar(int id)
+        {
+            return oPersonaDAL.ObtenerAvatar(id);
+        }
     }
 }

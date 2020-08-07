@@ -18,11 +18,8 @@
         <!-- inject:css -->
         <link href="css/style.css" rel="stylesheet" />
         <!-- endinject -->
-        <script src="Scripts/jquery-3.4.1.js"></script>
-        <link rel="shortcut icon" href="images/favicon.png" />
+        <link rel="shortcut icon" href="images/Victoria.ico" />
         <link href="css/estilos.css" rel="stylesheet" />
-        <script src="Scripts/alerts.js"></script>
-        <script src="Scripts/sweetalert.min.js"></script>
         <script src="vendors/js/vendor.bundle.base.js"></script>
         <script src="Scripts/js/off-canvas.js"></script>
         <script src="Scripts/js/hoverable-collapse.js"></script>
@@ -70,7 +67,7 @@
                                 <li class="nav-item count-indicator nav-profile dropdown">
                                     <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                                         <span class="nav-profile-name text-capitalize">Hola, <%=Session["nombre"] %> <%=Session["apellidos"] %></span>
-                                        <img src="images/faces/face28.png" alt="profile"/>
+                                        <img src="<%=Session["AvatarPersona"] %>" style="width:50px; height:50px; border-radius:50%; border-width:2px;" alt="profile"/>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                                         <a class="dropdown-item text-primary" href="Logout.aspx">
@@ -90,7 +87,7 @@
                     <div class="container">
                         <ul class="nav page-navigation">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">
+                                <a class="nav-link" href="#">
                                     <i class="mdi mdi-view-dashboard-outline menu-icon"></i>
                                     <span class="menu-title">PERFIL</span>
                                 </a>
@@ -103,17 +100,16 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="Webinars.aspx">
-                                    <i class="mdi mdi-airplay menu-icon"></i>
-                                    <span class="menu-title">WEBINAR</span>
+                                <a href="TerminosCondiciones.aspx" class="nav-link">
+                                    <i class="mdi mdi-file-outline menu-icon"></i>
+                                    <span class="menu-title">TERMINOS Y CONDICIONES</span>
                                 </a>
                             </li>
-
                             <li class="nav-item">
-
-                            </li>
-                            <li class="nav-item mega-menu">
-          
+                                <a class="nav-link" href="#">
+                                    <i class="mdi mdi-comment-text-outline menu-icon"></i>
+                                    <span class="menu-title">WEBINARS</span>
+                                </a>
                             </li>
                             <li class="nav-item mega-menu">
               

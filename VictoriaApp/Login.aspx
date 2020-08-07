@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/estilos.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="images/Victoria.ico" />
 </head>
 
 <body>
@@ -31,7 +31,7 @@
           <div class="col-lg-6 d-flex align-items-center justify-content-center animated fadeIn">
             <div class="auth-form-transparent text-left p-login ">
               <div class="brand-logo text-center">
-                <img src="images/logo_victoria.png" alt="logo">
+                <img src="images/logo_victoria2.png" alt="logo">
               </div>
               <h4 class="font-weight-bold">¡Hola de nuevo!</h4>
               <h6 class="font-weight-light">¡Felices de que vuelvas!</h6>
