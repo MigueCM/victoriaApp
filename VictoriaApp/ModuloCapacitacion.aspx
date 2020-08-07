@@ -79,7 +79,7 @@
                                             <div class="input-group border-input">
                                                   <div class="input-group-prepend bg-transparent ">
                                                     <span class="input-group-text bg-transparent border-right-0 border-color-principal">
-                                                        <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
+                                                        <i class="fas fa-pen-square text-primary" aria-hidden="true"></i>
                                                     </span>
                                                     </div>                  
 
@@ -97,7 +97,7 @@
                                             <div class="input-group border-input">
                                                   <div class="input-group-prepend bg-transparent ">
                                                     <span class="input-group-text bg-transparent border-right-0 border-color-principal">
-                                                        <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
+                                                        <i class="fab fa-youtube text-primary" aria-hidden="true"></i>
                                                     </span>
                                                     </div>                  
 
@@ -109,7 +109,7 @@
                                             <div class="input-group border-input">        
                                                 <div class="input-group-prepend bg-transparent ">
                                                     <span class="input-group-text bg-transparent border-right-0 border-color-principal">
-                                                        <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
+                                                        <i class="far fa-file-image text-primary" aria-hidden="true"></i>
                                                     </span>
                                                     </div>
                                                 <input name="txtFile" type="file" id="txtFile" class="form-control form-control-sm border-color-principal pl-1 txtFile" required runat="server" accept="image/*" />
