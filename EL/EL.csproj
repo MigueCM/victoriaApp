@@ -45,6 +45,7 @@
     <Compile Include="Persona.cs" />
     <Compile Include="PreguntaCapacitacion.cs" />
     <Compile Include="TerminosCondicionesEL.cs" />
+    <Compile Include="Ubigeo.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioCapacitacion.cs" />
