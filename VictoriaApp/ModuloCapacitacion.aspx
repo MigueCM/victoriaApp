@@ -83,7 +83,7 @@
                                                     </span>
                                                     </div>                  
 
-                                                <input name="txtNombre" type="text" id="txtNombre" class="form-control form-control-sm border-color-principal pl-1 txtNombre" placeholder="Nombre" required runat="server"/>
+                                                <input name="txtNombre" type="text" id="txtNombre" class="form-control form-control-sm border-color-principal pl-1 txtNombre" placeholder="Nombre" runat="server"/>
                                             </div>                                     
                                         </div>
                                         <div class="form-group">
@@ -101,7 +101,7 @@
                                                     </span>
                                                     </div>                  
 
-                                                <input name="txtEnlace" type="text" id="txtEnlace" class="form-control form-control-sm border-color-principal pl-1 txtEnlace" placeholder="Enlace" required runat="server"/>
+                                                <input name="txtEnlace" type="text" id="txtEnlace" class="form-control form-control-sm border-color-principal pl-1 txtEnlace" placeholder="Enlace" runat="server"/>
                                             </div>                                     
                                         </div>
                                         <div class="form-group">
@@ -112,11 +112,14 @@
                                                         <i class="far fa-file-image text-primary" aria-hidden="true"></i>
                                                     </span>
                                                     </div>
-                                                <input name="txtFile" type="file" id="txtFile" class="form-control form-control-sm border-color-principal pl-1 txtFile" required runat="server" accept="image/*" />
+                                                <input name="txtFile" type="file" id="txtFile" class="form-control form-control-sm border-color-principal pl-1 txtFile" runat="server" accept="image/*" />
                                                 <input type="hidden" name="txtImagen" id="txtImagen" class="txtImagen" runat="server" />
                                             </div>                                     
                                         </div>
                                     </div>
+                                    <div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="divErrores">
+                                          <asp:ListBox ID="lbErrores" runat="server" BackColor="Transparent" Width="100%" Enabled="false" CssClass="border-0 accordion text-danger overflow-hidden" Visible="false"></asp:ListBox>
+                                      </div>
                                     <div class="modal-footer">
                                          <asp:Button ID="btnEnviar" runat="server" Text="Agregar" class="btn btn-primary font-weight-medium btnEnviar" OnClick="btnEnviar_Click"/>
                                         

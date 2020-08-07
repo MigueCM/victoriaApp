@@ -1,6 +1,10 @@
 ﻿using BLL;
+using EL;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
+using System.Web;
 using System.Web.UI;
 
 namespace VictoriaApp
@@ -10,7 +14,10 @@ namespace VictoriaApp
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                CargarWebinar();
+            }
         }
 
         protected void btnImagen_Click(object sender, EventArgs e)
@@ -49,5 +56,69 @@ namespace VictoriaApp
                 Response.Write("Please select a file to upload.");
             }
         }
+
+        private void CargarWebinar()
+        {
+            List<Webinar> listaWebinars = WebinarBLL.Instancia.ObtenerWebinar();
+
+            StringBuilder innerHtml = new StringBuilder();
+
+            int i = 1;
+
+            foreach (Webinar item in listaWebinars)
+            {
+
+                string imagen = "images/webinars/" + item.Imagen;
+
+                if (item.Imagen == null || item.Imagen == "")
+                {
+                    imagen = "images/webinar.jpg";
+                }
+
+                string fila = "<div class=\"card webinar-shadow\">";
+
+                fila += $"<div class=\"card-header\" role=\"tab\" id=\"heading-{i}\">";
+
+                fila += "<h6 class=\"mb-0\">";
+                fila += $"<a data-toggle=\"collapse\" href=\"#collapse-{i}\" aria-expanded=\"false\" aria-controls=\"collapse-{i}\" class=\"collapsed\">";
+                fila += $"<span class=\"h3 text-primary\">{item.Titulo}</span>";
+                fila += $"<span class=\"webinar-autor\">Por {item.Autor}</span>";
+                fila += "</a>";
+                fila += "</h6>";
+
+                fila += "</div>";
+
+                fila += $"<div id=\"collapse-{i}\" class=\"collapse\" role=\"tabpanel\" aria-labelledby=\"heading-{i}\" data-parent=\"#accordion-4\">";
+
+                fila += "<div class=\"card-body animated fadeIn\">";
+
+                fila += "<div class=\"row\">";
+
+                fila += "<div class=\"col-3\">";
+                fila += $"<img src=\"{imagen}\" class=\"mw-100\" alt=\"image\">";
+                fila += "</div>";
+
+                fila += "<div class=\"col-9\">";
+                fila += $"<p class=\"mb-0 color-white\">{item.Descripcion}</p>";
+                fila += "</div>";
+
+                fila += "</div>";
+
+                fila += "</div>";
+
+                fila += "</div>";
+
+
+                fila += "</div>";
+
+                innerHtml.AppendLine(fila);
+
+                i++;
+            }
+
+            Session["webinar"] = HttpUtility.HtmlEncode(innerHtml.ToString());
+        }
+
+
     }
 }

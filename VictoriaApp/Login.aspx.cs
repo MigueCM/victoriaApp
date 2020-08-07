@@ -2,8 +2,10 @@
 using EL;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net.Mail;
 using System.Net.Mime;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -55,16 +57,21 @@ namespace VictoriaApp
                     Session["nombre"] = "";
                     Session["apellidos"] = "";
                 }
+
+                int porcentaje = UsuarioCapacitacionBLL.Instancia.ObtenerPorcentajeModulos(objUsuario.IdUsuario);
+
+                Session["prog_value"] = $"width: {porcentaje}%";
+                Session["prog_text"] = $"{porcentaje}% Avance";
+
+                
+
                 if (Convert.ToInt32(Session["IdPerfil"].ToString()) == 1)
                 {
                     Response.Redirect("ModuloCapacitacion.aspx");
                 }
                 else
                 {
-                    int porcentaje = UsuarioCapacitacionBLL.Instancia.ObtenerPorcentajeModulos(objUsuario.IdUsuario);
-
-                    Session["prog_value"] = $"width: {porcentaje}%";
-                    Session["prog_text"] = $"{porcentaje}% Avance";
+                    
                     Response.Redirect("Principal.aspx");
                 }
 
