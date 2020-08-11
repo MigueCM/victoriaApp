@@ -28,11 +28,32 @@ namespace VictoriaApp
         {
             EL.ModuloCapacitacion objModulo = ModuloCapacitacionBLL.Instancia.ObtenerModulosPorId(Convert.ToInt32(Session["video_idModulo"]));
 
+            Session["video"] = "";
+
             if(objModulo != null)
             {
                 title_modulo.InnerHtml = objModulo.Nombre;
                 autor_modulo.InnerHtml = $"Por {objModulo.Autor}";
                 descripcion_modulo.InnerHtml = objModulo.Descripcion;
+
+                if (objModulo.Enlace.Contains("v="))
+                {
+                    int location = objModulo.Enlace.IndexOf("v=");
+                    string subcadnea = objModulo.Enlace.Substring(location);
+                    if (subcadnea.Contains("&"))
+                    {
+                        int location2 = subcadnea.IndexOf("&");
+                        var subcadena3 = subcadnea.Substring(location2);
+                        Session["video"] = subcadnea.Replace(subcadena3,"").Substring(2);
+                    }
+                    else
+                    {
+                        Session["video"] = subcadnea.Substring(2);
+                    }
+
+                }
+
+                
             }
 
             List<EL.PreguntaCapacitacion> listaPreguntas = PreguntaCapacitacionBLL.Instancia.ObtenerPreguntas(Convert.ToInt32(Session["video_idModulo"]));

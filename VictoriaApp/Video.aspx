@@ -251,7 +251,7 @@
             player = new YT.Player('player', {
                 height: '360',
                 width: '560',
-                videoId: 'bQL2FsHe7G4',
+                videoId: '<%=Session["video"]%>',
                 playerVars: { 'controls': 0 },
                 events: {
                     //'onReady': onPlayerReady,

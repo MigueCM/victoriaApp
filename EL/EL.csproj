@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ModuloCapacitacion.cs" />
+    <Compile Include="Perfil.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="PreguntaCapacitacion.cs" />
     <Compile Include="TerminosCondicionesEL.cs" />
