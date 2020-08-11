@@ -25,7 +25,7 @@ namespace VictoriaApp
                 data = UbigeoBLL.Instancia.ObtenerUbigeo();
                 cbDepartamento.DataSource = data;
                 cbDepartamento.DataTextField = "Completo";
-                cbDepartamento.DataValueField = "IdDistrito";
+                cbDepartamento.DataValueField = "IdDistrito"; 
                 cbDepartamento.DataBind();
 
             }
@@ -137,10 +137,24 @@ namespace VictoriaApp
             }
             else
             {
-                if (PersonaBLL.Instancia.RegistrarPersona(oPersona, usuario, password))
+                int idPersona = PersonaBLL.Instancia.RegistrarPersona(oPersona);
+                if (idPersona > 0)
                 {
-                    enviaremail(usuario, oPersona.Nombre, oPersona.Apellidos); 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "showSwal('success-message', 'Registro exitoso!', 'Bienvenido a Victoria', 'Login.aspx', '')", true);
+
+                    Usuario oUsuario = new Usuario();
+                    oUsuario.IdPerfil = 2;
+                    oUsuario.IdPersona = idPersona;
+                    oUsuario.IdUsuarioRegistro = 0;
+                    oUsuario.User = usuario;
+                    oUsuario.Password = password;
+
+                    if (UsuarioBLL.Instancia.InsertarUsuario(oUsuario))
+                    {
+                        enviaremail(usuario, oPersona.Nombre, oPersona.Apellidos);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "showSwal('success-message', 'Registro exitoso!', 'Bienvenido a Victoria', 'Login.aspx', '')", true);
+                    }
+
+                    
                 }
                 divErrores.Visible = false;
                 lbErrores.Visible = false;

@@ -79,7 +79,7 @@
                                             <div class="input-group border-input">
                                                   <div class="input-group-prepend bg-transparent ">
                                                     <span class="input-group-text bg-transparent border-right-0 border-color-principal">
-                                                        <i class="fas fa-pen-square text-primary" aria-hidden="true"></i>
+                                                        <i class="fas fa-edit text-primary" aria-hidden="true"></i>
                                                     </span>
                                                     </div>                  
 
@@ -105,7 +105,7 @@
                                             </div>                                     
                                         </div>
                                         <div class="form-group">
-                                            <label for="txtFile">Enlace</label>
+                                            <label for="txtFile">Imagen</label>
                                             <div class="input-group border-input">        
                                                 <div class="input-group-prepend bg-transparent ">
                                                     <span class="input-group-text bg-transparent border-right-0 border-color-principal">

@@ -11,16 +11,16 @@ namespace DAL
 {
     public class UsuarioDAL
     {
-        public bool InsertarUsuario(int id, string usuario, string password)
+        public bool InsertarUsuario(Usuario usuario)
         {
 
             SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
             SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
-            _comando.Parameters.AddWithValue("@user", SqlDbType.VarChar).Value = usuario;
-            _comando.Parameters.AddWithValue("@password", SqlDbType.VarChar).Value = password;
-            _comando.Parameters.AddWithValue("@idUsuarioRegistro", SqlDbType.VarChar).Value = id;
-            _comando.Parameters.AddWithValue("@idPersona", SqlDbType.Int).Value = id;
-            _comando.Parameters.AddWithValue("@idPerfil", SqlDbType.Int).Value = 2;
+            _comando.Parameters.AddWithValue("@user", SqlDbType.VarChar).Value = usuario.User;
+            _comando.Parameters.AddWithValue("@password", SqlDbType.VarChar).Value = usuario.Password;
+            _comando.Parameters.AddWithValue("@idUsuarioRegistro", SqlDbType.VarChar).Value = usuario.IdUsuarioRegistro;
+            _comando.Parameters.AddWithValue("@idPersona", SqlDbType.Int).Value = usuario.IdPersona;
+            _comando.Parameters.AddWithValue("@idPerfil", SqlDbType.Int).Value = usuario.IdPerfil;
             _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 1;
             bool valor = false;
             try
@@ -30,6 +30,62 @@ namespace DAL
 
                 if (_comando.ExecuteNonQuery() > 0)
                     valor = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return valor;
+        }
+
+        public bool ActualizarUsuario(Usuario usuario)
+        {
+
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@idPerfil", SqlDbType.Int).Value = usuario.IdPerfil;
+            _comando.Parameters.AddWithValue("@idUsuarioRegistro", SqlDbType.VarChar).Value = usuario.IdUsuarioEdicion;
+            _comando.Parameters.AddWithValue("@idUsuario", SqlDbType.VarChar).Value = usuario.IdUsuario;
+            _comando.Parameters.AddWithValue("@fechaEdicion", SqlDbType.VarChar).Value = DateTime.Now;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 2;
+            bool valor = false;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                if (_comando.ExecuteNonQuery() > 0)
+                    valor = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return valor;
+        }
+
+        public bool EliminarUsuario(int idUsuario)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@idUsuario", SqlDbType.Int).Value = idUsuario;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 13;
+            bool valor = false;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+                _comando.ExecuteNonQuery();
+                valor = true;
+
             }
             catch (Exception ex)
             {
@@ -259,5 +315,95 @@ namespace DAL
             return existe;
 
         }
+
+        public List<Usuario> ObtenerUsuarios()
+        {
+
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 11;
+            List<Usuario> lista = new List<Usuario>();
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    Usuario objUsuario = new Usuario();
+
+                    objUsuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
+                    objUsuario.User = dr["User"].ToString();
+                    
+                    objUsuario.Perfil = new Perfil();
+                    objUsuario.Perfil.IdPerfil = Convert.ToInt32(dr["idPerfil"]);
+                    objUsuario.Perfil.Nombre = dr["perfil"].ToString();
+
+                    objUsuario.Persona = new Persona();
+                    objUsuario.Persona.Id = Convert.ToInt32(dr["idPersona"]);
+                    objUsuario.Persona.Nombre = dr["Nombre"].ToString();
+                    objUsuario.Persona.Apellidos = dr["Apellidos"].ToString();
+
+                    lista.Add(objUsuario);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return lista;
+
+        }
+
+        public Usuario ObtenerUsuarioPorId(int idUsuario)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@idUsuario", SqlDbType.Int).Value = idUsuario;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 12;
+            Usuario objUsuario = null;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    objUsuario = new Usuario();
+
+                    objUsuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
+                    objUsuario.User = dr["User"].ToString();
+                    objUsuario.IdPerfil = Convert.ToInt32(dr["idPerfil"]);
+                    objUsuario.IdPersona = Convert.ToInt32(dr["idPersona"]);
+
+                    objUsuario.Persona = new Persona();
+                    objUsuario.Persona.Id = Convert.ToInt32(dr["idPersona"]);
+                    objUsuario.Persona.Nombre = dr["Nombre"].ToString();
+                    objUsuario.Persona.Apellidos = dr["Apellidos"].ToString();
+                    objUsuario.Persona.Dni = dr["Dni"].ToString();
+                    objUsuario.Persona.FechaNacimiento = Convert.ToDateTime(dr["FechaNacimiento"]);
+                    objUsuario.Persona.Sexo = dr["Sexo"].ToString();
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return objUsuario;
+        }
+
     }
 }

@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ModuloCapacitacionBLL.cs" />
+    <Compile Include="PerfilBLL.cs" />
     <Compile Include="PersonaBLL.cs" />
     <Compile Include="PreguntaCapacitacionBLL.cs" />
     <Compile Include="TerminosCondicionesBLL.cs" />

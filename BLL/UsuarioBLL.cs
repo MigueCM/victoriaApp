@@ -32,6 +32,21 @@ namespace BLL
 
         private static UsuarioDAL oUsuarioDAL = new UsuarioDAL();
 
+        public bool InsertarUsuario(Usuario usuario)
+        {
+            return oUsuarioDAL.InsertarUsuario(usuario);
+        }
+
+        public bool ActualizarUsuario(Usuario usuario)
+        {
+            return oUsuarioDAL.ActualizarUsuario(usuario);
+        }
+
+        public bool EliminarUsuario(int idUsuario)
+        {
+            return oUsuarioDAL.EliminarUsuario(idUsuario);
+        }
+
         public Usuario ObtenerUsuario(string usuario, string password)
         {
             if ( usuario.Trim().Length > 0 && password.Trim().Length > 0)
@@ -71,6 +86,16 @@ namespace BLL
         public int ValidarExisteUsuario(string correo)
         {
             return oUsuarioDAL.ValidarExisteUsuario(correo);
+        }
+
+        public List<Usuario> ObtenerUsuarios()
+        {
+            return oUsuarioDAL.ObtenerUsuarios();
+        }
+
+        public Usuario ObtenerUsuarioPorId(int idUsuario)
+        {
+            return oUsuarioDAL.ObtenerUsuarioPorId(idUsuario);
         }
     }
 }

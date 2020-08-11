@@ -32,9 +32,14 @@ namespace BLL
 
         private static PersonaDAL oPersonaDAL = new PersonaDAL();
 
-        public bool RegistrarPersona(Persona persona, string usuario, string password)
+        public int RegistrarPersona(Persona persona)
         {
-            return oPersonaDAL.RegistrarPersona(persona, usuario, password);
+            return oPersonaDAL.RegistrarPersona(persona);
+        }
+
+        public bool ActualizarPersona(Persona persona)
+        {
+            return oPersonaDAL.ActualizarPersona(persona);
         }
 
         public bool ActualizarAvatar(string archivo, int id)
