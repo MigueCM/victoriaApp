@@ -46,5 +46,10 @@ namespace BLL
         {
             return oUsuarioDAL.RegistrarCapacitacion(usuarioCapacitacion);
         }
+
+        public int ObtenerCalificacion(int idModulo)
+        {
+            return oUsuarioDAL.ObtenerCalificacion(idModulo);
+        }
     }
 }

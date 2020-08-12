@@ -120,5 +120,36 @@ namespace DAL
             return valor;
         }
 
+        public int ObtenerCalificacion(int idModulo)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_UsuarioCapacitacion", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@idModuloCapacitacion", SqlDbType.Int).Value = idModulo;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 6;
+            int calificacion = 0;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                if (dr.Read())
+                {
+
+                    calificacion = Convert.ToInt32(dr["calificacion"]);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return calificacion;
+        }
+
     }
 }

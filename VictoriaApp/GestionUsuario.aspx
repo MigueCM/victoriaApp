@@ -207,45 +207,13 @@
     <!-- plugin js for this page -->
     <script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net/jquery.dataTables.js"></script>
     <script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-
+    <script src="Scripts/js/datatable.js"></script>
     <script>
 
         $(".modal").on('hidden.bs.modal', () => $("html").css("overflow", "auto"));
         $(".modal").on('shown.bs.modal', () => $("html").css("overflow", "hidden"));
 
-        $('#tabla-modulos thead tr').clone(true).appendTo('#tabla-modulos thead');
-        $('#tabla-modulos thead tr:eq(1) th').each(function (i) {
-           
-            if ($(this).hasClass("search")) {
-                var title = $(this).text();
-                $(this).html('<input type="text" class="w-100 p-1" placeholder="' + title + '" />');
-
-                $('input', this).on('keyup change', function () {
-                    if (table.column(i).search() !== this.value) {
-                        table
-                            .column(i)
-                            .search(this.value)
-                            .draw();
-                    }
-                });
-            } else {
-                $(this).html("")
-            }
-            
-        });
-
-        var table = $('#tabla-modulos').DataTable({
-            "aLengthMenu": [
-                [5, 10, 15, -1],
-                [5, 10, 15, "All"]
-            ],
-            "iDisplayLength": 10,
-            "language": {
-                search: ""
-            },
-            orderCellsTop: true,
-            fixedHeader: true
-        });
+        
 
         function cargarData(id) {
             <% 
@@ -262,19 +230,20 @@
                 cancelButtonColor: '#ff4081',
                 confirmButtonText: 'Great ',
                 buttons: {
-                    cancel: {
-                        text: "Cancelar",
-                        value: null,
-                        visible: true,
-                        className: "btn btn-danger",
-                        closeModal: true,
-                    },
+                    
                     confirm: {
                         text: "Editar",
                         value: true,
                         visible: true,
                         className: "btn btn-primary",
                         closeModal: true
+                    },
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
                     }
                 }
             }).then((willDelete) => {
@@ -306,7 +275,7 @@
                             $(".cbSexo").val(data["Persona"]["Sexo"]);
                             $(".cbPerfil").val(data["IdPerfil"]);
                             $(".title").html("Actualización de Usuario")
-                            $(".btnEnviar").html("Actualizar")
+                            $(".btnEnviar").val("Actualizar")
                             $(".txtTipo").val(2)
 
                             $("#modalCreate").modal("show")
@@ -333,20 +302,21 @@
                 cancelButtonColor: '#ff4081',
                 confirmButtonText: 'Great ',
                 buttons: {
-                    cancel: {
-                        text: "Cancelar",
-                        value: null,
-                        visible: true,
-                        className: "btn btn-danger",
-                        closeModal: true,
-                    },
                     confirm: {
                         text: "Eliminar",
                         value: true,
                         visible: true,
                         className: "btn btn-primary",
                         closeModal: true
+                    },
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
                     }
+                    
                 }
             }).then((willDelete) => {
                 if (willDelete) {
@@ -371,7 +341,7 @@
                             console.log(e)
                         }
                     }).done(function (html) {
-                        swal("El módulo ha sido eliminado correctamente", {
+                        swal("El usuario ha sido eliminado correctamente", {
                             icon: "success",
                             timer: 2000
                         });
@@ -396,7 +366,7 @@
             $(".cbSexo").val("");
             $(".cbPerfil").val("0");
             $(".title").html("Registro de Usuario")
-            $(".btnEnviar").html("Agregar")
+            $(".btnEnviar").val("Agregar")
             $(".txtTipo").val(1)
             $(".div-ocultar").css("display", "block")
             $(".txtEmail").prop("required", true);

@@ -33,7 +33,11 @@ namespace VictoriaApp
 
             foreach (var item in lista)
             {
-                string imagen = "images/webinars/" + item.Imagen;
+                string imagen = "images/webinar.jpg";
+                string current = Server.MapPath(@"~/images/webinars/"+item.Imagen);
+                if (File.Exists(current)){
+                    imagen = "images/webinars/" + item.Imagen;
+                }
 
                 string fila = "<tr>";
                 fila += $"<td>{numero++}</td>";

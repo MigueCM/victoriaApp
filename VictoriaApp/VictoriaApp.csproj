@@ -117,6 +117,15 @@
     <Content Include="Data\20200802231307.png" />
     <Content Include="Data\20200802231650.png" />
     <Content Include="Data\20200805232944.jpg" />
+    <Content Include="Data\202008061647183.jpg" />
+    <Content Include="Data\20200806234645.jpg" />
+    <Content Include="Data\20200806234720.jpg" />
+    <Content Include="Data\20200806234832.jpg" />
+    <Content Include="Data\20200806234904.jpg" />
+    <Content Include="Data\20200806235106.jpg" />
+    <Content Include="Data\20200806235301.jpg" />
+    <Content Include="Data\Avatar\3kevin.jpg" />
+    <Content Include="Data\Avatar\58Christian.jpg" />
     <Content Include="Data\Avatar\noImage.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -133,6 +142,7 @@
     <Content Include="fonts\poppins\Poppins-Light.woff2" />
     <Content Include="fonts\poppins\Poppins-Regular.woff2" />
     <Content Include="fonts\poppins\Poppins-SemiBold.woff2" />
+    <Content Include="images\auth\IMAGEN_PROPUESTA_1.jpg" />
     <Content Include="images\auth\lockscreen-bg.jpg" />
     <Content Include="images\auth\login-bg.jpg" />
     <Content Include="images\auth\register-bg.jpg" />
@@ -154,10 +164,16 @@
     <Content Include="images\logo-dark.svg" />
     <Content Include="images\logo-mini.svg" />
     <Content Include="images\logo_victoria.png" />
+    <Content Include="images\logo_victoria2.png" />
     <Content Include="images\sprites\jsgrid-icons.png" />
     <Content Include="images\Victoria.ico" />
     <Content Include="images\video.png" />
     <Content Include="images\webinar.jpg" />
+    <Content Include="images\webinars\20200806225650.jpg" />
+    <Content Include="images\webinars\20200807001420.jpg" />
+    <Content Include="images\webinars\20200807001443.jpg" />
+    <Content Include="images\webinars\20200807002348.jpg" />
+    <Content Include="images\webinars\20200807020227.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="ModuloCapacitacion.aspx" />
@@ -177,6 +193,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\js\datatable.js" />
     <Content Include="Scripts\js\hoverable-collapse.js" />
     <Content Include="Scripts\js\off-canvas.js" />
     <Content Include="Scripts\js\settings.js" />
@@ -348,7 +365,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\webinars\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\logo_victoria.ai" />

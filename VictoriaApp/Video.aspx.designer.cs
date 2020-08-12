@@ -15,6 +15,15 @@ namespace VictoriaApp
     {
 
         /// <summary>
+        /// Control img_video.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage img_video;
+
+        /// <summary>
         /// Control title_modulo.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace VictoriaApp
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl descripcion_modulo;
+
+        /// <summary>
+        /// Control div_calificacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_calificacion;
 
         /// <summary>
         /// Control title.

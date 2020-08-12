@@ -50,7 +50,7 @@ namespace VictoriaApp
         {
             Guid miGuid = Guid.NewGuid();
             string token = Convert.ToBase64String(miGuid.ToByteArray());
-            token = token.Replace("=", "").Replace("+", "");
+            token = token.Replace("=", "").Replace("+", "").Replace("/","").Replace("&","").Replace("?","");
 
             //Console.WriteLine(token.Substring(0, longitud));
 

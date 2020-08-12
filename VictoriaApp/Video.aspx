@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body" id="cardVideo">
                     
-                        <img src="images/video.png" style="width:100%" onClick="$('#modalVideo').modal('show')"/>
+                        <img src="images/video.png" style="width:100%;height: 370px;" onClick="$('#modalVideo').modal('show')" id="img_video" runat="server"/>
                       
                       <div class="row">
                         <div class="col-sm-12">
@@ -17,12 +17,12 @@
                         </div>
                       </div>
                     <div class="row">
-                        <div class="col-sm-9" style="padding-left:1rem; padding-bottom:10px;">
+                        <div class="col-sm-9" style="padding-left:1rem; padding-bottom:10px;" id="div_calificacion" runat="server">
                             <i class="fas fa-star color-star"></i> 5 &nbsp;&nbsp;&nbsp;
                             <i class="fas fa-play text-primary"></i> 8,365
                         </div>
                         <div class="col-sm-3" style="padding-left:1rem; padding-bottom:10px;">
-                            <button style="border-radius:20px; background-color:#27003A; color:#ffff;">Siguiente módulo</button>
+                            <button style="border-radius:20px; background-color:#27003A; color:#ffff;" id="btnSiguiente">Siguiente módulo</button>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content" style="width: 560px;">
                                     <div class="modal-header">
-                                        <h5 class="modal-title title" id="title" runat="server">Registro de Pregunta</h5>
+                                        <h5 class="modal-title title" id="title" runat="server"></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
@@ -218,7 +218,7 @@
                                 <label for="radio5">★</label>
                               </p>
 
-                            <button class="btn btn-primary" style="float:right" onclick="ValidarCampos()">Enviar</button>
+                            <button class="btn btn-primary" style="float:right" onclick="ValidarCampos()">Completar</button>
 
                         </div>
                     </div>
@@ -252,7 +252,7 @@
                 height: '360',
                 width: '560',
                 videoId: '<%=Session["video"]%>',
-                playerVars: { 'controls': 0 },
+                //playerVars: { 'controls': 0 },
                 events: {
                     //'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
@@ -310,7 +310,8 @@
             if (flag == true) {
                
                 if ($(".clasificacion input[type=radio]:checked").length == 0) {
-                    alert("Debe calificar este módulo");
+                    
+                    swal("Error", "Debe calificar este módulo", "error");
                 } else {
                     var parametros = "{'respuestas': '" + arreglo + "', 'calificacion':" + $(".clasificacion input[type=radio]:checked").val() + "}";
 
@@ -336,7 +337,7 @@
                 }
             }                
             else
-                alert("Debe responder todas las preguntas");
+                swal("Error", "Debe responder todas las preguntas", "error");
 /*
             $.ajax({
                 data: parametros,
@@ -370,6 +371,29 @@
                 }
             });*/
         }
+
+        $("#btnSiguiente").click(function () {
+            $.ajax({
+                //data: parametros,
+                url: 'Video.aspx/ValidarSiguienteModulo',
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+
+                },
+                success: function (response) {
+                    console.log(response)
+                    if (response["d"] == true)
+                        location.href = "Video.aspx";
+                    else
+                        swal("Error", "El módulo aun no está disponible", "error");
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            });
+        });
 
     </script>
 </asp:Content>

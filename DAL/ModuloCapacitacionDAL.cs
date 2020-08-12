@@ -106,6 +106,44 @@ namespace DAL
 
         }
 
+
+        public List<ModuloCapacitacion> ObtenerModulosCalificacionPorUsuario(int idUsuario)
+        {
+
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_ModuloCapacitacion", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@idUsuario", SqlDbType.Int).Value = idUsuario;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 9;
+            List<ModuloCapacitacion> lista = new List<ModuloCapacitacion>();
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    ModuloCapacitacion modulo = new ModuloCapacitacion();
+
+                    modulo.IdModuloCapacitacion = Convert.ToInt32(dr["idModuloCapacitacion"]);
+                    modulo.Completado = Convert.ToInt32(dr["Completado"]);
+
+                    lista.Add(modulo);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return lista;
+
+        }
+
         public List<ModuloCapacitacion> ObtenerModulos()
         {
 
