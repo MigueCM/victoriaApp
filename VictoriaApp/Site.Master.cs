@@ -68,7 +68,13 @@ namespace VictoriaApp
             foreach (Webinar item in listaWebinars)
             {
 
-                string imagen = "images/webinars/" + item.Imagen;
+                string imagen = "images/webinar.jpg";
+                string current = Server.MapPath(@"~/images/webinars/" + item.Imagen);
+                if (File.Exists(current))
+                {
+                    imagen = "images/webinars/" + item.Imagen;
+                }
+
 
                 if (item.Imagen == null || item.Imagen == "")
                 {

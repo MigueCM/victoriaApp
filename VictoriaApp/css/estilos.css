@@ -11,6 +11,10 @@
     padding-left: 1.5rem;
 }
 
+.card-img-top {
+    height: 150px;
+}
+
 .form-group .border-input select.form-control {
     border-top-right-radius: .5rem;
     border-bottom-right-radius: .5rem;

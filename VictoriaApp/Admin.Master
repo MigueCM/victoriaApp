@@ -42,12 +42,12 @@
                 </div>
                 <br/>
                 <div class="square-box-loader">
-                                  <div class="square-box-loader-container">
-                                    <div class="square-box-loader-corner-top"></div>
-                                    <div class="square-box-loader-corner-bottom"></div>
-                                  </div>
-                                  <div class="square-box-loader-square"></div>
-                                </div>
+                    <div class="square-box-loader-container">
+                        <div class="square-box-loader-corner-top"></div>
+                        <div class="square-box-loader-corner-bottom"></div>
+                    </div>
+                    <div class="square-box-loader-square"></div>
+                </div>
                 <p class="text-mute">
                     <br/>
                     cargando...
@@ -87,12 +87,38 @@
                     <div class="container">
                         <ul class="nav page-navigation">
                             <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+                                    <span class="menu-title">ADMINISTRAR</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="submenu">
+                                    <ul class="submenu-item">
+                                        <li class="nav-item"><a class="nav-link" href="GestionUsuario.aspx">USUARIOS</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="mdi mdi-image-filter menu-icon"></i>
+                                    <span class="menu-title">MANTENEDORES</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="submenu">
+                                    <ul class="submenu-item">
+                                        <li class="nav-item"><a class="nav-link" href="ModuloCapacitacion.aspx">MÓDULOS</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="TerminosCondiciones.aspx">TÉRMINOS Y CONDICIONES </a></li>
+                                        <li class="nav-item"><a class="nav-link" href="Webinars.aspx">WEBINARS</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <%--<li class="nav-item">
                                 <a class="nav-link" href="GestionUsuario.aspx">
                                     <i class="mdi mdi-view-dashboard-outline menu-icon"></i>
                                     <span class="menu-title">USUARIOS</span>
                                 </a>
-                            </li>
-                            <li class="nav-item">
+                            </li>--%>
+                            <%--<li class="nav-item">
                                 <a class="nav-link" href="ModuloCapacitacion.aspx">
                                     <i class="mdi mdi-airplay menu-icon"></i>
                                     <span class="menu-title">MODULOS</span>
@@ -104,18 +130,30 @@
                                     <i class="mdi mdi-file-outline menu-icon"></i>
                                     <span class="menu-title">TERMINOS Y CONDICIONES</span>
                                 </a>
-                            </li>
-                            <li class="nav-item">
+                            </li>--%>
+                            <%--<li class="nav-item">
                                 <a class="nav-link" href="Webinars.aspx">
                                     <i class="mdi mdi-comment-text-outline menu-icon"></i>
                                     <span class="menu-title">WEBINARS</span>
                                 </a>
-                            </li>
+                            </li>--%>
                             <li class="nav-item mega-menu">
               
                             </li>
                             <li class="nav-item">
              
+                            </li>
+                            <li class="nav-item">
+              
+                            </li>
+                            <li class="nav-item">
+              
+                            </li>
+                            <li class="nav-item">
+              
+                            </li>
+                            <li class="nav-item">
+              
                             </li>
                             <li class="nav-item">
               

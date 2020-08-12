@@ -20771,7 +20771,7 @@ input:focus {
 @font-face {
     font-family: 'Poppins';
     src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Light.eot");
-    src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Light.woff2") format("woff2"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Light.woff") format("woff"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Light.ttf") format("truetype");
+    src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Poppins/Poppins-Light.woff2") format("woff2"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Light.woff") format("woff"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Light.ttf") format("truetype");
     font-weight: 300;
     font-style: normal;
 }
@@ -20779,7 +20779,7 @@ input:focus {
 @font-face {
     font-family: 'Poppins';
     src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Bold.eot");
-    src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Bold.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Bold.woff") format("woff"), url("../../fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+    src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Poppins/Poppins-Bold.woff2") format("woff2"), url("../fonts/Poppins/Poppins-Bold.woff") format("woff"), url("../fonts/Poppins/Poppins-Bold.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
 }
@@ -20795,7 +20795,7 @@ input:focus {
 @font-face {
     font-family: 'Poppins';
     src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Regular.eot");
-    src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Regular.woff2") format("woff2"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Regular.woff") format("woff"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+    src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Poppins/Poppins-Regular.woff2") format("woff2"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Regular.woff") format("woff"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
@@ -20803,7 +20803,7 @@ input:focus {
 @font-face {
     font-family: 'Poppins';
     src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-SemiBold.eot");
-    src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-SemiBold.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-SemiBold.woff2") format("woff2"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-SemiBold.woff") format("woff"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-SemiBold.ttf") format("truetype");
+    src: url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-SemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/Poppins/Poppins-SemiBold.woff2") format("woff2"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-SemiBold.woff") format("woff"), url("http://www.urbanui.com/wagondash/template/fonts/Poppins/Poppins-SemiBold.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
 }
@@ -29934,7 +29934,7 @@ body.avgrund-active {
 /* Js-grid */
 
 .jsgrid .jsgrid-button {
-    background-image: url(../../images/sprites/jsgrid-icons.png);
+    background-image: url(../images/sprites/jsgrid-icons.png);
 }
 
 .jsgrid .jsgrid-grid-header {
@@ -31358,19 +31358,19 @@ div.tagsinput span.tag a {
 /* Auth */
 
 .auth .login-half-bg {
-    /*background: url("../../images/auth/login-bg.jpg");*/
-    background: url("../../images/banner-bg2.jpg");
+    /*background: url("../images/auth/login-bg.jpg");*/
+    background: url("../images/banner-bg2.jpg");
     background-size: cover;
 }
 
 .auth .register-half-bg {
-    /*background: url("../../images/auth/register-bg.jpg");*/
+    /*background: url("../images/auth/register-bg.jpg");*/
     background: url('../images/banner-bg2.jpg');
     background-size: cover;
 }
 
 .auth.lock-full-bg {
-    background: url("../../images/auth/lockscreen-bg.jpg");
+    background: url("../images/auth/lockscreen-bg.jpg");
     background-size: cover;
 }
 

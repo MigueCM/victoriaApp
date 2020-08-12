@@ -81,33 +81,47 @@ namespace VictoriaApp
             string sexo = cbSexo.Value;
             string perfil = cbPerfil.Value;
 
-            Persona objPersona = new Persona();
-            objPersona.Nombre = nombre;
-            objPersona.Apellidos = apellido;
-            objPersona.Dni = dni;
-            objPersona.FechaNacimiento = Convert.ToDateTime(fechaNac);
-            objPersona.Sexo = sexo;
-            objPersona.Enterar = "";
-
-            int idPersona = PersonaBLL.Instancia.RegistrarPersona(objPersona);
-
-            if (idPersona > 0)
+            if (UsuarioBLL.Instancia.ValidarExisteUsuario(email.Trim()) > 0)
             {
-                Usuario oUsuario = new Usuario();
-                oUsuario.IdPerfil = Convert.ToInt32(perfil);
-                oUsuario.IdPersona = idPersona;
-                oUsuario.IdUsuarioRegistro = Convert.ToInt32(Session["IdUsuario"]);
-                oUsuario.User = email;
-                oUsuario.Password = contrasenia;
-
-                if (UsuarioBLL.Instancia.InsertarUsuario(oUsuario))
-                {
-                    string currentPage = this.Page.Request.AppRelativeCurrentExecutionFilePath;
-                    Response.Redirect(currentPage);
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "registrarModulo", "showSwal('auto-close', 'Registro exitoso!', 'Usuario registrado correctamente', 'GestionUsuario.aspx', '')", true);
-                }
-
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "registrarModulo", "showSwal('danger-error', 'Error de Registro!', 'El email ya existe', '', '')", true);
+            }else if (!contrasenia.Trim().Equals(contrasenia2.Trim()))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "registrarModulo2", "showSwal('danger-error', 'Error de Registro!', 'Las contraseñas no son iguales', '', '')", true);
             }
+            else
+            {
+                Persona objPersona = new Persona();
+                objPersona.Nombre = nombre;
+                objPersona.Apellidos = apellido;
+                objPersona.Dni = dni;
+                objPersona.FechaNacimiento = Convert.ToDateTime(fechaNac);
+                objPersona.Sexo = sexo;
+                objPersona.Enterar = "";
+
+                int idPersona = PersonaBLL.Instancia.RegistrarPersona(objPersona);
+
+                if (idPersona > 0)
+                {
+                    Usuario oUsuario = new Usuario();
+                    oUsuario.IdPerfil = Convert.ToInt32(perfil);
+                    oUsuario.IdPersona = idPersona;
+                    oUsuario.IdUsuarioRegistro = Convert.ToInt32(Session["IdUsuario"]);
+                    oUsuario.User = email;
+                    oUsuario.Password = Globales.CifrarClave(contrasenia.Trim());
+
+                    if (UsuarioBLL.Instancia.InsertarUsuario(oUsuario))
+                    {
+                        string currentPage = this.Page.Request.AppRelativeCurrentExecutionFilePath;
+                        Response.Redirect(currentPage);
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "registrarModulo", "showSwal('auto-close', 'Registro exitoso!', 'Usuario registrado correctamente', 'GestionUsuario.aspx', '')", true);
+                    }
+
+                }
+            }
+                
+
+
+            
 
 
 

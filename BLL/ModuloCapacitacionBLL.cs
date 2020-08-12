@@ -42,6 +42,11 @@ namespace BLL
             return oModuloDAL.ObtenerModulosPorUsuarioPanel(idUsuario);
         }
 
+        public List<ModuloCapacitacion> ObtenerModulosCalificacionPorUsuario(int idUsuario)
+        {
+            return oModuloDAL.ObtenerModulosCalificacionPorUsuario(idUsuario);
+        }
+
         public List<ModuloCapacitacion> ObtenerModulos()
         {
             return oModuloDAL.ObtenerModulos();

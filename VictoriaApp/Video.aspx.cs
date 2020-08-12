@@ -2,6 +2,8 @@
 using EL;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Services;
@@ -19,9 +21,24 @@ namespace VictoriaApp
                 else
                 {
                     CargarDatos();
+                    ObtenerCalificacion();
                 }
                     
             }
+        }
+
+        private void ObtenerCalificacion()
+        {
+            int calificacion = UsuarioCapacitacionBLL.Instancia.ObtenerCalificacion(Convert.ToInt32(Session["video_idModulo"]));
+
+            StringBuilder innerHtml = new StringBuilder();
+            string fila = $"<i class=\"fas fa-star color-star\"></i>{calificacion} &nbsp;&nbsp;&nbsp;";
+            fila += "<i class=\"fas fa-play text-primary\"></i> 8,365";
+
+            innerHtml.AppendLine(fila);
+
+            div_calificacion.InnerHtml = innerHtml.ToString();
+
         }
 
         private void CargarDatos()
@@ -35,6 +52,17 @@ namespace VictoriaApp
                 title_modulo.InnerHtml = objModulo.Nombre;
                 autor_modulo.InnerHtml = $"Por {objModulo.Autor}";
                 descripcion_modulo.InnerHtml = objModulo.Descripcion;
+                //img_video.Attributes.Add("src", "images/video.png");
+
+                string imagen = "images/video.png";
+
+                string current = Server.MapPath(@"~/Data/" + objModulo.Imagen);
+                if (File.Exists(current))
+                {
+                    imagen = "Data/" + objModulo.Imagen;
+                }
+
+                img_video.Attributes.Add("src", imagen);
 
                 if (objModulo.Enlace.Contains("v="))
                 {
@@ -153,6 +181,28 @@ namespace VictoriaApp
             }
 
             return false;
+        }
+
+        [WebMethod(EnableSession = true)]
+        public static bool ValidarSiguienteModulo()
+        {
+
+            List<EL.ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulosCalificacionPorUsuario(Convert.ToInt32(HttpContext.Current.Session["idUsuario"]));
+            int primerModuloDesbloqueado = lista.FindAll(item => item.Completado == 0).First().IdModuloCapacitacion;
+            int siguienteModulo = lista.Find(item => item.IdModuloCapacitacion > Convert.ToInt32(HttpContext.Current.Session["video_idModulo"])).IdModuloCapacitacion;
+
+            if(primerModuloDesbloqueado < siguienteModulo)
+            {
+                return false;
+            }
+            else
+            {
+                HttpContext.Current.Session["video_idModulo"] = siguienteModulo;
+                return true;
+            }
+
+
+            
         }
 
     }

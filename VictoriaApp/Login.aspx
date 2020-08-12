@@ -92,7 +92,7 @@
                 </div!-->
                 <div class="text-center mt-4 font-weight-light">
                     <h6>
-                        ¿No tienes cuenta? <a href="Registro.aspx" class="text-primary">Crear cuenta</a>
+                        ¿No tienes cuenta? <a href="Registro.aspx" class="text-primary">Registrate</a>
                     </h6>
                   
                 </div>
@@ -172,9 +172,7 @@
   <!-- End custom js for this page-->
 
   <script type="text/javascript">
-
-
-      
+     
 
       if ($(".p-login form").children("#lblError").length > 0){
           $(".p-login").addClass("p-login-alert");
@@ -198,7 +196,17 @@
               type: 'POST',
               contentType: "application/json; charset=utf-8",
               beforeSend: function () {
-                  
+
+                  var loading = '<div class="dot-opacity-loader">\
+                                        <span></span>\
+                                        <span></span>\
+                                        <span></span>\
+                                  </div >';
+
+                  $("#errorEmail").html("Cargando ...");
+                  $("#errorEmail").removeClass("d-none");
+                  $("#errorEmail").addClass("alert-success");
+                  $("#errorEmail").removeClass("alert-danger");
               },
               success: function (response) {
 
@@ -207,7 +215,7 @@
                   $("#errorEmail").html(data["mensaje"]);
                   $("#errorEmail").removeClass("d-none");
                   if (data["correoValido"] === true) {
-                      $("#errorEmail").append(data["token"]);
+                     
                       $("#errorEmail").addClass("alert-success");
                       $("#errorEmail").removeClass("alert-danger");
                   } else {

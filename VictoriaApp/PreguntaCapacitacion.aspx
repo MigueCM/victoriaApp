@@ -147,95 +147,164 @@
     <!-- plugin js for this page -->
   <script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-
+    <script src="Scripts/js/datatable.js"></script>
     <script>
 
-        $('#tabla-modulos thead tr').clone(true).appendTo('#tabla-modulos thead');
-        $('#tabla-modulos thead tr:eq(1) th').each(function (i) {
+        //$('#tabla-modulos thead tr').clone(true).appendTo('#tabla-modulos thead');
+        //$('#tabla-modulos thead tr:eq(1) th').each(function (i) {
 
-            if ($(this).hasClass("search")) {
-                var title = $(this).text();
-                $(this).html('<input type="text" class="w-100 p-1" placeholder="' + title + '" />');
+        //    if ($(this).hasClass("search")) {
+        //        var title = $(this).text();
+        //        $(this).html('<input type="text" class="w-100 p-1" placeholder="' + title + '" />');
 
-                $('input', this).on('keyup change', function () {
-                    if (table.column(i).search() !== this.value) {
-                        table
-                            .column(i)
-                            .search(this.value)
-                            .draw();
-                    }
-                });
-            } else {
-                $(this).html("")
-            }
+        //        $('input', this).on('keyup change', function () {
+        //            if (table.column(i).search() !== this.value) {
+        //                table
+        //                    .column(i)
+        //                    .search(this.value)
+        //                    .draw();
+        //            }
+        //        });
+        //    } else {
+        //        $(this).html("")
+        //    }
 
-        });
+        //});
 
 
-        var table = $('#tabla-modulos').DataTable({
-            orderCellsTop: true,
-            fixedHeader: true
-        });
+        //var table = $('#tabla-modulos').DataTable({
+        //    orderCellsTop: true,
+        //    fixedHeader: true
+        //});
 
         function cargarData(id) {
 
-            var parametros = "{'id': '" + id + "'}";
+            swal({
+                title: "¿Desea Editar esta pregunta?",
+                text: "Los datos seran modificados",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3f51b5',
+                cancelButtonColor: '#ff4081',
+                confirmButtonText: 'Great ',
+                buttons: {
 
-            $.ajax({
-                data: parametros,
-                url: 'PreguntaCapacitacion.aspx/CargarDataPreguntas',
-                dataType: "json",
-                type: 'POST',
-                contentType: "application/json; charset=utf-8",
-                beforeSend: function () {
+                    confirm: {
+                        text: "Editar",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    },
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
+                    },
+                }
+            }).then((willDelete) => {
+                if (willDelete) {
+                    var parametros = "{'id': '" + id + "'}";
 
-                },
-                success: function (response) {
-                    var data = JSON.parse(response.d)["objPreguntas"];
+                    $.ajax({
+                        data: parametros,
+                        url: 'PreguntaCapacitacion.aspx/CargarDataPreguntas',
+                        dataType: "json",
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function () {
 
-                    $(".txtId").val(id);
-                    $(".cboOrden").val(data["Orden"]);
-                    $(".txtDescripcion").val(data["Descripcion"]);
-                    $(".txtAlternativa1").val(data["Alternativa1"]);
-                    $(".txtAlternativa2").val(data["Alternativa2"]);
-                    $(".txtAlternativa3").val(data["Alternativa3"]);
-                    $(".txtAlternativa4").val(data["Alternativa4"]);
-                    $(".txtAlternativa5").val(data["Alternativa5"]);
-                    $(".cboAlternativa").val(data["Respuesta"]);
-                    $(".title").html("Actualización de Pregunta")
-                    $(".btnEnviar").html("Actualizar")
-                    $(".txtTipo").val(2)
-                    
-                    $("#modalCreate").modal("show")
-                },
-                error: function (e) {
-                    console.log(e)
+                        },
+                        success: function (response) {
+                            var data = JSON.parse(response.d)["objPreguntas"];
+
+                            $(".txtId").val(id);
+                            $(".cboOrden").val(data["Orden"]);
+                            $(".txtDescripcion").val(data["Descripcion"]);
+                            $(".txtAlternativa1").val(data["Alternativa1"]);
+                            $(".txtAlternativa2").val(data["Alternativa2"]);
+                            $(".txtAlternativa3").val(data["Alternativa3"]);
+                            $(".txtAlternativa4").val(data["Alternativa4"]);
+                            $(".txtAlternativa5").val(data["Alternativa5"]);
+                            $(".cboAlternativa").val(data["Respuesta"]);
+                            $(".title").html("Actualización de Pregunta")
+                            $(".btnEnviar").val("Actualizar")
+                            $(".txtTipo").val(2)
+
+                            $("#modalCreate").modal("show")
+                        },
+                        error: function (e) {
+                            console.log(e)
+                        }
+                    });
+
+                } else {
+                    swal("Operación cancelada");
                 }
             });
+
+
+            
         }
 
         function eliminar(id) {
-            if (confirm("Desea Eliminar esta pregunta")) {
-                var parametros = "{'id': '" + id + "'}";
 
-                $.ajax({
-                    data: parametros,
-                    url: 'PreguntaCapacitacion.aspx/EliminarData',
-                    dataType: "json",
-                    type: 'POST',
-                    contentType: "application/json; charset=utf-8",
-                    beforeSend: function () {
+            swal({
+                title: "¿Desea Eliminar esta pregunta?",
+                text: "Esta acción no se podrá revertir",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3f51b5',
+                cancelButtonColor: '#ff4081',
+                confirmButtonText: 'Great ',
+                buttons: {
 
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
                     },
-                    success: function (response) {
-                        console.log(response)
-                        location.href = "PreguntaCapacitacion.aspx";
-                    },
-                    error: function (e) {
-                        console.log(e)
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
                     }
-                });
-            }
+                }
+            }).then((willDelete) => {
+                if (willDelete) {
+
+                    var parametros = "{'id': '" + id + "'}";
+
+                    $.ajax({
+                        data: parametros,
+                        url: 'PreguntaCapacitacion.aspx/EliminarData',
+                        dataType: "json",
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function () {
+
+                        },
+                        success: function (response) {
+                            console.log(response)
+                            location.href = "PreguntaCapacitacion.aspx";
+                        },
+                        error: function (e) {
+                            console.log(e)
+                        }
+                    });
+
+                } else {
+                    swal("Operación cancelada");
+                }
+            });
+
+           
             
         }
 
@@ -250,7 +319,7 @@
             $(".txtAlternativa5").val("");
             $(".cboAlternativa").val("");
             $(".title").html("Registro de Pregunta")
-            $(".btnEnviar").html("Agregar")
+            $(".btnEnviar").val("Agregar")
             $(".txtTipo").val(1)
         }
 

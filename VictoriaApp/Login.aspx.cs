@@ -3,6 +3,7 @@ using EL;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
@@ -51,7 +52,17 @@ namespace VictoriaApp
                     if (string.IsNullOrEmpty(objUsuario.Persona.Avatar) || objUsuario.Persona.Avatar == "")
                         Session["AvatarPersona"] = "Data/Avatar/noImage.png";
                     else
-                        Session["AvatarPersona"] = "Data/Avatar/" + objUsuario.Persona.Avatar;
+                    {
+                        Session["AvatarPersona"] = "Data/Avatar/noImage.png";
+
+                        string current = Server.MapPath(@"~/Data/Avatar/" + objUsuario.Persona.Avatar);
+                        if (File.Exists(current))
+                        {
+                            Session["AvatarPersona"] = "Data/Avatar/" + objUsuario.Persona.Avatar;
+                        }
+
+                    }
+                        
                 }
                 else
                 {
@@ -68,7 +79,7 @@ namespace VictoriaApp
 
                 if (Convert.ToInt32(Session["IdPerfil"].ToString()) == 1)
                 {
-                    Response.Redirect("ModuloCapacitacion.aspx");
+                    Response.Redirect("GestionUsuario.aspx");
                 }
                 else
                 {
@@ -163,7 +174,7 @@ namespace VictoriaApp
             mail.To.Add(new MailAddress(correo));
             mail.Subject = "Recuperación de Contraseña.";
             mail.To.Add(correo);
-            string mailbody = "<br/><html><body><div style='text-align:center'><img src=\"cid:Email\"><div style='position: absolute; text-align:center; font-size:30px; font-weight:bold; color:#5B127D;'><p> " + correo + " </p></div><div><a style ='position: absolute; font-size:large; background-color:#5B127D; color:white; padding:10px; font-size:20px; border-radius:20px; text-decoration:none;' href='"+page+"'>Recuperar Contraseña</a></div><br /><br /><div><img src=\"cid:EmailFooter\" ></div></div></body></html>";
+            string mailbody = "<br/><html><body><div style='text-align:center'><img src=\"cid:Email\"><div style='position: absolute; text-align:center; font-size:15px; font-weight:bold; color:#5B127D;'><p> Haz click en el siguiente botón para cambiar tu contraseña. </p></div><div><a style ='position: absolute; font-size:large; background-color:#5B127D; color:white; padding:10px; font-size:20px; border-radius:20px; text-decoration:none;' href='"+page+"'>Recuperar Contraseña</a></div><br /><br /><div><img src=\"cid:EmailFooter\" ></div></div></body></html>";
             AlternateView AlternateView_Html = AlternateView.CreateAlternateViewFromString(mailbody, null, MediaTypeNames.Text.Html);
             LinkedResource Picture1 = new LinkedResource(HttpContext.Current.Server.MapPath(@"~/images/correoLogo.jpg"), MediaTypeNames.Image.Jpeg);
             

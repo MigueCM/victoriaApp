@@ -2,6 +2,7 @@
 using EL;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Web;
 using System.Web.Services;
@@ -49,9 +50,15 @@ namespace VictoriaApp
                     fila += "</div>";
                 }
 
-                string imagen = "Data/"+item.Imagen;
+                string imagen = "images/video.png";
 
-                if(item.Imagen == "")
+                string current = Server.MapPath(@"~/Data/" + item.Imagen);
+                if (File.Exists(current))
+                {
+                    imagen = "Data/" + item.Imagen;
+                }
+
+                if (item.Imagen == "")
                 {
                     imagen = "images/video.png";
                 }

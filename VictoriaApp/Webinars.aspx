@@ -122,41 +122,41 @@
 
     <script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net/jquery.dataTables.js"></script>
     <script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-
+    <script src="Scripts/js/datatable.js"></script>
     <script>
-        $('#tabla-modulos thead tr').clone(true).appendTo('#tabla-modulos thead');
-        $('#tabla-modulos thead tr:eq(1) th').each(function (i) {
+        //$('#tabla-modulos thead tr').clone(true).appendTo('#tabla-modulos thead');
+        //$('#tabla-modulos thead tr:eq(1) th').each(function (i) {
 
-            if ($(this).hasClass("search")) {
-                var title = $(this).text();
-                $(this).html('<input type="text" class="w-100 p-1" placeholder="' + title + '" />');
+        //    if ($(this).hasClass("search")) {
+        //        var title = $(this).text();
+        //        $(this).html('<input type="text" class="w-100 p-1" placeholder="' + title + '" />');
 
-                $('input', this).on('keyup change', function () {
-                    if (table.column(i).search() !== this.value) {
-                        table
-                            .column(i)
-                            .search(this.value)
-                            .draw();
-                    }
-                });
-            } else {
-                $(this).html("")
-            }
+        //        $('input', this).on('keyup change', function () {
+        //            if (table.column(i).search() !== this.value) {
+        //                table
+        //                    .column(i)
+        //                    .search(this.value)
+        //                    .draw();
+        //            }
+        //        });
+        //    } else {
+        //        $(this).html("")
+        //    }
 
-        });
+        //});
 
-        var table = $('#tabla-modulos').DataTable({
-            "aLengthMenu": [
-                [5, 10, 15, -1],
-                [5, 10, 15, "All"]
-            ],
-            "iDisplayLength": 10,
-            "language": {
-                search: ""
-            },
-            orderCellsTop: true,
-            fixedHeader: true
-        });
+        //var table = $('#tabla-modulos').DataTable({
+        //    "aLengthMenu": [
+        //        [5, 10, 15, -1],
+        //        [5, 10, 15, "All"]
+        //    ],
+        //    "iDisplayLength": 10,
+        //    "language": {
+        //        search: ""
+        //    },
+        //    orderCellsTop: true,
+        //    fixedHeader: true
+        //});
 
         function cargarData(id) {
 
@@ -169,6 +169,14 @@
                 cancelButtonColor: '#ff4081',
                 confirmButtonText: 'Great ',
                 buttons: {
+                    
+                    confirm: {
+                        text: "Editar",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    },
                     cancel: {
                         text: "Cancelar",
                         value: null,
@@ -176,13 +184,6 @@
                         className: "btn btn-danger",
                         closeModal: true,
                     },
-                    confirm: {
-                        text: "Editar",
-                        value: true,
-                        visible: true,
-                        className: "btn btn-primary",
-                        closeModal: true
-                    }
                 }
             }).then((willDelete) => {
                 if (willDelete) {
@@ -205,7 +206,7 @@
                             $(".txtAutor").val(data["Autor"]);
                             $(".txtImagen").val(data["Imagen"]);
                             $(".title").html("Actualización de Webinar")
-                            $(".btnEnviar").html("Actualizar")
+                            $(".btnEnviar").val("Actualizar")
                             $(".txtTipo").val(2)
                             $(".txtFile").prop("required", false)
                             $("#modalCreate").modal("show")
@@ -219,44 +220,10 @@
                     swal("Operación cancelada");
                 }
             });
-
-            //var parametros = "{'id': '" + id + "'}";
-
-            //$.ajax({
-            //    data: parametros,
-            //    url: 'Webinars.aspx/CargarDataWebinars',
-            //    dataType: "json",
-            //    type: 'POST',
-            //    contentType: "application/json; charset=utf-8",
-            //    beforeSend: function () {
-
-            //    },
-            //    success: function (response) {
-            //        var data = JSON.parse(response.d)["objWebinar"];
-
-            //        $(".txtId").val(id);
-            //        $(".txtNombre").val(data["Titulo"]);
-            //        $(".txtDescripcion").val(data["Descripcion"]);
-            //        $(".txtAutor").val(data["Autor"]);
-            //        $(".txtImagen").val(data["Imagen"]);
-            //        $(".title").html("Actualización de Webinar")
-            //        $(".btnEnviar").html("Actualizar")
-            //        $(".txtTipo").val(2)
-            //        $(".txtFile").prop("required", false)
-            //        $("#modalCreate").modal("show")
-            //    },
-            //    error: function (e) {
-            //        console.log(e)
-            //    }
-            //});
         }
 
         function eliminar(id) {
-
-            //if (confirm("Desea Eliminar este módulo")) {
-            //if (showSwal("delete-module","¿Desea Eliminar este módulo?", "Esta acción no se podrá revertir", "")) {
-
-            //}
+          
             swal({
                 title: "¿Desea Eliminar este webinar?",
                 text: "Esta acción no se podrá revertir",
@@ -266,19 +233,20 @@
                 cancelButtonColor: '#ff4081',
                 confirmButtonText: 'Great ',
                 buttons: {
-                    cancel: {
-                        text: "Cancelar",
-                        value: null,
-                        visible: true,
-                        className: "btn btn-danger",
-                        closeModal: true,
-                    },
+                    
                     confirm: {
                         text: "OK",
                         value: true,
                         visible: true,
                         className: "btn btn-primary",
                         closeModal: true
+                    },
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
                     }
                 }
             }).then((willDelete) => {
@@ -315,7 +283,7 @@
             $(".txtAutor").val("");
             $(".txtImagen").val("");
             $(".title").html("Registro de Webinar")
-            $(".btnEnviar").html("Agregar")
+            $(".btnEnviar").val("Agregar")
             $(".txtTipo").val(1)
             $(".txtFile").prop("required", true)
         }

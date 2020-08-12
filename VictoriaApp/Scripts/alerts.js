@@ -1,7 +1,25 @@
 ﻿(function ($) {
     showSwal = function (type, titulo,mensaje, url, id) {
         'use strict';
-        if (type === 'basic') {
+         if (type === 'danger-error') {
+             swal({
+                 title: titulo,
+                 text: mensaje,
+                 icon: 'error',
+                 timer: 2000,
+                 button: false
+             }).then(
+                 function () { },
+                 // handling the promise rejection
+                 function (dismiss) {
+                     if (dismiss === 'timer') {
+                         console.log('I was closed by the timer')
+                     }
+                 }
+             )
+
+        }
+        else if (type === 'basic') {
             swal({
                 text: 'Este módulo ya ha sido completado',
                 button: {
@@ -53,7 +71,9 @@
                     }
                 }
             )
-        } else if (type === 'warning-message-and-cancel') {
+
+        } 
+        else if (type === 'warning-message-and-cancel') {
             swal({
                 title: titulo,
                 text: mensaje,
@@ -119,20 +139,21 @@
                 cancelButtonColor: '#ff4081',
                 confirmButtonText: 'Great ',
                 buttons: {
-                    cancel: {
-                        text: "Cancelar",
-                        value: null,
-                        visible: true,
-                        className: "btn btn-danger",
-                        closeModal: true,
-                    },
                     confirm: {
                         text: "Eliminar",
                         value: true,
                         visible: true,
                         className: "btn btn-primary",
                         closeModal: true
+                    },
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
                     }
+                    
                 }
             }).then((willDelete) => {
                 if (willDelete) {
@@ -193,20 +214,21 @@
                 cancelButtonColor: '#ff4081',
                 confirmButtonText: 'Great ',
                 buttons: {
-                    cancel: {
-                        text: "Cancelar",
-                        value: null,
-                        visible: true,
-                        className: "btn btn-danger",
-                        closeModal: true,
-                    },
                     confirm: {
                         text: "Editar",
                         value: true,
                         visible: true,
                         className: "btn btn-primary",
                         closeModal: true
+                    },
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
                     }
+                    
                 }
             }).then((willDelete) => {
                 if (willDelete) {
@@ -229,7 +251,7 @@
                             $(".txtEnlace").val(data["Enlace"]);
                             $(".txtImagen").val(data["Imagen"]);
                             $(".title").html("Actualización de Módulo")
-                            $(".btnEnviar").html("Actualizar")
+                            $(".btnEnviar").val("Actualizar")
                             $(".txtTipo").val(2)
                             $(".txtFile").prop("required", false)
                             $("#modalCreate").modal("show")

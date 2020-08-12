@@ -34,7 +34,7 @@
                                             <th class="search">Nombre</th>
                                             <th class="search" style="width:50%">Descripcion</th>
                                             <th class="search">Enlace</th>
-                                            <th>Calificación</th>
+                                            <%--<th>Calificación</th>--%>
                                             <th>Opciones</th>
                                         </tr>
                                       </thead>
@@ -145,42 +145,42 @@
   <!-- plugin js for this page -->
   <script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-
+  <script src="Scripts/js/datatable.js"></script>
     <script>
 
-        $('#tabla-modulos thead tr').clone(true).appendTo('#tabla-modulos thead');
-        $('#tabla-modulos thead tr:eq(1) th').each(function (i) {
+        //$('#tabla-modulos thead tr').clone(true).appendTo('#tabla-modulos thead');
+        //$('#tabla-modulos thead tr:eq(1) th').each(function (i) {
            
-            if ($(this).hasClass("search")) {
-                var title = $(this).text();
-                $(this).html('<input type="text" class="w-100 p-1" placeholder="' + title + '" />');
+        //    if ($(this).hasClass("search")) {
+        //        var title = $(this).text();
+        //        $(this).html('<input type="text" class="w-100 p-1" placeholder="' + title + '" />');
 
-                $('input', this).on('keyup change', function () {
-                    if (table.column(i).search() !== this.value) {
-                        table
-                            .column(i)
-                            .search(this.value)
-                            .draw();
-                    }
-                });
-            } else {
-                $(this).html("")
-            }
+        //        $('input', this).on('keyup change', function () {
+        //            if (table.column(i).search() !== this.value) {
+        //                table
+        //                    .column(i)
+        //                    .search(this.value)
+        //                    .draw();
+        //            }
+        //        });
+        //    } else {
+        //        $(this).html("")
+        //    }
             
-        });
+        //});
 
-        var table = $('#tabla-modulos').DataTable({
-            "aLengthMenu": [
-                [5, 10, 15, -1],
-                [5, 10, 15, "All"]
-            ],
-            "iDisplayLength": 10,
-            "language": {
-                search: ""
-            },
-            orderCellsTop: true,
-            fixedHeader: true
-        });
+        //var table = $('#tabla-modulos').DataTable({
+        //    "aLengthMenu": [
+        //        [5, 10, 15, -1],
+        //        [5, 10, 15, "All"]
+        //    ],
+        //    "iDisplayLength": 10,
+        //    "language": {
+        //        search: ""
+        //    },
+        //    orderCellsTop: true,
+        //    fixedHeader: true
+        //});
 
         function cargarData(id) {
             <% 
@@ -252,7 +252,7 @@
             $(".txtEnlace").val("");
             $(".txtImagen").val("");
             $(".title").html("Registro de Módulo")
-            $(".btnEnviar").html("Agregar")
+            $(".btnEnviar").val("Agregar")
             $(".txtTipo").val(1)
             $(".txtFile").prop("required", true)
         }
