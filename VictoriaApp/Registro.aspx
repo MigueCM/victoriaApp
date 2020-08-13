@@ -17,12 +17,16 @@
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="stylesheet" href="css/estilos.css"/>
   <!-- endinject -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>--%>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+     
+
     <script src="Scripts/sweetalert.min.js"></script>
     <script src="Scripts/alerts.js"></script>
 <script src="vendors/jquery.avgrund/jquery.avgrund.min.js"></script>
 <script src="Scripts/avgrund.js"></script>
+        <link href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css" rel="stylesheet" />
+    <link href="vendors/select2/select2.min.css" rel="stylesheet" />
+   
   <link rel="shortcut icon" href="images/Victoria.ico" />
 </head>
 <body>
@@ -68,7 +72,7 @@
               <div class="brand-logo text-center">
                 <img src="images/logo_victoria2.png" alt="logo"/>
               </div>
-              <h4>Eres nuevo?</h4>
+              <h4>¿Eres nuevo?</h4>
               <h6 class="font-weight-light">Únete, bríndandonos tu información</h6>
               <div class="pt-0" runat="server" id="signupForm">
                     <div class="row">
@@ -232,33 +236,16 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-        <%--</ContentTemplate>
-                  </asp:UpdatePanel>--%>
-                  <%--<asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
-                      <ProgressTemplate>
-                          <div id="Background">
-                              <div id="Progress">
-                          <div class="col-md-4 col-sm-6 grid-margin stretch-card">
-                             
-                                <div class="square-box-loader">
-                                  <div class="square-box-loader-container">
-                                    <div class="square-box-loader-corner-top"></div>
-                                    <div class="square-box-loader-corner-bottom"></div>
-                                  </div>
-                                  <div class="square-box-loader-square"></div>
-                                </div>
-                              
-                            </div></div></div>
-                      </ProgressTemplate>
-                  </asp:UpdateProgress>--%>
     </form>
-    <script>
-       
-        //$(document).ready(function () {
-        <%--$('#<%=UpdateProgress1.ClientID %>').show(1000, 'linear', function () { $('#<%=UpdateProgress1.ClientID %>').hide(); });});--%>
-    </script>
-    
-    
+     <script src="vendors/select2/select2.min.js"></script>  <script>
+                                                                 if ($("#cbDepartamento").length) {
+                                                                     $("#cbDepartamento").select2({
+                                                                         width: '100%'
+                                                                     });
+                                                                 }
+     </script>
+         <script src="vendors/select2/select2.js"></script>
+
     <script src="Scripts/funciones.js"></script>
     <script src="vendors/js/vendor.bundle.base.js"></script>
     <script src="Scripts/js/hoverable-collapse.js"></script>

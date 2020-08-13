@@ -26,15 +26,27 @@ $("#cbEnterar").blur(function () {
         $(this).css({ "color": "#495057" })
     }
 });
-$("#cbDepartamento").blur(function () {
+//$("#cbDepartamento").blur(function () {
+//    if (document.getElementById("cbDepartamento").selectedIndex != 0) {
+//        $(this).css({ "background": "#A8A8F2" })
+//        $(this).css({ "color": "#ffff" })
+//    } else {
+//        $(this).css({ "background": "transparent" })
+//        $(this).css({ "color": "#495057" })
+//    }
+//});
+$(".select2-container--default .select2-selection--single ").blur(function () {
     if (document.getElementById("cbDepartamento").selectedIndex != 0) {
         $(this).css({ "background": "#A8A8F2" })
-        $(this).css({ "color": "#ffff" })
+        $(".select2-container--default .select2-selection--single .select2-selection__rendered").css({ "color": "#ffff" })
     } else {
         $(this).css({ "background": "transparent" })
-        $(this).css({ "color": "#495057" })
+        $(".select2-container--default .select2-selection--single .select2-selection__rendered").css({ "color": "#495057" })
     }
 });
+
+
+
 $("#cbCiudad").blur(function () {
     if (document.getElementById("cbCiudad").selectedIndex != 0) {
         $(this).css({ "background": "#A8A8F2" })
