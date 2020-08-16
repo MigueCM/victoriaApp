@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ForoBLL.cs" />
     <Compile Include="ModuloCapacitacionBLL.cs" />
     <Compile Include="PerfilBLL.cs" />
     <Compile Include="PersonaBLL.cs" />
