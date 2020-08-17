@@ -30,6 +30,8 @@
         </div>
     </div>
 
+    <input type="hidden" name="num_intentos" id="num_intentos" class="num_intentos" runat="server" />
+
     <div class="modal fade" id="modalVideo" tabindex="-1" role="dialog" aria-labelledby="modalCreate-2" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content" style="width: 560px;">
@@ -52,6 +54,8 @@
                                 </div>
                             </div>
                         </div>
+
+    
 
     <div class="modal fade" id="modalCuestionario" tabindex="-1" role="dialog" aria-labelledby="modalCreate-2" aria-hidden="true">
             <div class="modal-dialog mt-3" role="document">
@@ -218,8 +222,14 @@
                                 <label for="radio5">★</label>
                               </p>
 
-                            <button class="btn btn-primary" style="float:right" onclick="ValidarCampos()">Completar</button>
-
+                            <button class="btn btn-primary btn-validar" style="float:right;height: 33px;" onclick="ValidarCampos()" type="button">Completar</button>
+                            <button class="btn btn-primary btn-loading" style="float:right" type="button">
+                                <div class="dot-opacity-loader">
+                                      <span></span>
+                                      <span></span>
+                                      <span></span>
+                                </div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -228,13 +238,13 @@
 
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-
+        $(".btn-loading").hide();
         $("#modalCuestionario").on('hidden.bs.modal', () => $("html").css("overflow", "auto"));
         $("#modalCuestionario").on('shown.bs.modal', () => $("html").css("overflow", "hidden"));
 
         $("#modalVideo").on('hidden.bs.modal', function () {
             $("html").css("overflow", "auto");
-            if (done == true) {
+            if (done == true && $(".num_intentos").val() < 3) {
                 $("html").css("overflow", "hidden")
                 $("#modalCuestionario").modal('show');
                 done = false;
@@ -293,7 +303,9 @@
         }
 
         function ValidarCampos() {
-
+            //console.log("entro");
+            $(".btn-validar").hide();
+            $(".btn-loading").show();
             var num_preguntas = $(".div_cuestionario").data("num");
 
             var flag = true;
@@ -308,36 +320,53 @@
 
 
             if (flag == true) {
-               
+
                 if ($(".clasificacion input[type=radio]:checked").length == 0) {
-                    
+                    $(".btn-validar").show();
+                    $(".btn-loading").hide();
                     swal("Error", "Debe calificar este módulo", "error");
                 } else {
-                    var parametros = "{'respuestas': '" + arreglo + "', 'calificacion':" + $(".clasificacion input[type=radio]:checked").val() + "}";
 
-                    console.log(arreglo);
-                    $.ajax({
-                        data: parametros,
-                        url: 'Video.aspx/ValidarData',
-                        dataType: "json",
-                        type: 'POST',
-                        contentType: "application/json; charset=utf-8",
-                        beforeSend: function () {
+                    if ($(".num_intentos").val() < 3) {
+                        var parametros = "{'respuestas': '" + arreglo + "', 'calificacion':" + $(".clasificacion input[type=radio]:checked").val() + "}";
 
-                        },
-                        success: function (response) {
-                            console.log(response)
-                            if (response["d"] == true)
-                                location.href = "Panel.aspx";
-                        },
-                        error: function (e) {
-                            console.log(e)
-                        }
-                    });
+                        console.log(arreglo);
+                        $.ajax({
+                            data: parametros,
+                            url: 'Video.aspx/ValidarData',
+                            dataType: "json",
+                            type: 'POST',
+                            contentType: "application/json; charset=utf-8",
+                            beforeSend: function () {
+                                
+                            },
+                            success: function (response) {
+                                $(".btn-validar").show();
+                                $(".btn-loading").hide();
+                                console.log(response)
+                                if (response["d"] == true)
+                                    location.href = "Panel.aspx";
+                                else
+                                    swal("Error", "Ya supero los numeros de intentos permitidos", "error");
+                            },
+                            error: function (e) {
+                                console.log(e)
+                            }
+                        });
+                    } else {
+                        $(".btn-validar").show();
+                        $(".btn-loading").hide();
+                        swal("Error", "Ya supero los numeros de intentos permitidos", "error");
+                    }
+
                 }
-            }                
-            else
+            }
+            else {
+                $(".btn-validar").show();
+                $(".btn-loading").hide();
                 swal("Error", "Debe responder todas las preguntas", "error");
+            }
+                
 /*
             $.ajax({
                 data: parametros,
@@ -387,7 +416,7 @@
                     if (response["d"] == true)
                         location.href = "Video.aspx";
                     else
-                        swal("Error", "El módulo aun no está disponible", "error");
+                        swal("Error", "Debe completar otros modulos", "error");
                 },
                 error: function (e) {
                     console.log(e)

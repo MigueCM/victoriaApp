@@ -1,5 +1,17 @@
 
-.border-input span{
+.btn-loading .dot-opacity-loader {
+    width: 50px;
+    height: 15px;
+}
+
+    .btn-loading .dot-opacity-loader span {
+        margin: 0;
+        width: 10px;
+        height: 10px;
+        background-color: #ffffff;
+    }
+
+.border-input span {
     border-top-left-radius: .5rem;
     border-bottom-left-radius: .5rem;
 }

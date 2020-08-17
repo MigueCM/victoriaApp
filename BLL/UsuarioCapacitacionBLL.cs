@@ -51,5 +51,15 @@ namespace BLL
         {
             return oUsuarioDAL.ObtenerCalificacion(idModulo);
         }
+
+        public int ObtenerIntento(int idModulo, int idUsuario)
+        {
+            return oUsuarioDAL.ObtenerIntento(idModulo, idUsuario);
+        }
+
+        public int ObtenerVisualizacion(int idModulo)
+        {
+            return oUsuarioDAL.ObtenerVisualizacion(idModulo);
+        }
     }
 }

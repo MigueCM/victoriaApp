@@ -136,13 +136,12 @@ namespace VictoriaApp
         private void CargarModulos()
         {
 
-
             List<EL.ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulosPorUsuario(Convert.ToInt32(Session["idUsuario"]));
-
+            int num_modulo = UsuarioCapacitacionBLL.Instancia.ObtenerModuloDesbloqueado(Convert.ToInt32(Session["idUsuario"]));
             StringBuilder innerHtml = new StringBuilder();
 
             int numero = 1;
-
+            bool liberado = true;
             foreach (var item in lista)
             {
                 string fila = "<tr>";
@@ -154,12 +153,24 @@ namespace VictoriaApp
                     fila += "<td class=\"text-white text-center\"></td>";
 
                 if (item.Completado == 1)
+                {
                     //fila += "<td><button class=\"btn btn-block btn-completado\" onclick=\"showSwal('basic')\">Completado</button></td>";
-                    fila += "<td><a class=\"btn btn-success text-center align-items-center\" style=\"width:100%;\" onclick=\"showSwal('basic')\">Completado</a></td>";
+                    fila += $"<td><a class=\"btn btn-success text-center align-items-center text-white cursor-pointer\" style=\"width:100%;\" onclick=\"verVideo('{item.IdModuloCapacitacion}')\">Completado</a></td>";
+                }else if (liberado)
+                {
+                    fila += $"<td><a class=\"btn btn-danger text-center align-items-center text-white cursor-pointer\" style=\"width:100%;\" onclick=\"verVideo('{item.IdModuloCapacitacion}')\">Pendiente</a></td>";
+                }
                 else
+                {
                     //fila += "<td><a class=\"btn btn-block btn-pendiente\" href=\"Panel.aspx\">Pendiente</a></td>";
-                    fila += "<td><a class=\"btn btn-danger text-center align-items-center\" style=\"width:100%;\" href=\"Panel.aspx\">Pendiente</a></td>";
+                    fila += "<td><a class=\"btn btn-danger text-center align-items-center text-white cursor-pointer\" style=\"width:100%;\" onclick=\"showSwal('basic')\">Pendiente</a></td>";
+                }                    
                 fila += "</tr>";
+
+                if (num_modulo <= item.Nro)
+                {
+                    liberado = false;
+                }
 
                 innerHtml.AppendLine(fila);
 
@@ -169,5 +180,15 @@ namespace VictoriaApp
 
 
         }
+
+        [WebMethod(EnableSession = true)]
+        public static bool ValidarUsuario(int codigo)
+        {
+
+            HttpContext.Current.Session["video_idModulo"] = codigo;
+
+            return true;
+        }
+
     }
 }

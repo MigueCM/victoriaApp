@@ -77,6 +77,8 @@ namespace DAL
                     if (dr["fechaActualizacion"] != DBNull.Value)
                         modulo.FechaActualizacion = Convert.ToDateTime(dr["fechaActualizacion"]);
 
+                    modulo.Intentos = Convert.ToInt32(dr["intentos"]);
+
                     lista.Add(modulo);
 
                 }

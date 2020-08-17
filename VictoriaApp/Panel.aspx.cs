@@ -25,7 +25,7 @@ namespace VictoriaApp
 
 
             List<EL.ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulosPorUsuarioPanel(Convert.ToInt32(Session["idUsuario"]));
-            int num_modulo = UsuarioCapacitacionBLL.Instancia.ObtenerModuloDesbloqueado(Convert.ToInt32(Session["idUsuario"]));
+            int num_modulo = UsuarioCapacitacionBLL.Instancia.ObtenerModuloDesbloqueado(Convert.ToInt32(Session["idUsuario"]));            
 
             StringBuilder innerHtml = new StringBuilder();
 
@@ -36,6 +36,9 @@ namespace VictoriaApp
             bool liberado = true;
             foreach (var item in lista)
             {
+
+                int num_visualizacion = UsuarioCapacitacionBLL.Instancia.ObtenerVisualizacion(item.IdModuloCapacitacion);
+
                 string fila = "<div class=\"col-md-4\">";
 
                 string color = "";
@@ -70,7 +73,7 @@ namespace VictoriaApp
                 fila += $"<p class=\"card-text pl-3\"> Por<span class=\"text-primary\"> {item.Autor}</span></p>";
                 fila += "<p class=\"card-text pl-3\">";
                 fila += $"<i class=\"fas fa-star color-star\"></i> {item.Calificacion} &nbsp;&nbsp;&nbsp;";
-                fila += "<i class=\"fas fa-play text-primary\"></i> 8,365";
+                fila += $"<i class=\"fas fa-play text-primary\"></i> {num_visualizacion}";
                 fila += "</p>";
                 fila += "<div class=\"text-center\">";
                 if (!(item.Completado == 1 ) && !liberado)

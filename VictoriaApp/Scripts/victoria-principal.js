@@ -28,6 +28,30 @@ function enviarFormulario() {
     });
 }
 
+function verVideo(codigo) {
+    console.log(codigo)
+    var parametros = "{'codigo': '" + codigo + "'}";
+
+    $.ajax({
+        data: parametros,
+        url: 'Principal.aspx/ValidarUsuario',
+        dataType: "json",
+        type: 'POST',
+        contentType: "application/json; charset=utf-8",
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+            console.log(response)
+            location.href = "Video.aspx";
+        },
+        error: function (e) {
+            console.log(e)
+        }
+    });
+
+}
+
 $(function () {
     $.ajax({
         type: "POST",
