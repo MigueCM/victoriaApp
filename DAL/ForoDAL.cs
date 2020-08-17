@@ -146,5 +146,105 @@ namespace DAL
             }
             return valor;
         }
+
+        public Foro ObtenerComentarioResponder(int id)
+        {
+            Foro foro = null;
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Foro", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@Id", SqlDbType.Int).Value = id;
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 5;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                if (dr.Read())
+                {
+                    foro = new Foro();
+                    foro.IdForo = Convert.ToInt32(dr["Id"].ToString());
+                    foro.Titulo = dr["Titulo"].ToString();
+                    foro.Contenido = dr["Contenido"].ToString();
+                    foro.Nombre = dr["Nombre"].ToString();
+                    foro.Apellidos = dr["Apellidos"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return foro;
+        }
+
+        public bool ActualizarRespuesta(int id, int idUsuarioRespuesta, string respuesta)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Foro", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@Id", SqlDbType.Int).Value = id;
+            _comando.Parameters.AddWithValue("@IdUsuarioRespuesta", SqlDbType.Int).Value = idUsuarioRespuesta;
+            _comando.Parameters.AddWithValue("@Respuesta", SqlDbType.VarChar).Value = respuesta;
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 6;
+            bool exito = false;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                if (_comando.ExecuteNonQuery() > 0)
+                {
+                    exito = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return exito;
+        }
+
+        public Foro ObtenerRespuesta(int id)
+        {
+            Foro foro = null;
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Foro", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@Id", SqlDbType.Int).Value = id;
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 7;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                if (dr.Read())
+                {
+                    foro = new Foro();
+                    foro.IdForo = Convert.ToInt32(dr["Id"].ToString());
+                    foro.Titulo = dr["Titulo"].ToString();
+                    foro.Respuesta = dr["Respuesta"].ToString();
+                    foro.FechaRespuesta = Convert.ToDateTime(dr["FechaRespuesta"].ToString());
+                    foro.Nombre = dr["Nombre"].ToString();
+                    foro.Apellidos = dr["Apellidos"].ToString();
+                    foro.Avatar = dr["Avatar"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return foro;
+        }
     }
 }
