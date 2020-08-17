@@ -18,6 +18,7 @@ namespace VictoriaApp
             {
                 CargarWebinar();
             }
+           
         }
 
         protected void btnImagen_Click(object sender, EventArgs e)

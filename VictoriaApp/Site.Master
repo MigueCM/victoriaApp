@@ -38,8 +38,8 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-
 <body class="main-panel">
+    <form runat="server">
     <div class="loader">
         <div>
             <div class="loader-animation">
@@ -58,6 +58,7 @@
             </p>
         </div>
     </div>
+    
   <div class="container-scroller">
     <!-- partial:partials/_horizontal-navbar.html -->
     <div class="horizontal-menu">
@@ -90,40 +91,6 @@
           </div>
         </div>
       </nav>
-    <%--  <nav class="bottom-navbar">
-        <div class="container">
-          <ul class="nav page-navigation">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <i class="mdi mdi-view-dashboard-outline menu-icon"></i>
-                <span class="menu-title">PERFIL</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/widgets/widgets.html">
-                <i class="mdi mdi-airplay menu-icon"></i>
-                <span class="menu-title">MODULOS</span>
-              </a>
-            </li>
-
-            <li class="nav-item">
-
-            </li>
-            <li class="nav-item mega-menu">
-          
-            </li>
-            <li class="nav-item mega-menu">
-              
-            </li>
-            <li class="nav-item">
-             
-            </li>
-            <li class="nav-item">
-              
-            </li>
-          </ul>
-        </div>
-      </nav>--%>
     </div>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
@@ -184,80 +151,6 @@
 
 
                                   <div class="accordion accordion-solid-header" id="accordion-4" role="tablist">
-                                      <%--<div class="card webinar-shadow">
-                                          <div class="card-header" role="tab" id="heading-1">
-                                              <h6 class="mb-0">
-                                                  <a data-toggle="collapse" href="#collapse-1" aria-expanded="false" aria-controls="collapse-1" class="collapsed">
-                                                      <span class="h3 text-primary">Lorem Ipsus</span>
-                                                      <span class="webinar-autor">Por Lorem Ipsus</span>
-                                                  
-                                                  </a>
-                                              </h6>
-                                          </div>
-                                          <div id="collapse-1" class="collapse" role="tabpanel" aria-labelledby="heading-1" data-parent="#accordion-4" style="">
-                                              <div class="card-body animated fadeIn">
-                                                <div class="row">
-                                                    <div class="col-3">
-                                                    <img src="images/webinar.jpg" class="mw-100" alt="image">                              
-                                                    </div>
-                                                    <div class="col-9">
-                                                    <p class="mb-0 color-white">You can pay for the product you have purchased using credit cards, debit cards, or via online banking. 
-                                                    We also on-delivery services.</p>                             
-                                                    </div>
-                                                </div>
-                                              </div>
-                                          </div>
-                                      </div>
-
-                                      <div class="card webinar-shadow">
-                                          <div class="card-header" role="tab" id="heading-2">
-                                              <h6 class="mb-0">
-                                              <a data-toggle="collapse" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2" class="collapsed">
-                                                  <span class="h3 text-primary">Lorem Ipsus</span>
-                                                  <span class="webinar-autor">Por Lorem Ipsus</span>
-                                                  
-                                              </a>
-                                              </h6>
-                                          </div>
-                                          <div id="collapse-2" class="collapse" role="tabpanel" aria-labelledby="heading-2" data-parent="#accordion-4" style="">
-                                              <div class="card-body animated fadeIn">
-                                                <div class="row">
-                                                  <div class="col-3">
-                                                  <img src="images/webinar.jpg" class="mw-100" alt="image">                              
-                                                  </div>
-                                                  <div class="col-9">
-                                                  <p class="mb-0 color-white">You can pay for the product you have purchased using credit cards, debit cards, or via online banking. 
-                                                  We also on-delivery services.</p>                             
-                                                  </div>
-                                              </div>
-                                              </div>
-                                          </div>
-                                      </div>
-
-                                      <div class="card webinar-shadow">
-                                          <div class="card-header" role="tab" id="heading-10">
-                                              <h6 class="mb-0">
-                                              <a data-toggle="collapse" href="#collapse-10" aria-expanded="false" aria-controls="collapse-10" class="collapsed">
-                                                  <span class="h3 text-primary">Lorem Ipsus</span>
-                                                  <span class="webinar-autor">Por Lorem Ipsus</span>
-                                                  
-                                              </a>
-                                              </h6>
-                                          </div>
-                                          <div id="collapse-10" class="collapse" role="tabpanel" aria-labelledby="heading-10" data-parent="#accordion-4" style="">
-                                              <div class="card-body animated fadeIn">
-                                                  <div class="row">
-                                                      <div class="col-3">
-                                                      <img src="images/webinar.jpg" class="mw-100" alt="image">                              
-                                                      </div>
-                                                      <div class="col-9">
-                                                      <p class="mb-0 color-white">You can pay for the product you have purchased using credit cards, debit cards, or via online banking. 
-                                                      We also on-delivery services.</p>                             
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      </div>--%>
                                       <%=HttpUtility.HtmlDecode((string)(Session["webinar"]??"")) %>
                                   </div>
 
@@ -272,7 +165,7 @@
 
                 </div>
 
-    <form method="post" runat="server" enctype="multipart/form-data">
+   <%-- <form method="post" runat="server" enctype="multipart/form-data">--%>
              <%--           <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>--%>
                          <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalCreate-2" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -305,39 +198,20 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+
+                        <%--</form>--%>
                 
             </div>
             
+
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <!--footer class="footer">
-        <div class="container">
-            <div class="w-100 clearfix">
-                <span class="d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart-outline text-danger"></i></span>
-              </div>
-        </div>
-      </footer-->
-        <!-- partial -->
+
       </div>
       <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-  <!-- container-scroller -->
-
-  <!-- base:js -->
-    
-  
-  <!-- endinject -->
-  <!-- plugin js for this page -->
-  <!-- End plugin js for this page -->
-  <!-- Custom js for this page-->
-  <%--<script src="../../js/dashboard.js"></script>--%>
-  <!-- End custom js for this page-->
-    
+    </form>
     <script>
 
         $(window).on('load', function () {

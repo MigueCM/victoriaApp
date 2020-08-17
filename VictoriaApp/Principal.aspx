@@ -2,7 +2,12 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
+    <style>
+        .mdi-star:hover{
+            color:blue;
+            cursor: pointer;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
@@ -52,54 +57,132 @@
                 </div>
             </div>
           </div>
-       
-<%--     <script type="text/javascript">
-         $(function ($) {
-             $('#archivo').on('change', function (e) {
-                 e.preventDefault();
-                 var filePath = document.getElementById("archivo").files[0].name;
-                 console.log(filePath);
-                 var parametros = "{'filePath': '" + filePath + "'}";
-                 $.ajax({
-                     data: parametros,
-                     url: 'Principal.aspx/Avatar',
-                     dataType: "json",
-                     type: 'POST',
-                     contentType: "application/json; charset=utf-8",
-                     beforeSend: function () {
 
-                     },
-                     success: function (response) {
+    <br />
+    <br />
 
-                         var data = JSON.parse(response.d);
-                         console.log(data);
-                         //$("#errorEmail").html(data["mensaje"]);
-                         //$("#errorEmail").removeClass("d-none");
-                         //if (data["correoValido"] === true) {
-                         //    $("#errorEmail").append(data["token"]);
-                         //    $("#errorEmail").addClass("alert-success");
-                         //    $("#errorEmail").removeClass("alert-danger");
-                         //} else {
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="border-radius:20px;">
+                    <div class="card-body">
+                         <div class="row">
+                            <div class="col-lg-9 col-md-9">
+                                <h4 class="card-title">PREGUNTAS</h4>
+                            </div>
+                             <div class="col-lg-3 col-md-3">
+                                 <button id="btnNuevaPregunta" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarPregunta" OnClick="limpiarForo()">
+                                        AGREGAR PREGUNTA
+                                    </button>
+                            </div>
+                        </div>
+                        
+                        <hr/>
+                        <div class="row">
+                             <div class="profile-feed col-12" id="feed">
+                                 <%=HttpUtility.HtmlDecode((string)(Session["Comentarios"]??"")) %>
 
-                         //    $("#errorEmail").removeClass("alert-success");
-                         //    $("#errorEmail").addClass("alert-danger");
+                        
+                      </div>
+                           <%-- cdSDCDS
+                             <hr style="width:100%;  align-self:center; ">
+                            CASD--%>
+                        </div>
+                    </div>
+                    </div>
 
-                         //}
+            </div>
 
-                     },
-                     error: function (e) {
-                         console.log(e)
-                     }
-                 });
+        </div>
 
-             });
-         });
 
-     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-    <script src="vendors/jquery.avgrund/jquery.avgrund.min.js"></script>
-    <script src="Scripts/sweetalert.min.js"></script>
-    <script src="Scripts/alerts.js"></script>
-    <script src="Scripts/avgrund.js"></script>--%>
-   
+             <%--           <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>--%>
+                            <div class="modal fade" id="modalAgregarPregunta" tabindex="-1" role="dialog" aria-labelledby="modalCreate-2" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title title" id="H1" runat="server">Registro de Pregunta</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" class="txtId" name="txtId" id="txtId" value=""  runat="server" />
+                                        <input type="hidden" class="txtTipo" name="txtTipo" id="txtTipo" value="1"  runat="server" />
+                                        <div class="form-group">
+                                            <label for="txtTitulo">Titulo</label>
+                                            <div class="input-group border-input">
+                                                  <div class="input-group-prepend bg-transparent ">
+                                                    <span class="input-group-text bg-transparent border-right-0 border-color-principal">
+                                                        <i class="fas fa-edit text-primary" aria-hidden="true"></i>
+                                                    </span>
+                                                    </div>                  
+
+                                                <input type="text" id="txtTitulo" class="form-control form-control-sm border-color-principal pl-1 txtNombre" placeholder="Titulo" required/>
+                                            </div>                                     
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtDescripcionPregunta">Descripción</label>
+                                            <div class="input-group border-input">
+                                                <textarea class="form-control form-control-sm border-color-principal txtDescripcion" id="txtDescripcionPregunta" placeholder="Descripcion" required></textarea>
+                                            </div>                                     
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="cbModulo">Modulo</label>
+                                                <select class="form-control form-control-sm border-color-principal pl-1 txtEnlace" id="cbModulo">
+                                                </select>            
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="divErrores">
+                                              <asp:ListBox ID="lbErrores" runat="server" BackColor="Transparent" Width="100%" Enabled="false" CssClass="border-0 accordion text-danger overflow-hidden" Visible="false"></asp:ListBox>
+                                          </div>
+                                        </div>
+
+                                    </div>
+                                    
+                                    
+                                    <div class="modal-footer">
+                                        <button id="btnEnviar" type="button" class="btn btn-primary font-weight-medium" onclick="enviarFormulario()">Agregar Pregunta</button>
+                                        <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+    <script>
+        function Votar() {
+            var wasSubmitted = false;
+            //var ClickImageId;
+            $("#feed").on("click", "i", function (e) {
+                if (!wasSubmitted) {
+                    e.preventDefault();
+                    var votar = $(this).attr('id');
+                    var parametros = "{'votar': '" + votar + "'}";
+                    $.ajax({
+                        data: parametros,
+                        url: 'Principal.aspx/Votar',
+                        dataType: "json",
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        success: function (response) {
+                            location.href = "Principal.aspx";
+                        },
+                        error: function (e) {
+                            console.log(e)
+                        }
+                    });
+                    wasSubmitted = true;
+                    return wasSubmitted;
+                }
+                return false;
+               
+            });
+
+            
+        }
+    </script>
+
+    <script src="Scripts/victoria-principal.js"></script>
 </asp:Content>
