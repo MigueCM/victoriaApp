@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.Remoting.Channels;
 using System.Text;
@@ -73,7 +74,48 @@ namespace VictoriaApp
                     fila += $"</p>";
                     fila += $"</div>";
                     fila += $"</div>";
+                    Foro foroRespuesta = new Foro();
+                    foroRespuesta = ForoBLL.Instancia.ObtenerRespuesta(item.IdForo);
+                    if (foroRespuesta != null)
+                    {
+                        string imagenRpt = foroRespuesta.Avatar;
+                        string currentRpt = Server.MapPath(@"~/Data/Avatar/" + foroRespuesta.Avatar);
+                        if (File.Exists(currentRpt))
+                        {
+                            imagenRpt = "Data/Avatar/" + foroRespuesta.Avatar;
+                        }
 
+                        if (foroRespuesta.Avatar == null || foroRespuesta.Avatar == "")
+                        {
+                            imagenRpt = "Data/Avatar/noImage.png";
+                        }
+                        TimeSpan timeRpt = DateTime.Now - foroRespuesta.FechaRespuesta;
+                        fila += "<div class=\"d-flex align-items-start profile-feed-item\">";
+                        fila += "<div class=\"row offset-1\">";
+                        fila += $"<img src=\"{imagenRpt}\" alt=\"profile\" class=\"img-sm rounded-circle\"/>";
+                        fila += $"<div class=\"ml-4\">";
+                        fila += $"<h6>";
+                        fila += "RESPUESTA A: "+ " " + foroRespuesta.Titulo;
+                        if (timeRpt.Days > 0)
+                            fila += $"<small class=\"ml-4 text-muted\"><i class=\"mdi mdi-clock mr-1\"></i>{String.Format("{0} días, {1} horas", timeRpt.Days, timeRpt.Hours)}</small>";
+                        else
+                            fila += $"<small class=\"ml-4 text-muted\"><i class=\"mdi mdi-clock mr-1\"></i>{String.Format("{0} horas", timeRpt.Hours)}</small>";
+                        fila += $"</h6>";
+                        fila += $"<p>";
+                        fila += foroRespuesta.Respuesta;
+                        fila += $"</p>";
+                        //fila += $"<p class=\"/*small*/ text-muted mt-2 mb-0\">";
+                        //fila += $"<span>";
+                        //fila += $"<i class=\"mdi mdi-star mr-1\" id=\"{item.IdForo}\" onclick=\"Votar()\"></i>{item.Votado}";
+                        //fila += $"</span>";
+                        //fila += $"<span class=\"ml-2\">";
+                        //fila += $"<i class=\"mdi mdi-comment mr-1\"></i>{item.RptCantidad}";
+                        //fila += $"</span>";
+                        //fila += $"</p>";
+                        fila += $"</div>";
+                        fila += $"</div>";
+                        fila += $"</div>";
+                    }
                     innerHtml.AppendLine(fila);
                 }
 
