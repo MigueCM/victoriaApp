@@ -1,13 +1,13 @@
-Eliminar boton modulos, su funcionalidad debe ser a dar click a la barra de avance.
-Cambiar boton panel por la palabra módulo.
+Eliminar boton modulos, su funcionalidad debe ser a dar click a la barra de avance. (listo)
+Cambiar boton panel por la palabra módulo. (listo)
 Faltaria CRUD para que puedan responder las preguntas.
 Al finalizar el video en la vista de usuario faltaria poner la pregunta del usuario.
 Visualizacion de todas las preguntas en la vista del usuario.
-El usuario tiene 3 intentos para responder el cuestionario.
-Un módulo no tiene autor.
+El usuario tiene 3 intentos para responder el cuestionario. (listo)
+Un módulo no tiene autor. (listo)
 las imagenes por defecto de los usuario utilizar las mismas de educacion.
-Cambiar colores de la pagina principal donde se muestran los modulos y su estado
-Cambiar texto de botón (Agregar Preguntas -> Cuestionario).
-Buscador del departamento en el registro de usuario
-Los botones de los estados de los modulos que vayan directamente a la pagina video
-Las visualizaciones se calculan por cada usuario que termino el módulo
+Cambiar colores de la pagina principal donde se muestran los modulos y su estado (listo)
+Cambiar texto de botón (Agregar Preguntas -> Cuestionario). (listo)
+Buscador del departamento en el registro de usuario (listo)
+Los botones de los estados de los modulos que vayan directamente a la pagina video (listo)
+Las visualizaciones se calculan por cada usuario que termino el módulo (listo)
