@@ -92,7 +92,7 @@
                 </div!-->
                 <div class="text-center mt-4 font-weight-light">
                     <h6>
-                        ¿No tienes cuenta? <a href="Registro.aspx" class="text-primary">Registrate</a>
+                        ¿No tienes cuenta? <a href="Registro.aspx" class="text-primary">Regístrate</a>
                     </h6>
                   
                 </div>
