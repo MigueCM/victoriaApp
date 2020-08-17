@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="ForoDAL.cs" />
     <Compile Include="ModuloCapacitacionDAL.cs" />
     <Compile Include="PerfilDAL.cs" />
     <Compile Include="PersonaDAL.cs" />
