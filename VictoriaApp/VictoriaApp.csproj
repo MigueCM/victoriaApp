@@ -182,6 +182,7 @@
     <Content Include="Principal.aspx" />
     <Content Include="RecuperarContraseña.aspx" />
     <Content Include="Registro.aspx" />
+    <Content Include="ResponderForo.aspx" />
     <Content Include="Scripts\alerts.js" />
     <Content Include="Scripts\avgrund.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -324,6 +325,13 @@
     </Compile>
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResponderForo.aspx.cs">
+      <DependentUpon>ResponderForo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResponderForo.aspx.designer.cs">
+      <DependentUpon>ResponderForo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
