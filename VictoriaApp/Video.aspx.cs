@@ -54,7 +54,7 @@ namespace VictoriaApp
             if(objModulo != null)
             {
                 title_modulo.InnerHtml = objModulo.Nombre;
-                autor_modulo.InnerHtml = $"Por {objModulo.Autor}";
+                //autor_modulo.InnerHtml = $"Por {objModulo.Autor}";
                 descripcion_modulo.InnerHtml = objModulo.Descripcion;
                 //img_video.Attributes.Add("src", "images/video.png");
 
