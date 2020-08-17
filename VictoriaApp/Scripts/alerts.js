@@ -291,6 +291,66 @@
                 }
             });
         }
+         else if (type === 'responder-pregunta') {
+             swal({
+                 title: "¿Desea responder esta pregunta?",
+                 text: "",
+                 icon: 'info',
+                 showCancelButton: true,
+                 confirmButtonColor: '#3f51b5',
+                 cancelButtonColor: '#ff4081',
+                 confirmButtonText: 'Great ',
+                 buttons: {
+                     confirm: {
+                         text: "Responder",
+                         value: true,
+                         visible: true,
+                         className: "btn btn-primary",
+                         closeModal: true
+                     },
+                     cancel: {
+                         text: "Cancelar",
+                         value: null,
+                         visible: true,
+                         className: "btn btn-danger",
+                         closeModal: true,
+                     }
+
+                 }
+             }).then((willDelete) => {
+                 if (willDelete) {
+                     var parametros = "{'id': '" + id + "'}";
+                     $.ajax({
+                         data: parametros,
+                         url: 'ResponderForo.aspx/CargarDataForo',
+                         dataType: "json",
+                         type: 'POST',
+                         contentType: "application/json; charset=utf-8",
+                         beforeSend: function () {
+
+                         },
+                         success: function (response) {
+                             var data = JSON.parse(response.d)["objForo"];
+                             console.log(response);
+                             $(".txtId").val(id);
+                             $(".txtNombre").val(data["Nombre"] + " " + data["Apellidos"]);
+                             $(".txtTitulo").val(data["Titulo"]);
+                             $(".txtDescripcion").val(data["Contenido"]);
+                             //$(".title").html("Actualización de Módulo")
+                             //$(".btnEnviar").val("Actualizar")
+                             //$(".txtTipo").val(2)
+                             //$(".txtFile").prop("required", false)
+                             $("#modalResponder").modal("show")
+                         },
+                         error: function (e) {
+                             console.log(e)
+                         }
+                     });
+                 } else {
+                     swal("Operación cancelada");
+                 }
+             });
+         }
     }
 
 })(jQuery);

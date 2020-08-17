@@ -51,5 +51,20 @@ namespace BLL
         {
             return foroDAL.ObtenerCambioVotado(id);
         }
+
+        public Foro ObtenerComentarioResponder(int id)
+        {
+            return foroDAL.ObtenerComentarioResponder(id);
+        }
+
+        public bool ActualizarRespuesta(int id, int idUsuarioRespuesta,  string respuesta)
+        {
+            return foroDAL.ActualizarRespuesta(id, idUsuarioRespuesta, respuesta);
+        }
+
+        public Foro ObtenerRespuesta(int id)
+        {
+            return foroDAL.ObtenerRespuesta(id);
+        }
     }
 }

@@ -148,41 +148,5 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-    <script>
-        function Votar() {
-            var wasSubmitted = false;
-            //var ClickImageId;
-            $("#feed").on("click", "i", function (e) {
-                if (!wasSubmitted) {
-                    e.preventDefault();
-                    var votar = $(this).attr('id');
-                    var parametros = "{'votar': '" + votar + "'}";
-                    $.ajax({
-                        data: parametros,
-                        url: 'Principal.aspx/Votar',
-                        dataType: "json",
-                        type: 'POST',
-                        contentType: "application/json; charset=utf-8",
-                        success: function (response) {
-                            location.href = "Principal.aspx";
-                        },
-                        error: function (e) {
-                            console.log(e)
-                        }
-                    });
-                    wasSubmitted = true;
-                    return wasSubmitted;
-                }
-                return false;
-               
-            });
-
-            
-        }
-    </script>
-
     <script src="Scripts/victoria-principal.js"></script>
 </asp:Content>
