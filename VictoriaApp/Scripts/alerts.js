@@ -21,7 +21,7 @@
         }
         else if (type === 'basic') {
             swal({
-                text: 'Este módulo ya ha sido completado',
+                text: 'Debe completar otros modulos',
                 button: {
                     text: "OK",
                     value: true,

@@ -27,13 +27,15 @@ namespace VictoriaApp
             }
         }
 
+
         private void ObtenerCalificacion()
         {
             int calificacion = UsuarioCapacitacionBLL.Instancia.ObtenerCalificacion(Convert.ToInt32(Session["video_idModulo"]));
+            int num_visualizacion = UsuarioCapacitacionBLL.Instancia.ObtenerVisualizacion(Convert.ToInt32(Session["video_idModulo"]));
 
             StringBuilder innerHtml = new StringBuilder();
             string fila = $"<i class=\"fas fa-star color-star\"></i>{calificacion} &nbsp;&nbsp;&nbsp;";
-            fila += "<i class=\"fas fa-play text-primary\"></i> 8,365";
+            fila += $"<i class=\"fas fa-play text-primary\"></i> {num_visualizacion}";
 
             innerHtml.AppendLine(fila);
 
@@ -44,6 +46,8 @@ namespace VictoriaApp
         private void CargarDatos()
         {
             EL.ModuloCapacitacion objModulo = ModuloCapacitacionBLL.Instancia.ObtenerModulosPorId(Convert.ToInt32(Session["video_idModulo"]));
+
+            num_intentos.Value = UsuarioCapacitacionBLL.Instancia.ObtenerIntento(Convert.ToInt32(Session["video_idModulo"]), Convert.ToInt32(Session["idUsuario"])).ToString();
 
             Session["video"] = "";
 
@@ -141,6 +145,14 @@ namespace VictoriaApp
         [WebMethod(EnableSession = true)]
         public static bool ValidarData(string respuestas, string calificacion)
         {
+            int num_intentos = UsuarioCapacitacionBLL.Instancia.ObtenerIntento(Convert.ToInt32(HttpContext.Current.Session["video_idModulo"]), Convert.ToInt32(HttpContext.Current.Session["idUsuario"]));
+
+            if(num_intentos > 2)
+            {
+                return false;
+            }
+
+
             string[] arreglo = respuestas.Split(',');
 
             List<EL.PreguntaCapacitacion> listaPreguntas = (List<EL.PreguntaCapacitacion>)(HttpContext.Current.Session["lista_preguntas"]??new List<EL.PreguntaCapacitacion>());
