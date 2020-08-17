@@ -159,20 +159,20 @@
 
                                 </div>
 
-                                <div class="progress progress-xl mt-2">
+                                <div class="progress progress-xl mt-2 cursor-pointer" onclick="location.href='Principal.aspx'">
                                     
                                   <div class="progress-bar bg-primary" role="progressbar" style="<%=Session["prog_value"] %>" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><span class="text-progressbar"><%=Session["prog_text"] %></span></div>
                                 </div>
 
                             </div>
 
-                            <div class="col-6" style="margin-bottom: 1rem;">
-                                <button class="btn btn-block btn-primary btn-options" onclick="location.href='Panel.aspx'">PANEL</button>
+                            <div class="col-12" style="margin-bottom: 1rem;">
+                                <button class="btn btn-block btn-primary btn-options" onclick="location.href='Panel.aspx'">MÓDULOS</button>
                             </div>
 
-                            <div class="col-6">
+<%--                            <div class="col-6">
                                 <button class="btn btn-block btn-primary btn-options" onclick="location.href='Principal.aspx'"> MODULOS</button>
-                            </div>
+                            </div>--%>
 
                             <div class="col-12" >
                                 <button class="btn btn-block btn-primary btn-options" >SIMULADOR</button>

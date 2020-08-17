@@ -38,9 +38,9 @@ namespace VictoriaApp
                 fila += $"<td>{item.Descripcion}</td>";
                 fila += $"<td>{item.Enlace}</td>";
                 //fila += $"<td>{item.Calificacion} <i class=\"fa fa-star\"></i></td>";
-                fila += $"<td><button class=\"btn btn-outline-primary mb-1\" onClick=\"cargarData({item.IdModuloCapacitacion});\">Editar</button>";
-                fila += $"<button class=\"btn btn-outline-success mb-1\" onClick=\"redireccionPreguntas({item.IdModuloCapacitacion});\">Agregar Preguntas</button>";
-                fila += $"<button class=\"btn btn-outline-danger \" onClick=\"eliminar({item.IdModuloCapacitacion});\">Eliminar</button></td>";
+                fila += $"<td><button class=\"btn btn-outline-primary mb-1 w-100\" onClick=\"cargarData({item.IdModuloCapacitacion});\">Editar</button>";
+                fila += $"<button class=\"btn btn-outline-success mb-1 w-100\" onClick=\"redireccionPreguntas({item.IdModuloCapacitacion});\">Cuestionario</button>";
+                fila += $"<button class=\"btn btn-outline-danger w-100\" onClick=\"eliminar({item.IdModuloCapacitacion});\">Eliminar</button></td>";
                 fila += "</tr>";
 
                 innerHtml.AppendLine(fila);
