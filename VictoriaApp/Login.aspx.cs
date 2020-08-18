@@ -50,10 +50,13 @@ namespace VictoriaApp
                     Session["UsuarioDni"] = objUsuario.Persona.Dni;
                     Session["UbicacionUsuario"] = objUsuario.Persona.Departamento + ", " + objUsuario.Persona.Ciudad;
                     if (string.IsNullOrEmpty(objUsuario.Persona.Avatar) || objUsuario.Persona.Avatar == "")
-                        Session["AvatarPersona"] = "Data/Avatar/noImage.png";
+                        Session["AvatarPersona"] = ImageDefault(objUsuario.Persona.Sexo); //"Data/Avatar/noImage.png";
+
+
+
                     else
                     {
-                        Session["AvatarPersona"] = "Data/Avatar/noImage.png";
+                        Session["AvatarPersona"] = ImageDefault(objUsuario.Persona.Sexo);//"Data/Avatar/noImage.png";
 
                         string current = Server.MapPath(@"~/Data/Avatar/" + objUsuario.Persona.Avatar);
                         if (File.Exists(current))
@@ -98,6 +101,20 @@ namespace VictoriaApp
 
 
 
+        }
+
+        private string ImageDefault(string sexo)
+        {
+            string imagen = "";
+            switch (sexo)
+            {
+                case "Masculino": imagen = "Data/Avatar/userpic1.png"; break;
+                case "Femenino": imagen = "Data/Avatar/userpic2.png"; break;
+                default: imagen = "Data/Avatar/noImage.png"; break;
+
+            }
+
+            return imagen;
         }
 
         [WebMethod]

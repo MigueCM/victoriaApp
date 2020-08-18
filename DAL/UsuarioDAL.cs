@@ -131,6 +131,7 @@ namespace DAL
                         oUsuario.Persona.Dni = dr["Dni"].ToString();
                         oUsuario.Persona.Departamento = dr["Departamento"].ToString();
                         oUsuario.Persona.Ciudad = dr["Distrito"].ToString();
+                        oUsuario.Persona.Sexo = dr["Sexo"].ToString();
                     }
 
                         

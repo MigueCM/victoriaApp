@@ -127,6 +127,8 @@
     <Content Include="Data\Avatar\3kevin.jpg" />
     <Content Include="Data\Avatar\58Christian.jpg" />
     <Content Include="Data\Avatar\noImage.png" />
+    <Content Include="Data\Avatar\userpic1.png" />
+    <Content Include="Data\Avatar\userpic2.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GestionUsuario.aspx" />
