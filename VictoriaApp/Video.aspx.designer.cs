@@ -15,15 +15,6 @@ namespace VictoriaApp
     {
 
         /// <summary>
-        /// Control img_video.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage img_video;
-
-        /// <summary>
         /// Control title_modulo.
         /// </summary>
         /// <remarks>

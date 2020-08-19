@@ -122,6 +122,18 @@
 .card .card-title-panel {
     font-weight: bold;
     font-size: 1.1rem;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@supports(object-fit: cover) {
+    #img_video {
+        height: 420px;
+        object-fit: cover;
+        object-position: center center;
+    }
 }
 
 .card .card-body.card-body-panel {

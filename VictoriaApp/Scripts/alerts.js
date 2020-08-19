@@ -30,7 +30,8 @@
                 }
             })
 
-        } else if (type === 'title-and-text') {
+         }
+         else if (type === 'title-and-text') {
             swal({
                 title: 'Read the alert!',
                 text: 'Click OK to close this alert',
@@ -249,11 +250,11 @@
                             $(".txtNombre").val(data["Nombre"]);
                             $(".txtDescripcion").val(data["Descripcion"]);
                             $(".txtEnlace").val(data["Enlace"]);
-                            $(".txtImagen").val(data["Imagen"]);
+                            //$(".txtImagen").val(data["Imagen"]);
                             $(".title").html("Actualización de Módulo")
                             $(".btnEnviar").val("Actualizar")
                             $(".txtTipo").val(2)
-                            $(".txtFile").prop("required", false)
+                            //$(".txtFile").prop("required", false)
                             $("#modalCreate").modal("show")
                         },
                         error: function (e) {

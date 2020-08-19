@@ -149,6 +149,11 @@
     </div>
 
     <script>
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
         function llamarVideo(codigo) {
             var parametros = "{'codigo': '" + codigo + "'}";
 

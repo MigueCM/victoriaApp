@@ -7,9 +7,11 @@
             <div class="card">
                 <div class="card-body" id="cardVideo">
                     
-                        <img src="images/video.png" style="width:100%;height: 370px;" onClick="$('#modalVideo').modal('show')" id="img_video" runat="server"/>
+                    <img src="https://img.youtube.com/vi/<%=Session["video"]%>/hqdefault.jpg" style="width:100%;" onClick="$('#modalVideo').modal('show')" id="img_video" class="cursor-pointer"/>
                       
-                      <div class="row">
+                    <%--<div id="player2"></div>--%>
+
+                    <div class="row">
                         <div class="col-sm-12">
                             <h1 style="padding-top:10px; padding-left:10px; color:#561179" runat="server" id="title_modulo">1. Lorem Ipsum is simply dummy text of the</h1>
                             <%--<h2 style="padding-top:10px; padding-left:10px;" runat="server" id="autor_modulo">Por Lorem Ipsum</h2>--%>
@@ -55,8 +57,6 @@
                             </div>
                         </div>
 
-    
-
     <div class="modal fade" id="modalCuestionario" tabindex="-1" role="dialog" aria-labelledby="modalCreate-2" aria-hidden="true">
             <div class="modal-dialog mt-3" role="document">
                 <div class="modal-content modal-border">
@@ -67,7 +67,7 @@
                         </button>
                     </div>--%>
                     <div class="modal-body">
-                        <h2 class="text-primary text-center">Lorem Ipsum</h2>
+                        <h2 class="text-primary text-center">Cuestionario</h2>
 
                         <div class="mt-4 div_cuestionario" runat="server" id="div_cuestionario">                           
                             
@@ -98,7 +98,7 @@
                                     <i class="input-helper"></i></label>
                                 </div>
                             </div>
-                            <div class="form-group">
+                             <div class="form-group">
                                 <label class="mb-0">2. Lorem Ipsum asd asd asd asd asd asd</label>
                                 <div class="form-check form-check-primary">
                                     <label class="form-check-label">
@@ -271,25 +271,23 @@
 
         }
 
+
         function onPlayerReady(event) {
             event.target.playVideo();
         }
 
         var done = false;
         function onPlayerStateChange(event) {
-
             if (event.data == YT.PlayerState.ENDED) {
                 done = true;
-                $("#modalVideo").modal('hide')                
-                
-                
+                $("#modalVideo").modal('hide');
             }
-
-            /*if (event.data == YT.PlayerState.PLAYING && !done) {
-                setTimeout(stopVideo, 6000);
-                done = true;
-            }*/
         }
+
+        function onPlayerStateChange2(event) {
+
+        }
+
         function stopVideo() {
             player.stopVideo();
         }

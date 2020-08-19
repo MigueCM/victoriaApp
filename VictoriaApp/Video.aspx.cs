@@ -58,17 +58,20 @@ namespace VictoriaApp
                 descripcion_modulo.InnerHtml = objModulo.Descripcion;
                 //img_video.Attributes.Add("src", "images/video.png");
 
-                string imagen = "images/video.png";
+                /*string imagen = "images/video.png";
 
                 string current = Server.MapPath(@"~/Data/" + objModulo.Imagen);
                 if (File.Exists(current))
                 {
                     imagen = "Data/" + objModulo.Imagen;
-                }
+                }*/
 
-                img_video.Attributes.Add("src", imagen);
+                //img_video.Attributes.Add("src", imagen);
 
-                if (objModulo.Enlace.Contains("v="))
+
+                Session["video"] = Globales.ObtenerIdVideo(objModulo.Enlace);
+
+                /*if (objModulo.Enlace.Contains("v="))
                 {
                     int location = objModulo.Enlace.IndexOf("v=");
                     string subcadnea = objModulo.Enlace.Substring(location);
@@ -89,7 +92,7 @@ namespace VictoriaApp
                     int location = objModulo.Enlace.IndexOf("be/");
                     if (objModulo.Enlace.Length > location + 3)
                         Session["video"] = objModulo.Enlace.Substring(location+3);
-                }
+                }*/
 
                 
             }
