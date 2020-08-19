@@ -87,7 +87,8 @@ namespace VictoriaApp
                 else
                 {
                     int location = objModulo.Enlace.IndexOf("be/");
-                    Session["video"] = objModulo.Enlace.Substring(location+2);
+                    if (objModulo.Enlace.Length > location + 3)
+                        Session["video"] = objModulo.Enlace.Substring(location+3);
                 }
 
                 
