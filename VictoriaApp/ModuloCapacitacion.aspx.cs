@@ -133,7 +133,7 @@ namespace VictoriaApp
                 lbErrores.Items.Add("Debe ingresar la descripción");
             }
 
-            if ((txtFile.PostedFile != null) && (txtFile.PostedFile.ContentLength > 0))
+            /*if ((txtFile.PostedFile != null) && (txtFile.PostedFile.ContentLength > 0))
             {
                 //string fn = System.IO.Path.GetFileName(txtFile.PostedFile.FileName);
                 string ext = System.IO.Path.GetExtension(txtFile.PostedFile.FileName);
@@ -171,9 +171,34 @@ namespace VictoriaApp
             else
             {
                 lbErrores.Items.Add("Debe seleccionar una imagen");
+            }*/
+
+            EL.ModuloCapacitacion objModulo = new EL.ModuloCapacitacion();
+            objModulo.Nombre = nombre;
+            objModulo.Descripcion = descripcion;
+            objModulo.Enlace = enlace;
+            objModulo.Autor = "Lorem Ipsum";
+            objModulo.Imagen = "";
+            objModulo.IdUsuarioRegistro = Convert.ToInt32(Session["idUsuario"] ?? 1);
+            objModulo.Estado = 1;
+
+            if (ModuloCapacitacionBLL.Instancia.RegistrarModulo(objModulo))
+            {
+
+                try
+                {
+                    /*txtFile.PostedFile.SaveAs(rutaImagen);
+                    Response.Write("The file has been uploaded.");*/
+                    string currentPage = this.Page.Request.AppRelativeCurrentExecutionFilePath;
+                    Response.Redirect(currentPage);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "registrarModulo", "showSwal('auto-close', 'Registro exitoso!', 'Módulo registrado correctamente', 'ModuloCapacitacion.aspx', '')", true);
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("Error: " + ex.Message);//Note: Exception.Message returns a detailed message that describes the current exception. //For security reasons, we do not recommend that you return Exception.Message to end users in //production environments. It would be better to put a generic error message. 
+                }
             }
 
-            
 
         }
 
@@ -182,7 +207,7 @@ namespace VictoriaApp
             string nombre = txtNombre.Value;
             string descripcion = txtDescripcion.Value;
             string enlace = txtEnlace.Value;
-            string imagen = txtImagen.Value;
+            //string imagen = txtImagen.Value;
             int id = Convert.ToInt32(txtId.Value);
 
             if (string.IsNullOrEmpty(nombre))
@@ -201,7 +226,7 @@ namespace VictoriaApp
             }
 
 
-            if ((txtFile.PostedFile != null) && (txtFile.PostedFile.ContentLength > 0))
+            /*if ((txtFile.PostedFile != null) && (txtFile.PostedFile.ContentLength > 0))
             {
 
                 string rutaImagenDelete = Server.MapPath("Data") + "\\" + imagen;
@@ -227,14 +252,14 @@ namespace VictoriaApp
                     Response.Write("Error: " + ex.Message);//Note: Exception.Message returns a detailed message that describes the current exception. //For security reasons, we do not recommend that you return Exception.Message to end users in //production environments. It would be better to put a generic error message. 
                 }
 
-            }
+            }*/
 
             EL.ModuloCapacitacion objModulo = new EL.ModuloCapacitacion();
             objModulo.Nombre = nombre;
             objModulo.Descripcion = descripcion;
             objModulo.Enlace = enlace;
             objModulo.Autor = "Lorem Ipsum";
-            objModulo.Imagen = imagen;
+            //objModulo.Imagen = imagen;
             objModulo.IdUsuarioRegistro = Convert.ToInt32(Session["idUsuario"] ?? 1);
             objModulo.Estado = 1;
             objModulo.IdModuloCapacitacion = id;

@@ -53,7 +53,7 @@ namespace VictoriaApp
                     fila += "</div>";
                 }
 
-                string imagen = "images/video.png";
+               /* string imagen = "images/video.png";
 
                 string current = Server.MapPath(@"~/Data/" + item.Imagen);
                 if (File.Exists(current))
@@ -64,12 +64,18 @@ namespace VictoriaApp
                 if (item.Imagen == "")
                 {
                     imagen = "images/video.png";
-                }
+                }*/
 
                 fila += "<div class=\"card card-shadow\">";
+
+                string imagen = "https://img.youtube.com/vi/" + Globales.ObtenerIdVideo(item.Enlace) + "/mqdefault.jpg";
+                
                 fila += $"<img src=\"{imagen}\" class=\"card-img-top\" alt=\"Imagen de {item.Nombre}\">";
+
+
+
                 fila += $"<div class=\"card-body card-body-panel {color} \">";
-                fila += $"<h5 class=\"card-title text-primary card-title-panel\">{numero++}. {item.Nombre}</h5>";
+                fila += $"<h5 class=\"card-title text-primary card-title-panel\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"{item.Nombre}\">{numero++}. {item.Nombre}</h5>";
                 //fila += $"<p class=\"card-text pl-3\"> Por<span class=\"text-primary\"> {item.Autor}</span></p>";
                 fila += "<p class=\"card-text pl-3\">";
                 fila += $"<i class=\"fas fa-star color-star\"></i> {item.Calificacion} &nbsp;&nbsp;&nbsp;";

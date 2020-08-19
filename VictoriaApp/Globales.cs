@@ -58,5 +58,35 @@ namespace VictoriaApp
 
         }
 
+        public static string ObtenerIdVideo(string enlace)
+        {
+            string video = "";
+
+            if (enlace.Contains("v="))
+            {
+                int location = enlace.IndexOf("v=");
+                string subcadnea = enlace.Substring(location);
+                if (subcadnea.Contains("&"))
+                {
+                    int location2 = subcadnea.IndexOf("&");
+                    var subcadena3 = subcadnea.Substring(location2);
+                    video = subcadnea.Replace(subcadena3, "").Substring(2);
+                }
+                else
+                {
+                    video = subcadnea.Substring(2);
+                }
+            }
+            else
+            {
+                int location = enlace.IndexOf("be/");
+                if (enlace.Length > location + 3)
+                    video = enlace.Substring(location + 3);
+            }
+
+            return video;
+        }
+
+
     }
 }

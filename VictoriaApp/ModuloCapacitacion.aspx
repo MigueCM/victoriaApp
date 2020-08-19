@@ -104,7 +104,7 @@
                                                 <input name="txtEnlace" type="text" id="txtEnlace" class="form-control form-control-sm border-color-principal pl-1 txtEnlace" placeholder="Enlace" runat="server" required/>
                                             </div>                                     
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group d-none">
                                             <label for="txtFile">Imagen</label>
                                             <div class="input-group border-input">        
                                                 <div class="input-group-prepend bg-transparent ">
@@ -112,7 +112,7 @@
                                                         <i class="far fa-file-image text-primary" aria-hidden="true"></i>
                                                     </span>
                                                     </div>
-                                                <input name="txtFile" type="file" id="txtFile" class="form-control form-control-sm border-color-principal pl-1 txtFile" runat="server" accept="image/*" required/>
+                                                <input name="txtFile" type="file" id="txtFile" class="form-control form-control-sm border-color-principal pl-1 txtFile" runat="server" accept="image/*"/>
                                                 <input type="hidden" name="txtImagen" id="txtImagen" class="txtImagen" runat="server" />
                                             </div>                                     
                                         </div>
@@ -250,11 +250,11 @@
             $(".txtNombre").val("");
             $(".txtDescripcion").val("");
             $(".txtEnlace").val("");
-            $(".txtImagen").val("");
+            //$(".txtImagen").val("");
             $(".title").html("Registro de Módulo")
             $(".btnEnviar").val("Agregar")
             $(".txtTipo").val(1)
-            $(".txtFile").prop("required", true)
+            //$(".txtFile").prop("required", true)
         }
 
     </script>

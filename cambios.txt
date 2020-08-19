@@ -5,7 +5,7 @@ Al finalizar el video en la vista de usuario faltaria poner la pregunta del usua
 Visualizacion de todas las preguntas en la vista del usuario.
 El usuario tiene 3 intentos para responder el cuestionario. (listo)
 Un módulo no tiene autor. (listo)
-las imagenes por defecto de los usuario utilizar las mismas de educacion.
+las imagenes por defecto de los usuario utilizar las mismas de educacion.(listo)
 Cambiar colores de la pagina principal donde se muestran los modulos y su estado (listo)
 Cambiar texto de botón (Agregar Preguntas -> Cuestionario). (listo)
 Buscador del departamento en el registro de usuario (listo)
