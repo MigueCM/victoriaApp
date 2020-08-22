@@ -101,12 +101,14 @@ namespace VictoriaApp
 
                 fila += "<div class=\"row\">";
 
-                fila += "<div class=\"col-3\">";
-                fila += $"<img src=\"{imagen}\" class=\"mw-100\" alt=\"image\">";
+                
+
+                fila += "<div class=\"col-12\">";
+                fila += $"<p class=\"mb-0 color-white text-justify\">{item.Descripcion}</p>";
                 fila += "</div>";
 
-                fila += "<div class=\"col-9\">";
-                fila += $"<p class=\"mb-0 color-white\">{item.Descripcion}</p>";
+                fila += "<div class=\"col-12 text-center\">";
+                fila += $"<img src=\"{imagen}\" class=\"mw-100 mt-3 max-height\" alt=\"image\">";
                 fila += "</div>";
 
                 fila += "</div>";

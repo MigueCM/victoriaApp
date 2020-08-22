@@ -23,6 +23,10 @@ namespace VictoriaApp
         {
             if (!Page.IsPostBack)
             {
+
+                if(Session["IdPersona"] == null || Session["idUsuario"] == null)
+                    Response.Redirect("Login.aspx");
+
                 CargarModulos();
                 idPersona = Convert.ToInt32(Session["IdPersona"].ToString());
                 idUsuario = Convert.ToInt32(Session["idUsuario"]);
