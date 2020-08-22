@@ -52,8 +52,9 @@ namespace VictoriaApp
 
                     if (item.Avatar == null || item.Avatar == "")
                     {
-                        imagen = "Data/Avatar/noImage.png";
+                        imagen = Globales.ImageDefault(item.Sexo); //"Data/Avatar/noImage.png";
                     }
+
                     TimeSpan time = DateTime.Now- item.FechaPregunta;
                     string fila = "<div class=\"d-flex align-items-start profile-feed-item\">";
                     fila += $"<img src=\"{imagen}\" alt=\"profile\" class=\"img-sm rounded-circle\"/>";
@@ -91,7 +92,7 @@ namespace VictoriaApp
 
                         if (foroRespuesta.Avatar == null || foroRespuesta.Avatar == "")
                         {
-                            imagenRpt = "Data/Avatar/noImage.png";
+                            imagenRpt = Globales.ImageDefault(foroRespuesta.Sexo); //"Data/Avatar/noImage.png";
                         }
                         TimeSpan timeRpt = DateTime.Now - foroRespuesta.FechaRespuesta;
                         fila += "<div class=\"d-flex align-items-start profile-feed-item\">";

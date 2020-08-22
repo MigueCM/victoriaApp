@@ -9,6 +9,21 @@ namespace VictoriaApp
     {
 
         public static int longitudToken = 10;
+
+        public static string ImageDefault(string sexo)
+        {
+            string imagen = "";
+            switch (sexo)
+            {
+                case "Masculino": imagen = "Data/Avatar/userpic1.png"; break;
+                case "Femenino": imagen = "Data/Avatar/userpic2.png"; break;
+                default: imagen = "Data/Avatar/noImage.png"; break;
+
+            }
+
+            return imagen;
+        }
+
         public static string CifrarClave(string clave)
         {
             SHA512Managed password = new SHA512Managed();

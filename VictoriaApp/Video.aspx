@@ -39,7 +39,7 @@
 
     <div class="modal fade" id="modalVideo" tabindex="-1" role="dialog" aria-labelledby="modalCreate-2" aria-hidden="true">
                             <div class="modal-dialog" role="document">
-                                <div class="modal-content" style="width: 560px;">
+                                <div class="modal-content" style="width: 620px;">
                                     <div class="modal-header">
                                         <h5 class="modal-title title" id="title" runat="server"></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -262,8 +262,8 @@
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
-                height: '360',
-                width: '560',
+                height: '420',
+                width: '620',
                 videoId: '<%=Session["video"]%>',
                 //playerVars: { 'controls': 0 },
                 events: {

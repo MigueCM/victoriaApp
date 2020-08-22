@@ -63,6 +63,7 @@ namespace DAL
                     foro.Contenido = dr["Contenido"].ToString();
                     foro.FechaPregunta = Convert.ToDateTime(dr["FechaPregunta"].ToString());
                     foro.Votado = Convert.ToInt32(dr["Votado"].ToString());
+                    foro.Sexo = dr["Sexo"].ToString();
                     if (dr["Respuesta"] != DBNull.Value && dr["Respuesta"].ToString() != "")
                     {
                         foro.Respuesta = dr["Respuesta"].ToString();
@@ -234,6 +235,7 @@ namespace DAL
                     foro.Nombre = dr["Nombre"].ToString();
                     foro.Apellidos = dr["Apellidos"].ToString();
                     foro.Avatar = dr["Avatar"].ToString();
+                    foro.Sexo = dr["Sexo"].ToString();
                 }
             }
             catch (Exception ex)

@@ -49,12 +49,13 @@
                 </div>
                 <br/>
                 <div class="square-box-loader">
-                                  <div class="square-box-loader-container">
-                                    <div class="square-box-loader-corner-top"></div>
-                                    <div class="square-box-loader-corner-bottom"></div>
-                                  </div>
-                                  <div class="square-box-loader-square"></div>
-                                </div>
+                    <%--<div class="square-box-loader-container">
+                    <div class="square-box-loader-corner-top"></div>
+                    <div class="square-box-loader-corner-bottom"></div>
+                    </div>
+                    <div class="square-box-loader-square"></div>--%>
+                    <img src="images/logo_loader.gif" alt="logo"/>
+                </div>
                 <p class="text-mute">
                     <br/>
                     cargando...
@@ -165,7 +166,7 @@
                             <option selected="selected">Sexo</option>
                             <option>Femenino</option>
                             <option>Masculino</option>
-                            <option>No especificado</option>
+                            <%--<option>No especificado</option>--%>
                         </select>
                     </div>
                 </div>
