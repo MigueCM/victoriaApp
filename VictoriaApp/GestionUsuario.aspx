@@ -173,7 +173,7 @@
                                                     <option selected="selected" value="">- SELECCIONE SEXO -</option>
                                                     <option value="Femenino">Femenino</option>
                                                     <option value="Masculino">Masculino</option>
-                                                    <option value="No especificado">No especificado</option>
+                                                    <%--<option value="No especificado">No especificado</option>--%>
                                                 </select> 
                                             </div>
                                         </div>
