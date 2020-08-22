@@ -128,14 +128,22 @@
     overflow: hidden;
 }
 
-@supports(object-fit: cover) {
+.miniatura-video{
+    background-color: black;
+    text-align: center;
+}
+
+.max-height {
+    max-height: 250px;
+}
+
+/*@supports(object-fit: cover) {
     #img_video {
         height: 420px;
         object-fit: cover;
         object-position: center center;
     }
-}
-
+}*/
 .card .card-body.card-body-panel {
     padding: 1.375rem 1.2rem;
 }

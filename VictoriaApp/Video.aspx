@@ -7,7 +7,10 @@
             <div class="card">
                 <div class="card-body" id="cardVideo">
                     
-                    <img src="https://img.youtube.com/vi/<%=Session["video"]%>/hqdefault.jpg" style="width:100%;" onClick="$('#modalVideo').modal('show')" id="img_video" class="cursor-pointer"/>
+                    <div class="miniatura-video">
+                        <img src="https://img.youtube.com/vi/<%=Session["video"]%>/sddefault.jpg" style="width:100%;" onClick="$('#modalVideo').modal('show')" id="img_video" class="cursor-pointer"/>
+                    </div>
+                    
                       
                     <%--<div id="player2"></div>--%>
 
