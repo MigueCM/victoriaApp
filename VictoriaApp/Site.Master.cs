@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 
 namespace VictoriaApp
@@ -111,6 +112,21 @@ namespace VictoriaApp
                 fila += $"<img src=\"{imagen}\" class=\"mw-100 mt-3 max-height\" alt=\"image\">";
                 fila += "</div>";
 
+                fila += $"<div class=\"col-12 text-center mt-4 webinar-guardar\" data-id='{item.IdWebinar}'>";
+
+                if(WebinarNotificacionBLL.Instancia.ObtenerNotificacion(item.IdWebinar , Convert.ToInt32(Session["IdUsuario"])) == 0)
+                {
+                    fila += $"<button type='button' class='btn btn-success ' onclick=\"AgendarWebinar({item.IdWebinar})\">Agendar</button>";
+                }
+                else
+                {
+                    fila += $"<a class=\"btn btn-success text-center align-items-center text-white cursor-pointer\" href='javascript:void(0);'>Agendado</a>";
+                }
+
+                
+                
+                fila += "</div>";
+
                 fila += "</div>";
 
                 fila += "</div>";
@@ -128,6 +144,7 @@ namespace VictoriaApp
             Session["webinar"] = HttpUtility.HtmlEncode(innerHtml.ToString());
         }
 
+        
 
     }
 }

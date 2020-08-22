@@ -199,11 +199,17 @@ namespace VictoriaApp
                 else
                     fila += "<td class=\"text-white text-center\"></td>";
 
-                if (item.Completado == 1)
+                if (item.Completado == 1 && item.Aprobado == 1 )
                 {
                     //fila += "<td><button class=\"btn btn-block btn-completado\" onclick=\"showSwal('basic')\">Completado</button></td>";
+                    //fila += $"<td><a class=\"btn btn-success text-center align-items-center text-white cursor-pointer\" style=\"width:100%;\" href='javascript:void(0);'>Completado</a></td>";
                     fila += $"<td><a class=\"btn btn-success text-center align-items-center text-white cursor-pointer\" style=\"width:100%;\" onclick=\"verVideo('{item.IdModuloCapacitacion}')\">Completado</a></td>";
-                }else if (liberado)
+                }
+                else if(item.Completado == 1 && item.Aprobado == 0){
+                    fila += $"<td><a class=\"btn btn-secondary text-center align-items-center text-white cursor-pointer\" style=\"width:100%;\" onclick=\"verVideo('{item.IdModuloCapacitacion}')\">Completar</a></td>";
+                    liberado = false;
+                }
+                else if (liberado)
                 {
                     fila += $"<td><a class=\"btn btn-danger text-center align-items-center text-white cursor-pointer\" style=\"width:100%;\" onclick=\"verVideo('{item.IdModuloCapacitacion}')\">Pendiente</a></td>";
                 }
@@ -235,6 +241,16 @@ namespace VictoriaApp
             HttpContext.Current.Session["video_idModulo"] = codigo;
 
             return true;
+        }
+
+        [WebMethod(EnableSession = true)]
+        public static bool AgendarWebinar(int id)
+        {
+            WebinarNotificacion objWebinar = new WebinarNotificacion();
+            objWebinar.IdUsuario = Convert.ToInt32(HttpContext.Current.Session["IdUsuario"]);
+            objWebinar.IdWebinar = id;
+
+            return WebinarNotificacionBLL.Instancia.RegistrarNotificacion(objWebinar);
         }
 
     }
