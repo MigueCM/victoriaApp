@@ -55,6 +55,7 @@
     <Compile Include="UsuarioHistorialDAL.cs" />
     <Compile Include="UsuarioPreguntaDAL.cs" />
     <Compile Include="WebinarDAL.cs" />
+    <Compile Include="WebinarNotificacionDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EL\EL.csproj">

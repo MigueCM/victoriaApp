@@ -61,5 +61,11 @@ namespace BLL
         {
             return oUsuarioDAL.ObtenerVisualizacion(idModulo);
         }
+
+        public int ObtenerEstadoModulo(int idModulo, int idUsuario)
+        {
+            return oUsuarioDAL.ObtenerEstadoModulo(idModulo, idUsuario);
+        }
+
     }
 }

@@ -233,6 +233,63 @@
             }
         });
 
+        function AgendarWebinar(id) {
+
+            swal({
+                title: "¿Desea Agendar este webinar?",
+                text: "Se le notificará sobre el webinar",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3f51b5',
+                cancelButtonColor: '#ff4081',
+                confirmButtonText: 'Great ',
+                buttons: {
+
+                    confirm: {
+                        text: "Agendar",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    },
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
+                    }
+                }
+            }).then((willDelete) => {
+                if (willDelete) {
+                    var parametros = "{'id': '" + id + "'}";
+                    $.ajax({
+                        data: parametros,
+                        url: 'Principal.aspx/AgendarWebinar',
+                        dataType: "json",
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function () {
+
+                        },
+                        success: function (response) {
+
+                            //location.reload();
+                            $(".webinar-guardar[data-id='" + id + "']").html("<a class=\"btn btn-success text-center align-items-center text-white cursor-pointer\" style=\"width:100%;\" href='javascript:void(0);'>Agendado</a>");
+
+                        },
+                        error: function (e) {
+                            console.log(e)
+                        }
+                    });
+
+                } else {
+                    swal("Operación cancelada");
+                }
+            });
+
+        }
+
     </script>  
 </body>
 

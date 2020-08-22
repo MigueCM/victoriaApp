@@ -36,6 +36,7 @@
     </div>
 
     <input type="hidden" name="num_intentos" id="num_intentos" class="num_intentos" runat="server" />
+    <input type="hidden" name="estado_aprobado" id="estado_aprobado" class="estado_aprobado" runat="server" />
 
     <div class="modal fade" id="modalVideo" tabindex="-1" role="dialog" aria-labelledby="modalCreate-2" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -247,7 +248,7 @@
 
         $("#modalVideo").on('hidden.bs.modal', function () {
             $("html").css("overflow", "auto");
-            if (done == true && $(".num_intentos").val() < 3) {
+            if (done == true && $(".num_intentos").val() < 3 && $(".estado_aprobado").val() == 0) {
                 $("html").css("overflow", "hidden")
                 $("#modalCuestionario").modal('show');
                 done = false;
@@ -344,11 +345,22 @@
                             success: function (response) {
                                 $(".btn-validar").show();
                                 $(".btn-loading").hide();
-                                console.log(response)
-                                if (response["d"] == true)
+                                var data = JSON.parse(response.d)
+                                console.log(data)
+                                $(".num_intentos").val(parseInt($(".num_intentos").val()) + 1) ;
+                                if (data["aprobado"]) {
                                     location.href = "Panel.aspx";
-                                else
-                                    swal("Error", "Ya supero los numeros de intentos permitidos", "error");
+                                } else {
+                                   
+                                    if ($(".num_intentos").val() > 2) {
+                                        $("#modalCuestionario").modal('hide');
+                                        $(".num_intentos").val(0)
+                                        swal("Error", "No ha contestado correctamente todas las preguntas. Ya supero el numero de intentos permitidos", "error");
+                                        limpiarCuestionario();
+                                    } else {
+                                        swal("Error", "No ha contestado correctamente todas las preguntas.", "error");
+                                    }
+                                }
                             },
                             error: function (e) {
                                 console.log(e)
@@ -358,6 +370,9 @@
                         $(".btn-validar").show();
                         $(".btn-loading").hide();
                         swal("Error", "Ya supero los numeros de intentos permitidos", "error");
+                        $("#modalCuestionario").modal('hide');
+                        $(".num_intentos").val(0)
+                        limpiarCuestionario();
                     }
 
                 }
@@ -366,40 +381,12 @@
                 $(".btn-validar").show();
                 $(".btn-loading").hide();
                 swal("Error", "Debe responder todas las preguntas", "error");
-            }
-                
-/*
-            $.ajax({
-                data: parametros,
-                url: 'PreguntaCapacitacion.aspx/CargarDataPreguntas',
-                dataType: "json",
-                type: 'POST',
-                contentType: "application/json; charset=utf-8",
-                beforeSend: function () {
+            }     
+        }
 
-                },
-                success: function (response) {
-                    var data = JSON.parse(response.d)["objPreguntas"];
-
-                    $(".txtId").val(id);
-                    $(".cboOrden").val(data["Orden"]);
-                    $(".txtDescripcion").val(data["Descripcion"]);
-                    $(".txtAlternativa1").val(data["Alternativa1"]);
-                    $(".txtAlternativa2").val(data["Alternativa2"]);
-                    $(".txtAlternativa3").val(data["Alternativa3"]);
-                    $(".txtAlternativa4").val(data["Alternativa4"]);
-                    $(".txtAlternativa5").val(data["Alternativa5"]);
-                    $(".cboAlternativa").val(data["Respuesta"]);
-                    $(".title").html("Actualización de Pregunta")
-                    $(".btnEnviar").html("Actualizar")
-                    $(".txtTipo").val(2)
-
-                    $("#modalCreate").modal("show")
-                },
-                error: function (e) {
-                    console.log(e)
-                }
-            });*/
+        function limpiarCuestionario() {
+            $(".clasificacion input[type=radio]").prop("checked", false)
+            $(".div_cuestionario input[type=radio]").prop("checked", false)
         }
 
         $("#btnSiguiente").click(function () {

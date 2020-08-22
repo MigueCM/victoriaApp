@@ -20,6 +20,7 @@ namespace EL
         int estado;
 
         int completado;
+        int aprobado;
         DateTime fechaActualizacion;
         int calificacion;
         int intentos;
@@ -38,5 +39,6 @@ namespace EL
         public DateTime FechaActualizacion { get => fechaActualizacion; set => fechaActualizacion = value; }
         public int Calificacion { get => calificacion; set => calificacion = value; }
         public int Intentos { get => intentos; set => intentos = value; }
+        public int Aprobado { get => aprobado; set => aprobado = value; }
     }
 }

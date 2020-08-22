@@ -54,6 +54,7 @@
     <Compile Include="UsuarioHistorial.cs" />
     <Compile Include="UsuarioPregunta.cs" />
     <Compile Include="Webinar.cs" />
+    <Compile Include="WebinarNotificacion.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

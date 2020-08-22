@@ -76,5 +76,6 @@ namespace BLL
             return oModuloDAL.EliminarModulo(idModuloCapacitacion);
         }
 
+
     }
 }

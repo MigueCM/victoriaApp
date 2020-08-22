@@ -1,5 +1,6 @@
 ﻿using BLL;
 using EL;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -47,54 +48,18 @@ namespace VictoriaApp
         {
             EL.ModuloCapacitacion objModulo = ModuloCapacitacionBLL.Instancia.ObtenerModulosPorId(Convert.ToInt32(Session["video_idModulo"]));
 
-            num_intentos.Value = UsuarioCapacitacionBLL.Instancia.ObtenerIntento(Convert.ToInt32(Session["video_idModulo"]), Convert.ToInt32(Session["idUsuario"])).ToString();
-
+            num_intentos.Value = "0";//UsuarioCapacitacionBLL.Instancia.ObtenerIntento(Convert.ToInt32(Session["video_idModulo"]), Convert.ToInt32(Session["idUsuario"])).ToString();
+            estado_aprobado.Value = UsuarioCapacitacionBLL.Instancia.ObtenerEstadoModulo(Convert.ToInt32(Session["video_idModulo"]), Convert.ToInt32(Session["idUsuario"])).ToString();
             Session["video"] = "";
 
             if(objModulo != null)
             {
                 title_modulo.InnerHtml = objModulo.Nombre;
-                //autor_modulo.InnerHtml = $"Por {objModulo.Autor}";
-                descripcion_modulo.InnerHtml = objModulo.Descripcion;
-                //img_video.Attributes.Add("src", "images/video.png");
 
-                /*string imagen = "images/video.png";
-
-                string current = Server.MapPath(@"~/Data/" + objModulo.Imagen);
-                if (File.Exists(current))
-                {
-                    imagen = "Data/" + objModulo.Imagen;
-                }*/
-
-                //img_video.Attributes.Add("src", imagen);
-
+                descripcion_modulo.InnerHtml = objModulo.Descripcion;               
 
                 Session["video"] = Globales.ObtenerIdVideo(objModulo.Enlace);
 
-                /*if (objModulo.Enlace.Contains("v="))
-                {
-                    int location = objModulo.Enlace.IndexOf("v=");
-                    string subcadnea = objModulo.Enlace.Substring(location);
-                    if (subcadnea.Contains("&"))
-                    {
-                        int location2 = subcadnea.IndexOf("&");
-                        var subcadena3 = subcadnea.Substring(location2);
-                        Session["video"] = subcadnea.Replace(subcadena3,"").Substring(2);
-                    }
-                    else
-                    {
-                        Session["video"] = subcadnea.Substring(2);
-                    }
-
-                }
-                else
-                {
-                    int location = objModulo.Enlace.IndexOf("be/");
-                    if (objModulo.Enlace.Length > location + 3)
-                        Session["video"] = objModulo.Enlace.Substring(location+3);
-                }*/
-
-                
             }
 
             List<EL.PreguntaCapacitacion> listaPreguntas = PreguntaCapacitacionBLL.Instancia.ObtenerPreguntas(Convert.ToInt32(Session["video_idModulo"]));
@@ -152,23 +117,25 @@ namespace VictoriaApp
         }
         
         [WebMethod(EnableSession = true)]
-        public static bool ValidarData(string respuestas, string calificacion)
+        public static string ValidarData(string respuestas, string calificacion)
         {
-            int num_intentos = UsuarioCapacitacionBLL.Instancia.ObtenerIntento(Convert.ToInt32(HttpContext.Current.Session["video_idModulo"]), Convert.ToInt32(HttpContext.Current.Session["idUsuario"]));
+            //int num_intentos = UsuarioCapacitacionBLL.Instancia.ObtenerIntento(Convert.ToInt32(HttpContext.Current.Session["video_idModulo"]), Convert.ToInt32(HttpContext.Current.Session["idUsuario"]));
 
-            if(num_intentos > 2)
-            {
-                return false;
-            }
+            //if(num_intentos > 2)
+            //{
+            //    return false;
+            //}
 
 
             string[] arreglo = respuestas.Split(',');
-
+            bool aprobado = true;
+            int respuestas_correctas = 0;
             List<EL.PreguntaCapacitacion> listaPreguntas = (List<EL.PreguntaCapacitacion>)(HttpContext.Current.Session["lista_preguntas"]??new List<EL.PreguntaCapacitacion>());
 
             if(arreglo.Length == listaPreguntas.Count)
             {
                 int i = 0;
+                
                 UsuarioCapacitacion objUsuario = new UsuarioCapacitacion();
                 objUsuario.IdUsuario = Convert.ToInt32(HttpContext.Current.Session["idUsuario"] ?? 0);
                 objUsuario.IdModuloCapacitacion = Convert.ToInt32(HttpContext.Current.Session["video_idModulo"] ?? 0);
@@ -181,9 +148,22 @@ namespace VictoriaApp
                     UsuarioPregunta obj = new UsuarioPregunta();
                     obj.IdPreguntaCapacitacion = item.IdPreguntaCapacitacion;
                     obj.Respuesta = arreglo[i];
-                    i++;
+                    
                     objUsuario.ListaUsuarioPregunta.Add(obj);
+
+                    if(item.Respuesta != arreglo[i])
+                    {
+                        aprobado = false;
+                    }
+                    else
+                    {
+                        respuestas_correctas += 1;
+                    }
+                    i++;
                 }
+
+                objUsuario.Aprobado = aprobado?1:0;
+                objUsuario.Nota = (int)(((Double)respuestas_correctas / listaPreguntas.Count) * 20);
 
                 if (UsuarioCapacitacionBLL.Instancia.RegistrarCapacitacion(objUsuario))
                 {
@@ -191,17 +171,35 @@ namespace VictoriaApp
 
                     HttpContext.Current.Session["prog_value"] = $"width: {porcentaje}%";
                     HttpContext.Current.Session["prog_text"] = $"{porcentaje}% Avance";
-                    return true;
+                    return JsonConvert.SerializeObject(
+                    new
+                    {
+                        aprobado,
+                        guardar = true
+                    }
+                    );
                 }
                 else
                 {
-                    return false;
+                    return JsonConvert.SerializeObject(
+                    new
+                    {
+                        aprobado,
+                        guardar = false
+                    }
+                    );
                 }
 
                 
             }
 
-            return false;
+            return JsonConvert.SerializeObject(
+                new
+                {
+                    aprobado,
+                    guardar = false
+                }
+                );
         }
 
         [WebMethod(EnableSession = true)]
@@ -209,7 +207,7 @@ namespace VictoriaApp
         {
 
             List<EL.ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulosCalificacionPorUsuario(Convert.ToInt32(HttpContext.Current.Session["idUsuario"]));
-            int primerModuloDesbloqueado = lista.FindAll(item => item.Completado == 0).First().IdModuloCapacitacion;
+            int primerModuloDesbloqueado = lista.FindAll(item => item.Completado == 0 || item.Aprobado == 0).First().IdModuloCapacitacion;
             int siguienteModulo = lista.Find(item => item.IdModuloCapacitacion > Convert.ToInt32(HttpContext.Current.Session["video_idModulo"])).IdModuloCapacitacion;
 
             if(primerModuloDesbloqueado < siguienteModulo)

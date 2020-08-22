@@ -74,6 +74,9 @@ namespace DAL
                     if(dr["Completado"] != DBNull.Value )
                         modulo.Completado = Convert.ToInt32(dr["Completado"]);
 
+                    if (dr["Aprobado"] != DBNull.Value)
+                        modulo.Aprobado = Convert.ToInt32(dr["Aprobado"]);
+
                     if (dr["fechaActualizacion"] != DBNull.Value)
                         modulo.FechaActualizacion = Convert.ToDateTime(dr["fechaActualizacion"]);
 
@@ -163,6 +166,7 @@ namespace DAL
 
                     modulo.IdModuloCapacitacion = Convert.ToInt32(dr["idModuloCapacitacion"]);
                     modulo.Completado = Convert.ToInt32(dr["Completado"]);
+                    modulo.Aprobado = Convert.ToInt32(dr["Aprobado"]);
 
                     lista.Add(modulo);
 

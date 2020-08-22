@@ -86,7 +86,9 @@ namespace DAL
             _comando.Parameters.AddWithValue("@fechaActualizacion", SqlDbType.DateTime).Value = DateTime.Now;
             _comando.Parameters.AddWithValue("@completado", SqlDbType.Bit).Value = 1;
             _comando.Parameters.AddWithValue("@iniciado", SqlDbType.Bit).Value = 1;
+            _comando.Parameters.AddWithValue("@aprobado", SqlDbType.Bit).Value = usuarioCapacitacion.Aprobado;
             _comando.Parameters.AddWithValue("@calificacion", SqlDbType.Int).Value = usuarioCapacitacion.Calificacion;
+            _comando.Parameters.AddWithValue("@nota", SqlDbType.Int).Value = usuarioCapacitacion.Nota;
             _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 1;
             bool valor = false;
             int id = 0;
@@ -181,6 +183,38 @@ namespace DAL
                 _conexion.Close();
             }
             return intento;
+        }
+
+        public int ObtenerEstadoModulo(int idModulo, int idUsuario)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_UsuarioCapacitacion", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@idUsuario", SqlDbType.Int).Value = idUsuario;
+            _comando.Parameters.AddWithValue("@idModuloCapacitacion", SqlDbType.Int).Value = idModulo;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 9;
+            int aprobado = 0;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                if (dr.Read())
+                {
+
+                    aprobado = Convert.ToInt32(dr["aprobado"]);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return aprobado;
         }
 
         public int ObtenerVisualizacion(int idModulo)
