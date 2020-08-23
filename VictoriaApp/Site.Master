@@ -84,7 +84,40 @@
                   </a>
                 </div>
               </li>
-             
+             <li class="nav-item dropdown count-indicator arrow-none">
+                  <%=HttpUtility.HtmlDecode((string)(Session["cntNotificaciones"]??"")) %>
+                <a class="nav-link dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
+                  <i class="mdi mdi-bell-outline mx-0"></i>
+                </a>
+                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" style="overflow-x:hidden; overflow-y:auto; max-height:247px; width:320px;" aria-labelledby="notificationDropdown">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <p class="mb-0 font-weight-normal float-left dropdown-header">
+                                                    Notificaciones
+                                                </p>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <p class="mb-0 font-weight-normal float-right dropdown-header cursor-pointer" onclick="leerTodas();">
+                                                    Marca como leidas
+                                                </p>
+                                            </div>
+                                            </div>
+                    <%=HttpUtility.HtmlDecode((string)(Session["Notificaciones"]??"")) %>
+                    <%--<a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-info">
+                        <i class="mdi mdi-account-box mx-0"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <h6 class="preview-subject font-weight-normal">New user registration</h6>
+                      <p class="font-weight-light small-text mb-0">
+                        2 days ago
+                      </p>
+                    </div>
+                  </a>--%>
+                </div>
+              </li>
             </ul>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="horizontal-menu-toggle">
               <span class="mdi mdi-menu"></span>
@@ -288,8 +321,51 @@
                 }
             });
 
+        } 
+
+        function leerTodas() {
+            $.ajax({
+                data: "",
+                url: 'Principal.aspx/LeerTodas',
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    location.href = "Principal.aspx";
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            });
         }
 
+        //function mylinkfunction(id) {
+        //        $('html, body').animate({
+        //            scrollTop: $("div."+id+"").offset().top
+        //        }, 1000)
+        //    }
+
+        //function mylinkfunction(id) {
+
+        //    //location.href = "#"+id+"";
+        //    window.scroll()
+        //    location.href = "Principal.aspx#"+id+"";
+        //    /* need to stop the form sending of the form
+     
+        //     UPDATE as comment: This may not be exactly correct syntax 
+        //     for stopping a form , look up preventing form submission */
+
+        //    //e.preventDefault();
+        //    //e.stopPropagation();
+
+        //}
+        function mylinkfunction(id) {
+            //ScrollToResolver(document.getElementById(name));
+            const yourElement = document.getElementById(id);
+            const y = yourElement.getBoundingClientRect().bottom + window.pageYOffset;
+
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
     </script>  
 </body>
 

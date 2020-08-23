@@ -40,7 +40,15 @@ namespace VictoriaApp
                 fila += $"<td>{item.Contenido}</td>";
                 fila += $"<td>{item.FechaPregunta}</td>";
                 //fila += $"<td><button class=\"btn btn-outline-primary mb-1\" onClick=\"cargarData({item.IdModuloCapacitacion});\">Editar</button>";
-                fila += $"<td><button class=\"btn btn-outline-success mb-1\" onClick=\"redireccionPreguntas({item.IdForo});\">Responder Pregunta</button></td>";
+                if (item.RptCantidad > 0)
+                {
+                    fila += $"<td><button class=\"btn btn-outline-success mb-1\" onClick=\"redireccionPreguntas({item.IdForo});\">Responder Pregunta</button></td>";
+                }
+                else
+                {
+                    fila += $"<td><button class=\"btn btn-outline-danger mb-1\" onClick=\"redireccionPreguntas({item.IdForo});\">Responder Pregunta</button></td>";
+                }
+                
                 //fila += $"<button class=\"btn btn-outline-danger \" onClick=\"eliminar({item.IdModuloCapacitacion});\">Eliminar</button></td>";
                 fila += "</tr>";
 
@@ -63,8 +71,19 @@ namespace VictoriaApp
             string respuesta = txtRespuestaPregunta.Value.Trim();
             if (ForoBLL.Instancia.ActualizarRespuesta(id, idUsuario, respuesta))
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "showSwal('success-message', 'Registro exitoso!', 'Tú respuesta ha sido registrada', 'ResponderForo.aspx', '')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "showSwal('auto-close', 'Registro exitoso!', 'Tú respuesta ha sido registrada', 'ResponderForo.aspx', '')", true);
             }
+        }
+
+        [WebMethod]
+        public static string LeerTodas()
+        {
+            ForoBLL.Instancia.MarcarLeidosAdmin();
+            //Foro foro = new Foro();
+            //foro.IdForo = Convert.ToInt32(votar);
+            //ForoBLL.Instancia.ActualizarVotado(foro);
+            //int newVoto = ForoBLL.Instancia.ObtenerCambioVotado(Convert.ToInt32(votar));
+            return JsonConvert.SerializeObject(null);
         }
     }
 }

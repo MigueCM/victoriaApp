@@ -37,9 +37,9 @@ namespace BLL
             return foroDAL.RegistrarPregunta(foro);
         }
 
-        public List<Foro> ObtenerComentarios()
+        public List<Foro> ObtenerComentariosUsuario(int idUsuario)
         {
-            return foroDAL.ObtenerComentarios();
+            return foroDAL.ObtenerComentariosUsuario(idUsuario);
         }
 
         public bool ActualizarVotado(Foro foro)
@@ -65,6 +65,40 @@ namespace BLL
         public Foro ObtenerRespuesta(int id)
         {
             return foroDAL.ObtenerRespuesta(id);
+        }
+
+        public int ObtenerCntNotificaciones(int id)
+        {
+            return foroDAL.ObtenerCntNotificaciones(id);
+        }
+
+        public List<Foro> ObtenerNotificaciones(int id)
+        {
+            return foroDAL.ObtenerNotificaciones(id);
+        }
+
+        public bool MarcarLeidos(int idUsuario)
+        {
+            return foroDAL.MarcarLeidos(idUsuario);
+        }
+
+        public List<Foro> ObtenerComentarios()
+        {
+            return foroDAL.ObtenerComentarios();
+        }
+        public int ObtenerCntNotificacionesAdmin()
+        {
+            return foroDAL.ObtenerCntNotificacionesAdmin();
+        }
+
+        public List<Foro> ObtenerNotificacionesAdmin()
+        {
+            return foroDAL.ObtenerNotificacionesAdmin();
+        }
+
+        public bool MarcarLeidosAdmin()
+        {
+            return foroDAL.MarcarLeidosAdmin();
         }
     }
 }
