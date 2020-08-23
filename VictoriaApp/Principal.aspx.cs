@@ -37,7 +37,7 @@ namespace VictoriaApp
         private void CargarComentarios()
         {
             List<Foro> foros = new List<Foro>();
-            foros = ForoBLL.Instancia.ObtenerComentarios();
+            foros = ForoBLL.Instancia.ObtenerComentariosUsuario(Convert.ToInt32(HttpContext.Current.Session["IdUsuario"]));
             StringBuilder innerHtml = new StringBuilder();
             if (foros.Count > 0)
             {
@@ -56,7 +56,7 @@ namespace VictoriaApp
                     }
 
                     TimeSpan time = DateTime.Now- item.FechaPregunta;
-                    string fila = "<div class=\"d-flex align-items-start profile-feed-item\">";
+                    string fila = $"<div class=\"d-flex align-items-start profile-feed-item\" name=\"{item.IdForo}\" id=\"{item.IdForo}\">";
                     fila += $"<img src=\"{imagen}\" alt=\"profile\" class=\"img-sm rounded-circle\"/>";
                     fila += $"<div class=\"ml-4\">";
                     fila += $"<h6>";
@@ -253,5 +253,15 @@ namespace VictoriaApp
             return WebinarNotificacionBLL.Instancia.RegistrarNotificacion(objWebinar);
         }
 
+        [WebMethod]
+        public static string LeerTodas()
+        {
+            ForoBLL.Instancia.MarcarLeidos(Convert.ToInt32(HttpContext.Current.Session["IdUsuario"]));
+            //Foro foro = new Foro();
+            //foro.IdForo = Convert.ToInt32(votar);
+            //ForoBLL.Instancia.ActualizarVotado(foro);
+            //int newVoto = ForoBLL.Instancia.ObtenerCambioVotado(Convert.ToInt32(votar));
+            return JsonConvert.SerializeObject(null);
+        }
     }
 }

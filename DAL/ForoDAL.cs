@@ -43,12 +43,60 @@ namespace DAL
             return exito;
         }
 
+        public List<Foro> ObtenerComentariosUsuario(int idUsuario)
+        {
+            List<Foro> foros = new List<Foro>();
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Foro", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@IdUsuario", SqlDbType.Int).Value = idUsuario;
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 2;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    Foro foro = new Foro();
+                    foro.IdForo = Convert.ToInt32(dr["Id"].ToString());
+                    foro.Titulo = dr["Titulo"].ToString();
+                    foro.Contenido = dr["Contenido"].ToString();
+                    foro.FechaPregunta = Convert.ToDateTime(dr["FechaPregunta"].ToString());
+                    foro.Votado = Convert.ToInt32(dr["Votado"].ToString());
+                    foro.Sexo = dr["Sexo"].ToString();
+                    if (dr["Respuesta"] != DBNull.Value && dr["Respuesta"].ToString() != "")
+                    {
+                        foro.Respuesta = dr["Respuesta"].ToString();
+                        foro.RptCantidad = 1;
+                    }
+                    else
+                    {
+                        foro.RptCantidad = 0;
+                    }
+                    foro.Nombre = dr["Nombre"].ToString();
+                    foro.Apellidos = dr["Apellidos"].ToString();
+                    foro.Avatar = dr["Avatar"].ToString();
+                    foros.Add(foro);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return foros;
+        }
+
         public List<Foro> ObtenerComentarios()
         {
             List<Foro> foros = new List<Foro>();
             SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
             SqlCommand _comando = new SqlCommand("PA_Foro", _conexion) { CommandType = CommandType.StoredProcedure };
-            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 2;
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 11;
             try
             {
                 if (_conexion.State == ConnectionState.Closed)
@@ -247,6 +295,183 @@ namespace DAL
                 _conexion.Close();
             }
             return foro;
+        }
+
+        public int ObtenerCntNotificaciones(int id)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Foro", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@IdUsuario", SqlDbType.Int).Value = id;
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value =8;
+            int valor = 0;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                if (dr.Read())
+                {
+                    valor = Convert.ToInt32(dr["Cantidad"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return valor;
+        }
+
+        public List<Foro> ObtenerNotificaciones(int id)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Foro", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@IdUsuario", SqlDbType.Int).Value = id;
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 9;
+            List<Foro> listaNoti = new List<Foro>();
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while(dr.Read())
+                {
+                    Foro foro = new Foro();
+                    foro.IdForo = Convert.ToInt32(dr["Id"].ToString());
+                    foro.Titulo = dr["Titulo"].ToString();
+                    listaNoti.Add(foro);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return listaNoti;
+        }
+
+        public bool MarcarLeidos(int idUsuario)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Foro", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@IdUsuario", SqlDbType.Int).Value = idUsuario;
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 10;
+            bool exito = false;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                if (_comando.ExecuteNonQuery() > 0)
+                {
+                    exito = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return exito;
+        }
+
+
+
+        public int ObtenerCntNotificacionesAdmin()
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Foro", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 12;
+            int valor = 0;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                if (dr.Read())
+                {
+                    valor = Convert.ToInt32(dr["Cantidad"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return valor;
+        }
+
+        public List<Foro> ObtenerNotificacionesAdmin()
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Foro", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 13;
+            List<Foro> listaNoti = new List<Foro>();
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    Foro foro = new Foro();
+                    foro.IdForo = Convert.ToInt32(dr["Id"].ToString());
+                    foro.Titulo = dr["Titulo"].ToString();
+                    listaNoti.Add(foro);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return listaNoti;
+        }
+
+        public bool MarcarLeidosAdmin()
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Foro", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 14;
+            bool exito = false;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                if (_comando.ExecuteNonQuery() > 0)
+                {
+                    exito = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return exito;
         }
     }
 }

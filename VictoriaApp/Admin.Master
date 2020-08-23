@@ -76,7 +76,28 @@
                                             Cerrar Sesion
                                         </a>
                                     </div>
-                                </li>             
+                                </li>   
+                                <li class="nav-item dropdown count-indicator arrow-none">
+                                      <%=HttpUtility.HtmlDecode((string)(Session["cntNotificaciones"]??"")) %>
+                                    <a class="nav-link dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
+                                      <i class="mdi mdi-bell-outline mx-0"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" style="overflow-x:hidden; overflow-y:auto; max-height:247px; width:320px;" aria-labelledby="notificationDropdown">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <p class="mb-0 font-weight-normal float-left dropdown-header">
+                                                    Notificaciones
+                                                </p>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <p class="mb-0 font-weight-normal float-right dropdown-header cursor-pointer" onclick="leerTodas();">
+                                                    Marca como leidas
+                                                </p>
+                                            </div>
+                                            </div>
+                                        <%=HttpUtility.HtmlDecode((string)(Session["Notificaciones"]??"")) %>
+                                    </div>
+                                  </li>
                             </ul>
                             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="horizontal-menu-toggle">
                                 <span class="mdi mdi-menu"></span>
@@ -195,7 +216,24 @@
                     });
                 }
             });
-
+            function leerTodas() {
+                $.ajax({
+                    data: "",
+                    url: 'ResponderForo.aspx/LeerTodas',
+                    dataType: "json",
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        location.href = "ResponderForo.aspx";
+                    },
+                    error: function (e) {
+                        console.log(e)
+                    }
+                });
+            }
+            function mylinkfunction(id) {
+                location.href = "ResponderForo.aspx";
+            }
         </script>    
         
 
