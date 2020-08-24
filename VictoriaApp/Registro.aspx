@@ -207,7 +207,8 @@
                     <div class="mb-4 offset-2">
                         <%--<a href="#" id="show">--%>
                   <div class="form-check">
-                        <label class="form-check-label text-muted" id="show">
+                        <%--<label class="form-check-label text-muted" id="show">--%>
+                      <label class="form-check-label text-muted" >
                          <input type="checkbox" class="form-check-input" runat="server" id="chkTerminos"/>
                             Acepto los terminos, condiciones y politicas de privacidad.
                         </label>
