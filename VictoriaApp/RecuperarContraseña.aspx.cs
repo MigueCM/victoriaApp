@@ -12,16 +12,18 @@ namespace VictoriaApp
             {
                 Uri url = Request.Url;
 
-                string localPath = url.LocalPath;
-
+                //string localPath = url.LocalPath;
+                int localizacion = url.LocalPath.ToLower().IndexOf("/recuperarcontraseña");
+                string localPath = url.LocalPath.Substring(localizacion);
+                string subcarpeta = url.LocalPath.Substring(0, url.LocalPath.Length - localPath.Length);
 
                 if (localPath.ToLower().Equals("/recuperarcontraseña"))
                 {
-                    Response.Redirect("Login.aspx");
+                    Response.Redirect(subcarpeta+"/Login.aspx");
                 }
                 else if (localPath.ToLower().Equals("/recuperarcontraseña/"))
                 {
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect(subcarpeta+"/Login.aspx");
                 }
 
             }
@@ -50,7 +52,10 @@ namespace VictoriaApp
 
                         if (UsuarioBLL.Instancia.ActualizarPassword(password, objUsuario.IdUsuario))
                         {
-                            Response.Redirect("/Login.aspx");
+                            int localizacion = url.LocalPath.ToLower().IndexOf("/recuperarcontraseña");
+                            string localPath = url.LocalPath.Substring(localizacion);
+                            string subcarpeta = url.LocalPath.Substring(0, url.LocalPath.Length - localPath.Length);
+                            Response.Redirect(subcarpeta+"/Login.aspx");
                             lblError.InnerText = "Modificado correctamente";
 
                         }

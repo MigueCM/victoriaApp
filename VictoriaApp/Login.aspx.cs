@@ -135,8 +135,8 @@ namespace VictoriaApp
                     else
                     {
                         string url = HttpContext.Current.Request.Url.AbsoluteUri;
-                        string pagina = HttpContext.Current.Request.Url.AbsolutePath;
-                        string page = url.Replace(pagina, "")+"/RecuperarContraseña/"+token;
+                        string pagina = "/Login.aspx/EnviarEmail";//HttpContext.Current.Request.Url.AbsolutePath;
+                        string page = url.ToLower().Replace(pagina.ToLower(), "")+"/RecuperarContraseña/"+token;
                         enviaremail(email,page);
                     }
 

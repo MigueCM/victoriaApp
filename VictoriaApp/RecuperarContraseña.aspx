@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/estilos.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../images/favicon.png" />
+  <link rel="shortcut icon" href="images/Victoria.ico" />
 </head>
 
 <body>
@@ -69,7 +69,7 @@
                 </div>
                  
                 <div class="mt-3 text-center">
-                  <a href="#" class="auth-link text-white" onclick="location.href='/Login.aspx'">Regresar al login</a>
+                  <%--<a href="#" class="auth-link text-white" onclick="location.href='/Login.aspx'">Regresar al login</a>--%>
                 </div>
 
                 
