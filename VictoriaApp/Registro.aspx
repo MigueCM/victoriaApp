@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="VictoriaApp.Registro" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="VictoriaApp.Registro" %>
 
     <!DOCTYPE html>
 
@@ -203,6 +203,7 @@
                             <option>Recomendacion de un amigo</option>
                             <option>Otros</option>
                         </select>
+
                                                     </div>
                                                 </div>
                                                 <div class="mb-4 offset-2">
@@ -214,6 +215,7 @@
                                 Acepto los terminos, condiciones y politicas de privacidad.
                             
                             
+
                         </label>
 
 
