@@ -78,6 +78,24 @@ namespace VictoriaApp
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtAutor;
 
         /// <summary>
+        /// Control txtFecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtFecha;
+
+        /// <summary>
+        /// Control txtHora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtHora;
+
+        /// <summary>
         /// Control txtFile.
         /// </summary>
         /// <remarks>

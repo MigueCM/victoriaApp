@@ -266,10 +266,15 @@
             }
         });
 
-        function AgendarWebinar(id) {
+        function AgendarWebinar(id, fecha, hora) {
+
+            var dia = "";
+            if (hora != "") {
+                dia = "para el dia "+ fecha.substring(0, 10) + " a las " + hora;
+            }
 
             swal({
-                title: "¿Desea Agendar este webinar?",
+                title: "¿Desea Agendar este webinar "+dia+" ?",
                 text: "Se le notificará sobre el webinar",
                 icon: 'warning',
                 showCancelButton: true,

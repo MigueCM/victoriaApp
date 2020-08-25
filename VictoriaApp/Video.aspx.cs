@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Services;
+using System.Web.UI;
 
 namespace VictoriaApp
 {
@@ -114,6 +115,15 @@ namespace VictoriaApp
 
             div_cuestionario.InnerHtml = innerHtml.ToString();
             div_cuestionario.Attributes.Add("data-num", listaPreguntas.Count.ToString());
+
+            List<EL.ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulosCalificacionPorUsuario(Convert.ToInt32(Session["idUsuario"]));
+            EL.ModuloCapacitacion objUltimoModulo = lista.Find(item => item.IdModuloCapacitacion > Convert.ToInt32(Session["video_idModulo"]));
+
+            if (objUltimoModulo != null)
+                ultimo_modulo.Value = "0";
+            else
+                ultimo_modulo.Value = "1";
+
         }
         
         [WebMethod(EnableSession = true)]
@@ -207,18 +217,39 @@ namespace VictoriaApp
         {
 
             List<EL.ModuloCapacitacion> lista = ModuloCapacitacionBLL.Instancia.ObtenerModulosCalificacionPorUsuario(Convert.ToInt32(HttpContext.Current.Session["idUsuario"]));
-            int primerModuloDesbloqueado = lista.FindAll(item => item.Completado == 0 || item.Aprobado == 0).First().IdModuloCapacitacion;
-            int siguienteModulo = lista.Find(item => item.IdModuloCapacitacion > Convert.ToInt32(HttpContext.Current.Session["video_idModulo"])).IdModuloCapacitacion;
 
-            if(primerModuloDesbloqueado < siguienteModulo)
+            List<EL.ModuloCapacitacion> listaModulosFaltantes = lista.FindAll(item => item.Completado == 0 || item.Aprobado == 0);
+            int primerModuloDesbloqueado = 0;
+
+            if (listaModulosFaltantes.Count > 0)
             {
-                return false;
+                primerModuloDesbloqueado = listaModulosFaltantes.First().IdModuloCapacitacion;
+            }
+
+
+            
+            EL.ModuloCapacitacion objModulo = lista.Find(item => item.IdModuloCapacitacion > Convert.ToInt32(HttpContext.Current.Session["video_idModulo"]));
+            
+            if(objModulo != null)
+            {
+                int siguienteModulo = objModulo.IdModuloCapacitacion;
+
+                if (primerModuloDesbloqueado!=0 && primerModuloDesbloqueado < siguienteModulo)
+                {
+                    return false;
+                }
+                else
+                {
+                    HttpContext.Current.Session["video_idModulo"] = siguienteModulo;
+                    return true;
+                }
             }
             else
             {
-                HttpContext.Current.Session["video_idModulo"] = siguienteModulo;
-                return true;
+                return false;
             }
+            
+            
 
 
             

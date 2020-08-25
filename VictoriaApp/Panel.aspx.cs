@@ -68,7 +68,7 @@ namespace VictoriaApp
 
                 fila += "<div class=\"card card-shadow\">";
 
-                string imagen = "https://img.youtube.com/vi/" + Globales.ObtenerIdVideo(item.Enlace) + "/mqdefault.jpg";
+                string imagen = "https://img.youtube.com/vi/" + Globales.ObtenerIdVideo(item.Enlace) + "/mq1.jpg";
                 
                 fila += $"<img src=\"{imagen}\" class=\"card-img-top\" alt=\"Imagen de {item.Nombre}\">";
 

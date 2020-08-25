@@ -118,7 +118,7 @@ namespace VictoriaApp
 
                 if(WebinarNotificacionBLL.Instancia.ObtenerNotificacion(item.IdWebinar , Convert.ToInt32(Session["IdUsuario"])) == 0)
                 {
-                    fila += $"<button type='button' class='btn btn-success ' onclick=\"AgendarWebinar({item.IdWebinar})\">Agendar</button>";
+                    fila += $"<button type='button' class='btn btn-success ' onclick=\"AgendarWebinar({item.IdWebinar},'{item.FechaWebinar}','{item.HoraWebinar.Trim()}')\">Agendar</button>";
                 }
                 else
                 {

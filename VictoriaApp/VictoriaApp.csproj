@@ -231,6 +231,10 @@
     <Content Include="Site.Master" />
     <Content Include="TerminosCondiciones.aspx" />
     <Content Include="vendors\css\vendor.bundle.base.css" />
+    <Content Include="vendors\datatables.net-bs4\dataTables.bootstrap4.css" />
+    <Content Include="vendors\datatables.net-bs4\dataTables.bootstrap4.js" />
+    <Content Include="vendors\datatables.net\jquery.dataTables.js" />
+    <Content Include="vendors\inputmask\jquery.inputmask.bundle.js" />
     <Content Include="vendors\js\vendor.bundle.base.js" />
     <Content Include="vendors\mdi\css\materialdesignicons.min.css" />
     <Content Include="vendors\select2-bootstrap-theme\select2-bootstrap.min.css" />
@@ -390,6 +394,7 @@
     <Content Include="fonts\poppins\Poppins-Bold.woff" />
     <Content Include="fonts\poppins\Poppins-Bold.woff2" />
     <Content Include="fonts\poppins\Poppins-Light.woff" />
+    <Content Include="archivos\terminos-y-condiciones.pdf" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="vendors\jquery.avgrund\jquery.avgrund.min.js" />

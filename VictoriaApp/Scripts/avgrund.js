@@ -1,7 +1,7 @@
 ﻿(function ($) {
     'use strict';
     $(function () {
-        $('#show').avgrund({
+        /*$('#show').avgrund({
             height: 500,
             holderClass: 'custom',
             showClose: true,
@@ -11,7 +11,7 @@
             '<div class="text-justify mt-4">' +
                 '<p>' + sessionDescripcion + '</p>' +
             '</div>'
-        });
+        });*/
         
 
         $('#completado').avgrund({

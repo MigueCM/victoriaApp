@@ -51,6 +51,15 @@ namespace VictoriaApp
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden num_intentos;
 
         /// <summary>
+        /// Control ultimo_modulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ultimo_modulo;
+
+        /// <summary>
         /// Control estado_aprobado.
         /// </summary>
         /// <remarks>

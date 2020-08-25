@@ -26,6 +26,7 @@
                                         <th class="search">Titulo</th>
                                         <th class="search" style="width:50%">Descripcion</th>
                                         <th class="search">Autor</th>
+                                        <th class="search">Fecha</th>
                                         <th>Imagen</th>
                                         <th>Opciones</th>
                                     </tr>
@@ -95,6 +96,30 @@
                                         </div>                                     
                                     </div>
                                     <div class="form-group">
+                                        <label for="txtFecha">Fecha</label>
+                                        <div class="input-group border-input">
+                                                <div class="input-group-prepend bg-transparent ">
+                                                <span class="input-group-text bg-transparent border-right-0 border-color-principal">
+                                                    <i class="fas fa-edit text-primary" aria-hidden="true"></i>
+                                                </span>
+                                                </div>                  
+
+                                            <input name="txtFecha" type="date" id="txtFecha" class="form-control form-control-sm border-color-principal pl-1 txtFecha" required runat="server"/>
+                                        </div>                                     
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtHora">Hora</label>
+                                        <div class="input-group border-input">
+                                                <div class="input-group-prepend bg-transparent ">
+                                                <span class="input-group-text bg-transparent border-right-0 border-color-principal">
+                                                    <i class="fas fa-edit text-primary" aria-hidden="true"></i>
+                                                </span>
+                                                </div>                  
+                                            <input type="text" name="txtHora" id="txtHora" class="form-control form-control-sm border-color-principal pl-1 txtHora" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="HH:MM" placeholder="HH:MM" required runat="server"/>
+                                            
+                                        </div>                                     
+                                    </div>
+                                    <div class="form-group">
                                         <label for="txtFile">Imagen</label>
                                         <div class="input-group border-input">        
                                             <div class="input-group-prepend bg-transparent ">
@@ -120,43 +145,30 @@
         </div>
     </div>
 
-    <script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net/jquery.dataTables.js"></script>
-    <script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <%--<script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net/jquery.dataTables.js"></script>--%>
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <%--<script src="http://www.urbanui.com/wagondash/template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>--%>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <%--<script src="http://www.urbanui.com/wagondash/template/vendors/inputmask/jquery.inputmask.bundle.js"></script>--%>
+    <script src="vendors/inputmask/jquery.inputmask.bundle.js"></script>
     <script src="Scripts/js/datatable.js"></script>
     <script>
-        //$('#tabla-modulos thead tr').clone(true).appendTo('#tabla-modulos thead');
-        //$('#tabla-modulos thead tr:eq(1) th').each(function (i) {
+        
+        $(":input").inputmask();
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+        if (mm < 10) {
+            mm = '0' + mm
+        }
 
-        //    if ($(this).hasClass("search")) {
-        //        var title = $(this).text();
-        //        $(this).html('<input type="text" class="w-100 p-1" placeholder="' + title + '" />');
+        today = yyyy + '-' + mm + '-' + dd;
 
-        //        $('input', this).on('keyup change', function () {
-        //            if (table.column(i).search() !== this.value) {
-        //                table
-        //                    .column(i)
-        //                    .search(this.value)
-        //                    .draw();
-        //            }
-        //        });
-        //    } else {
-        //        $(this).html("")
-        //    }
-
-        //});
-
-        //var table = $('#tabla-modulos').DataTable({
-        //    "aLengthMenu": [
-        //        [5, 10, 15, -1],
-        //        [5, 10, 15, "All"]
-        //    ],
-        //    "iDisplayLength": 10,
-        //    "language": {
-        //        search: ""
-        //    },
-        //    orderCellsTop: true,
-        //    fixedHeader: true
-        //});
+        $(".txtFecha").prop("min", today);
 
         function cargarData(id) {
 
@@ -199,12 +211,17 @@
                         },
                         success: function (response) {
                             var data = JSON.parse(response.d)["objWebinar"];
-
+                            console.log(data)
                             $(".txtId").val(id);
                             $(".txtNombre").val(data["Titulo"]);
                             $(".txtDescripcion").val(data["Descripcion"]);
                             $(".txtAutor").val(data["Autor"]);
                             $(".txtImagen").val(data["Imagen"]);
+                            if (data["FechaWebinar"].substring(0, 4) != "0001") {
+                                $(".txtFecha").val(data["FechaWebinar"].substring(0, 10));
+                            }
+                               
+                            $(".txtHora").val(data["HoraWebinar"]);
                             $(".title").html("Actualización de Webinar")
                             $(".btnEnviar").val("Actualizar")
                             $(".txtTipo").val(2)
@@ -282,6 +299,8 @@
             $(".txtDescripcion").val("");
             $(".txtAutor").val("");
             $(".txtImagen").val("");
+            $(".txtFecha").val("");
+            $(".txtHora").val("");
             $(".title").html("Registro de Webinar")
             $(".btnEnviar").val("Agregar")
             $(".txtTipo").val(1)

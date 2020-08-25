@@ -13,6 +13,8 @@ namespace EL
         string autor;
         string imagen;
         string descripcion;
+        DateTime fechaWebinar;
+        string horaWebinar;
         int idUsuarioRegistro;
         DateTime fechaRegistro;
         int idUsuarioEdicion;
@@ -27,5 +29,7 @@ namespace EL
         public DateTime FechaRegistro { get => fechaRegistro; set => fechaRegistro = value; }
         public int IdUsuarioEdicion { get => idUsuarioEdicion; set => idUsuarioEdicion = value; }
         public DateTime FechaEdicion { get => fechaEdicion; set => fechaEdicion = value; }
+        public DateTime FechaWebinar { get => fechaWebinar; set => fechaWebinar = value; }
+        public string HoraWebinar { get => horaWebinar; set => horaWebinar = value; }
     }
 }
