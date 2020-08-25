@@ -39,11 +39,19 @@ namespace VictoriaApp
                     imagen = "images/webinars/" + item.Imagen;
                 }
 
+                string fecha = item.FechaWebinar.ToString("dd'/'MM'/'yyyy") + ' ' + item.HoraWebinar.Trim();
+
+                if(item.FechaWebinar.Year == 1)
+                {
+                    fecha = "";
+                }
+
                 string fila = "<tr>";
                 fila += $"<td>{numero++}</td>";
                 fila += $"<td>{item.Titulo}</td>";
                 fila += $"<td>{item.Descripcion}</td>";
                 fila += $"<td>{item.Autor}</td>";
+                fila += $"<td>{fecha}</td>";
                 fila += $"<td><img class='img-table' src='{imagen}' ></td>";
                 fila += $"<td><button class=\"btn btn-outline-primary w-100 mb-1\" onClick=\"cargarData({item.IdWebinar});\">Editar</button>";              
                 fila += $"<button class=\"btn btn-outline-danger w-100 \" onClick=\"eliminar({item.IdWebinar});\">Eliminar</button></td>";
@@ -79,6 +87,8 @@ namespace VictoriaApp
             string titulo = txtNombre.Value;
             string descripcion = txtDescripcion.Value;
             string autor = txtAutor.Value;
+            string fecha = txtFecha.Value;
+            string hora = txtHora.Value;
 
             if ((txtFile.PostedFile != null) && (txtFile.PostedFile.ContentLength > 0))
             {
@@ -92,6 +102,8 @@ namespace VictoriaApp
                 objWebinar.Descripcion = descripcion;
                 objWebinar.Autor = autor;
                 objWebinar.Imagen = fileImagen;
+                objWebinar.FechaWebinar = Convert.ToDateTime(fecha);
+                objWebinar.HoraWebinar = hora;
                 objWebinar.IdUsuarioRegistro = Convert.ToInt32(Session["idUsuario"] ?? 1);
 
                 if (WebinarBLL.Instancia.RegistrarWebinar(objWebinar))
@@ -129,6 +141,8 @@ namespace VictoriaApp
             string descripcion = txtDescripcion.Value;
             string autor = txtAutor.Value;
             string imagen = txtImagen.Value;
+            string fecha = txtFecha.Value;
+            string hora = txtHora.Value;
             int id = Convert.ToInt32(txtId.Value);
 
             if ((txtFile.PostedFile != null) && (txtFile.PostedFile.ContentLength > 0))
@@ -164,6 +178,8 @@ namespace VictoriaApp
             objWebinar.Descripcion = descripcion;
             objWebinar.Autor = autor;
             objWebinar.Imagen = imagen;
+            objWebinar.FechaWebinar = Convert.ToDateTime(fecha);
+            objWebinar.HoraWebinar = hora;
             objWebinar.IdUsuarioEdicion = Convert.ToInt32(Session["idUsuario"] ?? 1);
 
             objWebinar.IdWebinar = id;

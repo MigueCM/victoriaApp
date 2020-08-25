@@ -3,9 +3,9 @@ Notificaciones para el administrados que se le hizo preguntas
 Poder seguir preguntando la misma pregunta.
 Mostrar primero las preguntas de cada usuario
 boton para llevar a las preguntas (debajo de simulador)
-Quitar sexo no especificado.
-Modal del video mas grande.
+Quitar sexo no especificado. (Listo)
+Modal del video mas grande. (Listo)
 Solo tiene 3 intentos antes de ver de nuevo el video
-(guardar ultimo intento).
+(guardar ultimo intento). (Listo)
 Poner un dashboard para ver cantidad de usarios aprobados y desprobados.
-Boton Webinar (agendar) y te llegue una notificación un dia antes
+Boton Webinar (agendar) y te llegue una notificación un dia antes (Listo)

@@ -33,6 +33,11 @@ namespace DAL
                     webinar.Autor = dr["Autor"].ToString();
                     webinar.Imagen = dr["Imagen"].ToString();
                     webinar.Descripcion = dr["Descripcion"].ToString();
+
+                    if(dr["FechaWebinar"] != DBNull.Value)
+                        webinar.FechaWebinar = Convert.ToDateTime(dr["FechaWebinar"]);
+
+                    webinar.HoraWebinar = dr["HoraWebinar"].ToString();
                     webinar.IdUsuarioRegistro = Convert.ToInt32(dr["IdUsuarioRegistro"]);
                     webinar.FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"]);                  
                     
@@ -75,6 +80,9 @@ namespace DAL
                     webinar.Autor = dr["Autor"].ToString();
                     webinar.Imagen = dr["Imagen"].ToString();
                     webinar.Descripcion = dr["Descripcion"].ToString();
+                    if (dr["FechaWebinar"] != DBNull.Value)
+                        webinar.FechaWebinar = Convert.ToDateTime(dr["FechaWebinar"]);
+                    webinar.HoraWebinar = dr["HoraWebinar"].ToString().Trim();
                     webinar.IdUsuarioRegistro = Convert.ToInt32(dr["IdUsuarioRegistro"]);
                     webinar.FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"]);
 
@@ -100,6 +108,8 @@ namespace DAL
             _comando.Parameters.AddWithValue("@autor", SqlDbType.VarChar).Value = objWebinar.Autor;
             _comando.Parameters.AddWithValue("@imagen", SqlDbType.VarChar).Value = objWebinar.Imagen;
             _comando.Parameters.AddWithValue("@descripcion", SqlDbType.VarChar).Value = objWebinar.Descripcion;
+            _comando.Parameters.AddWithValue("@FechaWebinar", SqlDbType.Date).Value = objWebinar.FechaWebinar;
+            _comando.Parameters.AddWithValue("@HoraWebinar", SqlDbType.VarChar).Value = objWebinar.HoraWebinar;
             _comando.Parameters.AddWithValue("@FechaRegistro", SqlDbType.DateTime).Value = DateTime.Now;
             _comando.Parameters.AddWithValue("@IdUsuarioRegistro", SqlDbType.Int).Value = objWebinar.IdUsuarioRegistro;
             _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 1;
@@ -131,6 +141,8 @@ namespace DAL
             _comando.Parameters.AddWithValue("@autor", SqlDbType.VarChar).Value = objWebinar.Autor;
             _comando.Parameters.AddWithValue("@imagen", SqlDbType.VarChar).Value = objWebinar.Imagen;
             _comando.Parameters.AddWithValue("@descripcion", SqlDbType.VarChar).Value = objWebinar.Descripcion;
+            _comando.Parameters.AddWithValue("@FechaWebinar", SqlDbType.Date).Value = objWebinar.FechaWebinar;
+            _comando.Parameters.AddWithValue("@HoraWebinar", SqlDbType.VarChar).Value = objWebinar.HoraWebinar;
             _comando.Parameters.AddWithValue("@fechaEdicion", SqlDbType.DateTime).Value = DateTime.Now;
             _comando.Parameters.AddWithValue("@idUsuarioEdicion", SqlDbType.Int).Value = objWebinar.IdUsuarioEdicion;
             _comando.Parameters.AddWithValue("@id", SqlDbType.Int).Value = objWebinar.IdWebinar;

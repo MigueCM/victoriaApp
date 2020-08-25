@@ -8,7 +8,7 @@
                 <div class="card-body" id="cardVideo">
                     
                     <div class="miniatura-video">
-                        <img src="https://img.youtube.com/vi/<%=Session["video"]%>/sddefault.jpg" style="width:100%;" onClick="$('#modalVideo').modal('show')" id="img_video" class="cursor-pointer"/>
+                        <img src="https://img.youtube.com/vi/<%=Session["video"]%>/sd1.jpg" style="width:100%;" onClick="$('#modalVideo').modal('show')" id="img_video" class="cursor-pointer"/>
                     </div>
                     
                       
@@ -36,6 +36,7 @@
     </div>
 
     <input type="hidden" name="num_intentos" id="num_intentos" class="num_intentos" runat="server" />
+    <input type="hidden" name="ultimo_modulo" id="ultimo_modulo" class="ultimo_modulo" runat="server" />
     <input type="hidden" name="estado_aprobado" id="estado_aprobado" class="estado_aprobado" runat="server" />
 
     <div class="modal fade" id="modalVideo" tabindex="-1" role="dialog" aria-labelledby="modalCreate-2" aria-hidden="true">
@@ -242,6 +243,11 @@
 
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
+
+        if ($(".ultimo_modulo").val() == "1") {
+            $("#btnSiguiente").css("display", "none");
+        }
+
         $(".btn-loading").hide();
         $("#modalCuestionario").on('hidden.bs.modal', () => $("html").css("overflow", "auto"));
         $("#modalCuestionario").on('shown.bs.modal', () => $("html").css("overflow", "hidden"));
