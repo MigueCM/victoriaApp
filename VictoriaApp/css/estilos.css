@@ -348,3 +348,9 @@ span.h3 {
     
     background-position: center;
 }
+
+.landingPage{
+    background-image:url(../images/landingPage.jpeg);
+    background-size:cover;
+    background-position:top;
+}

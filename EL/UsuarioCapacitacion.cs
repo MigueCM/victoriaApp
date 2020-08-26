@@ -21,6 +21,10 @@ namespace EL
         ModuloCapacitacion moduloCapacitacion;
         List<UsuarioPregunta> listaUsuarioPregunta;
 
+        string user;
+        string nombre;
+        DateTime fechaCompletado;
+
         public int IdUsuarioCapacitacion { get => idUsuarioCapacitacion; set => idUsuarioCapacitacion = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
         public int IdModuloCapacitacion { get => idModuloCapacitacion; set => idModuloCapacitacion = value; }
@@ -33,5 +37,8 @@ namespace EL
         public ModuloCapacitacion ModuloCapacitacion { get => moduloCapacitacion; set => moduloCapacitacion = value; }
         public int Calificacion { get => calificacion; set => calificacion = value; }
         public List<UsuarioPregunta> ListaUsuarioPregunta { get => listaUsuarioPregunta; set => listaUsuarioPregunta = value; }
+        public string User { get => user; set => user = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
+        public DateTime FechaCompletado { get => fechaCompletado; set => fechaCompletado = value; }
     }
 }

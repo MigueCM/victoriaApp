@@ -100,5 +100,10 @@ namespace BLL
         {
             return foroDAL.MarcarLeidosAdmin();
         }
+
+        public bool EliminarPregunta(int id)
+        {
+            return foroDAL.EliminarPregunta(id);
+        }
     }
 }

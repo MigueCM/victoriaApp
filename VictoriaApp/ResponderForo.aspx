@@ -133,5 +133,68 @@
             %>
             showSwal("responder-pregunta", "", "", "", id); 
         }
+
+        function eliminar(id) {
+            swal({
+                title: "¿Desea Eliminar esta pregunta?",
+                text: "Esta acción no se podrá revertir",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3f51b5',
+                cancelButtonColor: '#ff4081',
+                confirmButtonText: 'Great ',
+                buttons: {
+                    confirm: {
+                        text: "Eliminar",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    },
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
+                    }
+
+                }
+            }).then((willDelete) => {
+                if (willDelete) {
+                    var parametros = "{'id': '" + id + "'}";
+
+                    $.ajax({
+                        data: parametros,
+                        url: 'ResponderForo.aspx/EliminarData',
+                        dataType: "json",
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function () {
+
+                        },
+                        success: function (response) {
+                            swal("El foro ha sido eliminado correctamente", {
+                                icon: "success",
+                            });
+                            location.href = "ResponderForo.aspx";
+                        },
+                        error: function (e) {
+                            console.log(e)
+                        }
+                    }).done(function (html) {
+                        swal("El foro ha sido eliminado correctamente", {
+                            icon: "success",
+                            timer: 2000
+                        });
+                        location.href = "ResponderForo.aspx";
+                    });
+
+                } else {
+                    swal("Operación cancelada");
+                }
+            });
+        }
+
     </script>
 </asp:Content>
