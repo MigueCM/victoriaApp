@@ -67,5 +67,10 @@ namespace BLL
             return oUsuarioDAL.ObtenerEstadoModulo(idModulo, idUsuario);
         }
 
+        public List<UsuarioCapacitacion> ObtenerUsuariosCapacitados()
+        {
+            return oUsuarioDAL.ObtenerUsuariosCapacitados();
+        }
+
     }
 }

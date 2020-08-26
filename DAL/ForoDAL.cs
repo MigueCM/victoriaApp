@@ -110,7 +110,8 @@ namespace DAL
                     foro.Titulo = dr["Titulo"].ToString();
                     foro.Contenido = dr["Contenido"].ToString();
                     foro.FechaPregunta = Convert.ToDateTime(dr["FechaPregunta"].ToString());
-                    foro.Votado = Convert.ToInt32(dr["Votado"].ToString());
+                    if(dr["Votado"] != DBNull.Value)
+                        foro.Votado = Convert.ToInt32(dr["Votado"].ToString());
                     foro.Sexo = dr["Sexo"].ToString();
                     if (dr["Respuesta"] != DBNull.Value && dr["Respuesta"].ToString() != "")
                     {
@@ -386,8 +387,6 @@ namespace DAL
             return exito;
         }
 
-
-
         public int ObtenerCntNotificacionesAdmin()
         {
             SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
@@ -473,5 +472,32 @@ namespace DAL
             }
             return exito;
         }
+
+        public bool EliminarPregunta(int id)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Foro", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@Id", SqlDbType.Int).Value = id;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 15;
+            bool valor = false;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+                _comando.ExecuteNonQuery();
+                valor = true;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return valor;
+        }
+
     }
 }

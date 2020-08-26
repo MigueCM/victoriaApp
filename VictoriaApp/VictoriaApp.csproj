@@ -132,6 +132,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GestionUsuario.aspx" />
+    <Content Include="GestionUsuarioAprobados.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -162,6 +163,7 @@
     <Content Include="images\faces\face13.jpg" />
     <Content Include="images\faces\face28.png" />
     <Content Include="images\favicon.png" />
+    <Content Include="images\landingPage.jpeg" />
     <Content Include="images\lock.png" />
     <Content Include="images\logo-dark.svg" />
     <Content Include="images\logo-mini.svg" />
@@ -178,6 +180,7 @@
     <Content Include="images\webinars\20200807001443.jpg" />
     <Content Include="images\webinars\20200807002348.jpg" />
     <Content Include="images\webinars\20200807020227.jpg" />
+    <Content Include="landingPage.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="ModuloCapacitacion.aspx" />
@@ -273,10 +276,24 @@
     <Compile Include="GestionUsuario.aspx.designer.cs">
       <DependentUpon>GestionUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GestionUsuarioAprobados.aspx.cs">
+      <DependentUpon>GestionUsuarioAprobados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionUsuarioAprobados.aspx.designer.cs">
+      <DependentUpon>GestionUsuarioAprobados.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Globales.cs" />
+    <Compile Include="landingPage.aspx.cs">
+      <DependentUpon>landingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="landingPage.aspx.designer.cs">
+      <DependentUpon>landingPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

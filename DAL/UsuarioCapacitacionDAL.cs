@@ -248,5 +248,44 @@ namespace DAL
             return visualizaciones;
         }
 
+        public List<UsuarioCapacitacion> ObtenerUsuariosCapacitados()
+        {
+
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_UsuarioCapacitacion", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 10;
+            List<UsuarioCapacitacion> lista = new List<UsuarioCapacitacion>();
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    UsuarioCapacitacion objUsuario = new UsuarioCapacitacion();
+
+                    //objUsuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
+                    objUsuario.User = dr["User"].ToString();
+
+                    objUsuario.Nombre = dr["Nombre"].ToString() + " " + dr["Apellidos"].ToString();
+                    objUsuario.FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"]);
+
+                    lista.Add(objUsuario);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return lista;
+
+        }
+
     }
 }

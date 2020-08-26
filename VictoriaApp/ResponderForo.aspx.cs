@@ -42,13 +42,14 @@ namespace VictoriaApp
                 //fila += $"<td><button class=\"btn btn-outline-primary mb-1\" onClick=\"cargarData({item.IdModuloCapacitacion});\">Editar</button>";
                 if (item.RptCantidad > 0)
                 {
-                    fila += $"<td><button class=\"btn btn-outline-success mb-1\" onClick=\"redireccionPreguntas({item.IdForo});\">Responder Pregunta</button></td>";
+                    fila += $"<td><button class=\"btn btn-outline-success mb-1\" onClick=\"redireccionPreguntas({item.IdForo});\">Responder Pregunta</button>";
                 }
                 else
                 {
-                    fila += $"<td><button class=\"btn btn-outline-danger mb-1\" onClick=\"redireccionPreguntas({item.IdForo});\">Responder Pregunta</button></td>";
+                    fila += $"<td><button class=\"btn btn-outline-danger mb-1\" onClick=\"redireccionPreguntas({item.IdForo});\">Responder Pregunta</button>";
                 }
-                
+                fila += $"<button class=\"btn w-100 btn-outline-danger\" onClick=\"eliminar({item.IdForo});\">Eliminar</button></td>";
+
                 //fila += $"<button class=\"btn btn-outline-danger \" onClick=\"eliminar({item.IdModuloCapacitacion});\">Eliminar</button></td>";
                 fila += "</tr>";
 
@@ -84,6 +85,12 @@ namespace VictoriaApp
             //ForoBLL.Instancia.ActualizarVotado(foro);
             //int newVoto = ForoBLL.Instancia.ObtenerCambioVotado(Convert.ToInt32(votar));
             return JsonConvert.SerializeObject(null);
+        }
+
+        [WebMethod]
+        public static bool EliminarData(int id)
+        {
+            return ForoBLL.Instancia.EliminarPregunta(id);
         }
     }
 }

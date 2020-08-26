@@ -61,9 +61,9 @@
     <br />
     <br />
 
-        <div class="row">
+        <div class="row" >
             <div class="col-12">
-                <div class="card" style="border-radius:20px;">
+                <div class="card" style="border-radius:20px;" id="ViewForo">
                     <div class="card-body">
                          <div class="row">
                             <div class="col-lg-9 col-md-9">
