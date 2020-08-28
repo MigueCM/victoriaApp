@@ -21,7 +21,8 @@
     <!-- inject:css -->
     <link href="css/style.css" rel="stylesheet" />
     <!-- endinject -->
-    <link rel="shortcut icon" href="images/Victoria.ico" />
+
+    <link rel="shortcut icon" href="images/logo_reducido.png" />
     <link href="css/estilos.css" rel="stylesheet" />
     <script src="vendors/js/vendor.bundle.base.js"></script>
     <script src="Scripts/js/off-canvas.js"></script>

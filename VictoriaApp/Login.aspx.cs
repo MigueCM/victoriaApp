@@ -77,8 +77,9 @@ namespace VictoriaApp
 
                 Session["prog_value"] = $"width: {porcentaje}%";
                 Session["prog_text"] = $"{porcentaje}% Avance";
+                Session["progreso"] = porcentaje;
 
-                
+
 
                 if (Convert.ToInt32(Session["IdPerfil"].ToString()) == 1)
                 {

@@ -72,5 +72,14 @@ namespace BLL
             return oUsuarioDAL.ObtenerUsuariosCapacitados();
         }
 
+        public int ObtenerUltimoModulo()
+        {
+            return oUsuarioDAL.ObtenerUltimoModulo();
+        }
+
+        public List<Persona> ObtenerDatosCertificado(int idUsuario)
+        {
+            return oUsuarioDAL.ObtenerDatosCertificado(idUsuario);
+        }
     }
 }

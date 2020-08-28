@@ -1,7 +1,12 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Principal.aspx.cs" Inherits="VictoriaApp.Principal" %>
 
+<%@ Register Assembly="DevExpress.XtraReports.v20.1.Web.WebForms, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraReports.Web" TagPrefix="dx" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+    
+    </script>
     <style>
         .mdi-star:hover{
             color:blue;
@@ -54,6 +59,11 @@
                       </tbody>
                     </table>
                   </div>
+                </div>
+                <div class="alert alert-fill-success" role="alert" id="dCertificado" runat="server" visible="false">
+                    <i class="mdi mdi-alert-circle"></i>
+                    Felicitaciones completaste todos los módulos satisfactoriamente.
+                    <button type="button" runat="server" id="btnCertificado" onserverclick="btnCertificado_ServerClick" class="btn btn-primary btn-rounded btn-fw" onclick="SetTarget();">Descargar Certificado</button>
                 </div>
             </div>
           </div>
