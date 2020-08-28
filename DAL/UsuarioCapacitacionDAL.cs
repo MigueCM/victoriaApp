@@ -76,6 +76,36 @@ namespace DAL
             return modulo;
         }
 
+        public int ObtenerUltimoModulo()
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_UsuarioCapacitacion", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 7;
+            int modulo = 0;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                if (dr.Read())
+                {
+
+                    modulo = Convert.ToInt32(dr["idModuloCapacitacion"]);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return modulo;
+        }
+
         public bool RegistrarCapacitacion(UsuarioCapacitacion usuarioCapacitacion)
         {
             SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
@@ -287,5 +317,41 @@ namespace DAL
 
         }
 
+
+        public List<Persona> ObtenerDatosCertificado(int idUsuario)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@idUsuario", SqlDbType.Int).Value = idUsuario;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 14;
+            List<Persona> Personas = new List<Persona>();
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    Persona persona = new Persona();
+                    persona.Nombre = dr["Nombre"].ToString().ToUpper();
+                    persona.Apellidos = dr["Apellidos"].ToString().ToUpper();
+                    if(dr["fechaInicio"] != DBNull.Value)
+                        persona.FechaIncioModulo = Convert.ToDateTime(dr["fechaInicio"]).ToString("dd/MM/yyyy");
+                    //persona.FechaFinModulo = Convert.ToDateTime(dr["fechaFin"]).ToString("dd/MM/yyyy");
+                    persona.FechaFinModulo = DateTime.Now.ToString("dd/MM/yyyy");
+                    Personas.Add(persona);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return Personas;
+        }
     }
 }

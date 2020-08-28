@@ -33,6 +33,24 @@ namespace VictoriaApp
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl tableModulos;
 
         /// <summary>
+        /// Control dCertificado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dCertificado;
+
+        /// <summary>
+        /// Control btnCertificado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnCertificado;
+
+        /// <summary>
         /// Control H1.
         /// </summary>
         /// <remarks>

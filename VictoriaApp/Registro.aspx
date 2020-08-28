@@ -1,11 +1,12 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="VictoriaApp.Registro" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="VictoriaApp.Registro" %>
 
     <!DOCTYPE html>
 
-    <html xmlns="http://www.w3.org/1999/xhtml">
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
     <head runat="server">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta charset="utf-8" />
         <title>Victoria</title>
         <!-- base:css -->
@@ -28,7 +29,7 @@
         <link href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css" rel="stylesheet" />
         <link href="vendors/select2/select2.min.css" rel="stylesheet" />
 
-        <link rel="shortcut icon" href="images/Victoria.ico" />
+        <link rel="shortcut icon" href="logo_reducido.png" />
     </head>
 
     <body>
@@ -78,7 +79,7 @@
                                             <h6 class="font-weight-light">Únete, bríndandonos tu información</h6>
                                             <div class="pt-0" runat="server" id="signupForm">
                                                 <div class="row">
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-sm-12 col-md-6">
                                                         <label>Nombre/s</label>
                                                         <div class="input-group border-input">
                                                             <div class="input-group-prepend bg-transparent">
@@ -86,10 +87,10 @@
                                     <i class="fas fa-edit text-primary"></i>
                                 </span>
                                                             </div>
-                                                            <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Nombre" runat="server" id="txtNombre" />
+                                                            <input type="text" class="form-control  form-control-sm border-left-0 border-input" placeholder="Nombre" runat="server" id="txtNombre" />
                                                         </div>
                                                     </div>
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group  col-sm-12 col-md-6 ">
                                                         <label>Apellidos</label>
                                                         <div class="input-group border-input">
                                                             <div class="input-group-prepend bg-transparent">
@@ -97,12 +98,12 @@
                                 <i class="fas fa-edit text-primary"></i>
                               </span>
                                                             </div>
-                                                            <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Apellidos" runat="server" id="txtApellidos" />
+                                                            <input type="text" class="form-control form-control-sm  form-control-sm border-left-0 border-input" placeholder="Apellidos" runat="server" id="txtApellidos" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-6 col-sm-12">
                                                         <label>Dni</label>
                                                         <div class="input-group border-input">
                                                             <div class="input-group-prepend bg-transparent">
@@ -110,10 +111,10 @@
                                     <i class="fas fa-address-card text-primary"></i>
                                 </span>
                                                             </div>
-                                                            <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="DNI" runat="server" id="txtDni" />
+                                                            <input type="text" class="form-control  form-control-sm border-left-0 border-input" placeholder="DNI" runat="server" id="txtDni" />
                                                         </div>
                                                     </div>
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-6 col-sm-12">
                                                         <label>Email</label>
                                                         <div class="input-group border-input">
                                                             <div class="input-group-prepend bg-transparent">
@@ -121,12 +122,12 @@
                                     <i class="fas fa-user text-primary"></i>
                                 </span>
                                                             </div>
-                                                            <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Email" runat="server" id="txtUsuario" />
+                                                            <input type="text" class="form-control  form-control-sm border-left-0 border-input" placeholder="Email" runat="server" id="txtUsuario" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-6 col-sm-12">
                                                         <label>Contraseña</label>
                                                         <div class="input-group border-input">
                                                             <div class="input-group-prepend bg-transparent">
@@ -134,10 +135,10 @@
                             <i class="fas fa-lock text-primary"></i>
                           </span>
                                                             </div>
-                                                            <input type="password" class="form-control form-control-lg border-left-0 border-input" id="txtPassword" runat="server" placeholder="Contraseña" />
+                                                            <input type="password" class="form-control  form-control-sm border-left-0 border-input" id="txtPassword" runat="server" placeholder="Contraseña" />
                                                         </div>
                                                     </div>
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-6 col-sm-12">
                                                         <label>Confirmar Contraseña</label>
                                                         <div class="input-group border-input">
                                                             <div class="input-group-prepend bg-transparent">
@@ -145,12 +146,12 @@
                             <i class="fas fa-lock text-primary"></i>
                           </span>
                                                             </div>
-                                                            <input type="password" class="form-control form-control-lg border-left-0 border-input" id="txtVerificarPassword" runat="server" placeholder="Contraseña" />
+                                                            <input type="password" class="form-control  form-control-sm border-left-0 border-input" id="txtVerificarPassword" runat="server" placeholder="Contraseña" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-6 col-sm-12">
                                                         <label>Fecha de Nacimiento</label>
                                                         <div class="input-group border-input">
                                                             <div class="input-group-prepend bg-transparent">
@@ -158,51 +159,51 @@
                             <i class="fas fa-calendar-alt text-primary"></i>
                           </span>
                                                             </div>
-                                                            <input type="date" min="01-01-1900" class="form-control form-control-lg border-left-0 border-input" runat="server" id="deFechaNacimiento" placeholder="dd/mm/aaaa" />
+                                                            <input type="date" min="01-01-1900" class="form-control  form-control-sm border-left-0 border-input" runat="server" id="deFechaNacimiento" placeholder="dd/mm/aaaa" />
                                                         </div>
                                                     </div>
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-6 col-sm-12">
                                                         <label>Sexo</label>
-                                                        <select class="form-control form-control-lg select-css" id="cbSexo" runat="server">
-                            <option selected="selected">Sexo</option>
-                            <option>Femenino</option>
-                            <option>Masculino</option>
-                            <%--<option>No especificado</option>--%>
-                        </select>
+                                                        <select class="form-control  form-control-sm select-css" id="cbSexo" runat="server">
+                                                            <option selected="selected">Sexo</option>
+                                                            <option>Femenino</option>
+                                                            <option>Masculino</option>
+                                                            <%--<option>No especificado</option>--%>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-6 col-sm-12">
                                                         <label>Celular</label>
                                                         <div class="input-group border-input">
                                                             <div class="input-group-prepend bg-transparent">
                                                                 <span class="input-group-text bg-transparent border-right-0" id="spanCel">
-                            <i class="fas fa-mobile-alt text-primary"></i>
-                          </span>
+                                                                    <i class="fas fa-mobile-alt text-primary"></i>
+                                                                  </span>
                                                             </div>
-                                                            <input type="text" class="form-control form-control-lg border-left-0 border-input" placeholder="Celular" runat="server" id="txtCelular" />
+                                                            <input type="text" class="form-control  form-control-sm border-left-0 border-input" placeholder="Celular" runat="server" id="txtCelular" />
                                                         </div>
                                                     </div>
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-6 col-sm-12">
                                                         <label>Departamento</label>
-                                                        <select class="form-control form-control-lg select-css" id="cbDepartamento" runat="server">
-                            <option selected="selected">Departamento</option>
-                            <option >La Libertad</option>
-                        </select>
+                                                        <select class="form-control  form-control-sm select-css" id="cbDepartamento" runat="server">
+                                                            <option selected="selected">Departamento</option>
+                                                            <option >La Libertad</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="row">
 
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-6 col-sm-12">
                                                         <label>¿Cómo te enteraste de Victoria?</label>
-                                                        <select class="form-control form-control-lg select-css" id="cbEnterar" runat="server">
-                            <option selected="selected">¿Cómo te enteraste?</option>
-                            <option>Facebook</option>
-                            <option>Instagram</option>
-                            <option>LinkedIn</option>
-                            <option>Recomendacion de un amigo</option>
-                            <option>Otros</option>
-                        </select>
+                                                        <select class="form-control  form-control-sm select-css" id="cbEnterar" runat="server">
+                                                            <option selected="selected">¿Cómo te enteraste?</option>
+                                                            <option>Facebook</option>
+                                                            <option>Instagram</option>
+                                                            <option>LinkedIn</option>
+                                                            <option>Recomendacion de un amigo</option>
+                                                            <option>Otros</option>
+                                                        </select>
 
                                                     </div>
                                                 </div>
@@ -210,22 +211,19 @@
                                                     <a id="show2" href="javascript:void(0);" onclick="javascipt:window.open('archivos/terminos-y-condiciones.pdf', '_blank');">
                                                         <div class="form-check">
                                                             <label class="form-check-label text-muted" id="show">
-                            <input type="checkbox" class="form-check-input" runat="server" id="chkTerminos"/>
-                            
-                                Acepto los terminos, condiciones y politicas de privacidad.
-                            
-                            
-
-                        </label>
-
-
+                                                                <input type="checkbox" class="form-check-input" runat="server" id="chkTerminos"/>
+                                                                    Acepto los terminos, condiciones y politicas de privacidad.
+                                                            </label>
                                                         </div>
-
-                                                        </a>
+                                                    </a>
                                                 </div>
-                                                <div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="divErrores">
+                                                <div class="alert alert-danger" role="alert" runat="server" visible="false" id="lblError">
+                                                  <%=HttpUtility.HtmlDecode((string)(Session["ErroresRegistro"]??"")) %>
+                                                </div>
+                                                
+                                                <%--<div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="divErrores">
                                                     <asp:ListBox ID="lbErrores" runat="server" BackColor="Transparent" Width="100%" Enabled="false" CssClass="border-0 accordion text-danger overflow-hidden" Visible="false"></asp:ListBox>
-                                                </div>
+                                                </div>--%>
 
                                                 <div class="mt-3">
                                                     <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" Text="UNIRSE A VICTORIA" OnClick="btnRegistrar_Click" />

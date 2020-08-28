@@ -21,5 +21,7 @@ namespace EL
         public string Celular { get; set; }
         public string FechaRegistro { get; set; }
         public string Dni { get; set; }
+        public string FechaIncioModulo { get; set; }
+        public string FechaFinModulo { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DevExpress.XtraReports.UI;
 using EL;
 using Newtonsoft.Json;
 using System;
@@ -32,6 +33,7 @@ namespace VictoriaApp
                 idUsuario = Convert.ToInt32(Session["idUsuario"]);
             }
             CargarComentarios();
+            Certificado();
         }
 
         private void CargarComentarios()
@@ -55,7 +57,7 @@ namespace VictoriaApp
                         imagen = Globales.ImageDefault(item.Sexo); //"Data/Avatar/noImage.png";
                     }
 
-                    TimeSpan time = DateTime.Now- item.FechaPregunta;
+                    TimeSpan time = DateTime.Now - item.FechaPregunta;
                     string fila = $"<div class=\"d-flex align-items-start profile-feed-item\" name=\"{item.IdForo}\" id=\"{item.IdForo}\">";
                     fila += $"<img src=\"{imagen}\" alt=\"profile\" class=\"img-sm rounded-circle\"/>";
                     fila += $"<div class=\"ml-4\">";
@@ -180,6 +182,17 @@ namespace VictoriaApp
                 
         }
 
+        private void Certificado()
+        {
+            if (Session["progreso"] != null)
+            {
+                if (Convert.ToInt32(Session["progreso"].ToString()) > 99.90)
+                {
+                    dCertificado.Visible = true;
+                }
+            }
+        }
+
         private void CargarModulos()
         {
 
@@ -262,6 +275,29 @@ namespace VictoriaApp
             //ForoBLL.Instancia.ActualizarVotado(foro);
             //int newVoto = ForoBLL.Instancia.ObtenerCambioVotado(Convert.ToInt32(votar));
             return JsonConvert.SerializeObject(null);
+        }
+
+        protected void btnCertificado_ServerClick(object sender, EventArgs e)
+        {
+            
+            XtraReport report = new XtraReport();
+            report.LoadLayout(Server.MapPath("~/Certificado/XtraReport1.repx"));
+            report.DataSource = UsuarioCapacitacionBLL.Instancia.ObtenerDatosCertificado(Convert.ToInt32(Session["idUsuario"]));
+            report.FillDataSource();
+            MemoryStream stream = new MemoryStream();
+            //Response.
+            Response.Clear();
+                report.ExportToPdf(stream);
+
+
+            Response.ContentType = "application/" + "pdf";
+            Response.AddHeader("Accept-Header", stream.Length.ToString());
+            Response.AddHeader("Content-Disposition", ("Inline") + "; filename=" + "Certificado" + "." + "pdf");
+            Response.AddHeader("Content-Length", stream.Length.ToString());
+            //Response.ContentEncoding = System.Text.Encoding.Default;
+            Response.BinaryWrite(stream.ToArray());
+            Response.End();
+            
         }
     }
 }

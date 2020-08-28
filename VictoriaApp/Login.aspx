@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/estilos.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/Victoria.ico" />
+  <link rel="shortcut icon" href="logo_reducido.png" />
 </head>
 
 <body>

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Mail;
 using System.Net.Mime;
+using System.Text;
+using System.Web;
 using System.Web.UI;
 
 namespace VictoriaApp
@@ -35,105 +37,129 @@ namespace VictoriaApp
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
+            StringBuilder innerHtml = new StringBuilder();
             System.Threading.Thread.Sleep(2000);
-            lbErrores.Items.Clear();
+            //lbErrores.Items.Clear();
             List<string> errores = new List<string>();
-            errores.Add("SOLUCIONE LOS SIGUIENTES ERRORES:");
+            errores.Add("SOLUCIONE LOS SIGUIENTES ERRORES: <br/>");
             string usuario = null, password = null;
             Persona oPersona = new Persona();
             if (!string.IsNullOrEmpty(txtNombre.Value.Trim()))
                 oPersona.Nombre = txtNombre.Value.Trim();
             else
-                errores.Add("Ingrese nombre");
-
+            {
+                errores.Add("Ingresa tu nombre <br/>");
+            }
             if (!string.IsNullOrEmpty(txtApellidos.Value.Trim()))
                 oPersona.Apellidos = txtApellidos.Value.Trim();
             else
-                errores.Add("Ingrese apellidos");
-
+            {
+                //fila += $"Ingrese apellidos";
+                errores.Add("Ingresa tus apellidos <br/>");
+            }
             if (!string.IsNullOrEmpty(txtDni.Value.Trim()))
                 oPersona.Dni = txtDni.Value.Trim();
             else
-                errores.Add("Ingrese apellidos");
-
+            {
+                //fila += $"Ingrese número de DNI";
+                errores.Add("Ingresa tu número de DNI <br/>");
+            }
             if (!string.IsNullOrEmpty(deFechaNacimiento.Value.Trim()))
                 oPersona.FechaNacimiento = Convert.ToDateTime(deFechaNacimiento.Value.Trim());
             else
-                errores.Add("Ingrese fecha de nacimiento");
-
+            {
+                //fila += $"Ingrese fecha de nacimiento";
+                errores.Add("Ingresa tu fecha de nacimiento <br/>");
+            }
             if (!string.IsNullOrEmpty(txtCelular.Value.Trim()))
                 oPersona.Celular = txtCelular.Value.Trim();
             else
-                errores.Add("Ingrese celular");
-
+            {
+                //fila += $"Ingrese celular";
+                errores.Add("Ingresa tu número celular <br/>");
+            }
             if (cbSexo.SelectedIndex != 0)
                 oPersona.Sexo = cbSexo.Value.Trim();
             else
-                errores.Add("Escoge tu sexo");
-
+            {
+                //fila += $"Escoge tu sexo";
+                errores.Add("Escoge tu sexo <br/>");
+            }
             if (cbDepartamento.SelectedIndex != 0)
             {
-
-                //for (int i = 0; i <= cbDepartamento.Items.Count - 1; i++)
-                //{
-                //    if (cbDepartamento.Items[i].Selected)
-                        oPersona.Departamento = cbDepartamento.Items[cbDepartamento.SelectedIndex].Value.ToString();
-                //}
+                oPersona.Departamento = cbDepartamento.Items[cbDepartamento.SelectedIndex].Value.ToString();
             }
-                //oPersona.Departamento = cbDepartamento.Items[i]..ToString();
             else
-                errores.Add("Escoge tu departamento");
-
+            {
+                //fila += $"Escoge tu departamento";
+                errores.Add("Escoge tu departamento <br/>");
+            }
             if (cbEnterar.SelectedIndex != 0)
                 oPersona.Enterar = cbEnterar.Value.Trim();
             else
-                errores.Add("Escoge como te enteraste");
-
+            {
+                errores.Add("Escoge como te enteraste <br/>");
+            }
             if (!string.IsNullOrEmpty(txtUsuario.Value.Trim()))
                 usuario = txtUsuario.Value.Trim();
             else
-                errores.Add("Ingrese Email");
-
-            if(!Globales.ValidarEmail(txtUsuario.Value.Trim()))
-                errores.Add("Ingrese un Email valido");
+            {
+                errores.Add("Ingrese Email <br/>");
+            }
+            if (!Globales.ValidarEmail(txtUsuario.Value.Trim()))
+                errores.Add("Ingrese un Email valido <br/>");
 
             if(UsuarioBLL.Instancia.ValidarExisteUsuario(txtUsuario.Value.Trim()) == 1)
-                errores.Add("Este Email esta siendo usado");
+                errores.Add("Este Email esta siendo usado <br/>");
 
             if (!txtVerificarPassword.Value.Trim().Equals(txtPassword.Value.Trim()))
-                errores.Add("Las contraseñas no son iguales");
+                errores.Add("Las contraseñas no son iguales <br/>");
 
             if (string.IsNullOrEmpty(txtVerificarPassword.Value.Trim()))
             {
-                errores.Add("Verifique contraseña");
                 if (txtVerificarPassword.Value.Trim().Length < 6)
-                    errores.Add("Verificar contraseña debe tener minimo 6 caracteres");
+                    errores.Add("Verificar contraseña debe tener minimo 6 caracteres <br/>");
+            }
+            else
+            {
+                errores.Add("Ingrese contraseña <br/>");
             }
 
             if (!string.IsNullOrEmpty(txtPassword.Value.Trim()))
             {
                 password = Globales.CifrarClave(txtPassword.Value.Trim());
                 if (txtPassword.Value.Trim().Length < 6)
-                    errores.Add("La contraseña debe tener minimo 6 caracteres");
+                    errores.Add("La contraseña debe tener minimo 6 caracteres <br/>");
             }
             else
-                errores.Add("Ingrese contraseña");
+            {
+                errores.Add("Ingrese contraseña <br/>");
+            }
 
             if (!chkTerminos.Checked)
             {
-                errores.Add("Acepte los terminos, condiciones y politicas de privacidad");
+                errores.Add("Acepte los terminos, condiciones y politicas de privacidad <br/>");
             }
-
+           
+            
             if (errores.Count > 1)
             {
-                lbErrores.Rows = errores.Count;
+                //lbErrores.Rows = errores.Count;
 
-                divErrores.Visible = true;
-                lbErrores.Visible = true;
+                //divErrores.Visible = true;
+                //lbErrores.Visible = true;
+                //foreach (var item in errores)
+                //{
+                //    lbErrores.Items.Add(item);
+                //}
+                lblError.Visible = true;
+                string fila = null;
                 foreach (var item in errores)
                 {
-                    lbErrores.Items.Add(item);
+                    fila += $"{item}";
                 }
+                innerHtml.AppendLine(fila);
+                Session["ErroresRegistro"] = HttpUtility.HtmlEncode(innerHtml.ToString());
             }
             else
             {
@@ -156,9 +182,9 @@ namespace VictoriaApp
 
                     
                 }
-                divErrores.Visible = false;
-                lbErrores.Visible = false;
-                lbErrores.Items.Clear();
+                //divErrores.Visible = false;
+                //lbErrores.Visible = false;
+                //lbErrores.Items.Clear();
             }
         }
 
@@ -174,7 +200,7 @@ namespace VictoriaApp
             mail.To.Add(new MailAddress(correo));
             mail.Subject = "Solicitud registrada.";
             mail.To.Add(correo);
-            string mailbody = "<br/><html><body><div style='text-align:center'><img src=\"cid:Email\"><div style='position: absolute; text-align:center; font-size:30px; font-weight:bold; color:#5B127D;'><p>" + nombre +" "+ apellidos +"</p><p> "+correo+ " </p></div><div><img src=\"cid:EmailMid\"></div><div><a style ='position: absolute; font-size:large; background-color:#5B127D; color:white; padding:10px; font-size:20px; border-radius:20px; text-decoration:none;' href='#'>Comienza el camino de la igualdad</a></div><br /><br /><div><img src=\"cid:EmailFooter\" ></div></div></body></html>";
+            string mailbody = "<br/><html><body><div style='text-align:center'><img src=\"cid:Email\"><div style='position: absolute; text-align:center; font-size:30px; font-weight:bold; color:#5B127D;'><p>" + nombre +" "+ apellidos +"</p><p> "+correo+ " </p></div><div><img src=\"cid:EmailMid\"></div><div><a style ='position: absolute; font-size:large; background-color:#5B127D; color:white; padding:10px; font-size:20px; border-radius:20px; text-decoration:none;' href='http://www.aulavirtual-juntoscrecemos.pe/victoria/login.aspx'>Comienza</a></div><br /><br /><div><img src=\"cid:EmailFooter\" ></div></div></body></html>";
             AlternateView AlternateView_Html = AlternateView.CreateAlternateViewFromString(mailbody, null, MediaTypeNames.Text.Html);
             LinkedResource Picture1 = new LinkedResource(Server.MapPath(@"~/images/correoCabecera.jpg"), MediaTypeNames.Image.Jpeg);
             LinkedResource Picture2 = new LinkedResource(Server.MapPath(@"~/images/correoMedio.jpg"), MediaTypeNames.Image.Jpeg);

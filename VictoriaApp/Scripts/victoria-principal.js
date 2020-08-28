@@ -1,4 +1,8 @@
-﻿function limpiarForo() {
+﻿function SetTarget() {
+    document.forms[0].target = "_blank";
+}
+
+function limpiarForo() {
     $("#txtTitulo").val("");
     $("#txtDescripcionPregunta").val("");
     $("#cbModulo").val(0)
