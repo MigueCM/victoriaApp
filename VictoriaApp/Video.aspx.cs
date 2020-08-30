@@ -1,8 +1,7 @@
 ﻿using BLL;
-<<<<<<< HEAD
+
 using DevExpress.XtraReports.UI;
-=======
->>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
+
 using EL;
 using Newtonsoft.Json;
 using System;
@@ -127,7 +126,7 @@ namespace VictoriaApp
                 ultimo_modulo.Value = "0";
             else
                 ultimo_modulo.Value = "1";
-<<<<<<< HEAD
+
 
         }
         
@@ -140,9 +139,6 @@ namespace VictoriaApp
             //{
             //    return false;
             //}
-=======
->>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
-
 
             string[] arreglo = respuestas.Split(',');
             bool aprobado = true;
@@ -226,8 +222,6 @@ namespace VictoriaApp
                 }
                 );
         }
-<<<<<<< HEAD
-=======
         
         [WebMethod(EnableSession = true)]
         public static string ValidarData(string respuestas, string calificacion)
@@ -314,7 +308,7 @@ namespace VictoriaApp
                 }
                 );
         }
->>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
+
 
         [WebMethod(EnableSession = true)]
         public static bool ValidarSiguienteModulo()
@@ -359,7 +353,7 @@ namespace VictoriaApp
             
         }
 
-<<<<<<< HEAD
+
         protected void btnCertificado_ServerClick(object sender, EventArgs e)
         {
 
@@ -383,7 +377,6 @@ namespace VictoriaApp
 
         }
 
-=======
->>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
+
     }
 }
