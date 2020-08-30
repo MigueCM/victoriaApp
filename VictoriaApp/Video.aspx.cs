@@ -223,91 +223,91 @@ namespace VictoriaApp
                 );
         }
         
-        [WebMethod(EnableSession = true)]
-        public static string ValidarData(string respuestas, string calificacion)
-        {
-            //int num_intentos = UsuarioCapacitacionBLL.Instancia.ObtenerIntento(Convert.ToInt32(HttpContext.Current.Session["video_idModulo"]), Convert.ToInt32(HttpContext.Current.Session["idUsuario"]));
+        //[WebMethod(EnableSession = true)]
+        //public static string ValidarData(string respuestas, string calificacion)
+        //{
+        //    //int num_intentos = UsuarioCapacitacionBLL.Instancia.ObtenerIntento(Convert.ToInt32(HttpContext.Current.Session["video_idModulo"]), Convert.ToInt32(HttpContext.Current.Session["idUsuario"]));
 
-            //if(num_intentos > 2)
-            //{
-            //    return false;
-            //}
+        //    //if(num_intentos > 2)
+        //    //{
+        //    //    return false;
+        //    //}
 
 
-            string[] arreglo = respuestas.Split(',');
-            bool aprobado = true;
-            int respuestas_correctas = 0;
-            List<EL.PreguntaCapacitacion> listaPreguntas = (List<EL.PreguntaCapacitacion>)(HttpContext.Current.Session["lista_preguntas"]??new List<EL.PreguntaCapacitacion>());
+        //    string[] arreglo = respuestas.Split(',');
+        //    bool aprobado = true;
+        //    int respuestas_correctas = 0;
+        //    List<EL.PreguntaCapacitacion> listaPreguntas = (List<EL.PreguntaCapacitacion>)(HttpContext.Current.Session["lista_preguntas"]??new List<EL.PreguntaCapacitacion>());
 
-            if(arreglo.Length == listaPreguntas.Count)
-            {
-                int i = 0;
+        //    if(arreglo.Length == listaPreguntas.Count)
+        //    {
+        //        int i = 0;
                 
-                UsuarioCapacitacion objUsuario = new UsuarioCapacitacion();
-                objUsuario.IdUsuario = Convert.ToInt32(HttpContext.Current.Session["idUsuario"] ?? 0);
-                objUsuario.IdModuloCapacitacion = Convert.ToInt32(HttpContext.Current.Session["video_idModulo"] ?? 0);
-                objUsuario.Calificacion = Convert.ToInt32(calificacion);
-                objUsuario.ListaUsuarioPregunta = new List<UsuarioPregunta>();
+        //        UsuarioCapacitacion objUsuario = new UsuarioCapacitacion();
+        //        objUsuario.IdUsuario = Convert.ToInt32(HttpContext.Current.Session["idUsuario"] ?? 0);
+        //        objUsuario.IdModuloCapacitacion = Convert.ToInt32(HttpContext.Current.Session["video_idModulo"] ?? 0);
+        //        objUsuario.Calificacion = Convert.ToInt32(calificacion);
+        //        objUsuario.ListaUsuarioPregunta = new List<UsuarioPregunta>();
 
-                foreach (EL.PreguntaCapacitacion item in listaPreguntas)
-                {
+        //        foreach (EL.PreguntaCapacitacion item in listaPreguntas)
+        //        {
 
-                    UsuarioPregunta obj = new UsuarioPregunta();
-                    obj.IdPreguntaCapacitacion = item.IdPreguntaCapacitacion;
-                    obj.Respuesta = arreglo[i];
+        //            UsuarioPregunta obj = new UsuarioPregunta();
+        //            obj.IdPreguntaCapacitacion = item.IdPreguntaCapacitacion;
+        //            obj.Respuesta = arreglo[i];
                     
-                    objUsuario.ListaUsuarioPregunta.Add(obj);
+        //            objUsuario.ListaUsuarioPregunta.Add(obj);
 
-                    if(item.Respuesta != arreglo[i])
-                    {
-                        aprobado = false;
-                    }
-                    else
-                    {
-                        respuestas_correctas += 1;
-                    }
-                    i++;
-                }
+        //            if(item.Respuesta != arreglo[i])
+        //            {
+        //                aprobado = false;
+        //            }
+        //            else
+        //            {
+        //                respuestas_correctas += 1;
+        //            }
+        //            i++;
+        //        }
 
-                objUsuario.Aprobado = aprobado?1:0;
-                objUsuario.Nota = (int)(((Double)respuestas_correctas / listaPreguntas.Count) * 20);
+        //        objUsuario.Aprobado = aprobado?1:0;
+        //        objUsuario.Nota = (int)(((Double)respuestas_correctas / listaPreguntas.Count) * 20);
 
-                if (UsuarioCapacitacionBLL.Instancia.RegistrarCapacitacion(objUsuario))
-                {
-                    int porcentaje = UsuarioCapacitacionBLL.Instancia.ObtenerPorcentajeModulos(objUsuario.IdUsuario);
+        //        if (UsuarioCapacitacionBLL.Instancia.RegistrarCapacitacion(objUsuario))
+        //        {
+        //            int porcentaje = UsuarioCapacitacionBLL.Instancia.ObtenerPorcentajeModulos(objUsuario.IdUsuario);
 
-                    HttpContext.Current.Session["prog_value"] = $"width: {porcentaje}%";
-                    HttpContext.Current.Session["prog_text"] = $"{porcentaje}% Avance";
-                    return JsonConvert.SerializeObject(
-                    new
-                    {
-                        aprobado,
-                        guardar = true
-                    }
-                    );
-                }
-                else
-                {
-                    return JsonConvert.SerializeObject(
-                    new
-                    {
-                        aprobado,
-                        guardar = false
-                    }
-                    );
-                }
+        //            HttpContext.Current.Session["prog_value"] = $"width: {porcentaje}%";
+        //            HttpContext.Current.Session["prog_text"] = $"{porcentaje}% Avance";
+        //            return JsonConvert.SerializeObject(
+        //            new
+        //            {
+        //                aprobado,
+        //                guardar = true
+        //            }
+        //            );
+        //        }
+        //        else
+        //        {
+        //            return JsonConvert.SerializeObject(
+        //            new
+        //            {
+        //                aprobado,
+        //                guardar = false
+        //            }
+        //            );
+        //        }
 
                 
-            }
+        //    }
 
-            return JsonConvert.SerializeObject(
-                new
-                {
-                    aprobado,
-                    guardar = false
-                }
-                );
-        }
+        //    return JsonConvert.SerializeObject(
+        //        new
+        //        {
+        //            aprobado,
+        //            guardar = false
+        //        }
+        //        );
+        //}
 
 
         [WebMethod(EnableSession = true)]
