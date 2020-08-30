@@ -29,7 +29,7 @@
         <link href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css" rel="stylesheet" />
         <link href="vendors/select2/select2.min.css" rel="stylesheet" />
 
-        <link rel="shortcut icon" href="logo_reducido.png" />
+        <link rel="shortcut icon" href="images/logo_reducido.png" />
     </head>
 
     <body>

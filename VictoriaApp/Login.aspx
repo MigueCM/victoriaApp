@@ -19,8 +19,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/estilos.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="logo_reducido.png" />
+  <link rel="shortcut icon" href="images/logo_reducido.png" />
 </head>
 
 <body>
@@ -94,7 +93,9 @@
                     <h6>
                         ¿No tienes cuenta? <a href="Registro.aspx" class="text-primary">Regístrate</a>
                     </h6>
-                  
+                  <br />
+                    <h4 style="font-family: 'Avenir-Semi', sans-serif !important; font-size: 11pt;">Una iniciativa de:</h4>
+                    <img src="images/DANPERNEGRO.png" alt="logo" style="width: 100px !important">
                 </div>
 
 
@@ -104,7 +105,7 @@
             </div>
           </div>
           <div class="col-lg-6 login-half-bg d-flex flex-row banner-none animated fadeIn">
-            <p class="text-black font-weight-medium text-center flex-grow align-self-end">Copyright &copy; <%=DateTime.Now.Year.ToString()%>  Todos los derechos registrados.</p>
+            <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; <%=DateTime.Now.Year.ToString()%>  Todos los derechos registrados.</p>
           </div>
         </div>
       </div>
