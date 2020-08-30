@@ -241,6 +241,7 @@
             </div>
         </div>
 
+<<<<<<< HEAD
     <div class="modal fade" id="modalCertificado" tabindex="-1" role="dialog" aria-labelledby="modalCreate-2" aria-hidden="true">
             <div class="modal-dialog mt-3" role="document">
                 <div class="modal-content modal-border">
@@ -257,6 +258,8 @@
             </div>
         </div>
 
+=======
+>>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
 
@@ -267,7 +270,10 @@
         $(".btn-loading").hide();
         $("#modalCuestionario").on('hidden.bs.modal', () => $("html").css("overflow", "auto"));
         $("#modalCuestionario").on('shown.bs.modal', () => $("html").css("overflow", "hidden"));
+<<<<<<< HEAD
         $("#modalCertificado").on('hidden.bs.modal', () => location.href = "Principal.aspx");
+=======
+>>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
 
         $("#modalVideo").on('hidden.bs.modal', function () {
             $("html").css("overflow", "auto");
@@ -327,10 +333,13 @@
             player.playVideo();
         }
 
+<<<<<<< HEAD
         function SetTarget() {
             document.forms[0].target = "_blank";
         }
 
+=======
+>>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
         function ValidarCampos() {
             //console.log("entro");
             $(".btn-validar").hide();
@@ -376,6 +385,7 @@
                                 console.log(data)
                                 $(".num_intentos").val(parseInt($(".num_intentos").val()) + 1) ;
                                 if (data["aprobado"]) {
+<<<<<<< HEAD
                                     if (data["porcentaje"] > 99.90) {
                                         $("#modalCuestionario").modal('hide');
                                         $("#modalCertificado").modal("show");
@@ -383,6 +393,9 @@
                                         location.href = "Panel.aspx";
                                     }
                                     
+=======
+                                    location.href = "Panel.aspx";
+>>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
                                 } else {
                                    
                                     if ($(".num_intentos").val() > 2) {

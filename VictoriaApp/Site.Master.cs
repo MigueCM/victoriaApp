@@ -17,8 +17,11 @@ namespace VictoriaApp
         {
             if (!Page.IsPostBack)
             {
+<<<<<<< HEAD
                 if (Session["IdPersona"] == null || Session["idUsuario"] == null)
                     Response.Redirect("Login.aspx");
+=======
+>>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
                 CargarWebinar(); 
                 CargarCntNotificaciones();
                 CargarNotificaciones();

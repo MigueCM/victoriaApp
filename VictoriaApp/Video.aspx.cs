@@ -1,5 +1,8 @@
 ﻿using BLL;
+<<<<<<< HEAD
 using DevExpress.XtraReports.UI;
+=======
+>>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
 using EL;
 using Newtonsoft.Json;
 using System;
@@ -124,6 +127,7 @@ namespace VictoriaApp
                 ultimo_modulo.Value = "0";
             else
                 ultimo_modulo.Value = "1";
+<<<<<<< HEAD
 
         }
         
@@ -136,6 +140,8 @@ namespace VictoriaApp
             //{
             //    return false;
             //}
+=======
+>>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
 
 
             string[] arreglo = respuestas.Split(',');
@@ -220,6 +226,95 @@ namespace VictoriaApp
                 }
                 );
         }
+<<<<<<< HEAD
+=======
+        
+        [WebMethod(EnableSession = true)]
+        public static string ValidarData(string respuestas, string calificacion)
+        {
+            //int num_intentos = UsuarioCapacitacionBLL.Instancia.ObtenerIntento(Convert.ToInt32(HttpContext.Current.Session["video_idModulo"]), Convert.ToInt32(HttpContext.Current.Session["idUsuario"]));
+
+            //if(num_intentos > 2)
+            //{
+            //    return false;
+            //}
+
+
+            string[] arreglo = respuestas.Split(',');
+            bool aprobado = true;
+            int respuestas_correctas = 0;
+            List<EL.PreguntaCapacitacion> listaPreguntas = (List<EL.PreguntaCapacitacion>)(HttpContext.Current.Session["lista_preguntas"]??new List<EL.PreguntaCapacitacion>());
+
+            if(arreglo.Length == listaPreguntas.Count)
+            {
+                int i = 0;
+                
+                UsuarioCapacitacion objUsuario = new UsuarioCapacitacion();
+                objUsuario.IdUsuario = Convert.ToInt32(HttpContext.Current.Session["idUsuario"] ?? 0);
+                objUsuario.IdModuloCapacitacion = Convert.ToInt32(HttpContext.Current.Session["video_idModulo"] ?? 0);
+                objUsuario.Calificacion = Convert.ToInt32(calificacion);
+                objUsuario.ListaUsuarioPregunta = new List<UsuarioPregunta>();
+
+                foreach (EL.PreguntaCapacitacion item in listaPreguntas)
+                {
+
+                    UsuarioPregunta obj = new UsuarioPregunta();
+                    obj.IdPreguntaCapacitacion = item.IdPreguntaCapacitacion;
+                    obj.Respuesta = arreglo[i];
+                    
+                    objUsuario.ListaUsuarioPregunta.Add(obj);
+
+                    if(item.Respuesta != arreglo[i])
+                    {
+                        aprobado = false;
+                    }
+                    else
+                    {
+                        respuestas_correctas += 1;
+                    }
+                    i++;
+                }
+
+                objUsuario.Aprobado = aprobado?1:0;
+                objUsuario.Nota = (int)(((Double)respuestas_correctas / listaPreguntas.Count) * 20);
+
+                if (UsuarioCapacitacionBLL.Instancia.RegistrarCapacitacion(objUsuario))
+                {
+                    int porcentaje = UsuarioCapacitacionBLL.Instancia.ObtenerPorcentajeModulos(objUsuario.IdUsuario);
+
+                    HttpContext.Current.Session["prog_value"] = $"width: {porcentaje}%";
+                    HttpContext.Current.Session["prog_text"] = $"{porcentaje}% Avance";
+                    return JsonConvert.SerializeObject(
+                    new
+                    {
+                        aprobado,
+                        guardar = true
+                    }
+                    );
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(
+                    new
+                    {
+                        aprobado,
+                        guardar = false
+                    }
+                    );
+                }
+
+                
+            }
+
+            return JsonConvert.SerializeObject(
+                new
+                {
+                    aprobado,
+                    guardar = false
+                }
+                );
+        }
+>>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
 
         [WebMethod(EnableSession = true)]
         public static bool ValidarSiguienteModulo()
@@ -264,6 +359,7 @@ namespace VictoriaApp
             
         }
 
+<<<<<<< HEAD
         protected void btnCertificado_ServerClick(object sender, EventArgs e)
         {
 
@@ -287,5 +383,7 @@ namespace VictoriaApp
 
         }
 
+=======
+>>>>>>> 9b13467ad0ed3fc4e33d50df387def2c285272f1
     }
 }
