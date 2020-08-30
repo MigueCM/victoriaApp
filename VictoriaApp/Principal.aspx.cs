@@ -233,7 +233,7 @@ namespace VictoriaApp
                 }                    
                 fila += "</tr>";
 
-                if (num_modulo <= item.Nro)
+                if (num_modulo <= item.IdModuloCapacitacion)
                 {
                     liberado = false;
                 }

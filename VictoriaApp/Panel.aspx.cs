@@ -106,7 +106,7 @@ namespace VictoriaApp
                 //    mostrar = false;
                 //}
 
-                if(num_modulo <= item.Nro)
+                if(num_modulo <= item.IdModuloCapacitacion)
                 {
                     liberado = false;
                 }

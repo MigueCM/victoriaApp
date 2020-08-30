@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DevExpress.XtraReports.UI;
 using EL;
 using Newtonsoft.Json;
 using System;
@@ -181,11 +182,19 @@ namespace VictoriaApp
 
                     HttpContext.Current.Session["prog_value"] = $"width: {porcentaje}%";
                     HttpContext.Current.Session["prog_text"] = $"{porcentaje}% Avance";
+                    HttpContext.Current.Session["progreso"] = porcentaje;
+
+                    //if (Convert.ToInt32(Session["progreso"].ToString()) > 99.90)
+                    //{
+                    //    dCertificado.Visible = true;
+                    //}
+
                     return JsonConvert.SerializeObject(
                     new
                     {
                         aprobado,
-                        guardar = true
+                        guardar = true,
+                        porcentaje
                     }
                     );
                 }
@@ -253,6 +262,29 @@ namespace VictoriaApp
 
 
             
+        }
+
+        protected void btnCertificado_ServerClick(object sender, EventArgs e)
+        {
+
+            XtraReport report = new XtraReport();
+            report.LoadLayout(Server.MapPath("~/Certificado/XtraReport1.repx"));
+            report.DataSource = UsuarioCapacitacionBLL.Instancia.ObtenerDatosCertificado(Convert.ToInt32(Session["idUsuario"]));
+            report.FillDataSource();
+            MemoryStream stream = new MemoryStream();
+            //Response.
+            Response.Clear();
+            report.ExportToPdf(stream);
+
+
+            Response.ContentType = "application/" + "pdf";
+            Response.AddHeader("Accept-Header", stream.Length.ToString());
+            Response.AddHeader("Content-Disposition", ("Inline") + "; filename=" + "Certificado" + "." + "pdf");
+            Response.AddHeader("Content-Length", stream.Length.ToString());
+            //Response.ContentEncoding = System.Text.Encoding.Default;
+            Response.BinaryWrite(stream.ToArray());
+            Response.End();
+
         }
 
     }

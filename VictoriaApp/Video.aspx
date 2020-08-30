@@ -241,6 +241,22 @@
             </div>
         </div>
 
+    <div class="modal fade" id="modalCertificado" tabindex="-1" role="dialog" aria-labelledby="modalCreate-2" aria-hidden="true">
+            <div class="modal-dialog mt-3" role="document">
+                <div class="modal-content modal-border">
+                   
+                    <div class="modal-body">
+                        <h2 class="text-primary text-center">Certificado</h2>
+
+                        <div class="mt-4 text-center">                           
+                            <h3 class="text-primary">Felicitaciones completaste todos los módulos satisfactoriamente. </h3>
+                            <button type="button" runat="server" id="btnCertificado" onserverclick="btnCertificado_ServerClick" class="btn btn-primary btn-rounded btn-fw" onclick="SetTarget();">Descargar Certificado</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
 
@@ -251,6 +267,7 @@
         $(".btn-loading").hide();
         $("#modalCuestionario").on('hidden.bs.modal', () => $("html").css("overflow", "auto"));
         $("#modalCuestionario").on('shown.bs.modal', () => $("html").css("overflow", "hidden"));
+        $("#modalCertificado").on('hidden.bs.modal', () => location.href = "Principal.aspx");
 
         $("#modalVideo").on('hidden.bs.modal', function () {
             $("html").css("overflow", "auto");
@@ -310,6 +327,10 @@
             player.playVideo();
         }
 
+        function SetTarget() {
+            document.forms[0].target = "_blank";
+        }
+
         function ValidarCampos() {
             //console.log("entro");
             $(".btn-validar").hide();
@@ -355,7 +376,13 @@
                                 console.log(data)
                                 $(".num_intentos").val(parseInt($(".num_intentos").val()) + 1) ;
                                 if (data["aprobado"]) {
-                                    location.href = "Panel.aspx";
+                                    if (data["porcentaje"] > 99.90) {
+                                        $("#modalCuestionario").modal('hide');
+                                        $("#modalCertificado").modal("show");
+                                    } else {
+                                        location.href = "Panel.aspx";
+                                    }
+                                    
                                 } else {
                                    
                                     if ($(".num_intentos").val() > 2) {
