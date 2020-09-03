@@ -115,7 +115,7 @@ namespace VictoriaApp
             if (!txtVerificarPassword.Value.Trim().Equals(txtPassword.Value.Trim()))
                 errores.Add("Las contraseñas no son iguales <br/>");
 
-            if (string.IsNullOrEmpty(txtVerificarPassword.Value.Trim()))
+            if (!string.IsNullOrEmpty(txtVerificarPassword.Value.Trim()))
             {
                 if (txtVerificarPassword.Value.Trim().Length < 6)
                     errores.Add("Verificar contraseña debe tener minimo 6 caracteres <br/>");

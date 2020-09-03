@@ -97,5 +97,10 @@ namespace BLL
         {
             return oUsuarioDAL.ObtenerUsuarioPorId(idUsuario);
         }
+
+        public List<Usuario> ObtenerUsuarioAvance()
+        {
+            return oUsuarioDAL.ObtenerUsuarioAvance();
+        }
     }
 }

@@ -8,7 +8,7 @@
                     <div class="card-body" id="cardVideo">
 
                         <div class="miniatura-video">
-                            <img src="https://img.youtube.com/vi/<%=Session[" video "]%>/sd1.jpg" style="width:100%;" onClick="$('#modalVideo').modal('show')" id="img_video" class="cursor-pointer" />
+                            <img src="https://img.youtube.com/vi/<%=Session["video"]%>/sd1.jpg" style="width:100%;" onClick="$('#modalVideo').modal('show')" id="img_video" class="cursor-pointer" />
                         </div>
 
 

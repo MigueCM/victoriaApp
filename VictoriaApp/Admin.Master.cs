@@ -16,6 +16,10 @@ namespace VictoriaApp
         {
             if (!IsPostBack)
             {
+                if(Session["IdPerfil"] == null)
+                    Response.Redirect("Login.aspx");
+                if (Session["IdPerfil"].ToString() == "2")
+                    Response.Redirect("Principal.aspx");
                 CargarCntNotificaciones();
                 CargarNotificaciones();
             }

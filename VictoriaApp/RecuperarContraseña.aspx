@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/estilos.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/Victoria.ico" />
+  <link rel="shortcut icon" href="images/logo_reducido.png" />
 </head>
 
 <body>
@@ -78,7 +78,7 @@
             </div>
           </div>
             <div class="col-lg-6 login-half-bg d-flex flex-row banner-none animated fadeIn">
-            <p class="text-black font-weight-medium text-center flex-grow align-self-end">Copyright &copy; <%=DateTime.Now.Year.ToString()%>  Todos los derechos registrados.</p>
+            <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; <%=DateTime.Now.Year.ToString()%>  Todos los derechos registrados.</p>
           </div>
         </div>
       </div>

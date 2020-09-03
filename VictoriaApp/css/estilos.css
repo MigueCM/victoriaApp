@@ -108,7 +108,7 @@
 }
 
 .auth .login-half-bg {
-    height: 100vh;
+    /*height: 100vh;*/
 }
 
 .auth.auth-img-bg .auth-form-transparent{
@@ -178,7 +178,13 @@ span.h3 {
     right: 0;
 }
 
-.btn-cursor-default{
+.text-progressbar2 {
+    text-align: left;
+    padding-left: 1.5em;
+    font-size: 0.85rem;
+}
+
+.btn-cursor-default {
     cursor: default;
 }
 

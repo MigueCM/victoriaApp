@@ -48,7 +48,7 @@ namespace DAL
             SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
             SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
             _comando.Parameters.AddWithValue("@idPerfil", SqlDbType.Int).Value = usuario.IdPerfil;
-            _comando.Parameters.AddWithValue("@idUsuarioRegistro", SqlDbType.VarChar).Value = usuario.IdUsuarioEdicion;
+            _comando.Parameters.AddWithValue("@IdUsuarioEdicion", SqlDbType.VarChar).Value = usuario.IdUsuarioEdicion;
             _comando.Parameters.AddWithValue("@idUsuario", SqlDbType.VarChar).Value = usuario.IdUsuario;
             _comando.Parameters.AddWithValue("@fechaEdicion", SqlDbType.VarChar).Value = DateTime.Now;
             _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 2;
@@ -405,6 +405,47 @@ namespace DAL
             }
             return objUsuario;
         }
+
+        public List<Usuario> ObtenerUsuarioAvance()
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 15;
+            List<Usuario> lista = new List<Usuario>();
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    Usuario objUsuario = new Usuario();
+
+                    objUsuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
+                    objUsuario.User = dr["nombreUsuario"].ToString();
+
+                    objUsuario.Persona = new Persona();
+                    objUsuario.Persona.Id = Convert.ToInt32(dr["IdPersona"]);
+                    objUsuario.Persona.Nombre = dr["Nombre"].ToString();
+                    objUsuario.Persona.Apellidos = dr["Apellidos"].ToString();
+                    objUsuario.Persona.Dni = dr["Dni"].ToString();
+
+                    lista.Add(objUsuario);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return lista;
+        }
+
 
     }
 }
