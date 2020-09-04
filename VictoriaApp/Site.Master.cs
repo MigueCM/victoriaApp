@@ -24,8 +24,18 @@ namespace VictoriaApp
                 CargarWebinar(); 
                 CargarCntNotificaciones();
                 CargarNotificaciones();
+                MsjBienvenida();
             }
            
+        }
+
+        private void MsjBienvenida()
+        {
+            int estadomsj = UsuarioBLL.Instancia.ObtenerEstadoMsjBienvenida(Convert.ToInt32(Session["idUsuario"]));
+            if (estadomsj==0)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "msj", "showSwal('popup-bienvenida', 'Bienvenido', 'prueba', 'Principal.aspx', '')", true);
+            }
         }
 
         protected void btnImagen_Click(object sender, EventArgs e)

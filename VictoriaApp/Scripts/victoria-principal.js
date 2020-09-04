@@ -24,7 +24,15 @@ function enviarFormulario() {
         contentType: "application/json; charset=utf-8",
         success: function (response) {
             var result = JSON.parse(response.d);
-            showSwal(result.codAlerta, result.cabecera, result.body, result.url, result.id);
+            if (result.lErrores == true) {
+                        console.log('ok');
+                var id = '<%=divErrores.ClientID %>';
+                $(id).css('display', 'block');
+                        $('<%=divErrores.ClientID %>').innerHTML = result.fila;
+            }
+            else {
+                showSwal(result.codAlerta, result.cabecera, result.body, result.url, result.id);
+            }
         },
         error: function (e) {
             console.log(e)

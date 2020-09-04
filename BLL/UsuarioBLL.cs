@@ -102,5 +102,15 @@ namespace BLL
         {
             return oUsuarioDAL.ObtenerUsuarioAvance();
         }
+
+        public int ObtenerEstadoMsjBienvenida(int idUsuario)
+        {
+            return oUsuarioDAL.ObtenerEstadoMsjBienvenida(idUsuario);
+        }
+
+        public void ActualizarEstadoMsjBienvenida(int idUsuario)
+        {
+            oUsuarioDAL.ActualizarEstadoMsjBienvenida(idUsuario);
+        }
     }
 }

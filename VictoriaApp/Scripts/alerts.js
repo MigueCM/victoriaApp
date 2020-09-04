@@ -6,7 +6,7 @@
                  title: titulo,
                  text: mensaje,
                  icon: 'error',
-                 timer: 2000,
+                 timer: 4000,
                  button: false
              }).then(
                  function () { },
@@ -73,7 +73,45 @@
                 }
             )
 
-        } 
+         } 
+         else if (type === 'popup-bienvenida') {
+             swal({
+                 title: titulo,
+                 text: mensaje,
+                 //icon: 'success',
+                 timer: 4000,
+                 button: false
+             }).then(
+                 function () {
+                     //window.location.href = url;
+
+                     $.ajax({
+                         data: '',
+                         url: 'Principal.aspx/ActualizarMsjBienvenida',
+                         dataType: "json",
+                         type: 'POST',
+                         contentType: "application/json; charset=utf-8",
+                         beforeSend: function () {
+
+                         },
+                         success: function (response) {
+                             
+                         },
+                         error: function (e) {
+                             console.log(e)
+                         }
+                     });
+
+                 },
+                 // handling the promise rejection
+                 function (dismiss) {
+                     if (dismiss === 'timer') {
+                         console.log('I was closed by the timer')
+                     }
+                 }
+             )
+
+         } 
         else if (type === 'warning-message-and-cancel') {
             swal({
                 title: titulo,

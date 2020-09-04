@@ -201,6 +201,8 @@
                                                             <option>Facebook</option>
                                                             <option>Instagram</option>
                                                             <option>LinkedIn</option>
+                                                            <option>GCH</option>
+                                                            <option>COAR</option>
                                                             <option>Recomendacion de un amigo</option>
                                                             <option>Otros</option>
                                                         </select>

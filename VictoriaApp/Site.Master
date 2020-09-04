@@ -1,11 +1,12 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="VictoriaApp.SiteMaster" %>
 
-<%
-    
-%>
+<%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
 
 <!DOCTYPE html>
-<html lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="utf-8" />
 
 <head>
     <!-- Required meta tags -->
@@ -230,8 +231,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                         <asp:Button ID="btnImagen" runat="server" Text="Agregar" class="btn btn-primary font-weight-medium btnEnviar" OnClick="btnImagen_Click"/>
                                         
+                                         <asp:Button ID="btnImagen" runat="server" Text="Agregar" class="btn btn-primary font-weight-medium btnEnviar" OnClick="btnImagen_Click"/>
                                         <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                                     </div>
                                 </div>

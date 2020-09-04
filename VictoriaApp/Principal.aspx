@@ -1,6 +1,6 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Principal.aspx.cs" Inherits="VictoriaApp.Principal" %>
 
-    <%@ Register Assembly="DevExpress.XtraReports.v20.1.Web.WebForms, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraReports.Web" TagPrefix="dx" %>
+    <%@ Register Assembly="DevExpress.XtraReports.v20.1.Web.WebForms, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraReports.Web" TagPrefix="dx" %>
 
 
 
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="alert alert-fill-success" role="alert" id="dCertificado" runat="server" visible="false">
-                        <i class="mdi mdi-alert-circle"></i> Felicitaciones completaste todos los m�dulos satisfactoriamente.
+                        <i class="mdi mdi-alert-circle"></i> Felicitaciones completaste todos los módulos satisfactoriamente.
                         <button type="button" runat="server" id="btnCertificado" onserverclick="btnCertificado_ServerClick" class="btn btn-primary btn-rounded btn-fw" onclick="SetTarget();">Descargar Certificado</button>
                     </div>
                 </div>
@@ -136,20 +136,20 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="txtDescripcionPregunta">Descripci�n</label>
+                                    <label for="txtDescripcionPregunta">Descripción</label>
                                     <div class="input-group border-input">
                                         <textarea class="form-control form-control-sm border-color-principal txtDescripcion" id="txtDescripcionPregunta" placeholder="Descripcion" required></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="cbModulo">Modulo</label>
-                                    <select class="form-control form-control-sm border-color-principal pl-1 txtEnlace" id="cbModulo">
+                                    <select class="form-control form-control-sm border-color-principal pl-1 txtEnlace" id="cbModulo" required>
                                                 </select>
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="alert alert-danger text-center" role="alert" runat="server" visible="false" id="divErrores">
-                                        <asp:ListBox ID="lbErrores" runat="server" BackColor="Transparent" Width="100%" Enabled="false" CssClass="border-0 accordion text-danger overflow-hidden" Visible="false"></asp:ListBox>
+                                    <div class="alert alert-danger text-center lErroresF" role="alert" runat="server" style="display:none;" id="divErrores">
+                                        <%--<asp:ListBox ID="lbErrores" runat="server" BackColor="Transparent" Width="100%" Enabled="false" CssClass="border-0 accordion text-danger overflow-hidden" Visible="false"></asp:ListBox>--%>
                                     </div>
                                 </div>
 

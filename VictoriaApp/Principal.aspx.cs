@@ -133,6 +133,12 @@ namespace VictoriaApp
 
             }
         }
+        [WebMethod]
+        public static string ActualizarMsjBienvenida()
+        {
+            UsuarioBLL.Instancia.ActualizarEstadoMsjBienvenida(idUsuario);
+            return JsonConvert.SerializeObject(null);
+        }
 
         [WebMethod]
         public static string Votar(string votar)
@@ -156,30 +162,55 @@ namespace VictoriaApp
         public static string EnviarDatos(string titulo, string contenido, string idModulo)
         {
             string codAlerta, cabecera, body, url, id;
+            bool lErrores = false;
+            StringBuilder innerHtml = new StringBuilder();
+            List<string> errores = new List<string>();
+            errores.Add("SOLUCIONE LOS SIGUIENTES ERRORES: <br/>");
             Foro foro = new Foro();
             foro.IdUsuario = idUsuario;
-            foro.Titulo = titulo;
+            if(!string.IsNullOrEmpty(titulo))
+                foro.Titulo = titulo;
+            else
+                errores.Add("Ingrese un título para su pregunta <br/>");
+
             foro.Contenido = contenido;
-            foro.IdModulo = Convert.ToInt32(idModulo);
-            if(ForoBLL.Instancia.RegistrarPregunta(foro))
+            if (!string.IsNullOrEmpty(idModulo) && Convert.ToInt32(idModulo) > 0)
+                foro.IdModulo = Convert.ToInt32(idModulo);
+            else
+                errores.Add("Seleccione el módulo del que deseas preguntar <br/>");
+            string fila = null;
+            if (errores.Count > 1)
             {
-                codAlerta = "success-message";
-                cabecera = "Registro Exitoso";
-                body = "Pregunta registrada correctamente";
-                url = "Principal.aspx";
-                id = "0";
-                return JsonConvert.SerializeObject(new { codAlerta, cabecera, body, url, id});
+                foreach (var item in errores)
+                {
+                    fila += $"{item}";
+                }
+                lErrores = true;
+                return JsonConvert.SerializeObject(new { lErrores, fila });
             }
             else
             {
-                codAlerta = "danger-error";
-                cabecera = "Error";
-                body = "Error al registrar su pregunta intentelo más tarde";
-                url = "Principal.aspx";
-                id = "0";
-                return JsonConvert.SerializeObject(new { codAlerta, cabecera, body, url, id });
+                if (ForoBLL.Instancia.RegistrarPregunta(foro))
+                {
+                    codAlerta = "success-message";
+                    cabecera = "Registro Exitoso";
+                    body = "Pregunta registrada correctamente";
+                    url = "Principal.aspx";
+                    id = "0";
+                    lErrores = false;
+                    return JsonConvert.SerializeObject(new { codAlerta, cabecera, body, url, id });
+                }
+                else
+                {
+                    codAlerta = "danger-error";
+                    cabecera = "Error";
+                    body = "Error al registrar su pregunta intentelo más tarde";
+                    url = "Principal.aspx";
+                    id = "0";
+                    lErrores = false;
+                    return JsonConvert.SerializeObject(new { codAlerta, cabecera, body, url, id });
+                }
             }
-                
         }
 
         private void Certificado()

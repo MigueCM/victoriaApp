@@ -446,6 +446,57 @@ namespace DAL
             return lista;
         }
 
+        public int ObtenerEstadoMsjBienvenida(int idUsuario)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@idUsuario", SqlDbType.Int).Value = idUsuario;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 16;
+            int estado = 0;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
 
+                SqlDataReader dr = _comando.ExecuteReader();
+                if (dr.Read())
+                {
+                    if(dr["Bienvenida"] != DBNull.Value)
+                        estado = Convert.ToInt32(dr["Bienvenida"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return estado;
+        }
+
+        public void ActualizarEstadoMsjBienvenida(int idUsuario)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@idUsuario", SqlDbType.Int).Value = idUsuario;
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 17;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                _comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+        }
     }
 }
