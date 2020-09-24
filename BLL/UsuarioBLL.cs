@@ -112,5 +112,10 @@ namespace BLL
         {
             oUsuarioDAL.ActualizarEstadoMsjBienvenida(idUsuario);
         }
+
+        public List<UsuarioCapacitacion> ObtenerUsuarioYModulo()
+        {
+            return oUsuarioDAL.ObtenerUsuarioYModulo();
+        }
     }
 }

@@ -429,10 +429,48 @@ namespace DAL
                     objUsuario.Persona.Id = Convert.ToInt32(dr["IdPersona"]);
                     objUsuario.Persona.Nombre = dr["Nombre"].ToString();
                     objUsuario.Persona.Apellidos = dr["Apellidos"].ToString();
-                    objUsuario.Persona.Dni = dr["Dni"].ToString();
-
+                    objUsuario.FechaRegistro = Convert.ToDateTime(dr["FechaRegUsu"].ToString());
+                    if (dr["FechaSesion"] != DBNull.Value)
+                        objUsuario.FechaSesion = Convert.ToDateTime(dr["FechaSesion"].ToString()).ToString("dd/MM/yyyy HH:mm");
+                    else
+                        objUsuario.FechaSesion = "No ha iniciado sesión";
                     lista.Add(objUsuario);
 
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return lista;
+        }
+
+        public List<UsuarioCapacitacion> ObtenerUsuarioYModulo()
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 18;
+            List<UsuarioCapacitacion> lista = new List<UsuarioCapacitacion>();
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    UsuarioCapacitacion objUsuario = new UsuarioCapacitacion();
+                    objUsuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
+                    objUsuario.Nombre = dr["Nombre"].ToString()+" "+ dr["Apellidos"].ToString();
+                    objUsuario.ModuloCapacitacion = new ModuloCapacitacion();
+                    objUsuario.ModuloCapacitacion.Nombre = dr["NombreMod"].ToString();
+                    objUsuario.Nota = Convert.ToInt32(dr["Nota"]);
+                    objUsuario.Calificacion = Convert.ToInt32(dr["Calificacion"]);
+                    lista.Add(objUsuario);
                 }
             }
             catch (Exception ex)

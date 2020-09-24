@@ -31,5 +31,6 @@ namespace EL
         public Perfil Perfil { get => perfil; set => perfil = value; }
         public int IdUsuarioEdicion { get => idUsuarioEdicion; set => idUsuarioEdicion = value; }
         public DateTime FechaEdicion { get => fechaEdicion; set => fechaEdicion = value; }
+        public string FechaSesion { get; set; }
     }
 }

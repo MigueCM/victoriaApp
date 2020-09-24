@@ -18,6 +18,7 @@ namespace VictoriaApp
             if (!Page.IsPostBack)
             {
                 CargasUsuarios();
+                CargasUsuarios2();
             }
         }
 
@@ -36,7 +37,7 @@ namespace VictoriaApp
                 fila += $"<td>{i++}</td>";
                 fila += $"<td>{item.Persona.Nombre} {item.Persona.Apellidos}</td>";
                 //fila += $"<td>{item.Perfil.Nombre}</td>";
-                fila += $"<td>{item.Persona.Dni}</td>";
+                fila += $"<td>{item.FechaRegistro}</td>";
                 fila += $"<td>";
                 fila += $"<div class=\"progress progress-xl mt-2 \" style='height:23px;'>";
                 fila += $"<div class=\"progress-bar bg-primary\" role=\"progressbar\" style=\"width:{porcentaje}%\" aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\">";
@@ -44,6 +45,7 @@ namespace VictoriaApp
                 fila += $"</div>";
                 fila += $"</div>";
                 fila += $"</td>";
+                fila += $"<td>{item.FechaSesion}</td>";
                 fila += "</tr>";
 
                 innerHtml.AppendLine(fila);
@@ -55,6 +57,33 @@ namespace VictoriaApp
 
         }
 
+
+        private void CargasUsuarios2()
+        {
+
+            List<UsuarioCapacitacion> lista = UsuarioBLL.Instancia.ObtenerUsuarioYModulo();
+
+            StringBuilder innerHtml = new StringBuilder();
+
+            int i = 1;
+            foreach (var item in lista)
+            {
+                string fila = "<tr>";
+                fila += $"<td>{i++}</td>";
+                fila += $"<td>{item.Nombre}</td>";
+                fila += $"<td>{item.ModuloCapacitacion.Nombre}</td>";
+                fila += $"<td>{item.Nota}</td>";
+                fila += $"<td>{item.Calificacion}</td>";
+                fila += "</tr>";
+
+                innerHtml.AppendLine(fila);
+
+            }
+
+            tbody2.InnerHtml = innerHtml.ToString();
+
+
+        }
 
     }
 }
