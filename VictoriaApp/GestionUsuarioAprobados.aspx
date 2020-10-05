@@ -17,7 +17,7 @@
                                     Registrar Usuario
                                 </button>--%>
 
-                                   
+                                <asp:Button ID="btnExportar" runat="server" Text="Button" OnClick="btnExportar_Click" />   
                                 
                             </div>
                         </div>

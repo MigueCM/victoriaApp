@@ -117,5 +117,10 @@ namespace BLL
         {
             return oUsuarioDAL.ObtenerUsuarioYModulo();
         }
+
+        public List<Usuario> ObtenerUsuariosExcel()
+        {
+            return oUsuarioDAL.ObtenerUsuariosExcel();
+        }
     }
 }

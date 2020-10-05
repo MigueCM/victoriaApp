@@ -2,6 +2,7 @@
 using EL;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -49,5 +50,15 @@ namespace VictoriaApp
 
         }
 
+        protected void btnExportar_Click(object sender, EventArgs e)
+        {
+            string ruta = @"~/archivos/plantilla.xlsx";
+
+            if (File.Exists(ruta))
+            {
+
+            }
+
+        }
     }
 }

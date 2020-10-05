@@ -362,6 +362,56 @@ namespace DAL
 
         }
 
+        public List<Usuario> ObtenerUsuariosExcel()
+        {
+
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Usuario", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 19;
+            List<Usuario> lista = new List<Usuario>();
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    Usuario objUsuario = new Usuario();
+
+                    
+                    objUsuario.User = dr["User"].ToString();
+                    objUsuario.Porcentaje = Convert.ToInt32(dr["porcentaje"]);
+                    objUsuario.FechaRegistro = Convert.ToDateTime(dr["fechaRegistro"]);
+                    objUsuario.FechaSesion = dr["FechaSesion"].ToString();
+
+                    objUsuario.Persona = new Persona();
+                    objUsuario.Persona.Nombre = dr["Nombre"].ToString();
+                    objUsuario.Persona.Apellidos = dr["Apellidos"].ToString();
+                    objUsuario.Persona.Dni = dr["Dni"].ToString();
+                    objUsuario.Persona.Celular = dr["Celular"].ToString();
+                    objUsuario.Persona.Ciudad = dr["Distrito"].ToString();
+                    objUsuario.Persona.Departamento = dr["Departamento"].ToString();
+                    objUsuario.Persona.Sexo = dr["Sexo"].ToString();
+                    objUsuario.Persona.Enterar = dr["Enteraste"].ToString();
+                    
+
+                    lista.Add(objUsuario);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return lista;
+
+        }
+
         public Usuario ObtenerUsuarioPorId(int idUsuario)
         {
             SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
@@ -424,6 +474,7 @@ namespace DAL
 
                     objUsuario.IdUsuario = Convert.ToInt32(dr["idUsuario"]);
                     objUsuario.User = dr["nombreUsuario"].ToString();
+                    objUsuario.Porcentaje = Convert.ToInt32(dr["porcentaje"]);
 
                     objUsuario.Persona = new Persona();
                     objUsuario.Persona.Id = Convert.ToInt32(dr["IdPersona"]);

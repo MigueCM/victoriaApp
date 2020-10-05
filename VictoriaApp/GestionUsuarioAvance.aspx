@@ -16,9 +16,10 @@
                                 <%--<button id="btnNuevo" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate" OnClick="limpiar()">
                                     Registrar Usuario
                                 </button>--%>
+                                <form runat="server">
 
-                                   
-                                
+                                    <asp:Button ID="btnExportar" class="btn btn-primary" runat="server" Text="Exportar" OnClick="btnExportar_Click" /> 
+                                </form>
                             </div>
                         </div>
                     </div>
