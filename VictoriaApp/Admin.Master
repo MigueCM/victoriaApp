@@ -37,7 +37,7 @@
         </asp:ContentPlaceHolder>
     </head>
     <body class="main-panel">
-        <div class="loader">
+        <div id="loaderbg" class="loader">
             <div>
                 <div class="loader-animation">
                 </div>

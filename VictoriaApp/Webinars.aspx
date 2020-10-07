@@ -28,6 +28,7 @@
                                         <th class="search">Autor</th>
                                         <th class="search">Fecha</th>
                                         <th>Imagen</th>
+                                        <th>Enviar Email</th>
                                         <th>Opciones</th>
                                     </tr>
                                     </thead>
@@ -281,6 +282,65 @@
                         },
                     }).done(function (html) {
                         swal("El webinar ha sido eliminado correctamente", {
+                            icon: "success",
+                            timer: 2000
+                        });
+                        location.href = "Webinars.aspx";
+                    });
+
+                } else {
+                    swal("Operación cancelada");
+                }
+            });
+        }
+        function ShowDiv() {
+            setTimeout(function () {
+                $('.loader').fadeOut();
+            }, 1500);
+        } 
+        function enviarCorreos(id) {
+
+            swal({
+                title: "¿Desea enviar los correos?",
+                text: "Esta acción no se podrá revertir",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3f51b5',
+                cancelButtonColor: '#ff4081',
+                confirmButtonText: 'Great ',
+                buttons: {
+
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    },
+                    cancel: {
+                        text: "Cancelar",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true,
+                    }
+                }
+            }).then((willDelete) => {
+                if (willDelete) {
+                   
+                    var parametros = "{'id': '" + id + "'}";
+
+                    $.ajax({
+                        data: parametros,
+                        url: 'Webinars.aspx/EnviarCorreoWeb',
+                        dataType: "json",
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function () {
+
+                        },
+                    }).done(function (html) {
+                        swal("Los correos se han enviado correctamente", {
                             icon: "success",
                             timer: 2000
                         });

@@ -43,5 +43,14 @@ namespace BLL
             return oWebinarDAL.ObtenerNotificacion(idWebinar, idUsuario);
         }
 
+        public int ObtenerCntWebinarsNtf()
+        {
+            return oWebinarDAL.ObtenerCntWebinarsNtf();
+        }
+
+        public List<Webinar> ObtenerNtfWebinarText()
+        {
+            return oWebinarDAL.ObtenerNtfWebinarText();
+        }
     }
 }

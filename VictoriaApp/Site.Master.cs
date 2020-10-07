@@ -164,12 +164,13 @@ namespace VictoriaApp
         private void CargarCntNotificaciones()
         {
             int valor = ForoBLL.Instancia.ObtenerCntNotificaciones(Convert.ToInt32(Session["IdUsuario"].ToString()));
+            int valor2 = WebinarNotificacionBLL.Instancia.ObtenerCntWebinarsNtf();
             StringBuilder innerHtml = new StringBuilder();
 
             string fila = null;
-            if (valor>0)
+            if (valor+valor2>0)
             {
-                fila = $"<span class=\"count bg-success\">{valor}</span>";
+                fila = $"<span class=\"count bg-success\">{valor + valor2}</span>";
             }
             
                 innerHtml.AppendLine(fila);
@@ -180,11 +181,12 @@ namespace VictoriaApp
         private void CargarNotificaciones()
         {
             List<Foro> listaNotificaciones = ForoBLL.Instancia.ObtenerNotificaciones(Convert.ToInt32(Session["IdUsuario"].ToString()));
+            List<Webinar> listaNotificacionesWeb = WebinarNotificacionBLL.Instancia.ObtenerNtfWebinarText();
             StringBuilder innerHtml = new StringBuilder();
-
+            string fila = "";
             foreach (var item in listaNotificaciones)
             {
-                string fila =  $"<a class=\"dropdown-item preview-item\" id=\"{item.IdForo}\" onclick=\"mylinkfunction({item.IdForo})\">";
+                fila +=  $"<a class=\"dropdown-item preview-item\" id=\"{item.IdForo}\" onclick=\"mylinkfunction({item.IdForo})\">";
                 fila += $"<div class=\"preview-thumbnail\">";
                 fila += $"<div class=\"preview-icon bg-warning\">";
                 fila += "<i class=\"mdi mdi-information mx-0\"></i>";
@@ -197,10 +199,30 @@ namespace VictoriaApp
                 fila += "</p>";
                 fila += "</div>";
                 fila += "</a>";
-
-                innerHtml.AppendLine(fila);
+                
+                
             }
-
+            if (listaNotificacionesWeb.Count > 0)
+            {
+                foreach (var item2 in listaNotificacionesWeb)
+                {
+                    fila += $"<a class=\"dropdown-item preview-item\" id=\"{item2.IdWebinar}\" onclick=\"mylinkfunction({item2.IdWebinar})\">";
+                    fila += $"<div class=\"preview-thumbnail\">";
+                    fila += $"<div class=\"preview-icon bg-warning\">";
+                    fila += "<i class=\"mdi mdi-information mx-0\"></i>";
+                    fila += $"</div>";
+                    fila += $"</div>";
+                    fila += $"<div class=\"preview-item-content\">";
+                    fila += $"<h6 class=\"preview-subject font-weight-normal\">{item2.Titulo}</h6>";
+                    fila += "<p class=\"font-weight-light small-text mb-0\">";
+                    fila += "Tenemos nuevos webinars para ti";
+                    fila += "</p>";
+                    fila += "</div>";
+                    fila += "</a>";
+                }
+                //innerHtml.AppendLine(fila);
+            }
+            innerHtml.AppendLine(fila);
             Session["Notificaciones"] = HttpUtility.HtmlEncode(innerHtml.ToString());
         }
     }

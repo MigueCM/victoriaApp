@@ -193,5 +193,37 @@ namespace DAL
             return valor;
         }
 
+        public List<string> ObtenerCorreos()
+        {
+
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Webinar", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 8;
+            List<string> lista = new List<string>();
+            string email = null;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    email = dr["email"].ToString();
+                    lista.Add(email);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return lista;
+
+        }
     }
 }

@@ -98,7 +98,7 @@ namespace VictoriaApp
                         }
                         TimeSpan timeRpt = DateTime.Now - foroRespuesta.FechaRespuesta;
                         fila += "<div class=\"d-flex align-items-start profile-feed-item\">";
-                        fila += "<div class=\"row offset-1\">";
+                        //fila += "<div class=\"row offset-1\">";
                         fila += $"<img src=\"{imagenRpt}\" alt=\"profile\" class=\"img-sm rounded-circle\"/>";
                         fila += $"<div class=\"ml-4\">";
                         fila += $"<h6>";
@@ -120,7 +120,7 @@ namespace VictoriaApp
                         //fila += $"</span>";
                         //fila += $"</p>";
                         fila += $"</div>";
-                        fila += $"</div>";
+                        //fila += $"</div>";
                         fila += $"</div>";
                     }
                     innerHtml.AppendLine(fila);

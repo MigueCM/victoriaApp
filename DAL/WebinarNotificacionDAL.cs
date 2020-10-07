@@ -73,5 +73,95 @@ namespace DAL
 
         }
 
+
+        public int ObtenerCntWebinarsNtf()
+        {
+
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Webinar", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@tipo", SqlDbType.Int).Value = 6;
+            int cantidad = 0;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                if (dr.Read())
+                {
+                    cantidad = Convert.ToInt32(dr["Cantidad"]);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return cantidad;
+
+        }
+
+        public List<Webinar> ObtenerNtfWebinarText()
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Webinar", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 7;
+            List<Webinar> listaNoti = new List<Webinar>();
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                SqlDataReader dr = _comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    Webinar foro = new Webinar();
+                    foro.IdWebinar = Convert.ToInt32(dr["Id"].ToString());
+                    foro.Titulo = dr["Titulo"].ToString();
+                    listaNoti.Add(foro);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return listaNoti;
+        }
+
+        public bool MarcarLeidos(int idUsuario)
+        {
+            SqlConnection _conexion = new SqlConnection(Conexion.CadenaConexion);
+            SqlCommand _comando = new SqlCommand("PA_Webinar", _conexion) { CommandType = CommandType.StoredProcedure };
+            _comando.Parameters.AddWithValue("@IdUsuario", SqlDbType.Int).Value = idUsuario;
+            _comando.Parameters.AddWithValue("@Tipo", SqlDbType.Int).Value = 10;
+            bool exito = false;
+            try
+            {
+                if (_conexion.State == ConnectionState.Closed)
+                    _conexion.Open();
+
+                if (_comando.ExecuteNonQuery() > 0)
+                {
+                    exito = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return exito;
+        }
     }
 }

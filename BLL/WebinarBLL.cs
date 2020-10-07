@@ -57,6 +57,9 @@ namespace BLL
             return oWebinarDAL.EliminarWebinar(idWebinar);
         }
 
-
+        public List<string> ObtenerCorreos()
+        {
+            return oWebinarDAL.ObtenerCorreos();
+        }
     }
 }

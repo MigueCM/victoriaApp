@@ -5,8 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -53,7 +56,8 @@ namespace VictoriaApp
                 fila += $"<td>{item.Autor}</td>";
                 fila += $"<td>{fecha}</td>";
                 fila += $"<td><img class='img-table' src='{imagen}' ></td>";
-                fila += $"<td><button class=\"btn btn-outline-primary w-100 mb-1\" onClick=\"cargarData({item.IdWebinar});\">Editar</button>";              
+                fila += $"<td><button class=\"btn btn-outline-primary w-100 mb-1\" onClick=\"enviarCorreos({item.IdWebinar});\">Enviar Email</button></td>";
+                fila += $"<td><button class=\"btn btn-outline-primary w-100 mb-1\" onClick=\"cargarData({item.IdWebinar});\">Editar</button>";
                 fila += $"<button class=\"btn btn-outline-danger w-100 \" onClick=\"eliminar({item.IdWebinar});\">Eliminar</button></td>";
                 fila += "</tr>";
 
@@ -218,6 +222,55 @@ namespace VictoriaApp
             return WebinarBLL.Instancia.EliminarWebinar(id);
         }
 
+
+        [WebMethod]
+        public static bool EnviarCorreoWeb(int id)
+        {
+            List<string> listaCorreos = new List<string>();
+            listaCorreos = WebinarBLL.Instancia.ObtenerCorreos();
+            Webinar objWebinar = WebinarBLL.Instancia.ObtenerWebinarPorId(id);
+            //ScriptManager.RegisterStartupScript((Page)(HttpContext.Current.Handler), typeof(Page), "show", "ShowDiv();", true);
+            bool valor = true;
+            foreach (var item in listaCorreos)
+            {
+                valor = enviaremail(item, objWebinar.Titulo, objWebinar.Descripcion, objWebinar.Imagen);//Path.ChangeExtension(objWebinar.Imagen, "jpg"));
+            }
+            return valor;
+            //return WebinarBLL.Instancia.EliminarWebinar(id);
+        }
+
+
+        protected static bool enviaremail(string correo, string titulo, string contenido, string img)
+        {
+            try
+            {
+                SmtpClient sc = new SmtpClient("smtp.gmail.com");
+                sc.UseDefaultCredentials = false;
+                sc.Credentials = new System.Net.NetworkCredential("aulavirtualeducacccion@gmail.com", "Danper20203%");
+                sc.EnableSsl = true;
+                sc.Port = 587;
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("inscripciones@aulavirtual-juntoscrecemos.pe", "Victoria");
+                mail.To.Add(new MailAddress(correo));
+                mail.Subject = "Proximo Webinar";
+                mail.To.Add(correo);
+                string mailbody = "<br/><html><body><div style='text-align:center'><h3>" + titulo + "</h3><p>" + contenido + "</p><img style='width: 500px; height:500px;' src=\"cid:Email\"></div></body></html>";
+                AlternateView AlternateView_Html = AlternateView.CreateAlternateViewFromString(mailbody, null, MediaTypeNames.Text.Html);
+                LinkedResource Picture = new LinkedResource(HostingEnvironment.MapPath(@"~/images/webinars/" + img), MediaTypeNames.Image.Jpeg);
+                Picture.ContentId = "Email";
+                AlternateView_Html.LinkedResources.Add(Picture);
+                mail.AlternateViews.Add(AlternateView_Html);
+                mail.Body = mailbody;
+                sc.Send(mail);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+            
+        }
     }
 
 
