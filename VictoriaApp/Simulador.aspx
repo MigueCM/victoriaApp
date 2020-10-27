@@ -11,26 +11,49 @@
 <body style="background: url('images/Simulador/FONDO-09.jpg');
  background-repeat: no-repeat; background-size: cover;">
     <form id="form1" runat="server">
-        <div class="container-fluid">
+        
+       
+        <div class="container-fluid" style="margin-top: 8em">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     
-                    <div style="height:90vh;">
-                        <button type="button" class="btn btn-primary btn-options" style="position:absolute; left:50%; bottom:0; ">HOMBRE</button>
-                        <img src="images/Simulador/HOMBRE-INTRO-unscreen%20(1)%20(1).gif" style="position:absolute; left:50%; bottom:0; height:60vh;"/>
+                    <div style="height: 60vh; text-align:center">                        
+                        <img src="images/Simulador/HOMBRE-INTRO-unscreen%20(1)%20(1).gif" style="height:100%"/>
+                        <%--<img src="images/Simulador/HOMBRE-INTRO-unscreen%20(1)%20(1).gif" style="position:absolute; left:50%; bottom:0; height:60vh;"/>--%>
+                    </div>
+
+                    
+                    <div style="text-align:center;" >
+                        <button type="button" class="btn btn-primary btn-options" style="
+    padding-left: 25px;
+    padding-right: 25px;
+">HOMBRE</button>
                     </div>
                     
                 </div>
-                 <div class="col-md-6">
-                     <button type="button" class="btn btn-primary btn-options">MUJER</button>
-                     <div style="height:90vh;">
-                         <img src="images/Simulador/MUJER-INTRO-unscreen%20(1).gif" style=" position:absolute; bottom:0; height:60vh;"/>
+                <div class="col-xl-6">
+                    
+                    <div style="height: 60vh; text-align:center">                        
+                        <img src="images/Simulador/MUJER-INTRO-unscreen%20(1).gif" style="height:100%"/>
+                        <%--<img src="images/Simulador/HOMBRE-INTRO-unscreen%20(1)%20(1).gif" style="position:absolute; left:50%; bottom:0; height:60vh;"/>--%>
+                    </div>
+
+                    <div style="text-align:center;" >
+                        <button type="button" class="btn btn-primary btn-options" 
+    style="
+    padding-left: 25px;
+    padding-right: 25px;
+"
+>MUJER</button>
                     </div>
                     
                 </div>
                 
             </div>
-            </div>
+
+        </div>
+        
+        
     </form>
 </body>
 </html>
