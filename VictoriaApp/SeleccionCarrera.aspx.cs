@@ -11,7 +11,16 @@ namespace VictoriaApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Page.Request.Params["__EVENTTARGET"] == "miPostBack")
+            {
+                CarreraSeleccionada(Page.Request.Params["__EVENTARGUMENT"].ToString());
+            }
+        }
 
+        private void CarreraSeleccionada(string parametros)
+        {
+            Session["IdCarreraSeleccionada"] = parametros;
+            Response.Redirect("DescripcionCarreras.aspx");
         }
     }
 }

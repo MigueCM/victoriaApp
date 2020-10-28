@@ -37,26 +37,27 @@
 </head>
 <body style="background: url('images/Simulador/FONDO-09.jpg');
  background-repeat: no-repeat; background-size: cover;">
-
+    
     <h2 style="text-align:center; margin-top:2em; color:white">Selección de Carreras</h2>
 
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div id="corrousel" style="margin-top: 2em; padding: 0 15em;">
-            <div style="display:inline">
+            <a style="display:inline" id="1" onclick="clickaction(this)">
                  <h3 class="contenido">Carrera 1</h3> 
-            </div>
-            <div style="display:inline">
+            </a>
+            <a style="display:inline" id="2" onclick="clickaction(this)">
                   <h3 class="contenido">Carrera 2</h3> 
-            </div>
-            <div style="display:inline">
+            </a>
+            <a style="display:inline" id="3" onclick="clickaction(this)">
                  <h3 class="contenido">Carrera 3</h3> 
-            </div>
-            <div style="display:inline">
+            </a>
+            <a style="display:inline" id="4" onclick="clickaction(this)">
                   <h3 class="contenido">Carrera 4</h3> 
-            </div>
-            <div style="display:inline">
+            </a>
+            <a style="display:inline" id="5" onclick="clickaction(this)">
                  <h3 class="contenido">Carrera 5</h3> 
-            </div>
+            </a>
         </div>
     </form>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -69,7 +70,25 @@
               slidesToShow: 3,
               slidesToScroll: 3
             });
-
+        function clickaction(b) {
+            // Accion por defecto para Buttons;
+            //console.log(b.id);
+            __doPostBack('miPostBack', b.id);
+            //var parametros = "{'id': '" + b.id + "'}";
+            //$.ajax({
+            //    data: parametros,
+            //    url: 'SeleccionCarrera.aspx/Carrera',
+            //    dataType: "json",
+            //    type: 'POST',
+            //    contentType: "application/json; charset=utf-8",
+            //    success: function (response) {
+            //        l
+            //    },
+            //    error: function (e) {
+            //        console.log(e)
+            //    }
+            //});
+            }
     </script>
 </body>
 </html>

@@ -177,7 +177,7 @@
                             </div>--%>
 
                             <div class="col-12" style="margin-bottom: 1rem;">
-                                <button type="button" class="btn btn-block btn-primary btn-options" onclick="location.href='landingPage.aspx'" >SIMULADOR</button>
+                                <button type="button" class="btn btn-block btn-primary btn-options" onclick="location.href='Simulador.aspx'" >SIMULADOR</button>
                             </div>
 
                             <div class="col-12" >
