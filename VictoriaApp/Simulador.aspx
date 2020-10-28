@@ -24,7 +24,7 @@
 
                     
                     <div style="text-align:center;" >
-                        <button type="button" class="btn btn-primary btn-options" style="
+                        <button onclick="location.href='SeleccionCarrera.aspx'" type="button" class="btn btn-primary btn-options" style="
     padding-left: 25px;
     padding-right: 25px;
 ">HOMBRE</button>
@@ -39,7 +39,7 @@
                     </div>
 
                     <div style="text-align:center;" >
-                        <button type="button" class="btn btn-primary btn-options" 
+                        <button type="button" onclick="location.href='SeleccionCarrera.aspx'" class="btn btn-primary btn-options" 
     style="
     padding-left: 25px;
     padding-right: 25px;
