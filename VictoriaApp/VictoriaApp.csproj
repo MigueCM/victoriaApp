@@ -202,12 +202,14 @@
     <Content Include="images\logo_victoria2.png" />
     <Content Include="images\Simulador.png" />
     <Content Include="images\Simulador\AERONÁUTICA.gif" />
-    <Content Include="images\Simulador\atras-simulador.png" />
+
     <Content Include="images\Simulador\botonAtras.png" />
     <Content Include="images\Simulador\carreras\aeronautica\puerta.gif" />
     <Content Include="images\Simulador\carreras\aeronautica\titulo.png" />
     <Content Include="images\Simulador\FONDO-09.jpg" />
     <Content Include="images\Simulador\fondoCarrera.png" />
+
+    <Content Include="images\Simulador\atras-simulador.png" />
     <Content Include="images\Simulador\FONDO.png" />
     <Content Include="images\Simulador\HOMBRE INTRO.gif" />
     <Content Include="images\Simulador\HOMBRE-INTRO-unscreen %281%29 %281%29.gif" />
@@ -215,11 +217,14 @@
     <Content Include="images\Simulador\INTRO.jpg" />
     <Content Include="images\Simulador\MUJER-INTRO-unscreen %281%29.gif" />
     <Content Include="images\Simulador\MUJER-INTRO-unscreen.gif" />
-    <Content Include="images\Simulador\musica-simulador.png" />
-    <Content Include="images\Simulador\victoria-simulador.png" />
+
     <Content Include="images\Simulador\slickAtras.png" />
     <Content Include="images\Simulador\slickSiguiente.png" />
     <Content Include="images\Simulador\tituloSimuladorCarrera.png" />
+
+    <Content Include="images\Simulador\musica-simulador.png" />
+    <Content Include="images\Simulador\victoria-simulador.png" />
+
     <Content Include="images\sprites\jsgrid-icons.png" />
     <Content Include="images\Victoria.ico" />
     <Content Include="images\video.png" />
