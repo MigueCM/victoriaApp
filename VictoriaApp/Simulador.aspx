@@ -15,11 +15,11 @@
     <form id="form1" runat="server">
         <div class="container-fluid d-flex flex-column h-100" style="margin-top: 0.5em">
             <div class="row fixed-top">
-                <div class="col-sm-5">
-                    <img class="pointer-event" src="images/Simulador/atras-simulador.png" style="height:90px; width:100px;"  onclick="location.href='Principal.aspx'"/>       
+                <div class="col-sm-5" >
+                    <img class="pointer-event" src="images/Simulador/atras-simulador.png" style="height:90px; width:100px;" onclick="javascript:history.back();"/>       
                 </div>
-            </div>
-            <div class="row fixed-top" style="margin-top: 2em;">
+            <%--</div>
+            <div class="row fixed-top" style="margin-top: 2em;">--%>
                 <div class="col-sm-12 center-block text-center">
                     <img src="images/Simulador/victoria-simulador.png" style="height:200px;" />                    
                 </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="row fixed-bottom" style="margin-bottom: 5em;">
                  <div class="col-sm-12 center-block text-center" >
-                    <button type="button"  onclick="location.href='SeleccionCarrera.aspx'" style="background-color:white; color:purple; font-size:30px; height:80px; width:300px; font-weight:bold; border-radius:10px;">EMPEZAR</button>
+                    <button type="button"  onclick="location.href='Personaje.aspx'" style="background-color:white; color:purple; font-size:30px; height:80px; width:300px; font-weight:bold; border-radius:10px;">EMPEZAR</button>
                 </div>
             </div>
             <div class="row fixed-bottom" style="margin-bottom: 1em;">
