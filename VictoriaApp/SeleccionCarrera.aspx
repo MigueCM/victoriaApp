@@ -5,11 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link href="https://kenwheeler.github.io/slick/slick/slick-theme.css" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <style>
 
         .contenido{
@@ -70,7 +71,7 @@
 
         @media (max-width: 600px) {
             .puerta-titulo img, .puerta-carrera img {
-                width: 100%;
+                width: 80%;
             }
 
             .btnAtras img{
@@ -89,12 +90,11 @@
 
 
         }
-        
 
     </style>
 </head>
 <body style="background: url('images/Simulador/fondoCarrera.png');
- background-repeat: no-repeat; background-size: cover; min-height:100vh;">
+ background-repeat: no-repeat; background-size: cover; max-height:100vh;">
     
     <%--<h2 style="text-align:center; margin-top:2em; color:white">Selección de Carreras</h2>--%>
     <div class="container-fluid pt-4">

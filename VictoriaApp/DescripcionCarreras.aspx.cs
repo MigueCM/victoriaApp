@@ -18,26 +18,26 @@ namespace VictoriaApp
             {
                 if (Session["IdCarreraSeleccionada"] != null)
                 {
-                    switch (Convert.ToInt32(Session["IdCarreraSeleccionada"].ToString()))
-                    {
-                        case 1:
-                            carreraTitulo.InnerText = "Carrera 1";
-                            break;
-                        case 2:
-                            carreraTitulo.InnerText = "Carrera 2";
-                            break;
-                        case 3:
-                            carreraTitulo.InnerText = "Carrera 3";
-                            break;
-                        case 4:
-                            carreraTitulo.InnerText = "Carrera 4";
-                            break;
-                        case 5:
-                            carreraTitulo.InnerText = "Carrera 5";
-                            break;
-                        default:
-                            break;
-                    }
+                    //switch (Convert.ToInt32(Session["IdCarreraSeleccionada"].ToString()))
+                    //{
+                    //    case 1:
+                    //        carreraTitulo.InnerText = "Carrera 1";
+                    //        break;
+                    //    case 2:
+                    //        carreraTitulo.InnerText = "Carrera 2";
+                    //        break;
+                    //    case 3:
+                    //        carreraTitulo.InnerText = "Carrera 3";
+                    //        break;
+                    //    case 4:
+                    //        carreraTitulo.InnerText = "Carrera 4";
+                    //        break;
+                    //    case 5:
+                    //        carreraTitulo.InnerText = "Carrera 5";
+                    //        break;
+                    //    default:
+                    //        break;
+                    //}
                     Cargardescripcion();
                 }
             }

@@ -44,10 +44,16 @@
 
             <div class="row fixed-bottom" style="margin-bottom: 2em;">
                 <div class="col-md-6 center-block text-right">
-                    <img class="zoom" src="images/Simulador/HOMBRE-INTRO.gif" onclick="location.href='SeleccionCarrera.aspx'"/>                
+                    <h1 style="
+    padding-right: 150px;
+">HOMBRE</h1>
+                    <img class="zoom" src="images/Simulador/HOMBRE-INTRO.gif"  style="max-height:100%; height:40em; " onclick="location.href='SeleccionCarrera.aspx'"/>                
                 </div>
                 <div class="col-md-6 center-block text-left">
-                    <img class="zoom" src="images/Simulador/HOMBRE-INTRO.gif" onclick="location.href='SeleccionCarrera.aspx'"/>                
+                    <h1 style="
+    padding-left: 30px;
+">MUJER</h1>
+                    <img class="zoom" src="images/Simulador/HOMBRE-INTRO.gif"  style="max-height:100%; height:40em; " onclick="location.href='SeleccionCarrera.aspx'"/>                
                 </div>
             </div>
             <%--<div class="row fixed-bottom" style="margin-bottom: 5em;">
