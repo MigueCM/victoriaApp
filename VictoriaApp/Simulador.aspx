@@ -14,7 +14,7 @@
  background-repeat: no-repeat; background-size: cover;">
     <form id="form1" runat="server">
         <div class="container-fluid d-flex flex-column h-100" style="margin-top: 0.5em">
-            <div class="row fixed-top">
+            <div class="row">
                 <div class="col-sm-5" >
                     <img class="pointer-event" src="images/Simulador/atras-simulador.png" style="height:90px; width:100px;" onclick="javascript:history.back();"/>       
                 </div>
@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <div class="row" style="margin-top: 25em;">
+            <div class="row" style="margin-top: 2em;">
                 <div class="col-md-12 center-block text-center">
                     <h1 style="font-size:80px; color:white;">SIMULADOR DE CARRERAS</h1>                    
                 </div>

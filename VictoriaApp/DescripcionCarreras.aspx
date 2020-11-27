@@ -66,7 +66,7 @@
     <div class="container-fluid pt-4">
 
         <div class="row ">
-            <div class="col-sm-1 btnAtras">
+            <div class="col-sm-1 btnAtras" onclick="location.href='SeleccionCarrera.aspx'" style="cursor:pointer;">
                 <img src="images/Simulador/botonAtras.png" alt="Alternate Text" />
             </div>
             <div class="col-sm-10 tituloPrincipal">

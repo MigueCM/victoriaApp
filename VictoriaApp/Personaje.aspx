@@ -32,7 +32,7 @@
     <form id="form1" runat="server">
         <div class="container-fluid d-flex flex-column h-100" >
             <div class="row fixed-top">
-                <div class="col-sm-12"  onclick="javascript:history.back();">
+                <div class="col-sm-12"  onclick="location.href='Simulador.aspx'" style="cursor:pointer;">
                     <img src="images/Simulador/atras-simulador.png" style="height:90px; width:100px;"/>       
                 </div>
 <%--            </div>
