@@ -54,11 +54,26 @@
         .acordion-body{
             font-size: 17px;
         }
+
+        @media (max-width: 600px) {
+           
+
+            .btnAtras img{
+                width: 3em;
+            }
+
+            .btnAtras{
+                width: 10%;
+            }
+            
+
+
+        }
         
 
     </style>
 </head>
-<body style="background: url('images/Simulador/carreras/aeronautica/fondo-pregunta.gif');
+<body style="background: url('images/Simulador/carreras/aeronautica/fondo-pregunta.jpg');
  background-repeat: no-repeat; background-size: cover; min-height:100vh;">
 
     <%--<h2 runat="server" id="carreraTitulo" style="text-align:center; margin-top:2em; color:white">Selección de Carreras</h2>--%>

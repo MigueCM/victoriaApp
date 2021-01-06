@@ -203,6 +203,7 @@
     <Content Include="images\Simulador.png" />
     <Content Include="images\Simulador\AERONÁUTICA.gif" />
     <Content Include="images\Simulador\botonAtras.png" />
+    <Content Include="images\Simulador\carreras\aeronautica\fondo-pregunta.jpg" />
     <Content Include="images\Simulador\carreras\aeronautica\puerta.gif" />
     <Content Include="images\Simulador\carreras\aeronautica\titulo.png" />
     <Content Include="images\Simulador\FONDO-09.jpg" />
