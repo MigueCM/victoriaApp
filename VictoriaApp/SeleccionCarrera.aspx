@@ -117,25 +117,104 @@
 
             <div id="1" onclick="clickaction(this)">
                 <div class="puerta-titulo text-center">
-                    <img src="images/Simulador/carreras/aeronautica/titulo.png" alt="Alternate Text"  />
+                    <img src="images/Simulador/carreras/ingenieria-minas/titulo.png" alt="Alternate Text"  />
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img src="images/Simulador/carreras/aeronautica/puerta.gif" alt="Alternate Text"  />
-                </div>
-                
+                    <img src="images/Simulador/carreras/ingenieria-minas/puerta.png" alt="Alternate Text"  />
+                </div>                
             </div>
 
-            <div id="2" class="text-center" onclick="clickaction(this)">
+            <div id="2" onclick="clickaction(this)">
+                <div class="puerta-titulo text-center">
+                    <img src="images/Simulador/carreras/ingenieria-aeronautica/titulo.png" alt="Alternate Text"  />
+                </div>
+
+                <div class="puerta-carrera text-center">
+                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                </div>                
+            </div>
+
+            <div id="3" class="text-center" onclick="clickaction(this)">
                 <div class="puerta-titulo ">
-                    <img src="images/Simulador/carreras/aeronautica/titulo.png" alt="Alternate Text"  />
+                    <img src="images/Simulador/carreras/ingenieria-sistemas/titulo.png" alt="Alternate Text"  />
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img src="images/Simulador/carreras/aeronautica/puerta.gif" alt="Alternate Text"  />
-                </div>
-                
+                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                </div>                
             </div>
+
+            <div id="4" class="text-center" onclick="clickaction(this)">
+                <div class="puerta-titulo ">
+                    <img src="images/Simulador/carreras/arquitectura-datos/titulo.png" alt="Alternate Text"  />
+                </div>
+
+                <div class="puerta-carrera text-center">
+                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                </div>                
+            </div>
+
+            <div id="5" class="text-center" onclick="clickaction(this)">
+                <div class="puerta-titulo ">
+                    <img src="images/Simulador/carreras/biologia-marina/titulo.png" alt="Alternate Text" style="width:60%;" />
+                </div>
+
+                <div class="puerta-carrera text-center">
+                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                </div>                
+            </div>
+
+            <div id="6" class="text-center" onclick="clickaction(this)">
+                <div class="puerta-titulo ">
+                    <img src="images/Simulador/carreras/mecatronica/titulo.png" alt="Alternate Text"  />
+                </div>
+
+                <div class="puerta-carrera text-center">
+                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                </div>                
+            </div>
+
+            <div id="7" class="text-center" onclick="clickaction(this)">
+                <div class="puerta-titulo ">
+                    <img src="images/Simulador/carreras/deportes/titulo.png" alt="Alternate Text"  />
+                </div>
+
+                <div class="puerta-carrera text-center">
+                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                </div>                
+            </div>
+
+            <div id="8" class="text-center" onclick="clickaction(this)">
+                <div class="puerta-titulo ">
+                    <img src="images/Simulador/carreras/economia/titulo.png" alt="Alternate Text"  />
+                </div>
+
+                <div class="puerta-carrera text-center">
+                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                </div>                
+            </div>
+
+            <div id="9" class="text-center" onclick="clickaction(this)">
+                <div class="puerta-titulo ">
+                    <img src="images/Simulador/carreras/biotecnologia/titulo.png" alt="Alternate Text" style="width:50%;" />
+                </div>
+
+                <div class="puerta-carrera text-center">
+                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                </div>                
+            </div>
+
+            <div id="10" class="text-center" onclick="clickaction(this)">
+                <div class="puerta-titulo ">
+                    <img src="images/Simulador/carreras/fisica/titulo.png" alt="Alternate Text" style="width:28%;" />
+                </div>
+
+                <div class="puerta-carrera text-center">
+                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                </div>                
+            </div>
+
             <%--<a id="1" onclick="clickaction(this)">
                  <h3 class="contenido">Carrera 1</h3> 
             </a>

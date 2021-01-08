@@ -18,26 +18,47 @@ namespace VictoriaApp
             {
                 if (Session["IdCarreraSeleccionada"] != null)
                 {
-                    //switch (Convert.ToInt32(Session["IdCarreraSeleccionada"].ToString()))
-                    //{
-                    //    case 1:
-                    //        carreraTitulo.InnerText = "Carrera 1";
-                    //        break;
-                    //    case 2:
-                    //        carreraTitulo.InnerText = "Carrera 2";
-                    //        break;
-                    //    case 3:
-                    //        carreraTitulo.InnerText = "Carrera 3";
-                    //        break;
-                    //    case 4:
-                    //        carreraTitulo.InnerText = "Carrera 4";
-                    //        break;
-                    //    case 5:
-                    //        carreraTitulo.InnerText = "Carrera 5";
-                    //        break;
-                    //    default:
-                    //        break;
-                    //}
+                    string image = "";
+                    switch (Convert.ToInt32(Session["IdCarreraSeleccionada"].ToString()))
+                    {
+                        case 1:
+                            image = "ingenieria-minas/fondo-pregunta.png";
+                            break;
+                        case 2:
+                            image = "ingenieria-aeronautica/fondo-pregunta.jpg";
+                            break;
+                        case 3:
+                            image = "ingenieria-sistemas/fondo-pregunta.png";
+                            break;
+                        case 4:
+                            image = "arquitectura-datos/fondo-pregunta.png";
+                            break;
+                        case 5:
+                            image = "biologia-marina/fondo-pregunta.png";
+                            break;
+                        case 6:
+                            image = "mecatronica/fondo-pregunta.png";
+                            break;
+                        case 7:
+                            image = "deportes/fondo-pregunta.png";
+                            break;
+                        case 8:
+                            image = "economia/fondo-pregunta.png";
+                            break;
+                        case 9:
+                            image = "biotecnologia/fondo-pregunta.png";
+                            break;
+                        case 10:
+                            image = "fisica/fondo-pregunta.png";
+                            break;
+                        default:
+                            break;
+
+                            
+                    }
+
+                    Session["UrlBackground"] = image;
+
                     Cargardescripcion();
                 }
             }

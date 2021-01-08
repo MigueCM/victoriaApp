@@ -73,7 +73,9 @@
 
     </style>
 </head>
-<body style="background: url('images/Simulador/carreras/aeronautica/fondo-pregunta.jpg');
+<%--<<body style="background: url('images/Simulador/carreras/aeronautica/fondo-pregunta.jpg');
+ background-repeat: no-repeat; background-size: cover; min-height:100vh;">--%>
+<body style="background: url('images/Simulador/carreras/<%=(string)(Session["UrlBackground"]??"")%>');
  background-repeat: no-repeat; background-size: cover; min-height:100vh;">
 
     <%--<h2 runat="server" id="carreraTitulo" style="text-align:center; margin-top:2em; color:white">Selección de Carreras</h2>--%>
