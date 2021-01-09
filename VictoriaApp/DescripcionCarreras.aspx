@@ -132,7 +132,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                <img src="images/Simulador/carreras/<%=(string)(Session["DesCarrera"]??"")%>/<%=(string)(Session["Genero"]??"")%>.png" class="image fixed-bottom offset-sm-2" />
+                <img id="personaje" src="images/Simulador/carreras/<%=(string)(Session["DesCarrera"]??"")%>/<%=(string)(Session["Genero"]??"")%>.png" class="image offset-sm-2" />
                     </div>
                 <div class="col-sm-6 ">
                     <div class="accordion accordion-solid-header" id="accordion-4" role="tablist">
@@ -228,11 +228,5 @@
         
     </form>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-    <script>
-        
-     
-
-    </script>
 </body>
 </html>
