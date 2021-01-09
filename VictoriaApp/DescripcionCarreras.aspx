@@ -70,6 +70,36 @@
 
         }
         
+        .image{
+        max-height:100%; 
+        height:40em;
+    }
+
+
+    @media (max-width: 1450px) {
+
+        .image{
+                max-height:100%; 
+                height:30em;
+            }
+           
+
+            
+
+
+    }
+
+    @media (max-width: 1100px) {
+
+        .body{
+            height: 100vh;
+        }
+           
+
+            
+
+
+    }
 
     </style>
 </head>
@@ -95,12 +125,14 @@
         </div>
 
     </div>
-
+    
     <form id="form1" runat="server">
         <div class="container">
-
             <div class="row">
-                <div class="col-sm-6 offset-sm-6">
+                <div class="col-sm-6">
+                <img src="images/Simulador/carreras/<%=(string)(Session["DesCarrera"]??"")%>/<%=(string)(Session["Genero"]??"")%>.png" class="image fixed-bottom offset-sm-2" />
+                    </div>
+                <div class="col-sm-6 ">
                     <div class="accordion accordion-solid-header" id="accordion-4" role="tablist">
                         <div class="card">
                             <div class="card-header" role="tab" id="heading-10">

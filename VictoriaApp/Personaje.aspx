@@ -76,19 +76,20 @@
 
             <div class="row fixed-bottom" style="margin-bottom: 2em;">
                 <div class="col-md-6 center-block text-right">
-                    <h1 style="
+                    <h1 style="font-family:'Comic Sans MS'; color:white;
     padding-right: 150px;
 ">HOMBRE</h1>
-                    <img class="zoom image" src="images/Simulador/HOMBRE-INTRO.gif"  style="" onclick="location.href='SeleccionCarrera.aspx'"/>                
+                    <a id="Hombre" runat="server" onserverclick="Hombre_ServerClick"><img class="zoom image" src="images/Simulador/HOMBRE-INTRO.gif"  style="" />      </a>          
                 </div>
                 <div class="col-md-6 center-block text-left">
-                    <h1 style="
+                    <h1 style=" font-family:'Comic Sans MS'; color:white;
     padding-left: 30px;
 ">MUJER</h1>
-                    <img class="zoom image" src="images/Simulador/MUJER-INTRO.gif"  style="" onclick="location.href='SeleccionCarrera.aspx'"/>                
+                    <a id="Mujer" runat="server" onserverclick="Mujer_ServerClick"><img class="zoom image" src="images/Simulador/MUJER-INTRO.gif"  style="" />     </a>           
                 </div>
             </div>
             <%--<div class="row fixed-bottom" style="margin-bottom: 5em;">
+                onclick="location.href='SeleccionCarrera.aspx'"
                  <div class="col-sm-12 center-block text-center" >
                     <button type="button"  onclick="location.href='SeleccionCarrera.aspx'" style="background-color:white; color:purple; font-size:30px; height:80px; width:300px; font-weight:bold; border-radius:10px;">EMPEZAR</button>
                 </div>
