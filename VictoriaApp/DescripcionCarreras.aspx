@@ -60,6 +60,8 @@
 
             .btnAtras img{
                 width: 3em;
+                /*height: 90px;
+                width: 100px;*/
             }
 
             .btnAtras{
