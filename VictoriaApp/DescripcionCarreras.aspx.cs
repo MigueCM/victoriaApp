@@ -16,39 +16,50 @@ namespace VictoriaApp
         {
             if (!IsPostBack)
             {
-                if (Session["IdCarreraSeleccionada"] != null)
+                if (Session["IdCarreraSeleccionada"] != null && Session["Genero"] != null)
                 {
+                    string genero = Session["Genero"].ToString();
                     string image = "";
                     switch (Convert.ToInt32(Session["IdCarreraSeleccionada"].ToString()))
                     {
                         case 1:
+                            Session["DesCarrera"] = "ingenieria-minas";
                             image = "ingenieria-minas/fondo-pregunta.png";
                             break;
                         case 2:
+                            Session["DesCarrera"] = "ingenieria-aeronautica";
                             image = "ingenieria-aeronautica/fondo-pregunta.jpg";
                             break;
                         case 3:
+                            Session["DesCarrera"] = "ingenieria-sistemas";
                             image = "ingenieria-sistemas/fondo-pregunta.png";
                             break;
                         case 4:
+                            Session["DesCarrera"] = "arquitectura-datos";
                             image = "arquitectura-datos/fondo-pregunta.png";
                             break;
                         case 5:
+                            Session["DesCarrera"] = "biologia-marina";
                             image = "biologia-marina/fondo-pregunta.png";
                             break;
                         case 6:
+                            Session["DesCarrera"] = "mecatronica";
                             image = "mecatronica/fondo-pregunta.png";
                             break;
                         case 7:
+                            Session["DesCarrera"] = "deportes";
                             image = "deportes/fondo-pregunta.png";
                             break;
                         case 8:
+                            Session["DesCarrera"] = "economia";
                             image = "economia/fondo-pregunta.png";
                             break;
                         case 9:
+                            Session["DesCarrera"] = "biotecnologia";
                             image = "biotecnologia/fondo-pregunta.png";
                             break;
                         case 10:
+                            Session["DesCarrera"] = "fisica";
                             image = "fisica/fondo-pregunta.png";
                             break;
                         default:
