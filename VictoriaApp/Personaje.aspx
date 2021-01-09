@@ -25,9 +25,41 @@
   -webkit-transform: scale(1.25); /* Safari 3-8 */
   transform: scale(1.25); 
 }
+
+    .image{
+        max-height:100%; 
+        height:40em;
+    }
+
+
+    @media (max-width: 1450px) {
+
+        .image{
+                max-height:100%; 
+                height:30em;
+            }
+           
+
+            
+
+
+    }
+
+    @media (max-width: 1100px) {
+
+        .body{
+            height: 100vh;
+        }
+           
+
+            
+
+
+    }
+
 </style>
 </head>
-<body style="background: url('images/Simulador/FONDO-09.jpg');
+<body class="body" style="background: url('images/Simulador/FONDO-09.jpg');
  background-repeat: no-repeat; background-size: cover;">
     <form id="form1" runat="server">
         <div class="container-fluid d-flex flex-column h-100" >
@@ -47,13 +79,13 @@
                     <h1 style="
     padding-right: 150px;
 ">HOMBRE</h1>
-                    <img class="zoom" src="images/Simulador/HOMBRE-INTRO.gif"  style="max-height:100%; height:40em; " onclick="location.href='SeleccionCarrera.aspx'"/>                
+                    <img class="zoom image" src="images/Simulador/HOMBRE-INTRO.gif"  style="" onclick="location.href='SeleccionCarrera.aspx'"/>                
                 </div>
                 <div class="col-md-6 center-block text-left">
                     <h1 style="
     padding-left: 30px;
 ">MUJER</h1>
-                    <img class="zoom" src="images/Simulador/HOMBRE-INTRO.gif"  style="max-height:100%; height:40em; " onclick="location.href='SeleccionCarrera.aspx'"/>                
+                    <img class="zoom image" src="images/Simulador/MUJER-INTRO.gif"  style="" onclick="location.href='SeleccionCarrera.aspx'"/>                
                 </div>
             </div>
             <%--<div class="row fixed-bottom" style="margin-bottom: 5em;">

@@ -141,7 +141,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                    <img src="images/Simulador/carreras/ingenieria-sistemas/puerta.gif" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -151,7 +151,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                    <img src="images/Simulador/carreras/arquitectura-datos/puerta.gif" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -161,7 +161,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                    <img src="images/Simulador/carreras/biologia-marina/puerta.gif" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -171,7 +171,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                    <img src="images/Simulador/carreras/mecatronica/puerta.gif" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -181,7 +181,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                    <img src="images/Simulador/carreras/deportes/puerta.gif" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -191,7 +191,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                    <img src="images/Simulador/carreras/economia/puerta.gif" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -201,7 +201,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                    <img src="images/Simulador/carreras/biotecnologia/puerta.gif" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -211,7 +211,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                    <img src="images/Simulador/carreras/fisica/puerta.gif" alt="Alternate Text"  />
                 </div>                
             </div>
 
