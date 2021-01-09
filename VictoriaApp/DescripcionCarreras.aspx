@@ -149,12 +149,13 @@
                                 <div class="row">
                                   <div class="col-12">
                                     <p class="mb-0 text-white text-center acordion-body">
-                                        Es la ingeniería que gestiona eficientemente las operaciones para la extracción y aprovechamiento
+                                        <%--Es la ingeniería que gestiona eficientemente las operaciones para la extracción y aprovechamiento
                                         de recursos mineros, evaluando el impacto en el medio ambiente y las comunidades.
                                         <br />
                                         <br />
                                         Desarrolla las competencias y habilidades para la investigación, prospección, explotación y producción
-                                        de yacimientos minero.
+                                        de yacimientos minero.--%>
+                                        <%=HttpUtility.HtmlDecode((string)(Session["Text1"]??"")) %>
                                         
                                     </p>                             
                                   </div>
@@ -176,8 +177,9 @@
                                 <div class="row">
                                   <div class="col-12">
                                     <p class="mb-0 text-white text-center acordion-body">
-                                        Se trata de una carrera con bastantes oportunidades para los jóvenes
-                                        con espiritu competitivo y que estén dispuestos a prepararse constantemente. 
+                                        <%--Se trata de una carrera con bastantes oportunidades para los jóvenes
+                                        con espiritu competitivo y que estén dispuestos a prepararse constantemente. --%>
+                                        <%=HttpUtility.HtmlDecode((string)(Session["Text2"]??"")) %>
                                     </p>                             
                                   </div>
                                 </div>
@@ -198,7 +200,7 @@
                                 <div class="row">
                                   <div class="col-12">
                                     <p class="mb-0 text-white text-center acordion-body">
-                                        Operaciones <br />
+                                       <%-- Operaciones <br />
                                         Planeamiento <br />
                                         Desarrollo y evaluación de proyectos <br />
                                         Servicios auxiliares <br />
@@ -206,7 +208,8 @@
                                         Medio ambiente <br />
                                         Investigación <br />
                                         Servicios de consultoría o de gestión a nivel general en empresas
-                                        y organizaciones relacionadas con este sector<br />
+                                        y organizaciones relacionadas con este sector<br />--%>
+                                        <%=HttpUtility.HtmlDecode((string)(Session["Text3"]??"")) %>
 
                                     </p>                             
                                   </div>
