@@ -275,8 +275,8 @@
               slidesToShow: 1,
             slidesToScroll: 1,
            
-             prevArrow: "<img class='a-left control-c prev slick-prev' src='../images/Simulador/slickAtras.png'>",
-            nextArrow: "<img class='a-right control-c next slick-next' src='../images/Simulador/slickSiguiente.png'>",
+             prevArrow: "<img class='a-left control-c prev slick-prev' src='images/Simulador/slickAtras.png'>",
+            nextArrow: "<img class='a-right control-c next slick-next' src='images/Simulador/slickSiguiente.png'>",
             //responsive: [
             //    {
             //        breakpoint: 600,

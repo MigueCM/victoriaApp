@@ -261,6 +261,7 @@
     <Content Include="images\Simulador\INTRO.jpg" />
     <Content Include="images\Simulador\MUJER-INTRO-unscreen %281%29.gif" />
     <Content Include="images\Simulador\MUJER-INTRO-unscreen.gif" />
+    <Content Include="images\Simulador\MUJER-INTRO.gif" />
     <Content Include="images\Simulador\slickAtras.png" />
     <Content Include="images\Simulador\slickSiguiente.png" />
     <Content Include="images\Simulador\tituloSimuladorCarrera.png" />
