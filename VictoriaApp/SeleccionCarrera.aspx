@@ -164,7 +164,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img id="2" onclick="clickaction(this)" src="images/Simulador/carreras/ingenieria-aeronautica/puerta.gif" alt="Alternate Text"  />
+                    <img id="2" onclick="clickaction(this)" src="images/Simulador/carreras/ingenieria-aeronautica/puerta.png" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -174,7 +174,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img id="3" onclick="clickaction(this)" src="images/Simulador/carreras/ingenieria-sistemas/puerta.gif" alt="Alternate Text"  />
+                    <img id="3" onclick="clickaction(this)" src="images/Simulador/carreras/ingenieria-sistemas/puerta.png" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -184,7 +184,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img id="4" onclick="clickaction(this)" src="images/Simulador/carreras/arquitectura-datos/puerta.gif" alt="Alternate Text"  />
+                    <img id="4" onclick="clickaction(this)" src="images/Simulador/carreras/arquitectura-datos/puerta.png" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -194,7 +194,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img id="5" onclick="clickaction(this)" src="images/Simulador/carreras/biologia-marina/puerta.gif" alt="Alternate Text"  />
+                    <img id="5" onclick="clickaction(this)" src="images/Simulador/carreras/biologia-marina/puerta.png" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -204,7 +204,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img id="6" onclick="clickaction(this)" src="images/Simulador/carreras/mecatronica/puerta.gif" alt="Alternate Text"  />
+                    <img id="6" onclick="clickaction(this)" src="images/Simulador/carreras/mecatronica/puerta.png" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -214,7 +214,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img id="7" onclick="clickaction(this)" src="images/Simulador/carreras/deportes/puerta.gif" alt="Alternate Text"  />
+                    <img id="7" onclick="clickaction(this)" src="images/Simulador/carreras/deportes/puerta.png" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -224,7 +224,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img id="8" onclick="clickaction(this)" src="images/Simulador/carreras/economia/puerta.gif" alt="Alternate Text"  />
+                    <img id="8" onclick="clickaction(this)" src="images/Simulador/carreras/economia/puerta.png" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -234,7 +234,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img id="9" onclick="clickaction(this)" src="images/Simulador/carreras/biotecnologia/puerta.gif" alt="Alternate Text"  />
+                    <img id="9" onclick="clickaction(this)" src="images/Simulador/carreras/biotecnologia/puerta.png" alt="Alternate Text"  />
                 </div>                
             </div>
 
@@ -244,7 +244,7 @@
                 </div>
 
                 <div class="puerta-carrera text-center">
-                    <img id="10" onclick="clickaction(this)" src="images/Simulador/carreras/fisica/puerta.gif" alt="Alternate Text"  />
+                    <img id="10" onclick="clickaction(this)" src="images/Simulador/carreras/fisica/puerta.png" alt="Alternate Text"  />
                 </div>                
             </div>
 
