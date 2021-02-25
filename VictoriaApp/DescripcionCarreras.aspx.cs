@@ -48,7 +48,7 @@ namespace VictoriaApp
                                         Servicios de consultoría o de gestión a nivel general en empresas
                                         y organizaciones relacionadas con este sector<br />";
 
-                            image = "ingenieria-minas/fondo-pregunta.png";
+                            image = "ingenieria-minas/fondo-pregunta.jpg";
                             break;
                         case 2:
                             Session["DesCarrera"] = "ingenieria-aeronautica";
@@ -89,7 +89,7 @@ namespace VictoriaApp
                                         Auditor de sistemas de información <br/>
                                         Investigador <br/>";
 
-                            image = "ingenieria-sistemas/fondo-pregunta.png";
+                            image = "ingenieria-sistemas/fondo-pregunta.jpg";
                             break;
                         case 4:
                             Session["DesCarrera"] = "arquitectura-datos";
@@ -111,7 +111,7 @@ namespace VictoriaApp
                                         Geoestadística <br/>
                                         Investigador <br/>";
 
-                            image = "arquitectura-datos/fondo-pregunta.png";
+                            image = "arquitectura-datos/fondo-pregunta.jpg";
                             break;
                         case 5:
                             Session["DesCarrera"] = "biologia-marina";
@@ -131,7 +131,7 @@ namespace VictoriaApp
                                         Biotecnología <br/>
                                         Pesquería y acuicultura <br/>";
 
-                            image = "biologia-marina/fondo-pregunta.png";
+                            image = "biologia-marina/fondo-pregunta.jpg";
                             break;
                         case 6:
                             Session["DesCarrera"] = "mecatronica";
@@ -154,7 +154,7 @@ namespace VictoriaApp
                                         Transporte <br/>
                                         Servicios <br/>";
 
-                            image = "mecatronica/fondo-pregunta.png";
+                            image = "mecatronica/fondo-pregunta.jpg";
                             break;
                         case 7:
                             Session["DesCarrera"] = "deportes";
@@ -171,7 +171,7 @@ namespace VictoriaApp
                                         Directivo en entidades y organizaciones <br/>
                                         Consultor <br/>";
 
-                            image = "deportes/fondo-pregunta.png";
+                            image = "deportes/fondo-pregunta.jpg";
                             break;
                         case 8:
                             Session["DesCarrera"] = "economia";
@@ -191,7 +191,7 @@ namespace VictoriaApp
                                         Directivo en entidades y organizaciones <br/>
                                         Consultor <br/>";
 
-                            image = "economia/fondo-pregunta.png";
+                            image = "economia/fondo-pregunta.jpg";
                             break;
                         case 9:
                             Session["DesCarrera"] = "biotecnologia";
@@ -209,7 +209,7 @@ namespace VictoriaApp
                                         Gestión de equipos técnicos <br/>
                                         Diseñan, ejecutan y evalúan los experimentos <br/>";
 
-                            image = "biotecnologia/fondo-pregunta.png";
+                            image = "biotecnologia/fondo-pregunta.jpg";
                             break;
                         case 10:
                             Session["DesCarrera"] = "fisica";
@@ -229,7 +229,7 @@ namespace VictoriaApp
                                         Desarrollo de modelos y de códigos informáticos <br/>
                                         Evaluación estadística <br/>";
 
-                            image = "fisica/fondo-pregunta.png";
+                            image = "fisica/fondo-pregunta.jpg";
                             break;
                         default:
                             break;
