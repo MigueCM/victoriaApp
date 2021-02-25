@@ -27,10 +27,12 @@
 
        .slick-prev {
             left: 12%;
+                z-index: 10000;
         }
 
         .slick-next {
             right: 12%;
+                z-index: 10000;
         }
 
         

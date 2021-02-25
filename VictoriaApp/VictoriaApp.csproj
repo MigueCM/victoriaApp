@@ -257,11 +257,9 @@
     <Content Include="images\Simulador\fondoCarrera.png" />
     <Content Include="images\Simulador\atras-simulador.png" />
     <Content Include="images\Simulador\FONDO.png" />
-    <Content Include="images\Simulador\HOMBRE-INTRO.gif" />
+    <Content Include="images\Simulador\HOMBRE-INTRO.png" />
     <Content Include="images\Simulador\INTRO.jpg" />
-    <Content Include="images\Simulador\MUJER-INTRO-unscreen %281%29.gif" />
-    <Content Include="images\Simulador\MUJER-INTRO-unscreen.gif" />
-    <Content Include="images\Simulador\MUJER-INTRO.gif" />
+    <Content Include="images\Simulador\MUJER-INTRO.png" />
     <Content Include="images\Simulador\slickAtras.png" />
     <Content Include="images\Simulador\slickSiguiente.png" />
     <Content Include="images\Simulador\tituloSimuladorCarrera.png" />
